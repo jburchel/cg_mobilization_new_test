@@ -1,0 +1,11 @@
+<nav class="navbar">
+    <a href="/" class="navbar-brand">Mobilize CRM</a>
+    <div class="navbar-menu">
+        <a href="{% url 'contacts:all_contacts' %}" class="navbar-item {% if request.resolver_match.url_name == 'contacts' %}active{% endif %}">All Contacts</a>
+        <a href="{% url 'contacts:people_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'individuals' %}active{% endif %}">People</a>
+        <a href="#" class="navbar-item {% if request.resolver_match.url_name == 'churches' %}active{% endif %}">Churches</a>
+        <a href="#" class="navbar-item {% if request.resolver_match.url_name == 'com_log' %}active{% endif %}">Com-Log</a>
+        <a href="#" class="navbar-item {% if request.resolver_match.url_name == 'task_tracker' %}active{% endif %}">Task-Tracker</a>
+        <a href="#" class="navbar-item {% if request.resolver_match.url_name == 'login' %}active{% endif %}">Login</a>
+    </div>
+</nav>

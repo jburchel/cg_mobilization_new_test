@@ -1,0 +1,65 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}People Pipeline - Mobilize CRM{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/people_list.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="pipeline-container">
+    <h1>Individual Pipeline</h1>
+    
+    <button id="add-person" class="btn btn-primary">Add New Individual</button>
+
+    <div class="pipeline-summary">
+        <div class="summary-item">
+            <span class="summary-value">{{ total_people }}</span>
+            <span class="summary-label">Total People</span>
+        </div>
+        {% for stage, count in pipeline_summary.items %}
+        <div class="summary-item" data-stage="{{ stage|slugify }}">
+            <span class="summary-value">{{ count }}</span>
+            <span class="summary-label">{{ stage }}</span>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="pipeline-grid">
+        {% for stage, people in pipeline_stages.items %}
+        <div class="pipeline-stage" data-stage="{{ stage|slugify }}">
+            <div class="stage-header">
+                <span class="collapse-arrow">▼</span>
+                <h2>{{ stage }} ({{ people|length }})</h2>
+            </div>
+            <div class="stage-content">
+                {% for person in people %}
+                <div class="person-card" draggable="true" data-person-id="{{ person.id }}">
+                    <div class="person-image">
+                        {% if person.image %}
+                            <img src="{{ person.image.url }}" alt="{{ person.first_name }} {{ person.last_name }}">
+                        {% else %}
+                            <img src="{% static 'images/default_profile.png' %}" alt="Default profile picture">
+                        {% endif %}
+                    </div>
+                    <div class="person-info">
+                        <h3>{{ person.first_name }} {{ person.last_name }}</h3>
+                        <p>{{ person.phone }}</p>
+                        <p>{{ person.email }}</p>
+                        <p>Last Contacted: Not implemented yet</p>
+                    </div>                    
+                </div>
+                {% empty %}
+                <p>No people in this stage.</p>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/people_list.js' %}"></script>
+{% endblock %}

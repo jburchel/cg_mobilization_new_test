@@ -1,0 +1,152 @@
+/* contacts_list.css */
+
+:root {
+    --primary-blue: #183963;
+    --primary-green: #39A949;
+    --primary-gray: #7F7F7F;
+    --primary-white: #FFFFFF;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-white);
+    color: var(--primary-blue);
+}
+
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    width: 100%;
+}
+
+.search-bar input[type="text"] {
+    
+    width: 100%;
+    /* padding: 8px; */
+    border: 1px solid var(--primary-gray);
+    border-radius: 10px;
+    margin-right:1rem
+    
+}
+
+.search-bar button {
+    padding: 8px 15px;
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-right: 1rem
+}
+
+.btn {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+    border-radius: 10px;
+    width: 15%;
+    text-align: center;
+}
+
+.contacts-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: var(--primary-white);
+}
+
+.contacts-table th,
+.contacts-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--primary-gray);
+}
+
+.contacts-table th {
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
+    font-weight: bold;    
+}
+
+.contacts-table tr:hover {
+    background-color: #f0f0f0;
+}
+
+.contacts-table .actions {
+    border-bottom:1px solid var(--primary-gray);
+    display: table-cell
+}
+
+.contacts-table .actions {
+    vertical-align: top;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.875rem;
+    border-radius: 10px;
+    margin:auto;
+}
+
+.btn-info {
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
+}
+
+.btn-warning {
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+}
+
+.btn-danger {
+    background-color: var(--primary-gray);
+    color: var(--primary-white);
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    color: var(--primary-blue);
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination .current {
+    font-weight: bold;
+}
+
+/* Navbar hover effect */
+.navbar-item:hover {
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+}
