@@ -82,31 +82,41 @@ class PeopleListView(ListView):
         # Calculate total number of people
         context['total_people'] = people.count()
         
-        # Get pipeline stages and counts
-        pipeline_summary = dict(people.values_list('people_pipeline').annotate(count=Count('people_pipeline')))
-        
         # Create a dictionary to map database values to display values
         pipeline_choices = dict(People.PEOPLE_PIPELINE)
 
-       # Convert keys to display values
+        # Get pipeline stages and counts
+        pipeline_summary = dict(people.values_list('people_pipeline').annotate(count=Count('people_pipeline')))
+        
+        # Convert keys to display values
         pipeline_summary = {pipeline_choices.get(key, key): value for key, value in pipeline_summary.items()}
         
         # Create pipeline stages dict with display values
         pipeline_stages_dict = {value: [] for value in pipeline_choices.values()}
 
-        # Populate pipeline summary and stages
+        # Populate pipeline stages
         for person in people:
             stage = person.get_people_pipeline_display()
-            if stage in pipeline_stages_dict:
-                pipeline_stages_dict[stage].append(person)
+            pipeline_stages_dict[stage].append(person)
 
         context['pipeline_summary'] = pipeline_summary
         context['pipeline_stages'] = pipeline_stages_dict
 
+        # Debugging information
+        context['debug_info'] = {
+            'total_people': people.count(),
+            'pipeline_summary': pipeline_summary,
+            'pipeline_stages_dict': {k: len(v) for k, v in pipeline_stages_dict.items()},
+            'raw_pipeline_data': list(people.values('id', 'first_name', 'last_name', 'people_pipeline')),
+            'pipeline_choices': pipeline_choices
+        }
+
         return context
     
     def get_queryset(self):
-        # You can add any filtering or ordering here
+        return super().get_queryset().select_related('contact_ptr')
+    
+    def get_queryset(self):
         return super().get_queryset().select_related('contact_ptr')
         
 class PersonDetailView(DetailView):
@@ -138,7 +148,13 @@ def update_pipeline_stage(request):
     
     try:
         person = People.objects.get(id=person_id)
-        person.people_pipeline = new_stage
+        # Find the matching database value for the new stage
+        new_stage_db_value = next((key for key, value in People.PEOPLE_PIPELINE if value.lower().replace(' ', '-') == new_stage.lower()), None)
+        
+        if new_stage_db_value is None:
+            return JsonResponse({'success': False, 'error': f'Invalid stage: {new_stage}'}, status=400)
+        
+        person.people_pipeline = new_stage_db_value
         person.save()
         return JsonResponse({'success': True})
     except People.DoesNotExist:

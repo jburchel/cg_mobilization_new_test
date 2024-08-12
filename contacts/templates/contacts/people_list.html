@@ -36,6 +36,12 @@
             <div class="stage-content">
                 {% for person in people %}
                 <div class="person-card" draggable="true" data-person-id="{{ person.id }}">
+                    <div class="person-info">
+                        <h3>{{ person.first_name }} {{ person.last_name }}</h3>
+                        <p>{{ person.phone }}</p>
+                        <p>{{ person.email }}</p>
+                        <p>Last Contacted: {{ person.last_contacted|default:"Not available" }}</p>
+                    </div>
                     <div class="person-image">
                         {% if person.image %}
                             <img src="{{ person.image.url }}" alt="{{ person.first_name }} {{ person.last_name }}">
@@ -43,15 +49,9 @@
                             <img src="{% static 'images/default_profile.png' %}" alt="Default profile picture">
                         {% endif %}
                     </div>
-                    <div class="person-info">
-                        <h3>{{ person.first_name }} {{ person.last_name }}</h3>
-                        <p>{{ person.phone }}</p>
-                        <p>{{ person.email }}</p>
-                        <p>Last Contacted: Not implemented yet</p>
-                    </div>                    
                 </div>
                 {% empty %}
-                <p>No people in this stage.</p>
+                <p class="empty-stage">No people in this stage.</p>
                 {% endfor %}
             </div>
         </div>

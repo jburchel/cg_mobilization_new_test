@@ -119,8 +119,8 @@ class People(Contact):
     )
     
     PEOPLE_PIPELINE = (
-        ('contacted','Contacted'), ('mission vision', 'Mission Vision'),('conversations', 'Conversations'),
-        ('potential recruit', 'Potential Recruit'),('handed off', 'Handed Off')
+        ('contacted','Contacted'), ('mission-vision', 'Mission Vision'),('conversations', 'Conversations'),
+        ('potential-recruit', 'Potential Recruit'),('handed off', 'Handed Off')
     )
     
     PRIORITY = (

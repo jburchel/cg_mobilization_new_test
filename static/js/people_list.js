@@ -1,42 +1,42 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const pipelineGrid = document.querySelector('.pipeline-grid');
     let draggedItem = null;
+    let sourceStage = null;
 
-    // Add drag start event listener to all person cards
-    document.querySelectorAll('.person-card').forEach(card => {
-        card.addEventListener('dragstart', function(e) {
-            draggedItem = this;
-            setTimeout(() => this.style.display = 'none', 0);
+    function initDragAndDrop() {
+        document.querySelectorAll('.person-card').forEach(card => {
+            card.addEventListener('dragstart', function(e) {
+                draggedItem = this;
+                sourceStage = this.closest('.pipeline-stage');
+                setTimeout(() => this.style.opacity = '0.5', 0);
+            });
+
+            card.addEventListener('dragend', function() {
+                this.style.opacity = '1';
+            });
         });
 
-        card.addEventListener('dragend', function() {
-            setTimeout(() => this.style.display = '', 0);
-            draggedItem = null;
-        });
-    });
+        document.querySelectorAll('.pipeline-stage').forEach(stage => {
+            stage.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                this.classList.add('drag-over');
+            });
 
-    // Add drag over and drop event listeners to all pipeline stages
-    document.querySelectorAll('.pipeline-stage').forEach(stage => {
-        stage.addEventListener('dragover', function(e) {
-            e.preventDefault();
-            this.style.background = 'rgba(0, 0, 0, 0.1)';
-        });
+            stage.addEventListener('dragleave', function() {
+                this.classList.remove('drag-over');
+            });
 
-        stage.addEventListener('dragleave', function() {
-            this.style.background = '';
+            stage.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('drag-over');
+                if (draggedItem && this !== sourceStage) {
+                    const newStage = this.dataset.stage;
+                    updatePipelineStage(draggedItem.dataset.personId, newStage, this, sourceStage);
+                }
+            });
         });
+    }
 
-        stage.addEventListener('drop', function(e) {
-            e.preventDefault();
-            this.style.background = '';
-            if (draggedItem) {
-                this.querySelector('.stage-content').appendChild(draggedItem);
-                updatePipelineStage(draggedItem.dataset.personId, this.dataset.stage);
-            }
-        });
-    });
-
-    function updatePipelineStage(personId, newStage) {
+    function updatePipelineStage(personId, newStage, targetStage, sourceStage) {
         fetch('/contacts/update_pipeline_stage/', {
             method: 'POST',
             headers: {
@@ -52,15 +52,35 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data.success) {
                 console.log('Successfully updated pipeline stage');
-                // Update counts here if needed
+                setTimeout(() => {
+                    window.location.reload();
+                }, 100);
             } else {
-                console.error('Failed to update pipeline stage');
-                // Handle error, maybe move the card back
+                console.error('Failed to update pipeline stage:', data.error);
+                sourceStage.querySelector('.stage-content').appendChild(draggedItem);
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            // Handle error, maybe move the card back
+            sourceStage.querySelector('.stage-content').appendChild(draggedItem);
+        });
+    }
+
+    function initCollapsible() {
+        document.querySelectorAll('.stage-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const stage = this.closest('.pipeline-stage');
+                stage.classList.toggle('collapsed');
+                const arrow = this.querySelector('.collapse-arrow');
+                arrow.textContent = stage.classList.contains('collapsed') ? '▶' : '▼';
+                
+                // Recalculate flex basis for expanded columns
+                const expandedColumns = document.querySelectorAll('.pipeline-stage:not(.collapsed)');
+                const flexBasis = `${100 / expandedColumns.length}%`;
+                expandedColumns.forEach(col => {
+                    col.style.flexBasis = flexBasis;
+                });
+            });
         });
     }
 
@@ -79,20 +99,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return cookieValue;
     }
 
-    // Collapsible functionality
-    document.querySelectorAll('.stage-header').forEach(function(header) {
-        header.addEventListener('click', function() {
-            var stage = this.closest('.pipeline-stage');
-            stage.classList.toggle('collapsed');
-            
-            // Recalculate flex basis for expanded columns
-            var expandedColumns = document.querySelectorAll('.pipeline-stage:not(.collapsed)');
-            var flexBasis = 100 / expandedColumns.length + '%';
-            expandedColumn
-
-s.forEach(function(col) {
-                col.style.flex = '1 1 ' + flexBasis;
-            });
-        });
-    });
+    initDragAndDrop();
+    initCollapsible();
 });
