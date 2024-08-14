@@ -1,0 +1,394 @@
+:root {
+    --primary-blue: #183963;
+    --primary-green: #39A949;
+    --primary-gray: #7F7F7F;
+    --primary-white: #FFFFFF;
+}
+
+.login-container, signup-container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: var(--primary-white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);;
+}
+
+.login-container, signup-container h1 {
+    color: var(--primary-blue);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary-blue);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.forgot-password {
+    display: block;
+    text-align: right;
+    font-size: 0.9em;
+    color: var(--primary-blue);
+    text-decoration: none;
+    margin-top: 5px;
+    
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size:1em;
+}
+
+.btn-primary:hover {
+    background-color: #2d8a3a;
+}
+
+.messages {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* ... (keep existing styles) ... */
+
+.account-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.account-container .profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.account-container h1 {
+    text-align: center;
+    color: var(--pipeline-start);
+    margin-bottom: 20px;
+}
+
+.account-info {
+    margin-bottom: 20px;
+}
+
+.account-info p {
+    margin-bottom: 10px;
+}
+
+.account-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-secondary {
+    background-color: var(--pipeline-end);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-secondary:hover {
+    background-color: #2d8a3a;
+}
+
+/* ... (existing styles) ... */
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.image-upload-form {
+    margin-bottom: 20px;
+}
+
+.image-upload-form input[type="file"] {
+    margin-bottom: 10px;
+}
+
+/* Add these styles to your existing userprofile.css */
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    color: var(--pipeline-start);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary-blue);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-primary {
+    background-color: var(--pipeline-start);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: var(--pipeline-end);
+}
+
+.text-danger {
+    color: red;
+    font-size: 0.9em;
+}
+
+.messages {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.messages .success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--primary-gray);
+    border-radius: 5px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.userprofile-container {
+    --primary-blue: #183963;
+    --primary-green: #39A949;
+    --primary-gray: #7F7F7F;
+    --primary-white: #FFFFFF;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    height:auto;
+    overflow:auto !important;
+}
+
+.userprofile-container .login-container,
+.userprofile-container .signup-container {
+    background-color: var(--primary-white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.userprofile-container h1 {
+    color: var(--primary-blue);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.userprofile-container .form-group {
+    margin-bottom: 20px;
+}
+
+.userprofile-container label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary-blue);
+}
+
+.userprofile-container input[type="text"],
+.userprofile-container input[type="email"],
+.userprofile-container input[type="password"],
+.userprofile-container input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--primary-gray);
+    border-radius: 5px;
+}
+
+.userprofile-container .forgot-password {
+    display: block;
+    text-align: right;
+    color: var(--primary-blue);
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.userprofile-container .text-center {
+    text-align: center;
+}
+
+.userprofile-container .btn-primary {
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-bottom:10px;
+    display: block !important;
+    visibility: visible !important;
+}
+
+.userprofile-container .btn-primary:hover {
+    background-color: #2d8a3a;
+}
+
+
+.userprofile-container .messages {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.userprofile-container .messages .success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* Add this to your existing userprofile.css or update the existing styles */
+
+.userprofile-container .account-container {
+    background-color: var(--primary-white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.userprofile-container .account-info {
+    margin-bottom: 20px;
+}
+
+.userprofile-container .profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.userprofile-container .image-upload-form {
+    margin-bottom: 20px;
+}
+
+.userprofile-container .account-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom:20px;
+}
+
+.userprofile-container .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-decoration: none;
+    text-align: center;
+    height:auto;
+    overflow:auto;
+}
+
+.userprofile-container .btn-primary {
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+    border: none;
+}
+
+.userprofile-container .btn-secondary {
+    background-color: var(--primary-gray);
+    color: var(--primary-white);
+    border: none;
+}
+
+.userprofile-container .btn-primary:hover,
+.userprofile-container .btn-secondary:hover {
+    opacity: 0.9;
+}
+
+/* Ensure the submit button is visible */
+form button[type="submit"],
+form input[type="submit"] {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;  /* Bootstrap primary blue, adjust as needed */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+form button[type="submit"]:hover,
+form input[type="submit"]:hover {
+    background-color: #0056b3;  /* Darker shade for hover effect */
+}
+
+/* If there are any styles that might be hiding buttons, override them */
+form button,
+form input[type="button"],
+form input[type="submit"] {
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}

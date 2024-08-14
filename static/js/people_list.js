@@ -67,21 +67,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function initCollapsible() {
-        document.querySelectorAll('.stage-header').forEach(header => {
+        const stages = document.querySelectorAll('.pipeline-stage');
+        const totalStages = stages.length;
+
+        stages.forEach(stage => {
+            const header = stage.querySelector('.stage-header');
             header.addEventListener('click', function() {
-                const stage = this.closest('.pipeline-stage');
                 stage.classList.toggle('collapsed');
                 const arrow = this.querySelector('.collapse-arrow');
                 arrow.textContent = stage.classList.contains('collapsed') ? '▶' : '▼';
                 
-                // Recalculate flex basis for expanded columns
-                const expandedColumns = document.querySelectorAll('.pipeline-stage:not(.collapsed)');
-                const flexBasis = `${100 / expandedColumns.length}%`;
-                expandedColumns.forEach(col => {
-                    col.style.flexBasis = flexBasis;
-                });
+                updateStageSizes();
             });
         });
+
+        function updateStageSizes() {
+            const collapsedStages = document.querySelectorAll('.pipeline-stage.collapsed');
+            const expandedStages = document.querySelectorAll('.pipeline-stage:not(.collapsed)');
+            const collapsedWidth = 40; // This should match the --collapsed-width in CSS
+            
+            const availableWidth = 100 - (collapsedStages.length * (collapsedWidth / 10));
+            const widthPerExpanded = availableWidth / expandedStages.length;
+
+            stages.forEach(stage => {
+                if (stage.classList.contains('collapsed')) {
+                    stage.style.flex = `0 0 ${collapsedWidth}px`;
+                } else {
+                    stage.style.flex = `1 1 ${widthPerExpanded}%`;
+                }
+            });
+        }
+
+        // Initial setup
+        updateStageSizes();
     }
 
     function getCookie(name) {

@@ -1,54 +1,48 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}People Pipeline - Mobilize CRM{% endblock %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/people_list.css' %}">
 {% endblock %}
 
 {% block content %}
+{% if user.is_superuser %}  <!-- Only show debug info to superusers -->
+{% endif %}
 <div class="pipeline-container">
     <h1>Individual Pipeline</h1>
-    
-    <button id="add-person" class="btn btn-primary">Add New Individual</button>
+    <a href="#" class="btn btn-primary">Add New Individual</a>
 
     <div class="pipeline-summary">
-        <div class="summary-item">
-            <span class="summary-value">{{ total_people }}</span>
-            <span class="summary-label">Total People</span>
-        </div>
-        {% for stage, count in pipeline_summary.items %}
-        <div class="summary-item" data-stage="{{ stage|slugify }}">
-            <span class="summary-value">{{ count }}</span>
+        {% for stage, count in pipeline_summary %}
+        <div class="summary-item {% if forloop.first %}total-item{% endif %}">
             <span class="summary-label">{{ stage }}</span>
+            <span class="summary-value">{{ count }}</span>
         </div>
         {% endfor %}
     </div>
 
     <div class="pipeline-grid">
         {% for stage, people in pipeline_stages.items %}
-        <div class="pipeline-stage" data-stage="{{ stage|slugify }}">
+        <div class="pipeline-stage" data-stage="{{ stage|lower|slugify }}">
             <div class="stage-header">
                 <span class="collapse-arrow">▼</span>
-                <h2>{{ stage }} ({{ people|length }})</h2>
+                <h2>{{ stage }}</h2>
             </div>
             <div class="stage-content">
                 {% for person in people %}
                 <div class="person-card" draggable="true" data-person-id="{{ person.id }}">
                     <div class="person-info">
-                        <h3>{{ person.first_name }} {{ person.last_name }}</h3>
-                        <p>{{ person.phone }}</p>
+                        <h3><a href="{% url 'contacts:person_detail' person.id %}" class="person-name-link">{{ person.first_name }} {{ person.last_name }}</a></h3>
                         <p>{{ person.email }}</p>
-                        <p>Last Contacted: {{ person.last_contacted|default:"Not available" }}</p>
+                        <p>Last Contact: {{ person.last_contact|default:"N/A" }}</p>
                     </div>
+                    {% if person.image %}
                     <div class="person-image">
-                        {% if person.image %}
+                        <a href="{% url 'contacts:person_detail' person.id %}" class="person-image-link">
                             <img src="{{ person.image.url }}" alt="{{ person.first_name }} {{ person.last_name }}">
-                        {% else %}
-                            <img src="{% static 'images/default_profile.png' %}" alt="Default profile picture">
-                        {% endif %}
+                        </a>
                     </div>
+                    {% endif %}
                 </div>
                 {% empty %}
                 <p class="empty-stage">No people in this stage.</p>

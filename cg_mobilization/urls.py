@@ -18,11 +18,17 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from core.views import home
+import os
 
+# Ensure MEDIA_ROOT exists
+os.makedirs(settings.MEDIA_ROOT, exist_ok=True)
 
 urlpatterns = [
+    path('', home, name='home'),
     path('admin/', admin.site.urls),
-     path('contacts/', include('contacts.urls')),
+    path('contacts/', include('contacts.urls')),
+    path('accounts/', include('userprofile.urls')),
 ]
 
 if settings.DEBUG:

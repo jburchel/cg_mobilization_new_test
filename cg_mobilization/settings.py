@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,3 +134,20 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Increase the maximum upload size if needed
+FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880
+
+# Add these lines at the end of your settings.py file
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For development only
+
+# ... (other settings)
+
+AUTH_USER_MODEL = 'userprofile.CustomUser'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

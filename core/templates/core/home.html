@@ -1,0 +1,70 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block title %}Welcome to Mobilize CRM{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="container">
+        <h1 class="hero-title">Welcome to Mobilize CRM</h1>
+        <p class="hero-subtitle">Empowering connections, nurturing relationships</p>
+    </div>
+</div>
+
+<div class="container">
+    <section class="intro">
+        <div class="intro-text">
+            <h2>Powerful Tool for Managing Churches and Contacts</h2>
+            <p>Mobilize CRM is exclusively for Crossover Global and our mobilizers.  It is designed to manage and nurture our network of contacts, churches, and partners.</p>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>With Mobilize CRM, you can:</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-users"></i>
+                <h3>Manage Contacts</h3>
+                <p>Efficiently manage individuals and churches</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-history"></i>
+                <h3>Track Communication</h3>
+                <p>Maintain detailed logs of all interactions</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-tasks"></i>
+                <h3>Manage Tasks</h3>
+                <p>Stay on top of your workflow</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Monitor Progress</h3>
+                <p>Advance prospects through your pipeline</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-file-alt"></i>
+                <h3>Generate Reports</h3>
+                <p>Guide your outreach strategies with insights</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="access-info">
+        <h2>How to Get Access</h2>
+        <p>Mobilize CRM is for authorized Crossover Global personnel only. If you are a member of our team and need access, please contact your Mobilization Director.</p>
+        <p>For more information about Mobilize CRM, please email <a href="mailto:j.burchel@crossoverglobal.net">j.burchel@crossoverglobal.net</a>.</p>
+    </section>
+
+    {% if not user.is_authenticated %}
+    <section class="cta">
+        <h2>Ready to get started?</h2>
+        <a href="#" class="btn">Log In</a>
+    </section>
+    {% endif %}
+</div>
+{% endblock %}

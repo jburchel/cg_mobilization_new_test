@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/userprofile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="userprofile-container">
+    <div class="account-container">
+        <h1>Your Account</h1>
+        
+        <div class="account-info">
+            {% if user.profile_image %}
+                <img src="{{ user.profile_image.url }}" alt="Profile Image" class="profile-image">
+            {% else %}
+                <img src="{% static 'images/default_profile.png' %}" alt="Default Profile Image" class="profile-image">
+            {% endif %}
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>First Name:</strong> {{ user.first_name }}</p>
+            <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+        </div>
+        
+        <form method="post" enctype="multipart/form-data" class="image-upload-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Update Profile Image</button>
+        </form>
+        
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+        <div class="account-actions">
+            <a href="{% url 'userprofile:password_reset' %}" class="btn btn-primary">Change Password</a>
+            <a href="{% url 'userprofile:logout' %}" class="btn btn-secondary">Logout</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

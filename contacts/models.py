@@ -1,5 +1,7 @@
 from django.db import models
+import logging
 
+logger = logging.getLogger(__name__)
 
 class Contact(models.Model):
    
@@ -33,20 +35,22 @@ class Contact(models.Model):
     date_modified = models.DateField(auto_now=True,null=True, blank=True)
 
     def get_name(self):
+        logger.debug(f"get_name called for contact {self.id}")
+        logger.debug(f"Has 'church' attribute: {hasattr(self, 'church')}")
+        logger.debug(f"Has 'people' attribute: {hasattr(self, 'people')}")
+        
         if hasattr(self, 'church'):
-            return self.church_name
+            name = self.church.church_name
         elif hasattr(self, 'people'):
-            return f"{self.first_name} {self.last_name}"
+            name = f"{self.people.first_name} {self.people.last_name}".strip()
         else:
-            return "Unnamed Contact"
-       
+            name = self.church_name or f"{self.first_name} {self.last_name}".strip() or "Unnamed Contact"
+        
+        logger.debug(f"Returned name: {name}")
+        return name
+
     def __str__(self):
-        if hasattr(self, 'church'):
-            return self.church_name
-        elif hasattr(self, 'people'):
-            return f"{self.first_name} {self.last_name}".strip()
-        else:
-            return self.church_name or f"{self.first_name} {self.last_name}".strip() or "Unnamed Contact"
+        return self.get_name()
     
 class Church(Contact):
     COLOR = (
@@ -77,8 +81,8 @@ class Church(Contact):
     virtuous = models.BooleanField(default=False)    
     senior_pastor_first_name = models.CharField(max_length=100)
     senior_pastor_last_name = models.CharField(max_length=100)
-    senior_pastor_phone = models.CharField(max_length=20)
-    senior_pastor_email = models.EmailField()
+    senior_pastor_phone = models.CharField(max_length=20, null=True, blank=True)
+    senior_pastor_email = models.EmailField(null=True, blank=True)
     missions_pastor_first_name = models.CharField(max_length=100, null=True, blank=True)
     missions_pastor_last_name = models.CharField(max_length=100, null=True, blank=True)
     mission_pastor_phone = models.CharField(max_length=20, null=True, blank=True)
@@ -120,7 +124,7 @@ class People(Contact):
     
     PEOPLE_PIPELINE = (
         ('contacted','Contacted'), ('mission-vision', 'Mission Vision'),('conversations', 'Conversations'),
-        ('potential-recruit', 'Potential Recruit'),('handed off', 'Handed Off')
+        ('potential-recruit', 'Potential Recruit'),('handed-off', 'Handed Off')
     )
     
     PRIORITY = (
