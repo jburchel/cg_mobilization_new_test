@@ -1,10 +1,12 @@
 from django.db import models
-import logging
+from django.conf import settings
+import os
 
-logger = logging.getLogger(__name__)
+def get_image_path(instance, filename):
+    model_name = instance.__class__.__name__.lower()
+    return os.path.join('images', model_name, filename)
 
 class Contact(models.Model):
-   
     STATE = (
         ('al', 'AL'), ('ak', 'AK'), ('az', 'AZ'), ('ar', 'AR'), ('ca', 'CA'),('co', 'CO'),('ct', 'CT'),('de', 'DE'), ('fl', 'FL'), ('ga', 'GA'),
         ('hi', 'HI'), ('id', 'ID'), ('il', 'IL'), ('in', 'IN'), ('ia', 'IA'), ('ks', 'KS'), ('ky', 'KY'), ('la', 'LA'), ('me', 'ME'),
@@ -22,7 +24,7 @@ class Contact(models.Model):
     church_name = models.CharField(max_length=100, null=True, blank=True)  
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='contact_images/', null=True, blank=True)
+    image = models.ImageField(upload_to=get_image_path, null=True, blank=True)
     preferred_contact_method = models.CharField(max_length=100, choices=PREFERRED_CONTACT_METHODS)
     phone = models.CharField(max_length=20)
     email = models.EmailField()    
@@ -35,23 +37,21 @@ class Contact(models.Model):
     date_modified = models.DateField(auto_now=True,null=True, blank=True)
 
     def get_name(self):
-        logger.debug(f"get_name called for contact {self.id}")
-        logger.debug(f"Has 'church' attribute: {hasattr(self, 'church')}")
-        logger.debug(f"Has 'people' attribute: {hasattr(self, 'people')}")
-        
         if hasattr(self, 'church'):
-            name = self.church.church_name
+            return self.church_name
         elif hasattr(self, 'people'):
-            name = f"{self.people.first_name} {self.people.last_name}".strip()
+            return f"{self.first_name} {self.last_name}"
         else:
-            name = self.church_name or f"{self.first_name} {self.last_name}".strip() or "Unnamed Contact"
-        
-        logger.debug(f"Returned name: {name}")
-        return name
-
+            return "Unnamed Contact"
+       
     def __str__(self):
-        return self.get_name()
-    
+        if hasattr(self, 'church'):
+            return self.church_name
+        elif hasattr(self, 'people'):
+            return f"{self.first_name} {self.last_name}".strip()
+        else:
+            return self.church_name or f"{self.first_name} {self.last_name}".strip() or "Unnamed Contact"
+
 class Church(Contact):
     COLOR = (
         ('RED', 'RED'),('YELLOW', 'YELLOW'), ('BLUE', 'BLUE'),('GREEN', 'GREEN')

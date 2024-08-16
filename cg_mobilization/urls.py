@@ -29,6 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('contacts/', include('contacts.urls')),
     path('accounts/', include('userprofile.urls')),
+    path('com-log/', include('com_log.urls')),
 ]
 
 if settings.DEBUG:

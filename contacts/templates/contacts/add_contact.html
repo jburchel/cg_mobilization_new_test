@@ -2,27 +2,44 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/userprofile.css' %}">
+<link rel="stylesheet" href="{% static 'css/edit_contact.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="container">
-    <h2>Add New Contact</h2>
-    <form method="post">
+    <h2>Edit {% if contact_type == 'church' %}Church{% else %}Person{% endif %}: {{ object.get_name }}</h2>
+    
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        
         {% for field in form %}
             <div class="form-group">
                 {{ field.label_tag }}
-                {{ field }}
+                {% if field.name == 'image' %}
+                    {% if object.image %}
+                        <p>Current image: <img src="{{ object.image.url }}" alt="Current Image" width="100"></p>
+                    {% endif %}
+                    {{ field }}
+                {% else %}
+                    {{ field }}
+                {% endif %}
+                
                 {% if field.help_text %}
                     <small class="form-text text-muted">{{ field.help_text }}</small>
                 {% endif %}
+                
                 {% for error in field.errors %}
-                    <p class="text-danger">{{ error }}</p>
+                    <div class="alert alert-danger">
+                        {{ error }}
+                    </div>
                 {% endfor %}
             </div>
         {% endfor %}
-        <input type="submit"></input>
+        
+        <button type="submit" class="btn btn-primary">Update {% if contact_type == 'church' %}Church{% else %}Person{% endif %}</button>
     </form>
 </div>
+{% endblock %}
+
+{% block extra_js %}
 {% endblock %}

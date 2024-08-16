@@ -153,7 +153,8 @@ class ChurchDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # Add any additional context data here if needed
+        print(f"Church image: {self.object.image}")
+        print(f"Church image URL: {self.object.image.url if self.object.image else 'No image'}")
         return context
     
 class ChurchUpdateView(UpdateView):
@@ -161,13 +162,25 @@ class ChurchUpdateView(UpdateView):
     form_class = ChurchForm
     template_name = 'contacts/edit_contact.html'
     
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        if 'image' in form.changed_data:
+            # Create thumbnail
+            thumbnail = create_thumbnail(self.object.image)
+            # Save thumbnail
+            self.object.image.save(
+                get_thumbnail_path(self.object, self.object.image.name),
+                thumbnail
+            )
+        return response
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['contact_type'] = 'church'
         return context
 
     def get_success_url(self):
-        return reverse_lazy('contacts:contact_list')
+        return reverse_lazy('contacts:church_detail', kwargs={'pk': self.object.pk})
 
 class PeopleListView(ListView):
     model = People
@@ -210,16 +223,6 @@ class PeopleListView(ListView):
         context['debug_pipeline_stages'] = {stage: list(queryset.values_list('id', flat=True)) for stage, queryset in pipeline_stages.items()}
 
         return context
-        
-class PersonDetailView(DetailView):
-    model = People
-    template_name = 'contacts/person_detail.html'
-    context_object_name = 'person'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # Add any additional context data here if needed
-        return context
     
 @require_POST
 @csrf_exempt
@@ -249,12 +252,35 @@ class PersonUpdateView(UpdateView):
     form_class = PeopleForm
     template_name = 'contacts/edit_contact.html'
     
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        if 'image' in form.changed_data:
+            # Create thumbnail
+            thumbnail = create_thumbnail(self.object.image)
+            # Save thumbnail
+            self.object.image.save(
+                get_thumbnail_path(self.object, self.object.image.name),
+                thumbnail
+            )
+        return response
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['contact_type'] = 'person'
         return context
 
     def get_success_url(self):
-        return reverse_lazy('contacts:contact_list')
+        return reverse_lazy('contacts:person_detail', kwargs={'pk': self.object.pk})
+    
+class PersonDetailView(DetailView):
+    model = People
+    template_name = 'contacts/person_detail.html'
+    context_object_name = 'person'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        print(f"Person image: {self.object.image}")
+        print(f"Person image URL: {self.object.image.url if self.object.image else 'No image'}")
+        return context
     
 

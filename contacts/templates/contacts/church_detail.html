@@ -1,61 +1,53 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}{{ church.church_name }} - Church Details{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/church_detail.css' %}">
-{% endblock %}
-
 {% block content %}
 <div class="church-detail-container">
     <div class="church-header">
         <div class="church-image">
             {% if church.image %}
-                <img src="{{ church.image.url }}" alt="{{ church.church_name }}" width="200" height="200">
+                <img src="{{ church.image.url }}" alt="{{ church.church_name }}" width="300">
             {% else %}
-                <img src="{% static 'images/default_church.png' %}" alt="Default church image" width="150" height="150">
+                <img src="{% static 'images/default_church.png' %}" alt="Default Church Image" width="300">
             {% endif %}
         </div>
         <div class="church-title-and-actions">
             <h1 class="church-name">{{ church.church_name }}</h1>
-            <h2 class="church-location"> {{ church.city}}, {{church.state }}
             <div class="church-actions">
-                <a href="" class="btn btn-edit">Edit Church</a>
-                <a href="" class="btn btn-log">Log Interaction</a>
-                <a href="" class="btn btn-task">Create Task</a>
-                <a href="#" class="btn btn-history">View Communication History</a>
+                <a href="{% url 'contacts:church_edit' church.pk %}" class="btn btn-edit">Edit</a>
+                <a href="#" class="btn btn-log">Log Interaction</a>
+                <a href="#" class="btn btn-task">Create Task</a>
+                <a href="#" class="btn btn-history">View History</a>
             </div>
         </div>
     </div>
-        
-    <div class="church-info">   
+    
+    <div class="church-info">
         <div class="info-section">
             <h2>Contact Information</h2>
-            <p><strong>Primary Contact:</strong> {{ church.primary_contact_first_name }} {{church.primary_contact_last_name }}</p>
+            <p><strong>Primary Contact:</strong> {{ church.primary_contact_first_name }} {{ church.primary_contact_last_name }}</p>
             <p><strong>Phone:</strong> {{ church.phone }}</p>
-            <p><strong>Email:</strong> <a href="mailto:{{ church.email }}">{{ church.email }}</a></p>            
+            <p><strong>Email:</strong> <a href="mailto:{{ church.email }}">{{ church.email }}</a></p>
             <p><strong>Address:</strong> {{ church.street_address }}, {{ church.city }}, {{ church.get_state_display }} {{ church.zip_code }}</p>
-            <p><strong>Website:</strong> <a href="{{ church.website }}" target="_blank">{{ church.website }}</a></p>            
-        </div>        
-        
+            <p><strong>Website:</strong> <a href="{{ church.website }}" target="_blank">{{ church.website }}</a></p>
+        </div>
+
         <div class="info-section">
             <h2>Church Information</h2>
             <p><strong>Denomination:</strong> {{ church.denomination }}</p>
             <p><strong>Year Founded:</strong> {{ church.year_founded|default:"Unknown" }}</p>
             <p><strong>Congregation Size:</strong> {{ church.congregation_size }}</p>
-            <p><strong>Virtous:</strong> {{ church.virtuous|yesno:"Yes,No" }}</p>
+            <p><strong>Virtuous:</strong> {{ church.virtuous|yesno:"Yes,No" }}</p>
+        </div>
 
-        </div>                
-        
         <div class="info-section">
             <h2>Key People</h2>
             <p><strong>Senior Pastor:</strong> {{ church.senior_pastor_first_name }} {{ church.senior_pastor_last_name }}</p>
-            <p><strong>Phone/Email:</strong> {{ church.senior_pastor_phone }}, {{ church.senior_pastor_emial }}</p>
+            <p><strong>Phone/Email:</strong> {{ church.senior_pastor_phone }}, {{ church.senior_pastor_email }}</p>
             <p><strong>Missions Pastor:</strong> {{ church.missions_pastor_first_name }} {{ church.missions_pastor_last_name|default:"Not specified" }}</p>
-            <p><strong>Phone/Email:</strong> {{ church.missions_pastor_phone }},  {{ church.missions_pastor_email|default:"Not specified" }}</p>            
+            <p><strong>Phone/Email:</strong> {{ church.missions_pastor_phone }}, {{ church.missions_pastor_email|default:"Not specified" }}</p>
         </div>
-    
+
         <div class="info-section">
             <h2>CRM Details</h2>
             <p><strong>Pipeline Stage:</strong> {{ church.get_church_pipeline_display }}</p>
@@ -63,16 +55,16 @@
             <p><strong>Assigned To:</strong> {{ church.get_assigned_to_display }}</p>
             <p><strong>Source:</strong> {{ church.get_source_display }}</p>
             <p><strong>Referred By:</strong> {{ church.referred_by|default:"Not specified" }}</p>
-            <p><strong>Color:</strong> {{ church.get_color_display }}</p>            
+            <p><strong>Color:</strong> {{ church.get_color_display }}</p>
         </div>
     </div>
-    
+
     <div class="additional-info">
         <h2>Additional Information</h2>
         <p><strong>Info Given:</strong> {{ church.info_given|default:"Not specified" }}</p>
         <p><strong>Initial Notes:</strong> {{ church.initial_notes|default:"No notes available" }}</p>
     </div>
-    
+
     <div class="metadata">
         <p><strong>Date Created:</strong> {{ church.date_created|date:"F d, Y" }}</p>
         <p><strong>Date Modified:</strong> {{ church.date_modified|date:"F d, Y" }}</p>
@@ -80,7 +72,8 @@
 
     <div class="interaction-history">
         <h2>Recent Interactions</h2>
-        {% comment %} {% if interactions %}
+        {% comment %}
+        {% if interactions %}
             {% for interaction in interactions %}
                 <div class="interaction">
                     <p><strong>{{ interaction.date|date:"Y-m-d" }}</strong> - {{ interaction.get_type_display }}</p>
@@ -89,7 +82,12 @@
             {% endfor %}
         {% else %}
             <p>No recent interactions recorded.</p>
-        {% endif %} {% endcomment %}
+        {% endif %}
+        {% endcomment %}
     </div>
 </div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/church_detail.css' %}">
 {% endblock %}

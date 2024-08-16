@@ -1,27 +1,22 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}{{ person.first_name }} {{ person.last_name }} - Person Details{% endblock %}
-
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/person_detail.css' %}">
-{% endblock %}
-
 {% block content %}
-<div class="container person-detail-container">
-    <h1 class="page-title">Contact Details</h1>
+<div class="person-detail-container">
+    <h1 class="page-title">{{ person.first_name }} {{ person.last_name }}</h1>
     <div class="content-divider"></div>
+    
     <div class="person-details">
         <div class="person-image-and-info">
             <div class="person-image">
                 {% if person.image %}
-                    <img src="{{ person.image.url }}" alt="{{ person.first_name }} {{ person.last_name }}" width="300" height="300">
+                    <img src="{{ person.image.url }}" alt="{{ person.get_name }}" width="300">
                 {% else %}
-                    <img src="{% static 'images/default_profile.jpg' %}" alt="Default profile picture" width="300" height="300">
+                    <img src="{% static 'images/default_person.png' %}" alt="Default Person Image" width="300">
                 {% endif %}
             </div>
             <div class="person-info">
-                <h2>{{ person.first_name }} {{ person.last_name }}</h2>
+                <h2>Contact Information</h2>
                 <div class="info-grid">
                     <div class="info-column">
                         <p><strong>Email:</strong> <a href="mailto:{{ person.email }}">{{ person.email }}</a></p>
@@ -47,24 +42,27 @@
                 </div>
             </div>
         </div>
+        
         <div class="full-width-fields">
             <p><strong>Desired Service:</strong> {{ person.desired_service|default:"Not specified" }}</p>
             <p><strong>Info Given:</strong> {{ person.info_given|default:"Not specified" }}</p>
             <p><strong>Initial Notes:</strong> {{ person.initial_notes|default:"No notes available" }}</p>
         </div>
-    </div>
-    <p><strong>Date Created:</strong> {{ person.date_created|date:"F d, Y" }}</p>
-    <p><strong>Date Modified:</strong> {{ person.date_modified|date:"F d, Y" }}</p>
-
-    <div class="person-actions">
-        <a href="#" class="btn btn-warning">Edit Contact</a>
-        <a href="#" class="btn btn-info">Log Interaction</a>
-        <a href="#" class="btn btn-primary">Create Task</a>
+        
+        <p><strong>Date Created:</strong> {{ person.date_created|date:"F d, Y" }}</p>
+        <p><strong>Date Modified:</strong> {{ person.date_modified|date:"F d, Y" }}</p>
+        
+        <div class="person-actions">
+            <a href="{% url 'contacts:person_edit' person.pk %}" class="btn btn-warning">Edit</a>
+            <a href="#" class="btn btn-info">Log Interaction</a>
+            <a href="#" class="btn btn-primary">Create Task</a>
+        </div>
     </div>
 
     <div class="interaction-history">
         <h2>Recent Interactions</h2>
-        {% comment %} {% if interactions %}
+        {% comment %}
+        {% if interactions %}
             {% for interaction in interactions %}
                 <div class="interaction">
                     <p><strong>{{ interaction.date|date:"Y-m-d" }}</strong> - {{ interaction.get_type_display }}</p>
@@ -73,7 +71,12 @@
             {% endfor %}
         {% else %}
             <p>No recent interactions recorded.</p>
-        {% endif %} {% endcomment %}
+        {% endif %}
+        {% endcomment %}
     </div>
 </div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/person_detail.css' %}">
 {% endblock %}

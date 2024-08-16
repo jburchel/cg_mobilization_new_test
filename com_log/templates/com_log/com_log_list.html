@@ -1,0 +1,68 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/com_log.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Communication Log</h1>
+    <div class="mb-3">
+        <a href="{% url 'com_log:add_com_log' %}" class="btn btn-primary">Add New Communication</a>
+    </div>
+
+    <table class="com-log-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Communication Type</th>
+                <th>Summary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in com_logs %}
+            <tr>
+                <td>{{ log.date|date:"Y-m-d" }}</td>
+                <td>{{ log.name }}</td>
+                <td>{{ log.type }}</td>
+                <td>{{ log.communication_type }}</td>
+                <td>{{ log.summary|truncatewords:10 }}</td>
+                <td>
+                    <a href="{% url 'com_log:com_log_detail' log.id %}" class="btn btn-sm btn-info">View</a>
+                    <a href="{% url 'com_log:edit_com_log' log.id %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No communication logs found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if is_paginated %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -6,7 +6,7 @@
         <a href="{% url 'contacts:contact_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'all_contacts' %}active{% endif %}">All Contacts</a>
         <a href="{% url 'contacts:people_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'people_list' %}active{% endif %}">People</a>
         <a href="{% url 'contacts:church_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'church_list' %}active{% endif %}">Churches</a>
-        <a href="#" class="navbar-item {% if request.resolver_match.url_name == 'com_log' %}active{% endif %}">Com-Log</a>
+        <a href=" {% url 'com_log:com_log_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'com_log' %}active{% endif %}">Com-Log</a>
         <a href="#" class="navbar-item {% if request.resolver_match.url_name == 'task_tracker' %}active{% endif %}">Task-Tracker</a>
         
         {% if user.is_authenticated %}

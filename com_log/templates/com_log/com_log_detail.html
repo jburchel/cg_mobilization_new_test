@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/userprofile.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Communication Log Detail</h1>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">{{ contact_name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ contact_type }}</h6>
+            <p><strong>Date:</strong> {{ log.date }}</p>
+            <p><strong>Communication Type:</strong> {{ log.get_communication_type_display }}</p>
+            <p><strong>Summary:</strong> {{ log.summary }}</p>
+            <a href="{% url 'com_log:edit_com_log' log.id %}" class="btn btn-sm btn-warning">Edit</a>
+        </div>
+    </div>
+    <a href="{% url 'com_log:com_log_list' %}" class="btn btn-primary mt-3">Back to List</a>
+</div>
+{% endblock %}

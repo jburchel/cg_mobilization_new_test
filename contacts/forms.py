@@ -7,7 +7,8 @@ class PeopleForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'email', 'phone', 'preferred_contact_method',
                   'street_address', 'city', 'state', 'zip_code', 'home_country',
                   'affiliated_church', 'marital_status', 'spouse_recruit', 'color', 'people_pipeline',
-                  'priority', 'assigned_to', 'source', 'referred_by','initial_notes', 'info_given', 'desired_service'                
+                  'priority', 'assigned_to', 'source', 'referred_by','initial_notes', 'info_given', 'desired_service',
+                  'image'                
                   ]
         
         widgets = {
@@ -24,7 +25,8 @@ class ChurchForm(forms.ModelForm):
                   'senior_pastor_first_name','senior_pastor_last_name', 'senior_pastor_phone', 'senior_pastor_email',
                   'missions_pastor_first_name', 'missions_pastor_last_name','mission_pastor_phone', 'mission_pastor_email',
                   'virtuous', 'website', 'denomination','congregation_size', 
-                  'color', 'church_pipeline', 'priority', 'assigned_to','source', 'referred_by', 'year_founded','initial_notes', 'info_given'
+                  'color', 'church_pipeline', 'priority', 'assigned_to','source', 'referred_by', 'year_founded','initial_notes', 'info_given',
+                  'image'
                   ]
         
         widgets = {
