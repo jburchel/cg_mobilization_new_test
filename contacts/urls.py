@@ -14,5 +14,6 @@ urlpatterns = [
     path('people/', views.PeopleListView.as_view(), name='people_list'),
     path('update_pipeline_stage/', views.update_pipeline_stage, name='update_pipeline_stage'),
     path('churches/', views.ChurchListView.as_view(), name='church_list'),
-    path('update_church_pipeline_stage/', views.update_church_pipeline_stage, name='update_church_pipeline_stage'),     
+    path('update_church_pipeline_stage/', views.update_church_pipeline_stage, name='update_church_pipeline_stage'),   
+    path('api/search/', views.contact_search, name='contact_search'),  
 ]

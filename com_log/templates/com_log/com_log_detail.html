@@ -2,22 +2,44 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/userprofile.css' %}">
+<link rel="stylesheet" href="{% static 'css/comlog_detail.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Communication Log Detail</h1>
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">{{ contact_name }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">{{ contact_type }}</h6>
-            <p><strong>Date:</strong> {{ log.date }}</p>
-            <p><strong>Communication Type:</strong> {{ log.get_communication_type_display }}</p>
-            <p><strong>Summary:</strong> {{ log.summary }}</p>
-            <a href="{% url 'com_log:edit_com_log' log.id %}" class="btn btn-sm btn-warning">Edit</a>
+<div class="container comlog-detail-container">
+    <div class="comlog-header">
+        <div class="comlog-title-and-actions">
+            <h1 class="comlog-title">Communication Log Details</h1>
+            <div class="comlog-actions">
+                <a href="{% url 'com_log:update' com_log.pk %}" class="btn btn-edit">Edit</a>
+                <a href="#" class="btn btn-log">Log New Interaction</a>
+                <a href="{% url 'com_log:list' %}" class="btn btn-back">Back to List</a>
+                <a href="#" class="btn btn-copy-summary">Copy Summary</a>
+                {% comment %} <a href="{% url 'com_log:delete' com_log.pk %}" class="btn btn-delete">Delete</a> {% endcomment %}
+            </div>
         </div>
     </div>
-    <a href="{% url 'com_log:com_log_list' %}" class="btn btn-primary mt-3">Back to List</a>
+
+    <div class="comlog-info">
+        <div class="info-section">
+            <h2>Contact Information</h2>
+            <p><strong>Name:</strong> {{ com_log.get_contact_name }}</p>
+            <p><strong>Type:</strong> {{ com_log.get_contact_type }}</p>
+        </div>
+        <div class="info-section">
+            <h2>Communication Details</h2>
+            <p><strong>Date:</strong> {{ com_log.date }}</p>
+            <p><strong>Type:</strong> {{ com_log.get_communication_type_display }}</p>
+        </div>
+    </div>
+
+    <div class="additional-info">
+        <h2>Summary</h2>
+        <p>{{ com_log.summary }}</p>
+    </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/comlog_detail.js' %}"></script>
 {% endblock %}

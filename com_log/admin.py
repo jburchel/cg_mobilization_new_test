@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import CommunicationLog
+from .models import ComLog
 
-@admin.register(CommunicationLog)
+@admin.register(ComLog)
 class CommunicationLogAdmin(admin.ModelAdmin):
     list_display = ('contact', 'communication_type', 'date', 'summary_preview')
     list_filter = ('communication_type', 'date')

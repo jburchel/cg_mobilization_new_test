@@ -8,15 +8,22 @@
 {% block content %}
 <div class="container">
     <h1>Communication Log</h1>
-    <div class="mb-3">
-        <a href="{% url 'com_log:add_com_log' %}" class="btn btn-primary">Add New Communication</a>
+    
+    <div class="actions">
+        <div class="search-bar">
+            <form method="get">
+                <input type="text" name="search" placeholder="Search communications...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+        <a href="{% url 'com_log:create' %}" class="btn btn-primary">Add New Interaction</a>
     </div>
 
     <table class="com-log-table">
         <thead>
             <tr>
                 <th>Date</th>
-                <th>Name</th>
+                <th>Contact</th>
                 <th>Type</th>
                 <th>Communication Type</th>
                 <th>Summary</th>
@@ -26,20 +33,19 @@
         <tbody>
             {% for log in com_logs %}
             <tr>
-                <td>{{ log.date|date:"Y-m-d" }}</td>
+                <td>{{ log.date|date:"Y-m-d H:i" }}</td>
                 <td>{{ log.name }}</td>
                 <td>{{ log.type }}</td>
                 <td>{{ log.communication_type }}</td>
                 <td>{{ log.summary|truncatewords:10 }}</td>
                 <td>
-                    <a href="{% url 'com_log:com_log_detail' log.id %}" class="btn btn-sm btn-info">View</a>
-                    <a href="{% url 'com_log:edit_com_log' log.id %}" class="btn btn-sm btn-warning">Edit</a>
-                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="{% url 'com_log:detail' log.id %}" class="btn btn-sm btn-info">View</a>
+                    <a href="{% url 'com_log:update' log.id %}" class="btn btn-sm btn-warning">Edit</a>
                 </td>
             </tr>
             {% empty %}
             <tr>
-                <td colspan="6">No communication logs found.</td>
+                <td colspan="6">No communications found.</td>
             </tr>
             {% endfor %}
         </tbody>

@@ -2,93 +2,50 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/userprofile.css' %}">
+<link rel="stylesheet" href="{% static 'css/comlog_form.css' %}">
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Communication Log</h1>
-    <form method="post">
+<div class="container comlog-form-container">
+    <div class="comlog-header">
+        <h1 class="comlog-title">{% if form.instance.pk %}Edit{% else %}Add{% endif %} Communication Log</h1>
+    </div>
+
+    <form method="post" class="comlog-form">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a href="{% url 'com_log:com_log_list' %}" class="btn btn-secondary">Cancel</a>
+        
+        <div class="form-section">
+            <h2>Contact Information</h2>
+            <div class="form-group">
+                {{ form.contact_type.label_tag }}
+                {{ form.contact_type }}
+            </div>
+            <div class="form-group">
+                {{ form.contact.label_tag }}
+                {{ form.contact }}
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Communication Details</h2>
+            <div class="form-group">
+                {{ form.communication_type.label_tag }}
+                {{ form.communication_type }}
+            </div>
+            <div class="form-group">
+                {{ form.summary.label_tag }}
+                {{ form.summary }}
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-save">Save</button>
+            <a href="{% url 'com_log:list' %}" class="btn btn-cancel">Cancel</a>
+        </div>
     </form>
 </div>
 {% endblock %}
 
 {% block extra_js %}
-{% comment %} <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const contactTypeSelect = document.getElementById('id_contact_type');
-        const contactSelect = document.getElementById('id_contact');
-
-        contactTypeSelect.addEventListener('change', function() {
-            const contactType = this.value;
-            fetch(`/com-log/get-contacts/?type=${contactType}`)
-                .then(response => response.json())
-                .then(data => {
-                    contactSelect.innerHTML = '';
-                    data.forEach(contact => {
-                        const option = new Option(contact.name, contact.id);
-                        contactSelect.add(option);
-                    });
-                });
-        });
-    });
-</script> {% endcomment %}
-<script>
-// Get the first dropdown field
-var contactTypeField = document.getElementById('id_contact_type');
-
-// Get the second dropdown field
-var contactField = document.getElementById('id_contact');
-
-// Define a function to update the options in the second dropdown field
-function updateContactField() {
-    var contactType = contactTypeField.value;
-    if (contactType == 'church') {
-        // Use an AJAX request to get the list of churches from the server
-        $.ajax({
-            type: 'GET',
-            url: 'churches/', // URL of the view that returns the list of churches
-            dataType: 'json',
-            success: function(data) {
-                // Update the options in the second dropdown field
-                contactField.innerHTML = '';
-                for (var i = 0; i < data.length; i++) {
-                    var option = document.createElement('option');
-                    option.value = data[i].id;
-                    option.text = data[i].name;
-                    contactField.appendChild(option);
-                }
-            }
-        });
-    } else if (contactType == 'people') {
-        // Use an AJAX request to get the list of people from the server
-        $.ajax({
-            type: 'GET',
-            url: 'people/', // URL of the view that returns the list of people
-            dataType: 'json',
-            success: function(data) {
-                // Update the options in the second dropdown field
-                contactField.innerHTML = '';
-                for (var i = 0; i < data.length; i++) {
-                    var option = document.createElement('option');
-                    option.value = data[i].id;
-                    option.text = data[i].name;
-                    contactField.appendChild(option);
-                }
-            }
-        });
-    }
-}
-
-// Call the updateContactField function when the value of the first dropdown field changes
-contactTypeField.addEventListener('change', updateContactField);
-
-// Call the updateContactField function when the page loads
-updateContactField();
-</script>
-{% comment %} <script src="{% static 'js/add_com_log.js' %}"></script> {% endcomment %}
+<script src="{% static 'js/comlog_form.js' %}"></script>
 {% endblock %}

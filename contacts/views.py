@@ -283,4 +283,33 @@ class PersonDetailView(DetailView):
         print(f"Person image URL: {self.object.image.url if self.object.image else 'No image'}")
         return context
     
+logger = logging.getLogger(__name__)
+
+def contact_search(request):
+    logger.debug(f"Contact search called with GET params: {request.GET}")
+    
+    contact_type = request.GET.get('type', '')
+    search_term = request.GET.get('term', '')
+    results = []
+
+    logger.debug(f"Searching for {contact_type} with term: {search_term}")
+
+    try:
+        if contact_type == 'church':
+            churches = Church.objects.filter(church_name__icontains=search_term)[:10]
+            results = [{'id': church.id, 'name': church.church_name} for church in churches]
+        elif contact_type == 'people':
+            people = People.objects.filter(
+                Q(first_name__icontains=search_term) | 
+                Q(last_name__icontains=search_term)
+            ).distinct()[:10]
+            results = [{'id': person.id, 'name': f"{person.first_name} {person.last_name}"} for person in people]
+        
+        logger.debug(f"Found {len(results)} results")
+    except Exception as e:
+        logger.error(f"Error in contact search: {str(e)}")
+        return JsonResponse({'error': str(e)}, status=500)
+
+    return JsonResponse(results, safe=False)
+    
 
