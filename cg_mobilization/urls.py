@@ -30,6 +30,7 @@ urlpatterns = [
     path('contacts/', include('contacts.urls')),
     path('accounts/', include('userprofile.urls')),
     path('com-log/', include('com_log.urls')),
+    path('task-tracker/', include('task_tracker.urls')),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,140 @@
+:root {
+    --primary-blue: #183963;
+    --primary-green: #39A949;
+    --primary-gray: #7F7F7F;
+    --primary-white: #FFFFFF;
+}
+
+.comlog-list-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.comlog-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.comlog-title {
+    color: var(--primary-blue);
+    margin: 0 0 20px 0;
+    font-size: 2.5em;
+}
+
+.comlog-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar form {
+    display: flex;
+    gap: 10px;
+}
+
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.comlog-table-container {
+    overflow-x: auto;
+}
+
+.comlog-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: var(--primary-white);
+}
+
+.comlog-table th,
+.comlog-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--primary-gray);
+}
+
+.comlog-table th {
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
+    font-weight: bold;
+}
+
+.comlog-table tr:hover {
+    background-color: #f0f0f0;
+}
+
+.btn {
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--primary-white);
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+}
+
+.btn-search {
+    background-color: var(--primary-blue);
+}
+
+.btn-info {
+    background-color: var(--primary-blue);
+}
+
+.btn-edit {
+    background-color: var(--primary-green);
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.875rem;
+}
+
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    color: var(--primary-blue);
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+.pagination .current {
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .comlog-table {
+        font-size: 0.875rem;
+    }
+
+    .comlog-table th,
+    .comlog-table td {
+        padding: 8px;
+    }
+
+    .btn-sm {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+    }
+}

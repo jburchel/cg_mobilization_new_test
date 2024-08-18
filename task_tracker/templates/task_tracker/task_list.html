@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/task_tracker.css' %}">
+{% endblock %}
+
+{% block content %}
+{% csrf_token %}
+<div class="container task-tracker-container">
+    <div class="task-header">
+        <h1 class="task-title">Task Tracker</h1>
+        <a href="{% url 'task_tracker:task_create' %}" class="btn btn-primary">Add New Task</a>
+    </div>
+
+    <div class="task-board">
+        {% for status, tasks in task_statuses.items %}
+        <div class="task-column">
+            <h2>{{ status|title }}</h2>
+            <div class="task-list" id="{{ status }}">
+                {% for task in tasks %}
+                    <div class="task-card" draggable="true" data-task-id="{{ task.id }}">
+                        <h3>{{ task.title }}</h3>
+                        <p>{{ task.description|truncatewords:20 }}</p>
+                        <div class="task-meta">
+                            <span class="priority {{ task.priority }}">{{ task.get_priority_display }}</span>
+                            <span class="due-date">{{ task.due_date|date:"M d, Y" }}</span>
+                        </div>
+                        <div class="task-actions">
+                            <a href="{% url 'task_tracker:task_update' task.id %}" class="btn btn-sm btn-edit">Edit</a>
+                            <a href="{% url 'task_tracker:task_delete' task.id %}" class="btn btn-sm btn-delete">Delete</a>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>No tasks in this status.</p>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/task_tracker.js' %}"></script>
+{% endblock %}

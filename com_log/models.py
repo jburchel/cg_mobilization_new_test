@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
-from contacts.models import Church, People  # Add this import
 
 class ComLog(models.Model):
     COMMUNICATION_TYPES = [
@@ -15,8 +14,8 @@ class ComLog(models.Model):
         ('signal', 'Signal'),
     ]
 
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
-    object_id = models.PositiveIntegerField()
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, null=True)
+    object_id = models.CharField(max_length=255, blank=True, null=True)
     contact = GenericForeignKey('content_type', 'object_id')
 
     date = models.DateTimeField(auto_now_add=True)
@@ -31,13 +30,10 @@ class ComLog(models.Model):
 
     def get_contact_name(self):
         if self.contact:
-            if isinstance(self.contact, Church):
-                return self.contact.church_name
-            elif isinstance(self.contact, People):
-                return f"{self.contact.first_name} {self.contact.last_name}"
+            return str(self.contact)
         return "No Contact"
 
     def get_contact_type(self):
-        if self.contact:
+        if self.content_type:
             return self.content_type.model.capitalize()
         return "Unknown"
