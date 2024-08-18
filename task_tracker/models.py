@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from contacts.models import Contact
 
 User = get_user_model()
 
@@ -27,6 +28,7 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     due_date = models.DateField(null=True, blank=True)
+    contact = models.ForeignKey(Contact, on_delete=models.SET_NULL, null=True, blank=True, related_name='tasks')
 
     def __str__(self):
         return self.title

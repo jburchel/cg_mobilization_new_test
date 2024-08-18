@@ -2,14 +2,15 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/task_tracker.css' %}">
+<link rel="stylesheet" href="{% static 'css/task_list.css' %}">
 {% endblock %}
 
 {% block content %}
 {% csrf_token %}
+
 <div class="container task-tracker-container">
     <div class="task-header">
-        <h1 class="task-title">Task Tracker</h1>
+        <h1 id="task-tracker" class="task-title">Task Tracker</h1>
         <a href="{% url 'task_tracker:task_create' %}" class="btn btn-primary">Add New Task</a>
     </div>
 
@@ -17,22 +18,37 @@
         {% for status, tasks in task_statuses.items %}
         <div class="task-column">
             <h2>{{ status|title }}</h2>
-            <div class="task-list" id="{{ status }}">
+            <div id="{{ status }}" class="task-list">
                 {% for task in tasks %}
-                    <div class="task-card" draggable="true" data-task-id="{{ task.id }}">
-                        <h3>{{ task.title }}</h3>
+                <div class="task-card" draggable="true" data-task-id="{{ task.id }}">
+                    <a href="{% url 'task_tracker:task_update' task.id %}">
+                        <h3>{{ task.title }}</h3></a>
                         <p>{{ task.description|truncatewords:20 }}</p>
                         <div class="task-meta">
                             <span class="priority {{ task.priority }}">{{ task.get_priority_display }}</span>
                             <span class="due-date">{{ task.due_date|date:"M d, Y" }}</span>
                         </div>
-                        <div class="task-actions">
-                            <a href="{% url 'task_tracker:task_update' task.id %}" class="btn btn-sm btn-edit">Edit</a>
-                            <a href="{% url 'task_tracker:task_delete' task.id %}" class="btn btn-sm btn-delete">Delete</a>
+                        {% if task.contact %}
+                        <div class="task-contact">
+                            {% if task.contact.church %}
+                            <a href="{% url 'contacts:church_detail' task.contact.church.id %}" class="contact-link">
+                                {{ task.contact.church.church_name }} (Church)
+                            </a>
+                            {% elif task.contact.people %}
+                            <a href="{% url 'contacts:person_detail' task.contact.people.id %}" class="contact-link">
+                                {{ task.contact.people.first_name }} {{ task.contact.people.last_name }} (Person)
+                            </a>
+                            {% else %}
+                            <span class="contact-link">
+                                {{ task.contact }} (Unknown type)
+                            </span>
+                            {% endif %}
                         </div>
-                    </div>
+                        {% endif %}
+                    </a>
+                </div>
                 {% empty %}
-                    <p>No tasks in this status.</p>
+                <p>No tasks in this status.</p>
                 {% endfor %}
             </div>
         </div>
@@ -42,5 +58,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/task_tracker.js' %}"></script>
+<script src="{% static 'js/task_list.js' %}"></script>
 {% endblock %}

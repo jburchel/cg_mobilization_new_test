@@ -1,7 +1,8 @@
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Task
+from .forms import TaskForm
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.shortcuts import get_object_or_404
@@ -20,10 +21,15 @@ class TaskListView(ListView):
             'done': Task.objects.filter(status='done')
         }
         return context
+    
+class TaskDetailView(LoginRequiredMixin, DetailView):
+    model = Task
+    template_name = 'task_tracker/task_detail.html'
+    context_object_name = 'task'
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['title', 'description', 'status', 'priority', 'assigned_to', 'due_date']
+    form_class = TaskForm
     template_name = 'task_tracker/task_form.html'
     success_url = reverse_lazy('task_tracker:task_list')
 
@@ -33,7 +39,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ['title', 'description', 'status', 'priority', 'assigned_to', 'due_date']
+    form_class = TaskForm
     template_name = 'task_tracker/task_form.html'
     success_url = reverse_lazy('task_tracker:task_list')
 
@@ -51,3 +57,4 @@ def update_task_status(request, pk):
         task.save()
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'error'}, status=400)
+
