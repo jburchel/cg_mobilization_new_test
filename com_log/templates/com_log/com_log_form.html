@@ -2,7 +2,23 @@
 {% load static %}
 
 {% block extra_css %}
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="{% static 'css/comlog_form.css' %}">
+<style>
+    .ui-autocomplete {
+        max-height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        z-index: 1000;
+    }
+    .ui-menu-item {
+        padding: 5px;
+        cursor: pointer;
+    }
+    .ui-menu-item:hover {
+        background-color: #f0f0f0;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -11,18 +27,41 @@
         <h1 class="comlog-title">{% if form.instance.pk %}Edit{% else %}Add{% endif %} Communication Log</h1>
     </div>
 
-    <form method="post" class="comlog-form">
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <form method="post" action="">
         {% csrf_token %}
-        
+
+        {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            {% for error in form.non_field_errors %}
+            {{ error }}
+            {% endfor %}
+        </div>
+        {% endif %}
+
         <div class="form-section">
             <h2>Contact Information</h2>
             <div class="form-group">
                 {{ form.contact_type.label_tag }}
                 {{ form.contact_type }}
+                {% if form.contact_type.errors %}
+                <div class="alert alert-danger">{{ form.contact_type.errors }}</div>
+                {% endif %}
             </div>
             <div class="form-group">
                 {{ form.contact.label_tag }}
                 {{ form.contact }}
+                {{ form.contact_id }}
+                {% if form.contact.errors %}
+                <div class="alert alert-danger">{{ form.contact.errors }}</div>
+                {% endif %}
             </div>
         </div>
 
@@ -31,15 +70,21 @@
             <div class="form-group">
                 {{ form.communication_type.label_tag }}
                 {{ form.communication_type }}
+                {% if form.communication_type.errors %}
+                <div class="alert alert-danger">{{ form.communication_type.errors }}</div>
+                {% endif %}
             </div>
             <div class="form-group">
                 {{ form.summary.label_tag }}
                 {{ form.summary }}
+                {% if form.summary.errors %}
+                <div class="alert alert-danger">{{ form.summary.errors }}</div>
+                {% endif %}
             </div>
         </div>
 
         <div class="form-actions">
-            <button type="submit" class="btn btn-save">Save</button>
+            <button type="submit" class="btn btn-primary">Save</button>
             <a href="{% url 'com_log:list' %}" class="btn btn-cancel">Cancel</a>
         </div>
     </form>
@@ -47,5 +92,10 @@
 {% endblock %}
 
 {% block extra_js %}
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script>
+    var contactSearchUrl = "{% url 'com_log:contact_search' %}";
+</script>
 <script src="{% static 'js/comlog_form.js' %}"></script>
 {% endblock %}

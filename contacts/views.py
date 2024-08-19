@@ -2,10 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .forms import PeopleForm, ChurchForm
-from django.views.generic import ListView, DetailView, UpdateView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Contact, Church, People
 from django.db.models import Count 
+from com_log.models import ComLog
+from django.contrib.contenttypes.models import ContentType
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
@@ -153,25 +156,35 @@ class ChurchDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(f"Church image: {self.object.image}")
-        print(f"Church image URL: {self.object.image.url if self.object.image else 'No image'}")
+        church_content_type = ContentType.objects.get_for_model(Church)
+        context['recent_communications'] = ComLog.objects.filter(
+            content_type=church_content_type,
+            object_id=self.object.id
+        ).order_by('-date')[:3]
         return context
     
+class ChurchAddView(LoginRequiredMixin, CreateView):
+    model = Church
+    form_class = ChurchForm
+    template_name = 'contacts/add_contact.html'
+    success_url = reverse_lazy('contacts:church_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['contact_type'] = 'church'
+        return context
+
+    def form_valid(self, form):
+        # You can add any additional logic here before saving the form
+        return super().form_valid(form)
+
 class ChurchUpdateView(UpdateView):
     model = Church
     form_class = ChurchForm
     template_name = 'contacts/edit_contact.html'
     
     def form_valid(self, form):
-        response = super().form_valid(form)
-        if 'image' in form.changed_data:
-            # Create thumbnail
-            thumbnail = create_thumbnail(self.object.image)
-            # Save thumbnail
-            self.object.image.save(
-                get_thumbnail_path(self.object, self.object.image.name),
-                thumbnail
-            )
+        response = super().form_valid(form)            
         return response
     
     def get_context_data(self, **kwargs):
@@ -247,21 +260,28 @@ def update_pipeline_stage(request):
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
     
+class PersonAddView(LoginRequiredMixin, CreateView):
+    model = People
+    form_class = PeopleForm
+    template_name = 'contacts/add_contact.html'
+    success_url = reverse_lazy('contacts:people_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['contact_type'] = 'person'
+        return context
+
+    def form_valid(self, form):
+        # You can add any additional logic here before saving the form
+        return super().form_valid(form)
+
 class PersonUpdateView(UpdateView):
     model = People
     form_class = PeopleForm
     template_name = 'contacts/edit_contact.html'
     
     def form_valid(self, form):
-        response = super().form_valid(form)
-        if 'image' in form.changed_data:
-            # Create thumbnail
-            thumbnail = create_thumbnail(self.object.image)
-            # Save thumbnail
-            self.object.image.save(
-                get_thumbnail_path(self.object, self.object.image.name),
-                thumbnail
-            )
+        response = super().form_valid(form)        
         return response
     
     def get_context_data(self, **kwargs):
@@ -279,8 +299,11 @@ class PersonDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        print(f"Person image: {self.object.image}")
-        print(f"Person image URL: {self.object.image.url if self.object.image else 'No image'}")
+        person_content_type = ContentType.objects.get_for_model(People)
+        context['recent_communications'] = ComLog.objects.filter(
+            content_type=person_content_type,
+            object_id=self.object.id
+        ).order_by('-date')[:3]
         return context
     
 logger = logging.getLogger(__name__)

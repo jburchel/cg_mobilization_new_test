@@ -8,7 +8,7 @@
 {% block content %}
 <div class="pipeline-container">
     <h1>Church Pipeline</h1>
-    <a href="#" class="btn btn-primary">Add New Church</a>
+    <a href="{% url 'contacts:add_church' %}" class="btn btn-primary">Add New Church</a>
 
     <div class="pipeline-summary">
         {% for stage, count in pipeline_summary %}

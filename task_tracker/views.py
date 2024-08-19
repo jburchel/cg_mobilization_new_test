@@ -6,6 +6,7 @@ from .forms import TaskForm
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.shortcuts import get_object_or_404
+from contacts.models import Church, People
 
 class TaskListView(ListView):
     model = Task
@@ -15,10 +16,10 @@ class TaskListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['task_statuses'] = {
-            'todo': Task.objects.filter(status='todo'),
-            'in_progress': Task.objects.filter(status='in_progress'),
-            'review': Task.objects.filter(status='review'),
-            'done': Task.objects.filter(status='done')
+            'todo': Task.objects.filter(status='todo').order_by('due_date'),
+            'in_progress': Task.objects.filter(status='in_progress').order_by('due_date'),
+            'review': Task.objects.filter(status='review').order_by('due_date'),
+            'done': Task.objects.filter(status='done').order_by('due_date')
         }
         return context
     
@@ -31,12 +32,33 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
     form_class = TaskForm
     template_name = 'task_tracker/task_form.html'
-    success_url = reverse_lazy('task_tracker:task_list')
+    success_url = reverse_lazy('task_tracker:task_list')  # Adjust this to your task list view
+
+    def get_initial(self):
+        initial = super().get_initial()
+        contact_id = self.request.GET.get('contact_id')
+        contact_type = self.request.GET.get('contact_type')
+        
+        if contact_id and contact_type:
+            try:
+                if contact_type == 'church':
+                    contact = Church.objects.get(id=contact_id)
+                elif contact_type == 'person':
+                    contact = People.objects.get(id=contact_id)
+                else:
+                    contact = None
+                
+                if contact:
+                    initial['contact'] = contact
+                    initial['associated_contact'] = contact
+            except (Church.DoesNotExist, People.DoesNotExist):
+                pass
+        
+        return initial
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
-
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
     form_class = TaskForm

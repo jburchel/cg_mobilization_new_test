@@ -26,7 +26,6 @@
             </div>
         {% else %}
             <a href="{% url 'userprofile:login' %}" class="navbar-item {% if request.resolver_match.url_name == 'login' %}active{% endif %}">Login</a>
-            <a href="{% url 'userprofile:signup' %}" class="navbar-item {% if request.resolver_match.url_name == 'signup' %}active{% endif %}">Sign Up</a>
         {% endif %}
     </div>
 </nav>

@@ -16,4 +16,6 @@ urlpatterns = [
     path('churches/', views.ChurchListView.as_view(), name='church_list'),
     path('update_church_pipeline_stage/', views.update_church_pipeline_stage, name='update_church_pipeline_stage'),   
     path('api/search/', views.contact_search, name='contact_search'),  
+    path('add/person/', views.PersonAddView.as_view(), name='add_person'),
+    path('add/church/', views.ChurchAddView.as_view(), name='add_church'),
 ]

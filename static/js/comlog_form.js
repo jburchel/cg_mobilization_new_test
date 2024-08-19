@@ -1,83 +1,50 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const contactTypeSelect = document.getElementById('id_contact_type');
-    const contactInput = document.getElementById('id_contact');
-    const contactSearchResults = document.createElement('div');
-    contactSearchResults.className = 'contact-search-results';
-    contactInput.parentNode.insertBefore(contactSearchResults, contactInput.nextSibling);
+$(document).ready(function() {
+    console.log("ComLog form script loaded");
 
-    let debounceTimer;
+    var contactField = $('#id_contact');
+    var contactIdField = $('#id_contact_id');
+    var contactTypeField = $('#id_contact_type');
 
-    console.log('Script loaded. Setting up event listeners.');
+    console.log("Contact field:", contactField.length);
+    console.log("Contact ID field:", contactIdField.length);
+    console.log("Contact Type field:", contactTypeField.length);
 
-    contactTypeSelect.addEventListener('change', function() {
-        console.log('Contact type changed:', this.value);
-        contactInput.value = '';
-        contactSearchResults.innerHTML = '';
+    contactTypeField.on('change', function() {
+        console.log("Contact type changed:", $(this).val());
+        contactField.val('');
+        contactIdField.val('');
     });
 
-    contactInput.addEventListener('input', function() {
-        console.log('Input changed:', this.value);
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(searchContacts, 300);
-    });
-
-    function searchContacts() {
-        const searchTerm = contactInput.value;
-        const contactType = contactTypeSelect.value;
-
-        console.log('Searching for:', searchTerm, 'Type:', contactType);
-
-        if (searchTerm.length < 2) {
-            contactSearchResults.innerHTML = '';
-            return;
-        }
-
-        const url = `/contacts/api/search/?type=${contactType}&term=${encodeURIComponent(searchTerm)}`;
-        console.log('Fetching from:', url);
-
-        fetch(url)
-            .then(response => {
-                console.log('Response status:', response.status);
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+    contactField.autocomplete({
+        source: function(request, response) {
+            console.log("Autocomplete request:", request.term);
+            $.ajax({
+                url: contactSearchUrl,
+                dataType: "json",
+                data: {
+                    term: request.term,
+                    type: contactTypeField.val()
+                },
+                success: function(data) {
+                    console.log("Autocomplete response:", data);
+                    response(data);
+                },
+                error: function(xhr, status, error) {
+                    console.error("Autocomplete error:", status, error);
                 }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Received data:', data);
-                contactSearchResults.innerHTML = '';
-                if (data.length === 0) {
-                    const div = document.createElement('div');
-                    div.textContent = 'No results found';
-                    contactSearchResults.appendChild(div);
-                } else {
-                    data.forEach(contact => {
-                        const div = document.createElement('div');
-                        div.textContent = contact.name;
-                        div.addEventListener('click', function() {
-                            contactInput.value = contact.name;
-                            contactSearchResults.innerHTML = '';
-                        });
-                        contactSearchResults.appendChild(div);
-                    });
-                }
-                // Make sure the results are visible
-                contactSearchResults.style.display = 'block';
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                contactSearchResults.innerHTML = `<div>Error: ${error.message}</div>`;
-                contactSearchResults.style.display = 'block';
             });
-    }
-
-    // Close search results when clicking outside
-    document.addEventListener('click', function(event) {
-        if (!contactInput.contains(event.target) && !contactSearchResults.contains(event.target)) {
-            contactSearchResults.style.display = 'none';
-            console.log('Dropdown hidden (clicked outside)');
+        },
+        minLength: 2,
+        select: function(event, ui) {
+            console.log("Item selected:", ui.item);
+            contactField.val(ui.item.value);
+            contactIdField.val(ui.item.id);
+            return false;
+        },
+        open: function() {
+            console.log("Autocomplete dropdown opened");
         }
     });
 
-    console.log('Event listeners set up.');
+    console.log("Autocomplete initialized");
 });

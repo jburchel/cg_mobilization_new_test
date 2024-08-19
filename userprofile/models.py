@@ -5,6 +5,7 @@ from django.db import models
 from PIL import Image
 from io import BytesIO
 from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
 
 logger = logging.getLogger(__name__)
 
@@ -19,8 +20,12 @@ class CustomUser(AbstractUser):
         return bool(self.profile_thumbnail and self.profile_thumbnail.name)
 
     def save(self, *args, **kwargs):
+        is_new = self.pk is None
+        old_image = None if is_new else CustomUser.objects.get(pk=self.pk).profile_image
+        
         super().save(*args, **kwargs)
-        if self.profile_image:
+        
+        if is_new or (self.profile_image and self.profile_image != old_image):
             self.create_thumbnail()
 
     def create_thumbnail(self):
@@ -29,11 +34,15 @@ class CustomUser(AbstractUser):
 
         logger.info(f"Creating thumbnail for user {self.username}")
         try:
+            # Delete old thumbnail if it exists
+            if self.profile_thumbnail:
+                default_storage.delete(self.profile_thumbnail.path)
+
             img = Image.open(self.profile_image.path)
             img.thumbnail((32, 32))
             thumb_name, thumb_extension = os.path.splitext(self.profile_image.name)
             thumb_extension = thumb_extension.lower()
-            thumb_filename = f"{thumb_name}_thumb{thumb_extension}"
+            thumb_filename = f"{self.pk}_thumb{thumb_extension}"
 
             if thumb_extension in ['.jpg', '.jpeg']:
                 FTYPE = 'JPEG'
@@ -57,23 +66,4 @@ class CustomUser(AbstractUser):
         except Exception as e:
             logger.error(f"Error creating thumbnail for user {self.username}: {str(e)}")
 
-    # Add related_name arguments to avoid clashes
-    groups = models.ManyToManyField(
-        'auth.Group',
-        verbose_name='groups',
-        blank=True,
-        help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
-        related_name='custom_user_set',
-        related_query_name='custom_user',
-    )
-    user_permissions = models.ManyToManyField(
-        'auth.Permission',
-        verbose_name='user permissions',
-        blank=True,
-        help_text='Specific permissions for this user.',
-        related_name='custom_user_set',
-        related_query_name='custom_user',
-    )
-    
-    def __str__(self):
-        return self.username
+    # ... (rest of the model remains the same)

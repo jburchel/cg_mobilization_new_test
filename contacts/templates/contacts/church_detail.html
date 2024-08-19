@@ -15,8 +15,8 @@
             <h1 class="church-name">{{ church.church_name }}</h1>
             <div class="church-actions">
                 <a href="{% url 'contacts:church_edit' church.pk %}" class="btn btn-edit">Edit</a>
-                <a href="#" class="btn btn-log">Log Interaction</a>
-                <a href="#" class="btn btn-task">Create Task</a>
+                <a href="{% url 'com_log:create' %}" class="btn btn-log">Log Interaction</a>
+                <a href="{% url 'task_tracker:task_create' %}" class="btn btn-task">Create Task</a>
                 <a href="#" class="btn btn-history">View History</a>
             </div>
         </div>
@@ -72,18 +72,16 @@
 
     <div class="interaction-history">
         <h2>Recent Interactions</h2>
-        {% comment %}
-        {% if interactions %}
-            {% for interaction in interactions %}
-                <div class="interaction">
-                    <p><strong>{{ interaction.date|date:"Y-m-d" }}</strong> - {{ interaction.get_type_display }}</p>
-                    <p>{{ interaction.notes }}</p>
-                </div>
+        {% if recent_communications %}
+            {% for comm in recent_communications %}
+            <div class="interaction">
+                <strong>{{ comm.date|date:"Y-m-d" }}</strong> - {{ comm.get_communication_type_display }}
+                <p>{{ comm.summary }}</p>
+            </div>
             {% endfor %}
         {% else %}
-            <p>No recent interactions recorded.</p>
+            <p>No recent communications recorded.</p>
         {% endif %}
-        {% endcomment %}
     </div>
 </div>
 {% endblock %}

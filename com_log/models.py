@@ -14,8 +14,8 @@ class ComLog(models.Model):
         ('signal', 'Signal'),
     ]
 
-    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE, null=True)
-    object_id = models.CharField(max_length=255, blank=True, null=True)
+    content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
+    object_id = models.CharField(max_length=255)
     contact = GenericForeignKey('content_type', 'object_id')
 
     date = models.DateTimeField(auto_now_add=True)
@@ -29,11 +29,7 @@ class ComLog(models.Model):
         return f"{self.get_communication_type_display()} on {self.date}"
 
     def get_contact_name(self):
-        if self.contact:
-            return str(self.contact)
-        return "No Contact"
+        return str(self.contact) if self.contact else "No Contact"
 
     def get_contact_type(self):
-        if self.content_type:
-            return self.content_type.model.capitalize()
-        return "Unknown"
+        return self.content_type.model.capitalize() if self.content_type else "Unknown"

@@ -1,106 +1,98 @@
+/* com_log_list.css */
+
 :root {
     --primary-blue: #183963;
     --primary-green: #39A949;
     --primary-gray: #7F7F7F;
     --primary-white: #FFFFFF;
+    --light-gray: #f0f0f0;
+    --border-color: #e0e0e0;
 }
 
 .comlog-list-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
 }
 
 .comlog-header {
     display: flex;
-    align-items: flex-start;
-    margin-bottom: 30px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .comlog-title {
     color: var(--primary-blue);
-    margin: 0 0 20px 0;
-    font-size: 2.5em;
+    font-size: 2rem;
+    margin: 0;
 }
 
 .comlog-actions {
     display: flex;
     gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 1rem;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+}
+
+.btn-primary:hover {
+    background-color: #2d8a3a;
 }
 
 .search-bar {
     margin-bottom: 20px;
 }
 
-.search-bar form {
-    display: flex;
-    gap: 10px;
-}
-
 .search-bar input[type="text"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
 }
 
 .comlog-table-container {
     overflow-x: auto;
 }
 
-.comlog-table {
+.table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
     background-color: var(--primary-white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.comlog-table th,
-.comlog-table td {
+.table th,
+.table td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid var(--primary-gray);
+    border-bottom: 1px solid var(--border-color);
 }
 
-.comlog-table th {
+.table th {
     background-color: var(--primary-blue);
     color: var(--primary-white);
     font-weight: bold;
 }
 
-.comlog-table tr:hover {
-    background-color: #f0f0f0;
+.table tr:nth-child(even) {
+    background-color: var(--light-gray);
 }
 
-.btn {
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    color: var(--primary-white);
-    transition: background-color 0.3s;
-    border: none;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background-color: var(--primary-green);
-}
-
-.btn-search {
-    background-color: var(--primary-blue);
-}
-
-.btn-info {
-    background-color: var(--primary-blue);
-}
-
-.btn-edit {
-    background-color: var(--primary-green);
+.table tr:hover {
+    background-color: #e6e6e6;
 }
 
 .btn-sm {
@@ -108,33 +100,60 @@
     font-size: 0.875rem;
 }
 
+.btn-info {
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
+}
+
+.btn-edit {
+    background-color: var(--primary-gray);
+    color: var(--primary-white);
+}
+
+.btn-info:hover,
+.btn-edit:hover {
+    opacity: 0.9;
+}
+
 .pagination {
     margin-top: 20px;
     text-align: center;
 }
 
+.pagination .step-links {
+    display: inline-block;
+    padding: 10px;
+    background-color: var(--light-gray);
+    border-radius: 5px;
+}
+
 .pagination a {
     color: var(--primary-blue);
-    padding: 8px 16px;
+    padding: 5px 10px;
     text-decoration: none;
 }
 
 .pagination .current {
     font-weight: bold;
+    padding: 5px 10px;
 }
 
 @media (max-width: 768px) {
-    .comlog-table {
+    .comlog-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .comlog-actions {
+        margin-top: 10px;
+    }
+
+    .table {
         font-size: 0.875rem;
     }
 
-    .comlog-table th,
-    .comlog-table td {
-        padding: 8px;
-    }
-
     .btn-sm {
-        padding: 4px 8px;
+        padding: 3px 6px;
         font-size: 0.75rem;
     }
 }

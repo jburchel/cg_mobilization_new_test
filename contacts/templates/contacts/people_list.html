@@ -10,7 +10,7 @@
 {% endif %}
 <div class="pipeline-container">
     <h1>Individual Pipeline</h1>
-    <a href="#" class="btn btn-primary">Add New Individual</a>
+    <a href="{% url 'contacts:add_person' %}" class="btn btn-primary">Add New Person</a>
 
     <div class="pipeline-summary">
         {% for stage, count in pipeline_summary %}

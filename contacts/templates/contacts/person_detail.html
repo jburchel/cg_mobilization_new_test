@@ -54,25 +54,23 @@
         
         <div class="person-actions">
             <a href="{% url 'contacts:person_edit' person.pk %}" class="btn btn-warning">Edit</a>
-            <a href="#" class="btn btn-info">Log Interaction</a>
-            <a href="#" class="btn btn-primary">Create Task</a>
+            <a href="{% url 'com_log:create' %}" class="btn btn-info">Log Interaction</a>
+            <a href="{% url 'task_tracker:task_create' %}" class="btn btn-primary">Create Task</a>
         </div>
     </div>
 
     <div class="interaction-history">
         <h2>Recent Interactions</h2>
-        {% comment %}
-        {% if interactions %}
-            {% for interaction in interactions %}
-                <div class="interaction">
-                    <p><strong>{{ interaction.date|date:"Y-m-d" }}</strong> - {{ interaction.get_type_display }}</p>
-                    <p>{{ interaction.notes }}</p>
-                </div>
+        {% if recent_communications %}
+            {% for comm in recent_communications %}
+            <div class="interaction">
+                <strong>{{ comm.date|date:"Y-m-d" }}</strong> - {{ comm.get_communication_type_display }}
+                <p>{{ comm.summary }}</p>
+            </div>
             {% endfor %}
         {% else %}
-            <p>No recent interactions recorded.</p>
+            <p>No recent communications recorded.</p>
         {% endif %}
-        {% endcomment %}
     </div>
 </div>
 {% endblock %}

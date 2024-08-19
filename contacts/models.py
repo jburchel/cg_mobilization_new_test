@@ -1,5 +1,8 @@
 from django.db import models
 from django.conf import settings
+from PIL import Image
+from io import BytesIO
+from django.core.files.base import ContentFile
 import os
 
 def get_image_path(instance, filename):
@@ -24,7 +27,8 @@ class Contact(models.Model):
     church_name = models.CharField(max_length=100, null=True, blank=True)  
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to=get_image_path, null=True, blank=True)
+    image = models.ImageField(upload_to='contact_images/', null=True, blank=True)
+    thumbnail = models.ImageField(upload_to='contact_thumbnails/', null=True, blank=True)
     preferred_contact_method = models.CharField(max_length=100, choices=PREFERRED_CONTACT_METHODS)
     phone = models.CharField(max_length=20)
     email = models.EmailField()    
@@ -36,6 +40,44 @@ class Contact(models.Model):
     date_created = models.DateField(auto_now_add=True,null=True, blank=True)
     date_modified = models.DateField(auto_now=True,null=True, blank=True)
 
+    def create_thumbnail(self):
+        if not self.image:
+            return
+
+        img = Image.open(self.image.path)
+        img.thumbnail((100, 100))  # Adjust size as needed
+        thumb_name, thumb_extension = os.path.splitext(self.image.name)
+        thumb_extension = thumb_extension.lower()
+        thumb_filename = f"{self.pk}_thumb{thumb_extension}"
+
+        if thumb_extension in ['.jpg', '.jpeg']:
+            FTYPE = 'JPEG'
+        elif thumb_extension == '.gif':
+            FTYPE = 'GIF'
+        elif thumb_extension == '.png':
+            FTYPE = 'PNG'
+        else:
+            return  # Unsupported format
+
+        temp_thumb = BytesIO()
+        img.save(temp_thumb, FTYPE)
+        temp_thumb.seek(0)
+
+        self.thumbnail.save(thumb_filename, ContentFile(temp_thumb.read()), save=False)
+        temp_thumb.close()
+
+    def save(self, *args, **kwargs):
+        is_new = self.pk is None
+        old_image = None if is_new else Contact.objects.filter(pk=self.pk).first()
+        if old_image:
+            old_image = old_image.image
+        
+        super().save(*args, **kwargs)
+        
+        if is_new or (self.image and self.image != old_image):
+            self.create_thumbnail()
+            self.save(update_fields=['thumbnail'])
+    
     def get_name(self):
         if hasattr(self, 'church'):
             return self.church_name
@@ -105,6 +147,8 @@ class Church(Contact):
     year_founded = models.IntegerField(null=True, blank=True)
     date_closed = models.DateField(null=True, blank=True)
     
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return f"{self.church_name}".strip()
@@ -157,6 +201,9 @@ class People(Contact):
     desired_service = models.TextField(null=True, blank=True)
     reason_closed = models.TextField(null=True, blank=True)
     date_closed = models.DateField(null=True, blank=True)
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return f"{self.first_name} {self.last_name}".strip() 

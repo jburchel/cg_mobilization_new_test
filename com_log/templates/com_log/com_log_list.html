@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/com_log_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/com_log_list.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -17,11 +17,11 @@
     </div>
 
     <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search communications...">
+        <!-- Add your search form here if needed -->
     </div>
 
     <div class="comlog-table-container">
-        <table class="comlog-table">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Date</th>
@@ -32,7 +32,7 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody id="comLogTableBody">
+            <tbody>
                 {% for log in com_logs %}
                 <tr>
                     <td>{{ log.date|date:"Y-m-d H:i" }}</td>
@@ -77,5 +77,4 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/com_log_list.js' %}"></script>
 {% endblock %}

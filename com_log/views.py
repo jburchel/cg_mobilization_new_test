@@ -1,12 +1,16 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy
-from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import ComLog
+from django.contrib import messages
 from .forms import ComLogForm
 from contacts.models import Church, People
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.db.models import Q
 import logging
+
+logger = logging.getLogger(__name__)
 
 class ComLogListView(ListView):
     model = ComLog
@@ -15,7 +19,9 @@ class ComLogListView(ListView):
     paginate_by = 20
 
     def get_queryset(self):
-        return ComLog.objects.select_related('content_type').order_by('-date')
+        queryset = ComLog.objects.select_related('content_type').order_by('-date')
+        logger.info(f"ComLog queryset count: {queryset.count()}")
+        return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -30,6 +36,7 @@ class ComLogListView(ListView):
             }
             for log in context['com_logs']
         ]
+        logger.info(f"ComLog context count: {len(context['com_logs'])}")
         return context
 
 class ComLogDetailView(DetailView):
@@ -37,16 +44,48 @@ class ComLogDetailView(DetailView):
     template_name = 'com_log/com_log_detail.html'
     context_object_name = 'com_log'
 
-class ComLogCreateView(CreateView):
+class ComLogCreateView(LoginRequiredMixin, CreateView):
     model = ComLog
     form_class = ComLogForm
     template_name = 'com_log/com_log_form.html'
     success_url = reverse_lazy('com_log:list')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = self.get_form()
-        return context
+    def form_valid(self, form):
+        logger.info(f"Form data: {form.cleaned_data}")
+        try:
+            self.object = form.save()
+            logger.info(f"ComLog created: {self.object.id}")
+            messages.success(self.request, 'Communication log created successfully.')
+            return redirect(self.get_success_url())
+        except Exception as e:
+            logger.error(f"Error creating ComLog: {str(e)}")
+            messages.error(self.request, 'An error occurred while creating the communication log.')
+            return self.form_invalid(form)
+
+    def form_invalid(self, form):
+        logger.error(f"ComLog form invalid: {form.errors}")
+        messages.error(self.request, 'Please correct the errors below.')
+        return super().form_invalid(form)
+
+def contact_search(request):
+    contact_type = request.GET.get('type')
+    query = request.GET.get('term', '')
+    logger.info(f"Contact search: type={contact_type}, query={query}")
+
+    results = []
+
+    if contact_type == 'church':
+        churches = Church.objects.filter(church_name__icontains=query)[:10]
+        results = [{'id': church.id, 'value': church.church_name, 'label': church.church_name} for church in churches]
+    elif contact_type == 'people':
+        people = People.objects.filter(
+            Q(first_name__icontains=query) | 
+            Q(last_name__icontains=query)
+        )[:10]
+        results = [{'id': person.id, 'value': f"{person.first_name} {person.last_name}", 'label': f"{person.first_name} {person.last_name}"} for person in people]
+
+    logger.info(f"Contact search results: {results}")
+    return JsonResponse(results, safe=False)
 
 class ComLogUpdateView(UpdateView):
     model = ComLog
@@ -58,32 +97,3 @@ class ComLogUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['form'] = self.get_form()
         return context
-
-def contact_search(request):
-    logger.debug(f"Contact search called with GET params: {request.GET}")
-    
-    contact_type = request.GET.get('type', '')
-    search_term = request.GET.get('term', '')
-    results = []
-
-    logger.debug(f"Searching for {contact_type} with term: {search_term}")
-
-    try:
-        if contact_type == 'church':
-            churches = Church.objects.filter(church_name__icontains=search_term)[:10]
-            results = [{'id': church.id, 'name': church.church_name} for church in churches]
-        elif contact_type == 'people':
-            people = People.objects.filter(
-                Q(first_name__icontains=search_term) | 
-                Q(last_name__icontains=search_term)
-            ).distinct()[:10]
-            results = [{'id': person.id, 'name': f"{person.first_name} {person.last_name}"} for person in people]
-        
-        logger.debug(f"Found {len(results)} results")
-        return JsonResponse(results, safe=False)
-    except Exception as e:
-        logger.error(f"Error in contact search: {str(e)}")
-        return HttpResponse(f"Error: {str(e)}", status=500)
-
-    # This line should never be reached, but just in case:
-    return HttpResponse("Unexpected error", status=500)
