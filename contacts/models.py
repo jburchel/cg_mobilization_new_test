@@ -1,15 +1,11 @@
 from django.db import models
-from django.conf import settings
-from PIL import Image
-from io import BytesIO
-from django.core.files.base import ContentFile
 import os
 
 def get_image_path(instance, filename):
-    model_name = instance.__class__.__name__.lower()
-    return os.path.join('images', model_name, filename)
+    return os.path.join('contact_images', str(instance.id), filename)
 
 class Contact(models.Model):
+   
     STATE = (
         ('al', 'AL'), ('ak', 'AK'), ('az', 'AZ'), ('ar', 'AR'), ('ca', 'CA'),('co', 'CO'),('ct', 'CT'),('de', 'DE'), ('fl', 'FL'), ('ga', 'GA'),
         ('hi', 'HI'), ('id', 'ID'), ('il', 'IL'), ('in', 'IN'), ('ia', 'IA'), ('ks', 'KS'), ('ky', 'KY'), ('la', 'LA'), ('me', 'ME'),
@@ -27,10 +23,9 @@ class Contact(models.Model):
     church_name = models.CharField(max_length=100, null=True, blank=True)  
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='contact_images/', null=True, blank=True)
-    thumbnail = models.ImageField(upload_to='contact_thumbnails/', null=True, blank=True)
+    image = models.ImageField(upload_to=get_image_path, null=True, blank=True)
     preferred_contact_method = models.CharField(max_length=100, choices=PREFERRED_CONTACT_METHODS)
-    phone = models.CharField(max_length=20)
+    phone = models.CharField(max_length=50)
     email = models.EmailField()    
     street_address = models.CharField(max_length=200, null=True, blank=True)
     city = models.CharField(max_length=100, null=True, blank=True)
@@ -40,60 +35,17 @@ class Contact(models.Model):
     date_created = models.DateField(auto_now_add=True,null=True, blank=True)
     date_modified = models.DateField(auto_now=True,null=True, blank=True)
 
-    def create_thumbnail(self):
-        if not self.image:
-            return
-
-        img = Image.open(self.image.path)
-        img.thumbnail((100, 100))  # Adjust size as needed
-        thumb_name, thumb_extension = os.path.splitext(self.image.name)
-        thumb_extension = thumb_extension.lower()
-        thumb_filename = f"{self.pk}_thumb{thumb_extension}"
-
-        if thumb_extension in ['.jpg', '.jpeg']:
-            FTYPE = 'JPEG'
-        elif thumb_extension == '.gif':
-            FTYPE = 'GIF'
-        elif thumb_extension == '.png':
-            FTYPE = 'PNG'
-        else:
-            return  # Unsupported format
-
-        temp_thumb = BytesIO()
-        img.save(temp_thumb, FTYPE)
-        temp_thumb.seek(0)
-
-        self.thumbnail.save(thumb_filename, ContentFile(temp_thumb.read()), save=False)
-        temp_thumb.close()
-
-    def save(self, *args, **kwargs):
-        is_new = self.pk is None
-        old_image = None if is_new else Contact.objects.filter(pk=self.pk).first()
-        if old_image:
-            old_image = old_image.image
-        
-        super().save(*args, **kwargs)
-        
-        if is_new or (self.image and self.image != old_image):
-            self.create_thumbnail()
-            self.save(update_fields=['thumbnail'])
-    
     def get_name(self):
         if hasattr(self, 'church'):
-            return self.church_name
+            return self.church.church_name or "Unnamed Church"
         elif hasattr(self, 'people'):
-            return f"{self.first_name} {self.last_name}"
-        else:
-            return "Unnamed Contact"
-       
-    def __str__(self):
-        if hasattr(self, 'church'):
-            return self.church_name
-        elif hasattr(self, 'people'):
-            return f"{self.first_name} {self.last_name}".strip()
+            return f"{self.people.first_name} {self.people.last_name}".strip() or "Unnamed Person"
         else:
             return self.church_name or f"{self.first_name} {self.last_name}".strip() or "Unnamed Contact"
-
+       
+    def __str__(self):
+        return self.get_name()
+    
 class Church(Contact):
     COLOR = (
         ('RED', 'RED'),('YELLOW', 'YELLOW'), ('BLUE', 'BLUE'),('GREEN', 'GREEN')
@@ -121,18 +73,18 @@ class Church(Contact):
     )
     
     virtuous = models.BooleanField(default=False)    
-    senior_pastor_first_name = models.CharField(max_length=100)
-    senior_pastor_last_name = models.CharField(max_length=100)
-    senior_pastor_phone = models.CharField(max_length=20, null=True, blank=True)
-    senior_pastor_email = models.EmailField(null=True, blank=True)
+    senior_pastor_first_name = models.CharField(max_length=100, blank=True, null=True)
+    senior_pastor_last_name = models.CharField(max_length=100, blank=True, null=True)
+    senior_pastor_phone = models.CharField(max_length=50, blank=True, null=True)
+    senior_pastor_email = models.EmailField(blank=True, null=True)
     missions_pastor_first_name = models.CharField(max_length=100, null=True, blank=True)
     missions_pastor_last_name = models.CharField(max_length=100, null=True, blank=True)
-    mission_pastor_phone = models.CharField(max_length=20, null=True, blank=True)
+    mission_pastor_phone = models.CharField(max_length=50, null=True, blank=True)
     mission_pastor_email = models.EmailField(null=True, blank=True)
-    primary_contact_first_name = models.CharField(max_length=100)
-    primary_contact_last_name = models.CharField(max_length=100)
-    primary_contact_phone = models.CharField(max_length=20)
-    primary_contact_email = models.EmailField()
+    primary_contact_first_name = models.CharField(max_length=100, blank=True, null=True)
+    primary_contact_last_name = models.CharField(max_length=100, blank=True, null=True)
+    primary_contact_phone = models.CharField(max_length=200, blank=True, null=True)
+    primary_contact_email = models.EmailField(blank=True, null=True)
     website = models.URLField(null=True, blank=True)
     denomination = models.CharField(max_length=100, null=True, blank=True)
     congregation_size = models.IntegerField(null=True, blank=True)
@@ -147,11 +99,8 @@ class Church(Contact):
     year_founded = models.IntegerField(null=True, blank=True)
     date_closed = models.DateField(null=True, blank=True)
     
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-    
     def __str__(self):
-        return f"{self.church_name}".strip()
+        return self.church_name or "Unnamed Church"
     
     class Meta:
         verbose_name = "Church"
@@ -168,7 +117,7 @@ class People(Contact):
     
     PEOPLE_PIPELINE = (
         ('contacted','Contacted'), ('mission-vision', 'Mission Vision'),('conversations', 'Conversations'),
-        ('potential-recruit', 'Potential Recruit'),('handed-off', 'Handed Off')
+        ('potential-recruit', 'Potential Recruit'),('handed off', 'Handed Off')
     )
     
     PRIORITY = (
@@ -188,6 +137,7 @@ class People(Contact):
     
     affiliated_church = models.ForeignKey(Church, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Affiliated Church")
     virtuous = models.BooleanField(default=False)
+    title = models.CharField(max_length=100, null=True, blank=True)
     home_country = models.CharField(max_length=100, null=True, blank=True)
     spouse_recruit = models.BooleanField(default=False)
     marital_status = models.CharField(max_length=100, choices=MARITAL_STATUS, null=True, blank=True)
@@ -202,14 +152,10 @@ class People(Contact):
     reason_closed = models.TextField(null=True, blank=True)
     date_closed = models.DateField(null=True, blank=True)
     
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-    
     def __str__(self):
-        return f"{self.first_name} {self.last_name}".strip() 
+        return f"{self.first_name} {self.last_name}".strip() or "Unnamed Person"
         
     class Meta:
         ordering = ['last_name', 'first_name']
         verbose_name = 'Person'
         verbose_name_plural = 'People'
-

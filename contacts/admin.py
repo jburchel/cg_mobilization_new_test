@@ -1,8 +1,101 @@
 from django.contrib import admin
+from import_export import resources, fields
+from import_export.widgets import ForeignKeyWidget, DateWidget
+from import_export.admin import ImportExportModelAdmin
+from import_export.forms import ImportForm
+from django import forms
 from .models import Contact, People, Church
+from datetime import datetime
+
+class CustomDateWidget(DateWidget):
+    def clean(self, value, row=None, *args, **kwargs):
+        if value:
+            try:
+                return datetime.strptime(value, '%m/%d/%y').date()
+            except ValueError:
+                return super().clean(value, row, *args, **kwargs)
+        return None
+
+class CustomImportForm(ImportForm):
+    import_file = forms.FileField(
+        label='Select a CSV file to import',
+        help_text='The file must be in CSV format.',
+        widget=forms.FileInput(attrs={'accept': '.csv'})
+    )
+
+    def __init__(self, import_formats, *args, **kwargs):
+        super().__init__(import_formats, *args, **kwargs)
+
+class ContactResource(resources.ModelResource):
+    class Meta:
+        model = Contact
+        fields = ('id', 'church_name', 'first_name', 'last_name', 'email', 'phone', 'preferred_contact_method',
+                  'street_address', 'city', 'state', 'zip_code', 'initial_notes', 'date_created', 'date_modified')
+
+class ChurchResource(ContactResource):
+    date_created = fields.Field(attribute='date_created', widget=CustomDateWidget())
+    date_modified = fields.Field(attribute='date_modified', widget=CustomDateWidget())
+    date_closed = fields.Field(attribute='date_closed', widget=CustomDateWidget())
+
+    class Meta(ContactResource.Meta):
+        model = Church
+        import_id_fields = ('church_name',)
+        fields = ContactResource.Meta.fields + ('virtuous', 'senior_pastor_first_name', 'senior_pastor_last_name',
+                                                'senior_pastor_phone', 'senior_pastor_email', 'missions_pastor_first_name',
+                                                'missions_pastor_last_name', 'mission_pastor_phone', 'mission_pastor_email',
+                                                'primary_contact_first_name', 'primary_contact_last_name',
+                                                'primary_contact_phone', 'primary_contact_email', 'website',
+                                                'denomination', 'congregation_size', 'color', 'church_pipeline',
+                                                'priority', 'assigned_to', 'source', 'referred_by', 'info_given',
+                                                'reason_closed', 'year_founded', 'date_closed')
+        skip_unchanged = True
+        report_skipped = False
+
+    def before_import_row(self, row, **kwargs):
+        for field in self.fields.keys():
+            if field not in row:
+                row[field] = None
+
+    def import_obj(self, obj, data, dry_run):
+        for field, value in data.items():
+            if value is not None:
+                setattr(obj, field, value)
+        return super().import_obj(obj, data, dry_run)
+
+class PeopleResource(ContactResource):
+    date_created = fields.Field(attribute='date_created', widget=CustomDateWidget())
+    date_modified = fields.Field(attribute='date_modified', widget=CustomDateWidget())
+    date_closed = fields.Field(attribute='date_closed', widget=CustomDateWidget())
+    affiliated_church = fields.Field(
+        column_name='affiliated_church',
+        attribute='affiliated_church',
+        widget=ForeignKeyWidget(Church, 'church_name')
+    )
+
+    class Meta(ContactResource.Meta):
+        model = People
+        import_id_fields = ('first_name', 'last_name', 'email')
+        fields = ContactResource.Meta.fields + ('affiliated_church', 'virtuous', 'home_country', 'spouse_recruit',
+                                                'marital_status', 'color', 'people_pipeline', 'priority', 'assigned_to',
+                                                'source', 'referred_by', 'info_given', 'desired_service', 'reason_closed',
+                                                'date_closed')
+        skip_unchanged = True
+        report_skipped = False
+
+    def before_import_row(self, row, **kwargs):
+        for field in self.fields.keys():
+            if field not in row:
+                row[field] = None
+
+    def import_obj(self, obj, data, dry_run):
+        for field, value in data.items():
+            if value is not None:
+                setattr(obj, field, value)
+        return super().import_obj(obj, data, dry_run)
 
 @admin.register(Contact)
-class ContactsAdmin(admin.ModelAdmin):
+class ContactsAdmin(ImportExportModelAdmin):
+    resource_class = ContactResource
     list_display = ('get_name', 'email', 'phone', 'city', 'state')
     search_fields = ('church_name', 'first_name', 'last_name', 'email')
     list_filter = ('state', 'preferred_contact_method')
@@ -39,7 +132,9 @@ class ContactsAdmin(admin.ModelAdmin):
     readonly_fields = ('date_created', 'date_modified')
 
 @admin.register(People)
-class PeopleAdmin(admin.ModelAdmin):
+class PeopleAdmin(ImportExportModelAdmin):
+    resource_class = PeopleResource
+    import_form_class = CustomImportForm
     list_display = ('get_full_name', 'email', 'phone', 'get_church_name', 'people_pipeline', 'priority', 'assigned_to')
     search_fields = ('first_name', 'last_name', 'email', 'church_name', 'affiliated_church__church_name')
     list_filter = ('people_pipeline', 'priority', 'assigned_to', 'marital_status', 'color')
@@ -94,7 +189,9 @@ class PeopleAdmin(admin.ModelAdmin):
         super().save_model(request, obj, form, change)
 
 @admin.register(Church)
-class ChurchAdmin(admin.ModelAdmin):
+class ChurchAdmin(ImportExportModelAdmin):
+    resource_class = ChurchResource
+    import_form_class = CustomImportForm
     list_display = ('church_name', 'email', 'phone', 'church_pipeline', 'priority', 'assigned_to')
     search_fields = ('church_name', 'email', 'senior_pastor_last_name')
     list_filter = ('church_pipeline', 'priority', 'assigned_to', 'denomination', 'color')
@@ -121,10 +218,16 @@ class ChurchAdmin(admin.ModelAdmin):
             'fields': ('color', 'church_pipeline', 'priority', 'assigned_to', 'source', 'referred_by')
         }),
         ('Additional Information', {
-            'fields': ('info_given', 'initial_notes', 'virtuous', 'image')
+            'fields': ('info_given', 'initial_notes', 'virtuous', 'image')                        
+        }),
+        ('Dates', {
+            'fields': ('date_created', 'date_modified'),
+            'classes': ('collapse',)
         }),
         ('Closure Information', {
             'fields': ('reason_closed', 'date_closed'),
             'classes': ('collapse',)  # This fieldset will be collapsible
         })
     )
+    
+    readonly_fields = ('date_created', 'date_modified')

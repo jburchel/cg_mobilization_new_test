@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'com_log',
     'task_tracker',
     'userprofile',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -81,8 +82,12 @@ WSGI_APPLICATION = 'cg_mobilization.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'cgmobilize',
+        'USER': 'postgres',
+        'PASSWORD': 'Fruitin2024!',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
