@@ -92,3 +92,12 @@
 .btn:hover {
     opacity: 0.9;
 }
+
+.btn-history {
+    background-color: #17a2b8;  /* Or any color that fits your design */
+    color: white;
+}
+
+.btn-history:hover {
+    background-color: #138496;  /* A slightly darker shade for hover effect */
+}

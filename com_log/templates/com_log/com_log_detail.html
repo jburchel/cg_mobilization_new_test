@@ -12,9 +12,14 @@
             <h1 class="comlog-title">Communication Log Details</h1>
             <div class="comlog-actions">
                 <a href="{% url 'com_log:update' com_log.pk %}" class="btn btn-edit">Edit</a>
-                <a href="#" class="btn btn-log">Log New Interaction</a>
-                <a href="{% url 'com_log:list' %}" class="btn btn-back">Back to List</a>
-                <a href="#" class="btn btn-copy-summary">Copy Summary</a>
+                <a href="{% url 'com_log:create' %}" class="btn btn-log">Log New Interaction</a>
+                <a href="{% url 'task_tracker:task_create' %}" class="btn btn-log">Create a New Task</a>
+                {% if com_log.content_type.model == 'people' %}
+                    <a href="{% url 'com_log:contact_interactions' contact_type='person' contact_id=com_log.object_id %}" class="btn btn-log">View Contact History</a>
+                {% elif com_log.content_type.model == 'church' %}
+                    <a href="{% url 'com_log:contact_interactions' contact_type='church' contact_id=com_log.object_id %}" class="btn btn-log">View Contact History</a>
+                {% endif %}                
+                <a href="{% url 'com_log:list' %}" class="btn btn-back">Back to List</a>                
                 {% comment %} <a href="{% url 'com_log:delete' com_log.pk %}" class="btn btn-delete">Delete</a> {% endcomment %}
             </div>
         </div>
@@ -34,8 +39,8 @@
     </div>
 
     <div class="additional-info">
-        <h2>Summary</h2>
-        <p>{{ com_log.summary }}</p>
+        <h2>Notes</h2>
+        <p>{{ com_log.notes }}</p>
     </div>
 </div>
 {% endblock %}

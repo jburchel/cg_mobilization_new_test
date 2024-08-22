@@ -55,8 +55,9 @@
         
         <div class="person-actions">
             <a href="{% url 'contacts:person_edit' person.pk %}" class="btn btn-warning">Edit</a>
-            <a href="{% url 'com_log:create' %}" class="btn btn-info">Log Interaction</a>
-            <a href="{% url 'task_tracker:task_create' %}" class="btn btn-primary">Create Task</a>
+            <a href="{% url 'com_log:create' %}" class="btn btn-info">Log Communication</a>
+            <a href="{% url 'com_log:contact_interactions' contact_type='person' contact_id=person.id %}" class="btn btn-info">Communication History</a>
+            <a href="{% url 'task_tracker:task_create' %}" class="btn btn-primary">Create Task</a>            
         </div>
     </div>
 
@@ -66,7 +67,7 @@
             {% for comm in recent_communications %}
             <div class="interaction">
                 <strong>{{ comm.date|date:"Y-m-d" }}</strong> - {{ comm.get_communication_type_display }}
-                <p>{{ comm.summary }}</p>
+                <p>{{ comm.notes }}</p>
             </div>
             {% endfor %}
         {% else %}

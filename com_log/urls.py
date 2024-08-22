@@ -11,4 +11,5 @@ urlpatterns = [
     path('<int:pk>/edit/', views.ComLogUpdateView.as_view(), name='update'),
     # path('<int:pk>/delete/', views.delete_com_log, name='delete_com_log'),
     path('api/contacts/search/', views.contact_search, name='contact_search'),
+    path('contact/<str:contact_type>/<int:contact_id>/', views.ContactInteractionsListView.as_view(), name='contact_interactions'),
 ]

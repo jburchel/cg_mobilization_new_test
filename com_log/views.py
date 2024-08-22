@@ -1,6 +1,7 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import ComLog
 from django.contrib import messages
@@ -31,7 +32,7 @@ class ComLogListView(ListView):
                 'name': log.get_contact_name(),
                 'type': log.get_contact_type(),
                 'communication_type': log.get_communication_type_display(),
-                'summary': log.summary,
+                'notes': log.notes,
                 'date': log.date,
             }
             for log in context['com_logs']
@@ -96,4 +97,38 @@ class ComLogUpdateView(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = self.get_form()
+        return context
+    
+class ContactInteractionsListView(ListView):
+    model = ComLog
+    template_name = 'com_log/contact_interactions_list.html'
+    context_object_name = 'interactions'
+    paginate_by = 20
+
+    def get_queryset(self):
+        contact_type = self.kwargs['contact_type']
+        contact_id = self.kwargs['contact_id']
+
+        if contact_type == 'person':
+            contact = get_object_or_404(People, id=contact_id)
+        elif contact_type == 'church':
+            contact = get_object_or_404(Church, id=contact_id)
+        else:
+            raise ValueError("Invalid contact type")
+
+        content_type = ContentType.objects.get_for_model(contact)
+        return ComLog.objects.filter(content_type=content_type, object_id=contact.id).order_by('-date')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        contact_type = self.kwargs['contact_type']
+        contact_id = self.kwargs['contact_id']
+
+        if contact_type == 'person':
+            contact = get_object_or_404(People, id=contact_id)
+        elif contact_type == 'church':
+            contact = get_object_or_404(Church, id=contact_id)
+
+        context['contact'] = contact
+        context['contact_type'] = contact_type
         return context

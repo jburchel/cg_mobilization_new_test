@@ -17,7 +17,7 @@
                 <a href="{% url 'contacts:church_edit' church.pk %}" class="btn btn-edit">Edit</a>
                 <a href="{% url 'com_log:create' %}" class="btn btn-log">Log Interaction</a>
                 <a href="{% url 'task_tracker:task_create' %}" class="btn btn-task">Create Task</a>
-                <a href="#" class="btn btn-history">View History</a>
+                <a href="{% url 'com_log:contact_interactions' contact_type='church' contact_id=church.id %}">View History</a>
             </div>
         </div>
     </div>

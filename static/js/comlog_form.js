@@ -27,7 +27,13 @@ $(document).ready(function() {
                 },
                 success: function(data) {
                     console.log("Autocomplete response:", data);
-                    response(data);
+                    response($.map(data, function(item) {
+                        return {
+                            label: item.label,
+                            value: item.value,
+                            id: item.id
+                        };
+                    }));
                 },
                 error: function(xhr, status, error) {
                     console.error("Autocomplete error:", status, error);
@@ -37,14 +43,19 @@ $(document).ready(function() {
         minLength: 2,
         select: function(event, ui) {
             console.log("Item selected:", ui.item);
-            contactField.val(ui.item.value);
+            contactField.val(ui.item.label);
             contactIdField.val(ui.item.id);
             return false;
         },
-        open: function() {
-            console.log("Autocomplete dropdown opened");
+        focus: function(event, ui) {
+            contactField.val(ui.item.label);
+            return false;
         }
-    });
+    }).autocomplete("instance")._renderItem = function(ul, item) {
+        return $("<li>")
+            .append("<div>" + item.label + "</div>")
+            .appendTo(ul);
+    };
 
     console.log("Autocomplete initialized");
 });
