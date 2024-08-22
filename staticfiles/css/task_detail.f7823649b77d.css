@@ -1,0 +1,91 @@
+/* static/css/task_detail.css */
+
+:root {
+    --primary-blue: #183963;
+    --primary-green: #39A949;
+    --primary-gray: #7F7F7F;
+    --primary-white: #FFFFFF;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-title {
+    color: var(--primary-blue);
+    margin-bottom: 10px;
+}
+
+.content-divider {
+    height: 2px;
+    background-color: var(--primary-green);
+    margin-bottom: 20px;
+}
+
+.task-details {
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.task-info {
+    flex: 1;
+}
+
+h2 {
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.info-column p {
+    margin-bottom: 10px;
+}
+
+.full-width-fields {
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.full-width-fields h3 {
+    color: var(--primary-blue);
+    margin-bottom: 10px;
+}
+
+.task-actions {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin-right: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-warning {
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: var(--primary-white);
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
+}
