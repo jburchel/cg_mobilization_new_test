@@ -6,11 +6,17 @@
 {% endblock %}
 
 {% block content %}
-{% if user.is_superuser %}  <!-- Only show debug info to superusers -->
+{% if user.is_superuser %}
 {% endif %}
+
 <div class="pipeline-container">
     <h1>Individual Pipeline</h1>
+
     <a href="{% url 'contacts:add_person' %}" class="btn btn-primary">Add New Person</a>
+
+    <div class="search-container">
+        <input type="text" id="peopleSearch" placeholder="Search people..." class="form-control">
+    </div>
 
     <div class="pipeline-summary">
         {% for stage, count in pipeline_summary %}
@@ -23,14 +29,14 @@
 
     <div class="pipeline-grid">
         {% for stage, people in pipeline_stages.items %}
-        <div class="pipeline-stage" data-stage="{{ stage|lower|slugify }}">
+        <div class="pipeline-stage" stage="{{ stage|lower|slugify }}">
             <div class="stage-header">
                 <span class="collapse-arrow">▼</span>
                 <h2>{{ stage }}</h2>
             </div>
             <div class="stage-content">
                 {% for person in people %}
-                <div class="person-card" draggable="true" data-person-id="{{ person.id }}">
+                <div class="person-card" draggable="true" person-id="{{ person.id }}" data-name="{{ person.first_name }} {{ person.last_name }}">
                     <div class="person-info">
                         <h3><a href="{% url 'contacts:person_detail' person.id %}" class="person-name-link">{{ person.first_name }} {{ person.last_name }}</a></h3>
                         <p>{{ person.email }}</p>
@@ -55,5 +61,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/people_list.js' %}"></script>
+<script src="{% static 'js/people_list_search.js' %}"></script>
 {% endblock %}

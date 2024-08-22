@@ -15,7 +15,9 @@ body {
 }
 
 .hero {
+
     background: linear-gradient(rgba(24, 57, 99, 0.8), rgba(57, 169, 73, 0.8)), no-repeat center center/cover;
+
     color: var(--primary-white);
     text-align: center;
     padding: 30px 0;
