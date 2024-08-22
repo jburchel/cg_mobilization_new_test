@@ -282,3 +282,20 @@ h1 {
         grid-column: 1;
     }
 }
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+#peopleSearch,
+#churchSearch {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.pipeline-stage {
+    transition: opacity 0.3s ease;
+}
