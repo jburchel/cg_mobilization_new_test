@@ -108,7 +108,8 @@ class Church(Contact):
 
 class People(Contact):
     MARITAL_STATUS = (
-        ('single', 'Single'),('married', 'Married'),('divorced', 'Divorced'),('widowed', 'Widowed'),('separated', 'Separated'), ('unknown', 'Unknown'),
+        ('single', 'Single'),('married', 'Married'),('divorced', 'Divorced'),('widowed', 'Widowed'),
+        ('separated', 'Separated'), ('unknown', 'Unknown'),('engaged', 'Engaged')
     )
     
     COLOR = (
