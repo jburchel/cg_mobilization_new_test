@@ -12,12 +12,17 @@ import sys
 from django.core.wsgi import get_wsgi_application
 from whitenoise import WhiteNoise
 
-path = '/home/cgmobilize/cg_mobilization'
-if path not in sys.path:
-    sys.path.append(path)
-
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cg_mobilization.settings')
 
 application = get_wsgi_application()
+
+static_root = '/opt/render/project/src/staticfiles'
 application = WhiteNoise(application, root='/opt/render/project/src/staticfiles')
+
+media_root = '/opt/render/project/src/media'
 application.add_files('/opt/render/project/src/media', prefix='media/')
+
+import logging
+logger = logging.getLogger(__name__)
+logger.info(f"Static root path: {static_root}")
+logger.info(f"Media root path: {media_root}")
