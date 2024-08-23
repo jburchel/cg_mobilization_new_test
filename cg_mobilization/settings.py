@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)j)gio-*c#nxm=y(!m=7^h-klvl@ez-pkj1l!dx97v)jn0t*as
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['mobilize-1fjd.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['mobilize.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
