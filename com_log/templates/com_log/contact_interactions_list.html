@@ -2,39 +2,45 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/contact_com_list.css' %}">
+<link rel="stylesheet" href="{% static 'css/contact_interactions_list.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="container comlog-list-container">
-    <h1 class="page-title">Interactions for {{ contact.get_full_name }}</h1>
-
+    <h1 class="page-title">
+        Communications for 
+        {% if contact_type == 'person' %}
+            {{ contact.first_name }} {{ contact.last_name }}
+        {% else %}
+            {{ contact.church_name }}
+        {% endif %}
+    </h1>
+    
     <div class="content-divider"></div>
+
+    <input type="text" id="search-input" placeholder="Search interactions...">
 
     <div class="interaction-list">
         {% if interactions %}
             {% for interaction in interactions %}
-                <div class="interaction">
+                <div class="interaction" data-content="{{ interaction.notes|lower }} {{ interaction.get_communication_type_display|lower }} {{ interaction.date|date:'F d, Y H:i'|lower }}">
                     <h3>{{ interaction.date|date:"F d, Y H:i" }} - {{ interaction.get_communication_type_display }}</h3>
                     <p>{{ interaction.notes }}</p>
                 </div>
             {% endfor %}
-
             {% if is_paginated %}
                 <div class="pagination">
                     <span class="step-links">
                         {% if page_obj.has_previous %}
-                            <a href="?page=1">&laquo; first</a>
+                            <a href="?page=1">« first</a>
                             <a href="?page={{ page_obj.previous_page_number }}">previous</a>
                         {% endif %}
-
                         <span class="current">
                             Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                         </span>
-
                         {% if page_obj.has_next %}
                             <a href="?page={{ page_obj.next_page_number }}">next</a>
-                            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">last »</a>
                         {% endif %}
                     </span>
                 </div>
@@ -54,4 +60,8 @@
         {% endif %}
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/contact_interactions_search.js' %}"></script>
 {% endblock %}

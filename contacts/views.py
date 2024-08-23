@@ -5,6 +5,7 @@ from .forms import PeopleForm, ChurchForm
 from django.views.generic import ListView, DetailView, UpdateView, CreateView
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from .models import Contact, Church, People
 from django.db.models import Count 
 from com_log.models import ComLog
@@ -15,10 +16,12 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 import logging
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 logger = logging.getLogger(__name__)
-
-class ContactListView(ListView):
+@method_decorator(login_required, name='dispatch')
+class ContactListView(ListView, LoginRequiredMixin):
     model = Contact
     template_name = 'contacts/contact_list.html'
     context_object_name = 'contacts'
@@ -42,6 +45,7 @@ class ContactListView(ListView):
         context['contacts_json'] = json.dumps(contacts_data, cls=DjangoJSONEncoder)
         return context
     
+@login_required
 def add_contact(request, contact_type):
     if contact_type not in ['people', 'church']:
         messages.error(request, 'Invalid contact type.')
@@ -65,6 +69,7 @@ def add_contact(request, contact_type):
 
     return render(request, 'contacts/add_contact.html', {'form': form, 'contact_type': contact_type})
 
+@login_required
 def edit_contact(request, pk):
     contact = get_object_or_404(Contact, pk=pk)
     
@@ -95,8 +100,8 @@ def edit_contact(request, pk):
         'contact_type': model.__name__.lower()
     }
     return render(request, 'contacts/edit_contact.html', context)
-
-class ChurchListView(ListView):
+@method_decorator(login_required, name='dispatch')
+class ChurchListView(ListView, LoginRequiredMixin):
     model = Church
     template_name = 'contacts/church_list.html'
     context_object_name = 'churches'
@@ -148,8 +153,8 @@ def update_church_pipeline_stage(request):
         return JsonResponse({'success': False, 'error': 'Church not found'}, status=404)
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
-    
-class ChurchDetailView(DetailView):
+@method_decorator(login_required, name='dispatch')    
+class ChurchDetailView(DetailView, LoginRequiredMixin):
     model = Church
     template_name = 'contacts/church_detail.html'
     context_object_name = 'church'
@@ -162,7 +167,7 @@ class ChurchDetailView(DetailView):
             object_id=self.object.id
         ).order_by('-date')[:3]
         return context
-    
+@method_decorator(login_required, name='dispatch')    
 class ChurchAddView(LoginRequiredMixin, CreateView):
     model = Church
     form_class = ChurchForm
@@ -177,8 +182,8 @@ class ChurchAddView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         # You can add any additional logic here before saving the form
         return super().form_valid(form)
-
-class ChurchUpdateView(UpdateView):
+@method_decorator(login_required, name='dispatch')
+class ChurchUpdateView(UpdateView, LoginRequiredMixin):
     model = Church
     form_class = ChurchForm
     template_name = 'contacts/edit_contact.html'
@@ -194,8 +199,8 @@ class ChurchUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('contacts:church_detail', kwargs={'pk': self.object.pk})
-
-class PeopleListView(ListView):
+@method_decorator(login_required, name='dispatch')
+class PeopleListView(ListView, LoginRequiredMixin):
     model = People
     template_name = 'contacts/people_list.html'
     context_object_name = 'people'
@@ -259,7 +264,7 @@ def update_pipeline_stage(request):
         return JsonResponse({'success': False, 'error': 'Person not found'}, status=404)
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
-    
+@method_decorator(login_required, name='dispatch')    
 class PersonAddView(LoginRequiredMixin, CreateView):
     model = People
     form_class = PeopleForm
@@ -274,8 +279,8 @@ class PersonAddView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         # You can add any additional logic here before saving the form
         return super().form_valid(form)
-
-class PersonUpdateView(UpdateView):
+@method_decorator(login_required, name='dispatch')
+class PersonUpdateView(UpdateView, LoginRequiredMixin):
     model = People
     form_class = PeopleForm
     template_name = 'contacts/edit_contact.html'
@@ -291,8 +296,8 @@ class PersonUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('contacts:person_detail', kwargs={'pk': self.object.pk})
-    
-class PersonDetailView(DetailView):
+@method_decorator(login_required, name='dispatch')    
+class PersonDetailView(DetailView, LoginRequiredMixin):
     model = People
     template_name = 'contacts/person_detail.html'
     context_object_name = 'person'

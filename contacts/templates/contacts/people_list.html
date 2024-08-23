@@ -6,9 +6,6 @@
 {% endblock %}
 
 {% block content %}
-{% if user.is_superuser %}
-{% endif %}
-
 <div class="pipeline-container">
     <h1>Individual Pipeline</h1>
 
@@ -29,14 +26,14 @@
 
     <div class="pipeline-grid">
         {% for stage, people in pipeline_stages.items %}
-        <div class="pipeline-stage" stage="{{ stage|lower|slugify }}">
+        <div class="pipeline-stage" data-stage="{{ stage|lower|slugify }}">
             <div class="stage-header">
                 <span class="collapse-arrow">▼</span>
                 <h2>{{ stage }}</h2>
             </div>
             <div class="stage-content">
                 {% for person in people %}
-                <div class="person-card" draggable="true" person-id="{{ person.id }}" data-name="{{ person.first_name }} {{ person.last_name }}">
+                <div class="person-card" draggable="true" data-person-id="{{ person.id }}" data-name="{{ person.first_name }} {{ person.last_name }}">
                     <div class="person-info">
                         <h3><a href="{% url 'contacts:person_detail' person.id %}" class="person-name-link">{{ person.first_name }} {{ person.last_name }}</a></h3>
                         <p>{{ person.email }}</p>
