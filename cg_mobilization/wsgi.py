@@ -19,4 +19,5 @@ if path not in sys.path:
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cg_mobilization.settings')
 
 application = get_wsgi_application()
-application = WhiteNoise(application)
+application = WhiteNoise(application, root='/opt/render/project/src/staticfiles')
+application.add_files('/opt/render/project/src/media', prefix='media/')
