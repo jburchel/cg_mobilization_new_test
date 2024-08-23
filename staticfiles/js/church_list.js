@@ -1,134 +1,62 @@
-document.addEventListener('DOMContentLoaded', function() {
-    let draggedItem = null;
-    let sourceStage = null;
+{% extends 'core/base.html' %}
+{% load static %}
 
-    function initDragAndDrop() {
-        document.querySelectorAll('.church-card').forEach(card => {
-            card.addEventListener('dragstart', function(e) {
-                // Prevent drag if clicking on a link
-                if (e.target.closest('.church-name-link, .church-image-link')) {
-                    e.preventDefault();
-                    return;
-                }
-                draggedItem = this;
-                sourceStage = this.closest('.pipeline-stage');
-                setTimeout(() => this.style.opacity = '0.5', 0);
-            });
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/church_list.css' %}">
+{% endblock %}
 
-            card.addEventListener('dragend', function() {
-                this.style.opacity = '1';
-            });
+{% block content %}
+<div class="pipeline-container">
+    <h1>Church Pipeline</h1>
 
-            // Prevent default drag behavior on links
-            card.querySelectorAll('.church-name-link, .church-image-link').forEach(link => {
-                link.addEventListener('mousedown', function(e) {
-                    e.stopPropagation();
-                });
-            });
-        });
+    <a href="{% url 'contacts:add_church' %}" class="btn btn-primary">Add New Church</a>
 
-        document.querySelectorAll('.pipeline-stage').forEach(stage => {
-            stage.addEventListener('dragover', function(e) {
-                e.preventDefault();
-                this.classList.add('drag-over');
-            });
+    <div class="search-container">
+        <input type="text" id="churchSearch" placeholder="Search churches..." class="form-control">
+    </div>
 
-            stage.addEventListener('dragleave', function() {
-                this.classList.remove('drag-over');
-            });
+    <div class="pipeline-summary">
+        {% for stage, count in pipeline_summary %}
+        <div class="summary-item {% if forloop.first %}total-item{% endif %}" title="{{ stage }}">
+            <span class="summary-label">{{ stage|truncatechars:15 }}</span>
+            <span class="summary-value">{{ count }}</span>
+        </div>
+        {% endfor %}
+    </div>
 
-            stage.addEventListener('drop', function(e) {
-                e.preventDefault();
-                this.classList.remove('drag-over');
-                if (draggedItem && this !== sourceStage) {
-                    const newStage = this.dataset.stage;
-                    updatePipelineStage(draggedItem.dataset.churchId, newStage, this, sourceStage);
-                }
-            });
-        });
-    }
+    <div class="pipeline-grid">
+        {% for stage, churches in pipeline_stages.items %}
+        <div class="pipeline-stage" data-stage="{{ stage|lower|slugify }}">
+            <div class="stage-header">
+                <span class="collapse-arrow">▼</span>
+                <h2>{{ stage }}</h2>
+            </div>
+            <div class="stage-content">
+                {% for church in churches %}
+                <div class="church-card" draggable="true" data-church-id="{{ church.id }}" data-name="{{ church.church_name }}">
+                    <div class="church-info">
+                        <h3><a href="{% url 'contacts:church_detail' church.id %}" class="church-name-link">{{ church.church_name }}</a></h3>
+                        <p>{{ church.email }}</p>
+                        <p>Last Contact: {{ church.date_modified|default:"N/A" }}</p>
+                    </div>
+                    {% if church.image %}
+                    <div class="church-image">
+                        <a href="{% url 'contacts:church_detail' church.id %}" class="church-image-link">
+                            <img src="{{ church.image.url }}" alt="{{ church.church_name }}">
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+                {% empty %}
+                <p class="empty-stage">No churches in this stage.</p>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
 
-    function updatePipelineStage(churchId, newStage, targetStage, sourceStage) {
-        fetch('/contacts/update_church_pipeline_stage/', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken')
-            },
-            body: JSON.stringify({
-                church_id: churchId,
-                new_stage: newStage
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                console.log('Successfully updated church pipeline stage');
-                setTimeout(() => {
-                    window.location.reload();
-                }, 100);
-            } else {
-                console.error('Failed to update church pipeline stage:', data.error);
-                sourceStage.querySelector('.stage-content').appendChild(draggedItem);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            sourceStage.querySelector('.stage-content').appendChild(draggedItem);
-        });
-    }
-
-    function initCollapsible() {
-        const stages = document.querySelectorAll('.pipeline-stage');
-        const totalStages = stages.length;
-
-        stages.forEach(stage => {
-            const header = stage.querySelector('.stage-header');
-            header.addEventListener('click', function() {
-                stage.classList.toggle('collapsed');
-                const arrow = this.querySelector('.collapse-arrow');
-                arrow.textContent = stage.classList.contains('collapsed') ? '▶' : '▼';
-                
-                updateStageSizes();
-            });
-        });
-
-        function updateStageSizes() {
-            const collapsedStages = document.querySelectorAll('.pipeline-stage.collapsed');
-            const expandedStages = document.querySelectorAll('.pipeline-stage:not(.collapsed)');
-            const collapsedWidth = 40; // This should match the --collapsed-width in CSS
-            
-            const availableWidth = 100 - (collapsedStages.length * (collapsedWidth / 10));
-            const widthPerExpanded = availableWidth / expandedStages.length;
-
-            stages.forEach(stage => {
-                if (stage.classList.contains('collapsed')) {
-                    stage.style.flex = `0 0 ${collapsedWidth}px`;
-                } else {
-                    stage.style.flex = `1 1 ${widthPerExpanded}%`;
-                }
-            });
-        }
-
-        // Initial setup
-        updateStageSizes();
-    }
-
-    function getCookie(name) {
-        let cookieValue = null;
-        if (document.cookie && document.cookie !== '') {
-            const cookies = document.cookie.split(';');
-            for (let i = 0; i < cookies.length; i++) {
-                const cookie = cookies[i].trim();
-                if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                    break;
-                }
-            }
-        }
-        return cookieValue;
-    }
-
-    initDragAndDrop();
-    initCollapsible();
-});
+{% block extra_js %}
+<script src="{% static 'js/church_list_search.js' %}"></script>
+{% endblock %}

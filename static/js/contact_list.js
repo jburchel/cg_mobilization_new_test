@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td class="actions">
                         <a href="${detailUrl}" class="btn btn-sm btn-info">View</a>
                         <a href="${editUrl}" class="btn btn-sm btn-warning">Edit</a>
-                        <a href="#" class="btn btn-sm btn-danger">Delete</a>
                     </td>
                 `;
                 contactsBody.appendChild(row);

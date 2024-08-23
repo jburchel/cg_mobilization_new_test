@@ -7,8 +7,11 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.shortcuts import get_object_or_404
 from contacts.models import Church, People
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
-class TaskListView(ListView):
+@method_decorator(login_required, name='dispatch')
+class TaskListView(ListView, LoginRequiredMixin):
     model = Task
     template_name = 'task_tracker/task_list.html'
     context_object_name = 'tasks'
@@ -22,7 +25,8 @@ class TaskListView(ListView):
             'done': Task.objects.filter(status='done').order_by('due_date')
         }
         return context
-    
+
+@method_decorator(login_required, name='dispatch')    
 class TaskDetailView(LoginRequiredMixin, DetailView):
     model = Task
     template_name = 'task_tracker/task_detail.html'
@@ -59,12 +63,15 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.created_by = self.request.user
         return super().form_valid(form)
+    
+@method_decorator(login_required, name='dispatch')    
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
     form_class = TaskForm
     template_name = 'task_tracker/task_form.html'
     success_url = reverse_lazy('task_tracker:task_list')
 
+@method_decorator(login_required, name='dispatch')
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = 'task_tracker/task_confirm_delete.html'

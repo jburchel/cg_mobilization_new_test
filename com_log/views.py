@@ -10,10 +10,12 @@ from contacts.models import Church, People
 from django.http import JsonResponse
 from django.db.models import Q
 import logging
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 logger = logging.getLogger(__name__)
-
-class ComLogListView(ListView):
+@method_decorator(login_required, name='dispatch')
+class ComLogListView(ListView, LoginRequiredMixin):
     model = ComLog
     template_name = 'com_log/com_log_list.html'
     context_object_name = 'com_logs'
@@ -39,12 +41,12 @@ class ComLogListView(ListView):
         ]
         logger.info(f"ComLog context count: {len(context['com_logs'])}")
         return context
-
-class ComLogDetailView(DetailView):
+@method_decorator(login_required, name='dispatch')
+class ComLogDetailView(DetailView, LoginRequiredMixin):
     model = ComLog
     template_name = 'com_log/com_log_detail.html'
     context_object_name = 'com_log'
-
+@method_decorator(login_required, name='dispatch')
 class ComLogCreateView(LoginRequiredMixin, CreateView):
     model = ComLog
     form_class = ComLogForm
@@ -87,8 +89,8 @@ def contact_search(request):
 
     logger.info(f"Contact search results: {results}")
     return JsonResponse(results, safe=False)
-
-class ComLogUpdateView(UpdateView):
+@method_decorator(login_required, name='dispatch')
+class ComLogUpdateView(UpdateView, LoginRequiredMixin):
     model = ComLog
     form_class = ComLogForm
     template_name = 'com_log/com_log_form.html'
@@ -98,8 +100,8 @@ class ComLogUpdateView(UpdateView):
         context = super().get_context_data(**kwargs)
         context['form'] = self.get_form()
         return context
-    
-class ContactInteractionsListView(ListView):
+@method_decorator(login_required, name='dispatch')  
+class ContactInteractionsListView(ListView, LoginRequiredMixin):
     model = ComLog
     template_name = 'com_log/contact_interactions_list.html'
     context_object_name = 'interactions'
