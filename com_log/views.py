@@ -81,7 +81,7 @@ def contact_search(request):
     if contact_type == 'church':
         churches = Church.objects.filter(church_name__icontains=query)[:10]
         results = [{'id': church.id, 'value': church.church_name, 'label': church.church_name} for church in churches]
-    elif contact_type == 'people':
+    elif contact_type == 'person':
         people = People.objects.filter(
             Q(first_name__icontains=query) | 
             Q(last_name__icontains=query)
@@ -90,6 +90,7 @@ def contact_search(request):
 
     logger.info(f"Contact search results: {results}")
     return JsonResponse(results, safe=False)
+
 @method_decorator(login_required, name='dispatch')
 class ComLogUpdateView(SuccessMessageMixin, UpdateView):
     model = ComLog
@@ -103,10 +104,21 @@ class ComLogUpdateView(SuccessMessageMixin, UpdateView):
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         if self.object:
+            contact = self.object.contact
+            if isinstance(contact, People):
+                contact_name = f"{contact.first_name} {contact.last_name}"
+                contact_type = 'person'
+            elif isinstance(contact, Church):
+                contact_name = contact.church_name
+                contact_type = 'church'
+            else:
+                contact_name = str(contact)
+                contact_type = 'unknown'
+
             kwargs['initial'] = {
-                'contact_type': 'person' if isinstance(self.object.contact, People) else 'church',
-                'contact': self.object.contact.first_name + self.object.contact.last_name if isinstance(self.object.contact, People) else self.object.contact.church_name,
-                'contact_id': self.object.contact.id,
+                'contact_type': contact_type,
+                'contact': contact_name,
+                'contact_id': contact.id,
                 'communication_type': self.object.communication_type,
                 'notes': self.object.notes,
             }
@@ -121,7 +133,7 @@ class ContactInteractionsListView(ListView):
         contact_id = self.kwargs['contact_id']
         
         if contact_type == 'person':
-            contact = get_object_or_404(Contact, id=contact_id)
+            contact = get_object_or_404(People, id=contact_id)
         elif contact_type == 'church':
             contact = get_object_or_404(Church, id=contact_id)
         else:
@@ -139,7 +151,7 @@ class ContactInteractionsListView(ListView):
         contact_id = self.kwargs['contact_id']
         
         if contact_type == 'person':
-            context['contact'] = get_object_or_404(Contact, id=contact_id)
+            context['contact'] = get_object_or_404(People, id=contact_id)
         elif contact_type == 'church':
             context['contact'] = get_object_or_404(Church, id=contact_id)
         

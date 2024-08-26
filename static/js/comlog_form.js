@@ -3,34 +3,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactInput = document.getElementById('id_contact');
     const contactIdInput = document.getElementById('id_contact_id');
 
-    function loadContacts() {
-        const contactType = contactTypeSelect.value;
-        fetch(`/api/contacts/?type=${contactType}`)
-            .then(response => response.json())
-            .then(data => {
-                const datalist = document.getElementById('contacts-list');
-                datalist.innerHTML = '';
-                data.forEach(contact => {
-                    const option = document.createElement('option');
-                    option.value = contact.name;
-                    option.dataset.id = contact.id;
-                    datalist.appendChild(option);
+    function initializeAutocomplete() {
+        $(contactInput).autocomplete({
+            source: function(request, response) {
+                const contactType = contactTypeSelect.value;
+                $.ajax({
+                    url: "/com_log/contact-search/",
+                    dataType: "json",
+                    data: {
+                        term: request.term,
+                        type: contactType
+                    },
+                    success: function(data) {
+                        response(data);
+                    }
                 });
-            });
+            },
+            minLength: 2,
+            select: function(event, ui) {
+                contactIdInput.value = ui.item.id;
+            }
+        });
     }
 
-    contactTypeSelect.addEventListener('change', loadContacts);
-
-    contactInput.addEventListener('input', function() {
-        const selectedOption = Array.from(document.getElementById('contacts-list').options)
-            .find(option => option.value === contactInput.value);
-        if (selectedOption) {
-            contactIdInput.value = selectedOption.dataset.id;
-        }
+    contactTypeSelect.addEventListener('change', function() {
+        contactInput.value = '';
+        contactIdInput.value = '';
+        initializeAutocomplete();
     });
 
-    // Load contacts on page load if editing
-    if (contactTypeSelect.value) {
-        loadContacts();
-    }
+    // Initialize autocomplete on page load
+    initializeAutocomplete();
 });

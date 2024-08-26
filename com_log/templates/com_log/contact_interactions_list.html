@@ -1,22 +1,36 @@
-{% extends "core/base.html" %}
+{% extends 'core/base.html' %}
 {% load static %}
 
 {% block content %}
-<h2>Communication Log for {{ contact.name }}</h2>
-
-{% if interactions %}
-    <ul class="interaction-list">
-    {% for interaction in interactions %}
-        <li class="interaction-item">
-            <span class="interaction-date">{{ interaction.date_created|date:"F d, Y" }}</span>
-            <span class="interaction-type">{{ interaction.interaction_type }}</span>
-            <p class="interaction-subject">{{ interaction.subject }}</p>
-            <p class="interaction-notes">{{ interaction.notes }}</p>
-        </li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No interactions recorded yet.</p>
-{% endif %}
-
+<div class="container">
+    <h1>Interactions for {{ contact }}</h1>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Notes</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for interaction in interactions %}
+            <tr>
+                <td>{{ interaction.date_created }}</td>
+                <td>{{ interaction.get_communication_type_display }}</td>
+                <td>{{ interaction.notes|truncatewords:20 }}</td>
+                <td>
+                    <a href="{% url 'com_log:detail' interaction.id %}" class="btn btn-sm btn-info">View</a>
+                    <a href="{% url 'com_log:update' interaction.id %}" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No interactions found for this contact.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
