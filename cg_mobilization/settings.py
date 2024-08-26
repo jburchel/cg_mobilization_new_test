@@ -155,6 +155,7 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 5242880
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For development only
 
+
 # ... (other settings)
 
 AUTH_USER_MODEL = 'userprofile.CustomUser'
