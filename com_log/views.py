@@ -6,12 +6,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import ComLog
 from django.contrib import messages
 from .forms import ComLogForm
-from contacts.models import Church, People
+from contacts.models import Church, People, Contact
 from django.http import JsonResponse
 from django.db.models import Q
 import logging
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib.messages.views import SuccessMessageMixin
 
 logger = logging.getLogger(__name__)
 @method_decorator(login_required, name='dispatch')
@@ -19,10 +20,10 @@ class ComLogListView(ListView, LoginRequiredMixin):
     model = ComLog
     template_name = 'com_log/com_log_list.html'
     context_object_name = 'com_logs'
-    paginate_by = 20
+    paginate_by = 10
 
     def get_queryset(self):
-        queryset = ComLog.objects.select_related('content_type').order_by('-date')
+        queryset = ComLog.objects.select_related('content_type').order_by('-date_created')
         logger.info(f"ComLog queryset count: {queryset.count()}")
         return queryset
 
@@ -35,7 +36,7 @@ class ComLogListView(ListView, LoginRequiredMixin):
                 'type': log.get_contact_type(),
                 'communication_type': log.get_communication_type_display(),
                 'notes': log.notes,
-                'date': log.date,
+                'date_created': log.date_created,
             }
             for log in context['com_logs']
         ]
@@ -90,47 +91,56 @@ def contact_search(request):
     logger.info(f"Contact search results: {results}")
     return JsonResponse(results, safe=False)
 @method_decorator(login_required, name='dispatch')
-class ComLogUpdateView(UpdateView, LoginRequiredMixin):
+class ComLogUpdateView(SuccessMessageMixin, UpdateView):
     model = ComLog
     form_class = ComLogForm
     template_name = 'com_log/com_log_form.html'
-    success_url = reverse_lazy('com_log:list')
+    success_message = "Communication log was updated successfully"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = self.get_form()
-        return context
-@method_decorator(login_required, name='dispatch')  
-class ContactInteractionsListView(ListView, LoginRequiredMixin):
-    model = ComLog
+    def get_success_url(self):
+        return reverse_lazy('com_log:list')
+
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        if self.object:
+            kwargs['initial'] = {
+                'contact_type': 'person' if isinstance(self.object.contact, People) else 'church',
+                'contact': self.object.contact.first_name + self.object.contact.last_name if isinstance(self.object.contact, People) else self.object.contact.church_name,
+                'contact_id': self.object.contact.id,
+                'communication_type': self.object.communication_type,
+                'notes': self.object.notes,
+            }
+        return kwargs
+    
+class ContactInteractionsListView(ListView):
     template_name = 'com_log/contact_interactions_list.html'
     context_object_name = 'interactions'
-    paginate_by = 20
 
     def get_queryset(self):
         contact_type = self.kwargs['contact_type']
         contact_id = self.kwargs['contact_id']
-
+        
         if contact_type == 'person':
-            contact = get_object_or_404(People, id=contact_id)
+            contact = get_object_or_404(Contact, id=contact_id)
         elif contact_type == 'church':
             contact = get_object_or_404(Church, id=contact_id)
         else:
-            raise ValueError("Invalid contact type")
-
+            raise Http404("Invalid contact type")
+        
         content_type = ContentType.objects.get_for_model(contact)
-        return ComLog.objects.filter(content_type=content_type, object_id=contact.id).order_by('-date')
+        return ComLog.objects.filter(
+            content_type=content_type,
+            object_id=contact.id
+        ).order_by('-date_created')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         contact_type = self.kwargs['contact_type']
         contact_id = self.kwargs['contact_id']
-
+        
         if contact_type == 'person':
-            contact = get_object_or_404(People, id=contact_id)
+            context['contact'] = get_object_or_404(Contact, id=contact_id)
         elif contact_type == 'church':
-            contact = get_object_or_404(Church, id=contact_id)
-
-        context['contact'] = contact
-        context['contact_type'] = contact_type
+            context['contact'] = get_object_or_404(Church, id=contact_id)
+        
         return context

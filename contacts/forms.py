@@ -33,5 +33,25 @@ class ChurchForm(forms.ModelForm):
             'initial_notes': forms.Textarea(attrs={'rows': 4}),
             'info_given': forms.Textarea(attrs={'rows': 4}),
         }
+
+# contacts/forms.py
+
+from django import forms
+
+class EmailForm(forms.Form):
+    subject = forms.CharField(
+        max_length=100,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter email subject'
+        })
+    )
+    body = forms.CharField(
+        widget=forms.Textarea(attrs={
+            'class': 'form-control',
+            'rows': 5,
+            'placeholder': 'Enter your message here'
+        })
+    )
     
         

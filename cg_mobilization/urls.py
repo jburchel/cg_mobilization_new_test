@@ -31,6 +31,7 @@ urlpatterns = [
     path('accounts/', include('userprofile.urls')),
     path('com-log/', include('com_log.urls')),
     path('task-tracker/', include('task_tracker.urls')),
+    path('integrations/', include('integrations.urls', namespace='integrations')),
 ]
 
 if settings.DEBUG:

@@ -17,7 +17,7 @@
                 <a href="{% url 'contacts:church_edit' church.pk %}" class="btn btn-edit">Edit</a>
                 <a href="{% url 'com_log:create' %}" class="btn btn-log">Log Interaction</a>
                 <a href="{% url 'task_tracker:task_create' %}" class="btn btn-task">Create Task</a>
-                <a href="{% url 'com_log:contact_interactions' contact_type='church' contact_id=church.id %}">View History</a>
+                <a href="{% url 'com_log:contact_interactions' contact_type='church' contact_id=church.id %}" class="btn btn-task">View History</a>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
             <h2>Contact Information</h2>
             <p><strong>Primary Contact:</strong> {{ church.primary_contact_first_name }} {{ church.primary_contact_last_name }}</p>
             <p><strong>Phone:</strong> {{ church.phone }}</p>
-            <p><strong>Email:</strong> <a href="mailto:{{ church.email }}">{{ church.email }}</a></p>
+            <p><a href="{% url 'contacts:send_email' contact_type='church' contact_id=church.id %}" class="btn btn-log">Send Email</a></p>
             <p><strong>Address:</strong> {{ church.street_address }}, {{ church.city }}, {{ church.get_state_display }} {{ church.zip_code }}</p>
             <p><strong>Website:</strong> <a href="{{ church.website }}" target="_blank">{{ church.website }}</a></p>
         </div>

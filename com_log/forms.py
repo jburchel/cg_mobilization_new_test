@@ -1,70 +1,56 @@
 from django import forms
 from .models import ComLog
-from contacts.models import Church, People
+from contacts.models import Church, People, Contact
 from django.contrib.contenttypes.models import ContentType
 import logging
 
 logger = logging.getLogger(__name__)
 
 class ComLogForm(forms.ModelForm):
-    CONTACT_TYPE_CHOICES = [('church', 'Church'), ('people', 'Person')]
+    CONTACT_TYPE_CHOICES = [
+        ('person', 'Person'),
+        ('church', 'Church'),
+    ]
     
     contact_type = forms.ChoiceField(choices=CONTACT_TYPE_CHOICES)
-    contact = forms.CharField(widget=forms.TextInput(attrs={'class': 'contact-search', 'placeholder': 'Search for a contact...'}))
-    contact_id = forms.IntegerField(widget=forms.HiddenInput(), required=False)
+    contact = forms.CharField(max_length=100)  # This will be populated by JavaScript
+    contact_id = forms.IntegerField(widget=forms.HiddenInput())
 
     class Meta:
         model = ComLog
         fields = ['contact_type', 'contact', 'contact_id', 'communication_type', 'notes']
+        widgets = {
+            'notes': forms.Textarea(attrs={'rows': 4}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if self.instance.pk:
+            if isinstance(self.instance.contact, People):
+                self.initial['contact_type'] = 'person'
+                self.initial['contact'] = self.instance.contact.first_name + self.instance.contact.last_name
+            elif isinstance(self.instance.contact, Church):
+                self.initial['contact_type'] = 'church'
+                self.initial['contact'] = self.instance.contact.church_name
+            self.initial['contact_id'] = self.instance.contact.id
 
     def clean(self):
         cleaned_data = super().clean()
         contact_type = cleaned_data.get('contact_type')
-        contact_name = cleaned_data.get('contact')
         contact_id = cleaned_data.get('contact_id')
 
-        logger.info(f"Cleaning form data: contact_type={contact_type}, contact_name={contact_name}, contact_id={contact_id}")
-
-        if contact_type == 'church':
+        if contact_type == 'person':
+            try:
+                contact = Contact.objects.get(id=contact_id)
+            except Contact.DoesNotExist:
+                raise forms.ValidationError("Selected person does not exist.")
+        elif contact_type == 'church':
             try:
                 contact = Church.objects.get(id=contact_id)
-                logger.info(f"Found church: {contact}")
             except Church.DoesNotExist:
-                logger.error(f"Church not found: id={contact_id}, name={contact_name}")
-                self.add_error('contact', 'Selected church does not exist.')
-        elif contact_type == 'people':
-            try:
-                contact = People.objects.get(id=contact_id)
-                logger.info(f"Found person: {contact}")
-            except People.DoesNotExist:
-                logger.error(f"Person not found: id={contact_id}, name={contact_name}")
-                self.add_error('contact', 'Selected person does not exist.')
+                raise forms.ValidationError("Selected church does not exist.")
         else:
-            logger.error(f"Invalid contact type: {contact_type}")
-            self.add_error('contact_type', 'Invalid contact type.')
+            raise forms.ValidationError("Invalid contact type.")
 
+        cleaned_data['contact'] = contact
         return cleaned_data
-
-    def save(self, commit=True):
-        instance = super().save(commit=False)
-        contact_type = self.cleaned_data['contact_type']
-        contact_id = self.cleaned_data['contact_id']
-
-        logger.info(f"Saving ComLog: contact_type={contact_type}, contact_id={contact_id}")
-
-        try:
-            if contact_type == 'church':
-                contact = Church.objects.get(id=contact_id)
-            else:
-                contact = People.objects.get(id=contact_id)
-
-            instance.content_type = ContentType.objects.get_for_model(type(contact))
-            instance.object_id = contact.id
-
-            if commit:
-                instance.save()
-                logger.info(f"ComLog saved: {instance.id}")
-            return instance
-        except Exception as e:
-            logger.error(f"Error saving ComLog: {str(e)}")
-            raise

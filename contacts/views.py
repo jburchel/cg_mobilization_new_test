@@ -1,7 +1,8 @@
+from django.views.generic import FormView
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib import messages
-from .forms import PeopleForm, ChurchForm
+from .forms import PeopleForm, ChurchForm, EmailForm
 from django.views.generic import ListView, DetailView, UpdateView, CreateView
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -18,6 +19,12 @@ from django.core.serializers.json import DjangoJSONEncoder
 import logging
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from google.oauth2.credentials import Credentials
+from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
+from email.mime.text import MIMEText
+import base64
+
 
 logger = logging.getLogger(__name__)
 @method_decorator(login_required, name='dispatch')
@@ -165,7 +172,7 @@ class ChurchDetailView(DetailView, LoginRequiredMixin):
         context['recent_communications'] = ComLog.objects.filter(
             content_type=church_content_type,
             object_id=self.object.id
-        ).order_by('-date')[:3]
+        ).order_by('-date_created')[:3]
         return context
 @method_decorator(login_required, name='dispatch')    
 class ChurchAddView(LoginRequiredMixin, CreateView):
@@ -308,7 +315,7 @@ class PersonDetailView(DetailView, LoginRequiredMixin):
         context['recent_communications'] = ComLog.objects.filter(
             content_type=person_content_type,
             object_id=self.object.id
-        ).order_by('-date')[:3]
+        ).order_by('-date_created')[:3]
         return context
     
 logger = logging.getLogger(__name__)
@@ -339,5 +346,71 @@ def contact_search(request):
         return JsonResponse({'error': str(e)}, status=500)
 
     return JsonResponse(results, safe=False)
-    
 
+class SendEmailView(LoginRequiredMixin, FormView):
+    template_name = 'contacts/send_email.html'
+    form_class = EmailForm
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        contact_type = self.kwargs['contact_type']
+        contact_id = self.kwargs['contact_id']
+        if contact_type == 'church':
+            context['contact'] = get_object_or_404(Church, id=contact_id)
+        else:  # person
+            context['contact'] = get_object_or_404(Contact, id=contact_id)
+        return context
+
+    def form_valid(self, form):
+        credentials_dict = self.request.session.get('google_credentials')
+        if not credentials_dict:
+            self.request.session['email_redirect_url'] = self.request.get_full_path()
+            messages.info(self.request, 'Please connect your Google account to send emails.')
+            return redirect(reverse('integrations:google_auth'))
+        
+        credentials = Credentials(**credentials_dict)
+        try:
+            service = build('gmail', 'v1', credentials=credentials)
+            
+            contact_type = self.kwargs['contact_type']
+            contact_id = self.kwargs['contact_id']
+            if contact_type == 'church':
+                contact = get_object_or_404(Church, id=contact_id)
+            else:  # person
+                contact = get_object_or_404(Contact, id=contact_id)
+            
+            subject = form.cleaned_data['subject']
+            body = form.cleaned_data['body']
+            
+            message = MIMEText(body)
+            message['to'] = contact.email
+            message['subject'] = subject
+            raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
+            
+            sent_message = service.users().messages().send(userId='me', body={'raw': raw_message}).execute()
+            
+            # Create ComLog entry
+            ComLog.objects.create(
+                user=self.request.user,
+                content_type=ContentType.objects.get_for_model(contact),
+                object_id=contact.id,
+                interaction_type='Email',  # Make sure this matches one of your choices in the ComLog model
+                communication_type='Email',  # Add this line to set the communication_type
+                subject=subject,
+                notes=body,
+                direction='Outgoing'
+            )
+            
+            messages.success(self.request, 'Email sent successfully and logged.')
+        except HttpError as error:
+            messages.error(self.request, f'An error occurred: {error}')
+        
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        contact_type = self.kwargs['contact_type']
+        contact_id = self.kwargs['contact_id']
+        if contact_type == 'church':
+            return reverse('contacts:church_detail', kwargs={'pk': contact_id})
+        else:
+            return reverse('contacts:person_detail', kwargs={'pk': contact_id})

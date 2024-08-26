@@ -35,11 +35,11 @@
             <tbody>
                 {% for log in com_logs %}
                 <tr>
-                    <td>{{ log.date|date:"Y-m-d H:i" }}</td>
+                    <td>{{ log.date_created|date:"m-d-Y" }}</td>
                     <td>{{ log.name }}</td>
                     <td>{{ log.type }}</td>
-                    <td>{{ log.communication_type }}</td>
-                    <td>{{ log.summary|truncatewords:10 }}</td>
+                    <td>{{ log.communicataion_type }}</td>
+                    <td>{{ log.notes|truncatewords:10 }}</td>
                     <td>
                         <a href="{% url 'com_log:detail' log.id %}" class="btn btn-sm btn-info">View</a>
                         <a href="{% url 'com_log:update' log.id %}" class="btn btn-sm btn-edit">Edit</a>
