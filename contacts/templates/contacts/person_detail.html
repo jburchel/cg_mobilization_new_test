@@ -30,6 +30,7 @@
                         <p><strong>Home Country:</strong> {{ person.home_country|default:"Not specified" }}</p>
                     </div>
                     <div class="info-column">
+                        <p><strong>Person Description:</strong> {{ person.get_person_type_display }}</p>
                         <p><strong>Pipeline Stage:</strong> {{ person.get_people_pipeline_display }}</p>
                         <p><strong>Priority:</strong> {{ person.get_priority_display }}</p>
                         <p><strong>Assigned To:</strong> {{ person.get_assigned_to_display }}</p>

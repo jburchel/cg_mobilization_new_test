@@ -136,6 +136,12 @@ class People(Contact):
         ('COLD CALL', 'COLD CALL'),('PERSPECTIVES', 'PERSPECTIVES'),('REFERAL', 'REFERAL'),('OTHER', 'OTHER'), ('UNKNOWN', 'UNKNOWN')
     )
     
+    PERSON_TYPE = (
+        ('Student PR','Student PR'), ('Student','Student'), ('Webform','Webform'),
+        ('Church PR','Church PR'), ('Couple PR','Couple PR'), ('Denied','Denied'),
+        ('Intern','Intern'), 
+    )
+    
     affiliated_church = models.ForeignKey(Church, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Affiliated Church")
     virtuous = models.BooleanField(default=False)
     title = models.CharField(max_length=100, null=True, blank=True)
@@ -144,6 +150,7 @@ class People(Contact):
     marital_status = models.CharField(max_length=100, choices=MARITAL_STATUS, null=True, blank=True)
     color = models.CharField(max_length=100, choices=COLOR, null=True, blank=True)
     people_pipeline = models.CharField(max_length=100, choices=PEOPLE_PIPELINE, null=True, blank=True)
+    person_type = models.CharField(max_length=100, choices=PERSON_TYPE, null=True, blank=True)
     priority = models.CharField(max_length=100, choices=PRIORITY, null=True, blank=True)
     assigned_to = models.CharField(max_length=100, choices=ASSIGNED_TO, null=True, blank=True)
     source = models.CharField(max_length=100, choices=SOURCE, null=True, blank=True)
