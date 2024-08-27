@@ -21,21 +21,48 @@
         </div>
     </div>
 
-    <table class="contacts-table">
-        <thead>
+   <table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Last Contact</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody id="contacts-body">
+        {% for contact in contacts %}
             <tr>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Last Contact</th>
-                <th>Actions</th>
+                <td>
+                    {% if contact.church %}
+                        <a href="{% url 'contacts:church_detail' contact.church.id %}">{{ contact.church.church_name }}</a>
+                    {% elif contact.people %}
+                        <a href="{% url 'contacts:person_detail' contact.people.id %}">{{ contact.people.first_name }} {{ contact.people.last_name }}</a>
+                    {% else %}
+                        {{ contact.get_name }}
+                    {% endif %}
+                </td>
+                <td>{{ contact.get_type_display }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.date_modified|date:"Y-m-d" }}</td>
+                <td>
+                    {% if contact.church %}
+                        <a href="{% url 'contacts:church_edit' contact.church.id %}" class="btn btn-sm btn-warning">Edit</a>
+                    {% elif contact.people %}
+                        <a href="{% url 'contacts:person_edit' contact.people.id %}" class="btn btn-sm btn-warning">Edit</a>
+                    {% endif %}
+                </td>
             </tr>
-        </thead>
-        <tbody id="contacts-body">
-            <!-- Contacts will be dynamically inserted here by JavaScript -->
-        </tbody>
-    </table>
+        {% empty %}
+            <tr>
+                <td colspan="6">No contacts found.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
     <div id="no-results" style="display: none;">
         No contacts found.
