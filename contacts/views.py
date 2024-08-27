@@ -47,7 +47,8 @@ class ContactListView(ListView, LoginRequiredMixin):
                 'type': contact_type,
                 'email': contact.email,
                 'phone': contact.phone,
-                'last_contact': contact.date_modified.strftime('%Y-%m-%d') if contact.date_modified else ''
+                'last_contact': contact.date_modified.strftime('%Y-%m-%d') if contact.date_modified else '',
+                'person_type': contact.person_type if hasattr(contact, 'people') else '',
             })
         context['contacts_json'] = json.dumps(contacts_data, cls=DjangoJSONEncoder)
         return context
