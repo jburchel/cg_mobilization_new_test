@@ -18,20 +18,13 @@ class Contact(models.Model):
     PREFERRED_CONTACT_METHODS = (
         ('email', 'Email'),('phone', 'Phone'),('text', 'Text'),('Facebook Messanger', 
         'Facebook Messanger'),('whatsapp', 'Whatsapp'),('groupme', 'Groupme'),('signal', 'Signal'),('other', 'Other')
-    )
-    
-    PERSON_TYPE = (
-        ('Student PR','Student PR'), ('Student','Student'), ('Webform','Webform'),
-        ('Church PR','Church PR'), ('Couple PR','Couple PR'), ('Denied','Denied'),
-        ('Intern','Intern'), 
-    )
+    )        
     
     church_name = models.CharField(max_length=100, null=True, blank=True)  
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     image = models.ImageField(upload_to=get_image_path, null=True, blank=True)
-    preferred_contact_method = models.CharField(max_length=100, choices=PREFERRED_CONTACT_METHODS)
-    person_type = models.CharField(max_length=100, choices=PERSON_TYPE, null=True, blank=True)
+    preferred_contact_method = models.CharField(max_length=100, choices=PREFERRED_CONTACT_METHODS)    
     phone = models.CharField(max_length=50)
     email = models.EmailField()    
     street_address = models.CharField(max_length=200, null=True, blank=True)
@@ -141,7 +134,13 @@ class People(Contact):
     SOURCE = (
         ('WEBFORM', 'WEBFORM'), ('INCOMING CALL', 'INCOMING CALL'), ('EMAIL', 'EMAIL'), ('SOCIAL MEDIA', 'SOCIAL MEDIA'),
         ('COLD CALL', 'COLD CALL'),('PERSPECTIVES', 'PERSPECTIVES'),('REFERAL', 'REFERAL'),('OTHER', 'OTHER'), ('UNKNOWN', 'UNKNOWN')
-    )    
+    )  
+    
+    PERSON_TYPE_CHOICES = (
+        ('Student PR','Student PR'), ('Student','Student'), ('Webform','Webform'),
+        ('Church PR','Church PR'), ('Couple PR','Couple PR'), ('Denied','Denied'),
+        ('Intern','Intern'), 
+    )  
     
     affiliated_church = models.ForeignKey(Church, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Affiliated Church")
     virtuous = models.BooleanField(default=False)
@@ -155,10 +154,15 @@ class People(Contact):
     assigned_to = models.CharField(max_length=100, choices=ASSIGNED_TO, null=True, blank=True)
     source = models.CharField(max_length=100, choices=SOURCE, null=True, blank=True)
     referred_by = models.CharField(max_length=100, null=True, blank=True)
+    person_type = models.CharField(max_length=100, choices=PERSON_TYPE_CHOICES, null=True, blank=True)
     info_given = models.TextField(null=True, blank=True)
     desired_service = models.TextField(null=True, blank=True)
     reason_closed = models.TextField(null=True, blank=True)
     date_closed = models.DateField(null=True, blank=True)
+    
+    @property
+    def person_type_display(self):
+        return dict(self.PERSON_TYPE_CHOICES).get(self.person_type, '')
     
     def __str__(self):
         return f"{self.first_name} {self.last_name}".strip() or "Unnamed Person"

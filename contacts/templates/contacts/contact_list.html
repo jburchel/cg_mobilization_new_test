@@ -46,6 +46,7 @@
 {% block extra_js %}
 <script>
     const contactsData = {{ contacts_json|safe }};
+    console.log('Contacts Data:', contactsData);
 </script>
 <script src="{% static 'js/contact_list.js' %}"></script>
 {% endblock %}

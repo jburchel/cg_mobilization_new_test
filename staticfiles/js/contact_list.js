@@ -32,9 +32,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 row.innerHTML = `
                     <td>${contact.name}</td>
                     <td>${contact.type}</td>
+                    <td>${contact.person_type_display || 'N/A'}</td>
                     <td>${contact.email}</td>
                     <td>${contact.phone}</td>
-                    <td>${contact.last_contact}</td>
+                    <td>${contact.last_contact}</td>                   
                     <td class="actions">
                         <a href="${detailUrl}" class="btn btn-sm btn-info">View</a>
                         <a href="${editUrl}" class="btn btn-sm btn-warning">Edit</a>
@@ -57,12 +58,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 contact.type,
                 contact.email,
                 contact.phone,
-                contact.last_contact
+                contact.last_contact,
+                contact.person_type,
+                contact.person_type_display,
             ];
             return searchFields.some(field => 
                 field && field.toLowerCase().includes(searchTerm.toLowerCase())
             );
         });
+        console.log('Filtered contacts:', filtered);
         renderContacts(filtered);
     }
 
