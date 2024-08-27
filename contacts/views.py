@@ -28,29 +28,37 @@ import base64
 
 logger = logging.getLogger(__name__)
 @method_decorator(login_required, name='dispatch')
-class ContactListView(ListView, LoginRequiredMixin):
+class ContactListView(ListView):
     model = Contact
     template_name = 'contacts/contact_list.html'
     context_object_name = 'contacts'
 
     def get_queryset(self):
-        return Contact.objects.select_related('church', 'people').order_by('last_name', 'first_name')
+        return Contact.objects.select_related('people', 'church').order_by('last_name', 'first_name')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         contacts_data = []
+        
         for contact in context['contacts']:
-            contact_type = 'Church' if hasattr(contact, 'church') else 'Person'
-            contacts_data.append({
+            contact_dict = {
                 'id': contact.id,
                 'name': contact.get_name(),
-                'type': contact_type,
+                'type': 'Person' if hasattr(contact, 'people') else 'Church',
                 'email': contact.email,
                 'phone': contact.phone,
-                'last_contact': contact.date_modified.strftime('%Y-%m-%d') if contact.date_modified else '',
-                'person_type': contact.person_type if hasattr(contact, 'people') else '',
-            })
-        context['contacts_json'] = json.dumps(contacts_data, cls=DjangoJSONEncoder)
+                'last_contact': contact.date_modified.strftime('%Y-%m-%d') if contact.date_modified else ''
+            }
+            
+            if hasattr(contact, 'people'):
+                people = contact.people
+                contact_dict['person_type'] = people.person_type if hasattr(people, 'person_type') else ''
+            else:
+                contact_dict['person_type'] = ''
+            
+            contacts_data.append(contact_dict)
+        
+        context['contacts_json'] = json.dumps(contacts_data)
         return context
     
 @login_required
