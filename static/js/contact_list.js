@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td>${contact.phone}</td>
                     <td>${contact.last_contact}</td>                   
                     <td class="actions">                        
-                        <a href="${editUrl}" class="btn btn-sm btn-danger">Edit</a>
+                        <a href="${editUrl}" class="btn btn-sm btn-info">Edit</a>
                     </td>
                 `;
                 contactsBody.appendChild(row);
