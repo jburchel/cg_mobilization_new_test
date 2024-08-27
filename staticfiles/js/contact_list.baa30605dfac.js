@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 row.innerHTML = `
                     <td><a href="${detailUrl}">${contact.name}</a></td>
                     <td>${contact.type}</td>
-                    
+                    <td>${contact.person_type_display || 'N/A'}</td>
                     <td>${contact.email}</td>
                     <td>${contact.phone}</td>
                     <td>${contact.last_contact}</td>                   

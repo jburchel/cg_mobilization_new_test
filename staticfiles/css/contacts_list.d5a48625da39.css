@@ -19,7 +19,8 @@
 .table {
     width: 100%;
     margin-bottom: 1rem;
-    color: var(--primary-white);
+    color: var(--primary-blue);
+    border-collapse: collapse;
 }
 
 .table th,
@@ -33,7 +34,7 @@
 .table thead th {
     vertical-align: bottom;
     border-bottom: 2px solid var(--border-color);
-    background-color: var(--primary-blue);
+    background-color: var(--light-gray);
 }
 
 .table tbody + tbody {
@@ -66,8 +67,6 @@
     font-size: 0.875rem;
     line-height: 1.5;
     border-radius: calc(var(--border-radius) / 2);
-    color: var(--primary-white);
-    background-color: var(--primary-green);
 }
 
 .btn-primary {

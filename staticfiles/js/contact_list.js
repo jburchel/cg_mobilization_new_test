@@ -30,15 +30,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${contact.name}</td>
+                    <td><a href="${detailUrl}">${contact.name}</a></td>
                     <td>${contact.type}</td>
-                    <td>${contact.person_type_display || 'N/A'}</td>
+                    
                     <td>${contact.email}</td>
                     <td>${contact.phone}</td>
                     <td>${contact.last_contact}</td>                   
-                    <td class="actions">
-                        <a href="${detailUrl}" class="btn btn-sm btn-info">View</a>
-                        <a href="${editUrl}" class="btn btn-sm btn-warning">Edit</a>
+                    <td class="actions">                        
+                        <a href="${editUrl}" class="btn btn-sm btn-info">Edit</a>
                     </td>
                 `;
                 contactsBody.appendChild(row);
