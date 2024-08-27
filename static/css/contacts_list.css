@@ -195,3 +195,12 @@ h1 {
     font-style: italic;
     color: #888;
 }
+
+#contacts-body td a {
+    color: #007bff;  /* Bootstrap primary color, you can change this */
+    text-decoration: none;
+}
+
+#contacts-body td a:hover {
+    text-decoration: underline;
+}

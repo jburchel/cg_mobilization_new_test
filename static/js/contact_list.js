@@ -36,8 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <td>${contact.email}</td>
                     <td>${contact.phone}</td>
                     <td>${contact.last_contact}</td>                   
-                    <td class="actions">
-                        <a href="${detailUrl}" class="btn btn-sm btn-info">View</a>
+                    <td class="actions">                        
                         <a href="${editUrl}" class="btn btn-sm btn-warning">Edit</a>
                     </td>
                 `;
