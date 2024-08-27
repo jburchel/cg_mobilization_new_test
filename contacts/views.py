@@ -216,7 +216,8 @@ class ChurchUpdateView(UpdateView, LoginRequiredMixin):
         return context
 
     def get_success_url(self):
-        return reverse_lazy('contacts:church_detail', kwargs={'pk': self.object.pk})
+        return reverse_lazy('contacts:contact_list', kwargs={'pk': self.object.pk})
+    
 @method_decorator(login_required, name='dispatch')
 class PeopleListView(ListView, LoginRequiredMixin):
     model = People
@@ -297,6 +298,7 @@ class PersonAddView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         # You can add any additional logic here before saving the form
         return super().form_valid(form)
+    
 @method_decorator(login_required, name='dispatch')
 class PersonUpdateView(UpdateView, LoginRequiredMixin):
     model = People
@@ -313,7 +315,8 @@ class PersonUpdateView(UpdateView, LoginRequiredMixin):
         return context
 
     def get_success_url(self):
-        return reverse_lazy('contacts:person_detail', kwargs={'pk': self.object.pk})
+        return reverse_lazy('contacts:contact_list', kwargs={'pk': self.object.pk})
+    
 @method_decorator(login_required, name='dispatch')    
 class PersonDetailView(DetailView, LoginRequiredMixin):
     model = People
