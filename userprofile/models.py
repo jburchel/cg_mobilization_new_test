@@ -6,18 +6,16 @@ from PIL import Image
 from io import BytesIO
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
-
+from django.core.files.storage import FileSystemStorage
+from django.conf import settings
 logger = logging.getLogger(__name__)
+
+fs = FileSystemStorage(location=settings.MEDIA_ROOT)
 
 class CustomUser(AbstractUser):
     profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
     profile_thumbnail = models.ImageField(upload_to='profile_thumbnails/', null=True, blank=True)
-    
-    def has_profile_image(self):
-        return bool(self.profile_image and self.profile_image.name)
-
-    def has_profile_thumbnail(self):
-        return bool(self.profile_thumbnail and self.profile_thumbnail.name)
+    email_signature = models.TextField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
         is_new = self.pk is None
@@ -30,40 +28,28 @@ class CustomUser(AbstractUser):
 
     def create_thumbnail(self):
         if not self.profile_image:
+            logger.info(f"No profile image for user {self.username}")
             return
 
         logger.info(f"Creating thumbnail for user {self.username}")
         try:
-            # Delete old thumbnail if it exists
-            if self.profile_thumbnail:
-                default_storage.delete(self.profile_thumbnail.path)
-
-            img = Image.open(self.profile_image.path)
-            img.thumbnail((32, 32))
-            thumb_name, thumb_extension = os.path.splitext(self.profile_image.name)
-            thumb_extension = thumb_extension.lower()
-            thumb_filename = f"{self.pk}_thumb{thumb_extension}"
-
-            if thumb_extension in ['.jpg', '.jpeg']:
-                FTYPE = 'JPEG'
-            elif thumb_extension == '.gif':
-                FTYPE = 'GIF'
-            elif thumb_extension == '.png':
-                FTYPE = 'PNG'
-            else:
-                logger.warning(f"Unsupported file type: {thumb_extension}")
-                return
-
-            temp_thumb = BytesIO()
-            img.save(temp_thumb, FTYPE)
-            temp_thumb.seek(0)
-
-            self.profile_thumbnail.save(thumb_filename, ContentFile(temp_thumb.read()), save=False)
-            temp_thumb.close()
-
+            img_path = self.profile_image.path
+            logger.info(f"Profile image path: {img_path}")
+            
+            img = Image.open(img_path)
+            img.thumbnail((100, 100))  # Adjust size as needed
+            thumb_io = BytesIO()
+            img.save(thumb_io, format='JPEG')
+            
+            thumb_filename = f'{self.username}_thumb.jpg'
+            thumb_path = os.path.join('profile_thumbnails', thumb_filename)
+            
+            self.profile_thumbnail.save(
+                thumb_path,
+                ContentFile(thumb_io.getvalue()),
+                save=False
+            )
             self.save(update_fields=['profile_thumbnail'])
             logger.info(f"Thumbnail created successfully for user {self.username}")
         except Exception as e:
             logger.error(f"Error creating thumbnail for user {self.username}: {str(e)}")
-
-    # ... (rest of the model remains the same)

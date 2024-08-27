@@ -358,7 +358,7 @@ class SendEmailView(LoginRequiredMixin, FormView):
         if contact_type == 'church':
             context['contact'] = get_object_or_404(Church, id=contact_id)
         else:  # person
-            context['contact'] = get_object_or_404(Contact, id=contact_id)
+            context['contact'] = get_object_or_404(People, id=contact_id)
         return context
 
     def form_valid(self, form):
@@ -377,10 +377,14 @@ class SendEmailView(LoginRequiredMixin, FormView):
             if contact_type == 'church':
                 contact = get_object_or_404(Church, id=contact_id)
             else:  # person
-                contact = get_object_or_404(Contact, id=contact_id)
+                contact = get_object_or_404(People, id=contact_id)
             
             subject = form.cleaned_data['subject']
             body = form.cleaned_data['body']
+            
+            # Add user's email signature if it exists
+            if self.request.user.email_signature:
+                body += f"\n\n{self.request.user.email_signature}"
             
             message = MIMEText(body)
             message['to'] = contact.email
@@ -394,8 +398,8 @@ class SendEmailView(LoginRequiredMixin, FormView):
                 user=self.request.user,
                 content_type=ContentType.objects.get_for_model(contact),
                 object_id=contact.id,
-                interaction_type='Email',  # Make sure this matches one of your choices in the ComLog model
-                communication_type='Email',  # Add this line to set the communication_type
+                interaction_type='Email',
+                communication_type='Email',
                 subject=subject,
                 notes=body,
                 direction='Outgoing'

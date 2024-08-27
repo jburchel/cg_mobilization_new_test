@@ -1,10 +1,12 @@
 import logging
 from django.shortcuts import render, redirect
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from .forms import ProfileImageForm, CustomUserCreationForm
+import os
 
 
 def login_view(request):
@@ -32,12 +34,36 @@ def account_view(request):
     if request.method == 'POST':
         form = ProfileImageForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
             if 'profile_image' in form.changed_data:
                 logger.info(f"Profile image changed for user {user.username}")
-                user.create_thumbnail()
+                if 'profile_image' in request.FILES:
+                    user.profile_image = request.FILES['profile_image']
+                    logger.info(f"New profile image: {user.profile_image.name}")
+                    logger.info(f"File size: {user.profile_image.size} bytes")
+                    
+                    # Check if the file was actually saved
+                    expected_path = os.path.join(settings.MEDIA_ROOT, user.profile_image.name)
+                    if os.path.exists(expected_path):
+                        logger.info(f"File successfully saved at {expected_path}")
+                    else:
+                        logger.error(f"File not found at expected path: {expected_path}")
+                    
+                    # Log the MEDIA_ROOT and MEDIA_URL settings
+                    logger.info(f"MEDIA_ROOT: {settings.MEDIA_ROOT}")
+                    logger.info(f"MEDIA_URL: {settings.MEDIA_URL}")
+                    
+                    user.create_thumbnail()
+                else:
+                    user.profile_image = None
+                    user.profile_thumbnail = None
+                    logger.info("Profile image removed")
+            user.save()
             messages.success(request, 'Profile updated successfully.')
             return redirect('userprofile:account')
+        else:
+            logger.error(f"Form errors: {form.errors}")
+            messages.error(request, 'Error updating profile. Please check the form.')
     else:
         form = ProfileImageForm(instance=request.user)
     

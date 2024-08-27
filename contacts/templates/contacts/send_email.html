@@ -2,32 +2,30 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/email_form.css' %}">
+<link rel="stylesheet" href="{% static 'css/send_email.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="email-form-container">
-  <h1 class="email-form-title">Send Email to {{ contact.name|default:contact.church_name }}</h1>
-  
-  {% if messages %}
-    <ul class="messages">
+    <h2 class="email-form-title">Send Email to {{ contact.name|default:contact.church_name }}</h2>
+
+    {% if messages %}
         {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
         {% endfor %}
-    </ul>
-  {% endif %}
-  
-  <form method="post" class="email-form">
-    {% csrf_token %}
-    <div class="form-group">
-      <label for="{{ form.subject.id_for_label }}">Subject:</label>
-      {{ form.subject }}
-    </div>
-    <div class="form-group">
-      <label for="{{ form.body.id_for_label }}">Message:</label>
-      {{ form.body }}
-    </div>
-    <button type="submit" class="btn-send">Send Email</button>
-  </form>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_subject">Subject:</label>
+            {{ form.subject }}
+        </div>
+        <div class="form-group">
+            <label for="id_body">Message:</label>
+            {{ form.body }}
+        </div>
+        <button type="submit" class="btn-send-email">Send Email</button>
+    </form>
 </div>
 {% endblock %}
