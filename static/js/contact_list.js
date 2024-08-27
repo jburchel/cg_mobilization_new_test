@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td>${contact.name}</td>
+                    <td><a href="${detailUrl}">${contact.name}</a></td>
                     <td>${contact.type}</td>
                     <td>${contact.person_type_display || 'N/A'}</td>
                     <td>${contact.email}</td>
