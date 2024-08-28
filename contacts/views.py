@@ -22,6 +22,8 @@ from django.utils.decorators import method_decorator
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
+from google.auth.transport.requests import Request
+from integrations.google_auth import credentials_to_dict, build_gmail_service
 from email.mime.text import MIMEText
 import base64
 
@@ -361,6 +363,8 @@ def contact_search(request):
 
     return JsonResponse(results, safe=False)
 
+logger = logging.getLogger(__name__)
+
 class SendEmailView(LoginRequiredMixin, FormView):
     template_name = 'contacts/send_email.html'
     form_class = EmailForm
@@ -381,48 +385,67 @@ class SendEmailView(LoginRequiredMixin, FormView):
             self.request.session['email_redirect_url'] = self.request.get_full_path()
             messages.info(self.request, 'Please connect your Google account to send emails.')
             return redirect(reverse('integrations:google_auth'))
-        
+
         credentials = Credentials(**credentials_dict)
+        
+        # Check if credentials are expired and refresh if necessary
+        if credentials.expired and credentials.refresh_token:
+            try:
+                credentials.refresh(Request())
+                # Update the session with refreshed credentials
+                self.request.session['google_credentials'] = credentials_to_dict(credentials)
+            except Exception as e:
+                logger.error(f'Failed to refresh Google credentials: {str(e)}')
+                messages.error(self.request, 'Failed to refresh Google credentials. Please reconnect your account.')
+                return redirect(reverse('integrations:google_auth'))
+
         try:
-            service = build('gmail', 'v1', credentials=credentials)
-            
+            service = build_gmail_service(credentials)
+
             contact_type = self.kwargs['contact_type']
             contact_id = self.kwargs['contact_id']
             if contact_type == 'church':
                 contact = get_object_or_404(Church, id=contact_id)
             else:  # person
                 contact = get_object_or_404(People, id=contact_id)
-            
+
             subject = form.cleaned_data['subject']
             body = form.cleaned_data['body']
-            
+
             # Add user's email signature if it exists
             if self.request.user.email_signature:
                 body += f"\n\n{self.request.user.email_signature}"
-            
+
             message = MIMEText(body)
             message['to'] = contact.email
             message['subject'] = subject
             raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
-            
-            sent_message = service.users().messages().send(userId='me', body={'raw': raw_message}).execute()
-            
-            # Create ComLog entry
-            ComLog.objects.create(
-                user=self.request.user,
-                content_type=ContentType.objects.get_for_model(contact),
-                object_id=contact.id,
-                interaction_type='Email',
-                communication_type='Email',
-                subject=subject,
-                notes=body,
-                direction='Outgoing'
-            )
-            
-            messages.success(self.request, 'Email sent successfully and logged.')
-        except HttpError as error:
-            messages.error(self.request, f'An error occurred: {error}')
-        
+
+            try:
+                sent_message = service.users().messages().send(userId='me', body={'raw': raw_message}).execute()
+                logger.info(f"Email sent successfully. Message ID: {sent_message['id']}")
+
+                # Create ComLog entry
+                ComLog.objects.create(
+                    user=self.request.user,
+                    content_type=ContentType.objects.get_for_model(contact),
+                    object_id=contact.id,
+                    interaction_type='Email',
+                    communication_type='Email',
+                    subject=subject,
+                    notes=body,
+                    direction='Outgoing'
+                )
+                logger.info(f"ComLog entry created for email to {contact_type} {contact_id}")
+
+                messages.success(self.request, 'Email sent successfully and logged.')
+            except HttpError as error:
+                logger.error(f'An error occurred while sending the email: {error}')
+                messages.error(self.request, f'An error occurred while sending the email: {error}')
+        except Exception as e:
+            logger.error(f'An unexpected error occurred: {str(e)}')
+            messages.error(self.request, f'An unexpected error occurred: {str(e)}')
+
         return super().form_valid(form)
 
     def get_success_url(self):
