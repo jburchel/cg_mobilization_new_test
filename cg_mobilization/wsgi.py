@@ -12,7 +12,7 @@ import sys
 from django.core.wsgi import get_wsgi_application
 from whitenoise import WhiteNoise
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cg_mobilization.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cg_mobilization.settings.production')
 
 application = get_wsgi_application()
 

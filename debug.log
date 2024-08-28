@@ -1,0 +1,134 @@
+INFO 2024-08-28 14:13:18,621 autoreload 42652 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:13:49,638 autoreload 42652 8106941504 /Users/jimburchel/cg_mobilization/integrations/views.py changed, reloading.
+INFO 2024-08-28 14:13:50,015 autoreload 42710 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:14:16,710 autoreload 42710 8106941504 /Users/jimburchel/cg_mobilization/integrations/views.py changed, reloading.
+INFO 2024-08-28 14:14:17,128 autoreload 42754 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:14:32,671 autoreload 42811 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:14:39,947 basehttp 42811 6196359168 "GET /contacts/ HTTP/1.1" 200 188139
+WARNING 2024-08-28 14:14:40,554 log 42811 6196359168 Not Found: /favicon.ico
+WARNING 2024-08-28 14:14:40,554 basehttp 42811 6196359168 "GET /favicon.ico HTTP/1.1" 404 179
+INFO 2024-08-28 14:14:44,534 basehttp 42811 6196359168 "GET /contacts/person/707/ HTTP/1.1" 200 5309
+INFO 2024-08-28 14:14:46,363 basehttp 42811 6196359168 "GET /contacts/person/707/send_email/ HTTP/1.1" 200 3077
+INFO 2024-08-28 14:14:52,910 basehttp 42811 6196359168 "POST /contacts/person/707/send_email/ HTTP/1.1" 302 0
+DEBUG 2024-08-28 14:14:53,267 views 42811 6196359168 Initiating Google Auth
+ERROR 2024-08-28 14:14:53,268 log 42811 6196359168 Internal Server Error: /integrations/google/auth/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/jimburchel/cg_mobilization/integrations/views.py", line 15, in google_auth
+    flow = get_flow(request)
+  File "/Users/jimburchel/cg_mobilization/integrations/google_auth.py", line 11, in get_flow
+    redirect_uri = request.build_absolute_uri(reverse('integrations:google_auth_callback'))
+NameError: name 'reverse' is not defined
+ERROR 2024-08-28 14:14:53,270 basehttp 42811 6196359168 "GET /integrations/google/auth/ HTTP/1.1" 500 145
+INFO 2024-08-28 14:16:03,909 autoreload 42811 8106941504 /Users/jimburchel/cg_mobilization/integrations/google_auth.py changed, reloading.
+INFO 2024-08-28 14:16:04,308 autoreload 42984 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:16:40,284 autoreload 42984 8106941504 /Users/jimburchel/cg_mobilization/integrations/views.py changed, reloading.
+INFO 2024-08-28 14:16:40,694 autoreload 43059 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:16:55,432 autoreload 43092 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:17:00,192 basehttp 43092 6159314944 "GET /contacts/person/707/send_email/ HTTP/1.1" 200 3199
+INFO 2024-08-28 14:17:02,937 basehttp 43092 6159314944 "GET /contacts/person/707/ HTTP/1.1" 200 5309
+INFO 2024-08-28 14:17:04,865 basehttp 43092 6159314944 "GET /contacts/person/707/ HTTP/1.1" 200 5309
+INFO 2024-08-28 14:17:04,969 basehttp 43092 6192967680 "GET /static/css/person_detail.103fe1acb616.css HTTP/1.1" 200 831
+INFO 2024-08-28 14:17:04,970 basehttp 43092 6176141312 "GET /static/images/default_thumbnail.05288e376800.png HTTP/1.1" 200 15427
+INFO 2024-08-28 14:17:04,971 basehttp 43092 6159314944 "GET /static/images/default_person.39ca80b9711d.png HTTP/1.1" 200 3101
+INFO 2024-08-28 14:17:04,971 basehttp 43092 6209794048 "GET /static/css/main.4c6c2fe68f6f.css HTTP/1.1" 200 759
+INFO 2024-08-28 14:17:04,992 basehttp 43092 6209794048 "GET /static/js/navbar.45e5e80e7b25.js HTTP/1.1" 200 333
+WARNING 2024-08-28 14:17:05,099 log 43092 6209794048 Not Found: /favicon.ico
+WARNING 2024-08-28 14:17:05,100 basehttp 43092 6209794048 "GET /favicon.ico HTTP/1.1" 404 179
+INFO 2024-08-28 14:17:06,881 basehttp 43092 6209794048 "GET /contacts/person/707/send_email/ HTTP/1.1" 200 3077
+INFO 2024-08-28 14:17:13,206 basehttp 43092 6158741504 "POST /contacts/person/707/send_email/ HTTP/1.1" 302 0
+DEBUG 2024-08-28 14:17:13,565 views 43092 6158741504 Initiating Google Auth
+DEBUG 2024-08-28 14:17:13,566 views 43092 6158741504 Authorization URL: https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=877634291388-70aa4mv47pomvt76r6jvlqkeaku1h2m8.apps.googleusercontent.com&redirect_uri=http%3A%2F%2F127.0.0.1%3A8000%2Fintegrations%2Fgoogle%2Fauth%2Fcallback%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.modify&state=zTyoXbxLUH2QZaY0kzun56gX7G0ZBK&access_type=offline&include_granted_scopes=true
+DEBUG 2024-08-28 14:17:13,567 views 43092 6158741504 State: zTyoXbxLUH2QZaY0kzun56gX7G0ZBK
+DEBUG 2024-08-28 14:17:13,567 views 43092 6158741504 Redirect URL set to: /contacts/
+INFO 2024-08-28 14:17:13,663 basehttp 43092 6158741504 "GET /integrations/google/auth/ HTTP/1.1" 302 0
+INFO 2024-08-28 14:20:43,215 autoreload 43092 8106941504 /Users/jimburchel/cg_mobilization/cg_mobilization/settings.py changed, reloading.
+INFO 2024-08-28 14:20:43,777 autoreload 43458 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:22:54,988 autoreload 43458 8106941504 /Users/jimburchel/cg_mobilization/integrations/google_auth.py changed, reloading.
+INFO 2024-08-28 14:22:55,474 autoreload 43694 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:24:02,474 autoreload 43694 8106941504 /Users/jimburchel/cg_mobilization/integrations/views.py changed, reloading.
+INFO 2024-08-28 14:24:02,875 autoreload 43791 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:24:26,727 autoreload 43791 8106941504 /Users/jimburchel/cg_mobilization/integrations/views.py changed, reloading.
+INFO 2024-08-28 14:24:27,113 autoreload 43833 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:24:48,034 basehttp 43833 6163886080 "GET /contacts/person/707/send_email/ HTTP/1.1" 200 3199
+INFO 2024-08-28 14:25:04,687 basehttp 43833 6163886080 "GET /contacts/person/707/send_email/ HTTP/1.1" 200 3077
+WARNING 2024-08-28 14:25:05,033 log 43833 6163886080 Not Found: /favicon.ico
+WARNING 2024-08-28 14:25:05,035 basehttp 43833 6163886080 "GET /favicon.ico HTTP/1.1" 404 179
+INFO 2024-08-28 14:26:01,417 autoreload 43833 8106941504 /Users/jimburchel/cg_mobilization/cg_mobilization/settings.py changed, reloading.
+INFO 2024-08-28 14:26:01,830 autoreload 44026 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:26:14,813 basehttp 44026 6135345152 "GET /contacts/person/707/send_email/ HTTP/1.1" 200 3077
+INFO 2024-08-28 14:26:19,238 basehttp 44026 6135345152 "GET /contacts/person/707/ HTTP/1.1" 200 5309
+INFO 2024-08-28 14:26:21,377 basehttp 44026 6135345152 "GET /contacts/person/707/ HTTP/1.1" 200 5309
+INFO 2024-08-28 14:26:21,417 basehttp 44026 6135345152 "GET /static/css/person_detail.103fe1acb616.css HTTP/1.1" 200 831
+INFO 2024-08-28 14:26:21,431 basehttp 44026 6135345152 "GET /static/css/main.4c6c2fe68f6f.css HTTP/1.1" 200 759
+INFO 2024-08-28 14:26:21,432 basehttp 44026 6168997888 "GET /static/images/default_person.39ca80b9711d.png HTTP/1.1" 200 3101
+INFO 2024-08-28 14:26:21,432 basehttp 44026 6152171520 "GET /static/images/default_thumbnail.05288e376800.png HTTP/1.1" 200 15427
+INFO 2024-08-28 14:26:21,456 basehttp 44026 6152171520 "GET /static/js/navbar.45e5e80e7b25.js HTTP/1.1" 200 333
+WARNING 2024-08-28 14:26:21,584 log 44026 6152171520 Not Found: /favicon.ico
+WARNING 2024-08-28 14:26:21,585 basehttp 44026 6152171520 "GET /favicon.ico HTTP/1.1" 404 179
+INFO 2024-08-28 14:26:23,278 basehttp 44026 6152171520 "GET /contacts/person/707/send_email/ HTTP/1.1" 200 3077
+INFO 2024-08-28 14:26:29,233 basehttp 44026 6135345152 "POST /contacts/person/707/send_email/ HTTP/1.1" 302 0
+DEBUG 2024-08-28 14:26:29,585 views 44026 6135345152 Initiating Google Auth
+ERROR 2024-08-28 14:26:29,587 log 44026 6135345152 Internal Server Error: /integrations/google/auth/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/jimburchel/cg_mobilization/integrations/views.py", line 16, in google_auth
+    flow = get_flow(request)
+  File "/Users/jimburchel/cg_mobilization/integrations/google_auth.py", line 15, in get_flow
+    redirect_uri=settings.GOOGLE_REDIRECT_URI
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/conf/__init__.py", line 91, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'GOOGLE_REDIRECT_URI'
+ERROR 2024-08-28 14:26:29,592 basehttp 44026 6135345152 "GET /integrations/google/auth/ HTTP/1.1" 500 145
+INFO 2024-08-28 14:26:49,281 autoreload 44026 8106941504 /Users/jimburchel/cg_mobilization/cg_mobilization/settings.py changed, reloading.
+INFO 2024-08-28 14:26:49,724 autoreload 44109 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:26:57,111 autoreload 44109 8106941504 /Users/jimburchel/cg_mobilization/cg_mobilization/settings.py changed, reloading.
+INFO 2024-08-28 14:26:57,610 autoreload 44129 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:27:01,383 autoreload 44142 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:27:04,724 basehttp 44142 6191312896 "GET /contacts/person/707/send_email/ HTTP/1.1" 200 3199
+INFO 2024-08-28 14:27:07,243 basehttp 44142 6191312896 "POST /contacts/person/707/send_email/ HTTP/1.1" 302 0
+DEBUG 2024-08-28 14:27:07,594 views 44142 6191312896 Initiating Google Auth
+ERROR 2024-08-28 14:27:07,595 log 44142 6191312896 Internal Server Error: /integrations/google/auth/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/jimburchel/cg_mobilization/integrations/views.py", line 16, in google_auth
+    flow = get_flow(request)
+  File "/Users/jimburchel/cg_mobilization/integrations/google_auth.py", line 15, in get_flow
+    redirect_uri=settings.GOOGLE_REDIRECT_URI
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/conf/__init__.py", line 91, in __getattr__
+    val = getattr(_wrapped, name)
+AttributeError: 'Settings' object has no attribute 'GOOGLE_REDIRECT_URI'
+ERROR 2024-08-28 14:27:07,597 basehttp 44142 6191312896 "GET /integrations/google/auth/ HTTP/1.1" 500 145
+INFO 2024-08-28 14:28:09,466 autoreload 44142 8106941504 /Users/jimburchel/cg_mobilization/cg_mobilization/settings.py changed, reloading.
+INFO 2024-08-28 14:28:09,955 autoreload 44247 8106941504 Watching for file changes with StatReloader
+INFO 2024-08-28 14:28:13,501 basehttp 44247 6191329280 "GET /contacts/person/707/send_email/ HTTP/1.1" 200 3199
+INFO 2024-08-28 14:28:16,286 basehttp 44247 6190755840 "GET /contacts/person/707/send_email/ HTTP/1.1" 200 3077
+INFO 2024-08-28 14:28:19,029 basehttp 44247 6190755840 "GET /contacts/person/707/send_email/ HTTP/1.1" 200 3077
+INFO 2024-08-28 14:28:19,071 basehttp 44247 6190755840 "GET /static/css/send_email.25e7edf19ad4.css HTTP/1.1" 200 353
+INFO 2024-08-28 14:28:19,087 basehttp 44247 6190755840 "GET /static/images/default_thumbnail.05288e376800.png HTTP/1.1" 200 15427
+INFO 2024-08-28 14:28:19,088 basehttp 44247 6207582208 "GET /static/css/main.4c6c2fe68f6f.css HTTP/1.1" 200 759
+INFO 2024-08-28 14:28:19,088 basehttp 44247 6224408576 "GET /static/js/navbar.45e5e80e7b25.js HTTP/1.1" 200 333
+WARNING 2024-08-28 14:28:19,215 log 44247 6224408576 Not Found: /favicon.ico
+WARNING 2024-08-28 14:28:19,216 basehttp 44247 6224408576 "GET /favicon.ico HTTP/1.1" 404 179
+INFO 2024-08-28 14:28:25,430 basehttp 44247 6190755840 "POST /contacts/person/707/send_email/ HTTP/1.1" 302 0
+DEBUG 2024-08-28 14:28:25,795 views 44247 6190755840 Initiating Google Auth
+DEBUG 2024-08-28 14:28:25,796 views 44247 6190755840 Authorization URL: https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=877634291388-70aa4mv47pomvt76r6jvlqkeaku1h2m8.apps.googleusercontent.com&redirect_uri=%28%27https%3A%2F%2Fmobilize.onrender.com%2Fintegrations%2Fgoogle%2Fauth%2Fcallback%2F%27%2C+%27http%3A%2F%2Flocalhost%3A8000%2Fintegrations%2Fgoogle%2Fauth%2Fcallback%2F%27%29&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.modify&state=fv2SqlOSNpNXT90hQFn4qBZcs1RCYU&access_type=offline&include_granted_scopes=true
+DEBUG 2024-08-28 14:28:25,797 views 44247 6190755840 State: fv2SqlOSNpNXT90hQFn4qBZcs1RCYU
+DEBUG 2024-08-28 14:28:25,797 views 44247 6190755840 Redirect URL set to: /contacts/
+INFO 2024-08-28 14:28:25,887 basehttp 44247 6190755840 "GET /integrations/google/auth/ HTTP/1.1" 302 0
+INFO 2024-08-28 14:30:35,834 autoreload 44247 8106941504 /Users/jimburchel/cg_mobilization/cg_mobilization/settings.py changed, reloading.
