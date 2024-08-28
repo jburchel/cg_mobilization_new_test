@@ -51,7 +51,7 @@
                         {% if contact.church %}
                             <a href="{% url 'contacts:church_edit' contact.church.id %}" class="btn btn-sm btn-warning">Edit</a>
                         {% elif contact.people %}
-                            <a href="{% url 'contacts:person_edit' contact.people.id %}" class="btn btn-sm btn-warning">Edit</a>
+                            <a href="{% url 'contacts:person_edit' contact.people.id %}" class="btn btn-sm btn-warning  ">Edit</a>
                         {% endif %}
                     </td>
                 </tr>

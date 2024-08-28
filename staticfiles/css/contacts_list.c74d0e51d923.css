@@ -18,8 +18,7 @@
 /* Table styles */
 .table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
+    margin-bottom: 1rem;    
 }
 
 .table th,
@@ -32,40 +31,19 @@
 
 .table thead th {
     vertical-align: bottom;
-    border: none;
+    border-bottom: 2px solid var(--border-color);
     background-color: var(--primary-blue);
-    color: var(--primary-white) !important;
-}
-
-.table thead th + th {
-    padding-left: 0;
-}
-
-.table thead th:first-child {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    padding-left: 1rem; /* Add some padding on the left side */
+    color: --primary-white !important;
 }
 
 .table tbody + tbody {
     border-top: 2px solid var(--border-color);
 }
 
-.table tbody {
-    margin-top: 5px; /* Adjust as needed */
-}
-
 /* Ensure the last column (Edit button) is center-aligned */
 .table th:last-child,
 .table td:last-child {
-    text-align: right !important;
-    
-}
-
-.table thead th:last-child {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding-right: 1rem; /* Add some padding on the right side */
+    text-align: right;
 }
 
 /* Button styles */
@@ -226,10 +204,3 @@ a:hover {
 h1, h2, h3, h4, h5, h6 {
     color: var(--primary-blue);
 }
-
-.table th:nth-child(1), .table td:nth-child(1) { width: 25%; }
-.table th:nth-child(2), .table td:nth-child(2) { width: 10%; }
-.table th:nth-child(3), .table td:nth-child(3) { width: 30%; }
-.table th:nth-child(4), .table td:nth-child(4) { width: 15%; }
-.table th:nth-child(5), .table td:nth-child(5) { width: 15%; }
-.table th:nth-child(6), .table td:nth-child(6) { width: 5%; }
