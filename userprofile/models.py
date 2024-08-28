@@ -17,6 +17,24 @@ class CustomUser(AbstractUser):
     profile_thumbnail = models.ImageField(upload_to='profile_thumbnails/', null=True, blank=True)
     email_signature = models.TextField(blank=True, null=True)
 
+    # Add related_name to avoid clashes
+    groups = models.ManyToManyField(
+        'auth.Group',
+        verbose_name='groups',
+        blank=True,
+        help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
+        related_name='customuser_set',
+        related_query_name='customuser',
+    )
+    user_permissions = models.ManyToManyField(
+        'auth.Permission',
+        verbose_name='user permissions',
+        blank=True,
+        help_text='Specific permissions for this user.',
+        related_name='customuser_set',
+        related_query_name='customuser',
+    )
+    
     def save(self, *args, **kwargs):
         is_new = self.pk is None
         old_image = None if is_new else CustomUser.objects.get(pk=self.pk).profile_image

@@ -22,7 +22,8 @@ from core.views import home
 import os
 
 # Ensure MEDIA_ROOT exists
-os.makedirs(settings.MEDIA_ROOT, exist_ok=True)
+if settings.MEDIA_ROOT:
+    os.makedirs(settings.MEDIA_ROOT, exist_ok=True)
 
 urlpatterns = [
     path('', home, name='home'),
