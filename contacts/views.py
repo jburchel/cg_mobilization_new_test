@@ -16,6 +16,8 @@ from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 import json
 from django.core.serializers.json import DjangoJSONEncoder
+from email.mime.multipart import MIMEMultipart
+from email.mime.image import MIMEImage
 import logging
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -26,6 +28,8 @@ from google.auth.transport.requests import Request
 from integrations.google_auth import credentials_to_dict, build_gmail_service
 from email.mime.text import MIMEText
 import base64
+import os
+from django.conf import settings
 
 
 logger = logging.getLogger(__name__)
@@ -412,13 +416,38 @@ class SendEmailView(LoginRequiredMixin, FormView):
             subject = form.cleaned_data['subject']
             body = form.cleaned_data['body']
 
-            # Add user's email signature if it exists
-            if self.request.user.email_signature:
-                body += f"\n\n{self.request.user.email_signature}"
-
-            message = MIMEText(body)
+            # Create the email message
+            message = MIMEMultipart()
             message['to'] = contact.email
             message['subject'] = subject
+
+            # Create HTML content with signature
+            html_content = f"""
+            <html>
+            <body>
+                {body}
+                <br><br>
+                <div style="border-top: 1px solid #ccc; padding-top: 10px;">
+                    {'<img src="cid:signature_logo" alt="Signature Logo" style="max-width: 200px; max-height: 100px;">' if self.request.user.signature_logo else ''}
+                    {self.request.user.email_signature or ''}
+                </div>
+            </body>
+            </html>
+            """
+            
+            # Attach the HTML content
+            message.attach(MIMEText(html_content, 'html'))
+
+            # If the user has a signature logo, attach it to the email
+            if self.request.user.signature_logo:
+                logo_path = os.path.join(settings.MEDIA_ROOT, self.request.user.signature_logo.name)
+                with open(logo_path, 'rb') as logo_file:
+                    logo_content = logo_file.read()
+                logo_image = MIMEImage(logo_content)
+                logo_image.add_header('Content-ID', '<signature_logo>')
+                message.attach(logo_image)
+
+            # Encode the entire message
             raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
 
             try:

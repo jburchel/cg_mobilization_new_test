@@ -16,6 +16,7 @@ class CustomUser(AbstractUser):
     profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
     profile_thumbnail = models.ImageField(upload_to='profile_thumbnails/', null=True, blank=True)
     email_signature = models.TextField(blank=True, null=True)
+    signature_logo = models.ImageField(upload_to='signature_logos/', null=True, blank=True)
 
     # Add related_name to avoid clashes
     groups = models.ManyToManyField(
@@ -71,3 +72,25 @@ class CustomUser(AbstractUser):
             logger.info(f"Thumbnail created successfully for user {self.username}")
         except Exception as e:
             logger.error(f"Error creating thumbnail for user {self.username}: {str(e)}")
+            
+    def create_signature_logo_thumbnail(self):
+        if not self.signature_logo:
+            return
+
+        try:
+            img = Image.open(self.signature_logo.path)
+            img.thumbnail((200, 100))  # Adjust size as needed for email signatures
+            thumb_io = BytesIO()
+            img.save(thumb_io, format='PNG')
+            
+            thumb_filename = f'{self.username}_signature_logo_thumb.png'
+            thumb_path = os.path.join('signature_logos', thumb_filename)
+
+            self.signature_logo.save(
+                thumb_path,
+                ContentFile(thumb_io.getvalue()),
+                save=False
+            )
+            self.save(update_fields=['signature_logo'])
+        except Exception as e:
+            logger.error(f"Error creating signature logo thumbnail for user {self.username}: {str(e)}")

@@ -1,30 +1,31 @@
 {% extends 'core/base.html' %}
 {% load static %}
-
 {% block content %}
 <div class="userprofile-container">
     <div class="account-container">
         <h1>Your Account</h1>
-
         <div class="account-info">
             {% if user.profile_image %}
                 <img src="{{ user.profile_image.url }}" alt="Profile Image" class="profile-image">
             {% else %}
                 <img src="{% static 'images/default_profile.png' %}" alt="Default Profile Image" class="profile-image">
             {% endif %}
-
             <p><strong>Username:</strong> {{ user.username }}</p>
             <p><strong>Email:</strong> {{ user.email }}</p>
             <p><strong>First Name:</strong> {{ user.first_name }}</p>
             <p><strong>Last Name:</strong> {{ user.last_name }}</p>
         </div>
-
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="btn btn-primary">Update Profile</button>
         </form>
-
+        {% if user.signature_logo %}
+            <div class="signature-logo">
+                <h3>Current Signature Logo</h3>
+                <img src="{{ user.signature_logo.url }}" alt="Signature Logo" style="max-width: 200px; max-height: 100px;">
+            </div>
+        {% endif %}
         {% if messages %}
             <div class="messages">
                 {% for message in messages %}
@@ -32,7 +33,6 @@
                 {% endfor %}
             </div>
         {% endif %}
-
         <div class="account-actions">
             <a href="{% url 'userprofile:password_reset' %}" class="btn btn-primary">Change Password</a>
             <a href="{% url 'userprofile:logout' %}" class="btn btn-secondary">Logout</a>

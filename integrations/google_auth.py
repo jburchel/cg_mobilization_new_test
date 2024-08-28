@@ -10,7 +10,7 @@ SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
 def get_flow():
     return Flow.from_client_config(
         client_config=settings.GOOGLE_CLIENT_CONFIG,
-        scopes=SCOPES,
+        scopes=['https://www.googleapis.com/auth/gmail.modify'],
         redirect_uri=settings.GOOGLE_REDIRECT_URI
     )
 

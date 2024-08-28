@@ -6,10 +6,11 @@ from .models import CustomUser
 class ProfileImageForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['profile_image', 'email_signature']
+        fields = ['profile_image', 'email_signature','signature_logo']
         widgets = {
             'profile_image': forms.FileInput(attrs={'accept': 'image/*'}),
             'email_signature': forms.Textarea(attrs={'rows': 4, 'class': 'form-control'}),
+            'signature_logo': forms.FileInput(attrs={'accept': 'image/*'}),
         }
         
 class CustomUserCreationForm(UserCreationForm):

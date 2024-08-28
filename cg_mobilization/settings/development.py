@@ -14,7 +14,7 @@ DATABASES = {
 # Development-specific Google OAuth settings
 GOOGLE_CLIENT_CONFIG = {
     "web": {
-        "client_id": "47896425604-ggcf0g4vboomcg0g78tir7o8d0j7i9qn.apps.googleusercontent.com.apps.googleusercontent.com",
+        "client_id": "47896425604-ggcf0g4vboomcg0g78tir7o8d0j7i9qn.apps.googleusercontent.com",
         "project_id": "mobilize-crm-dev",
         "auth_uri": "https://accounts.google.com/o/oauth2/auth",
         "token_uri": "https://oauth2.googleapis.com/token",
