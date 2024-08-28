@@ -186,7 +186,10 @@ GOOGLE_CLIENT_CONFIG = {
         "token_uri": "https://oauth2.googleapis.com/token",
         "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
         "client_secret": "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",
+        "redirect_uris": ["http://localhost:8000/integrations/google/auth/callback/",
+                          "https://mobilize.onrender.com/integrations/google/auth/callback/"]
     }
 }
 
-GOOGLE_REDIRECT_URI = "http://localhost:8000/integrations/google/auth/callback/"
+GOOGLE_REDIRECT_URI = "http://localhost:8000/integrations/google/auth/callback/","https://mobilize.onrender.com/integrations/google/auth/callback/"
+
