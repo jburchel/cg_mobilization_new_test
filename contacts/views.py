@@ -322,7 +322,7 @@ class PersonUpdateView(UpdateView, LoginRequiredMixin):
         return context
 
     def get_success_url(self):
-        return reverse_lazy('contacts:contact_list', kwargs={'pk': self.object.pk})
+        return reverse_lazy('contacts:person_detail', kwargs={'pk': self.object.pk})
     
 @method_decorator(login_required, name='dispatch')    
 class PersonDetailView(DetailView, LoginRequiredMixin):
