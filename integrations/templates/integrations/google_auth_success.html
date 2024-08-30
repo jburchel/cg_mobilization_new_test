@@ -1,0 +1,9 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Google Authentication Successful</h2>
+    <p>You have successfully authenticated with Google. You can now use Google services in the application.</p>
+    <a href="{% url 'contacts:contact_list' %}" class="btn btn-primary">Return to Contacts</a>
+</div>
+{% endblock %}

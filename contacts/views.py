@@ -378,12 +378,35 @@ class SendEmailView(LoginRequiredMixin, FormView):
         context = super().get_context_data(**kwargs)
         contact_type = self.kwargs['contact_type']
         contact_id = self.kwargs['contact_id']
+        
         if contact_type == 'church':
-            context['contact'] = get_object_or_404(Church, id=contact_id)
-        else:  # person
-            context['contact'] = get_object_or_404(People, id=contact_id)
-        return context
+            church = get_object_or_404(Church, id=contact_id)
+            context['contact'] = church
+            context['church_name'] = church.church_name
 
+            # Determine the specific person we're sending to
+            if church.primary_contact_first_name and church.primary_contact_last_name:
+                contact_name = f"{church.primary_contact_first_name} {church.primary_contact_last_name}"
+                context['contact_role'] = "Primary Contact"
+            elif church.senior_pastor_first_name and church.senior_pastor_last_name:
+                contact_name = f"{church.senior_pastor_first_name} {church.senior_pastor_last_name}"
+                context['contact_role'] = "Senior Pastor"
+            elif church.missions_pastor_first_name and church.missions_pastor_last_name:
+                contact_name = f"{church.missions_pastor_first_name} {church.missions_pastor_last_name}"
+                context['contact_role'] = "Missions Pastor"
+            else:
+                contact_name = "Church Representative"
+                context['contact_role'] = "Representative"
+
+            context['contact_name'] = contact_name
+
+        else:  # person
+            person = get_object_or_404(People, id=contact_id)
+            context['contact'] = person
+            context['contact_name'] = f"{person.first_name} {person.last_name}"
+
+        return context
+    
     def form_valid(self, form):
         credentials_dict = self.request.session.get('google_credentials')
         if not credentials_dict:

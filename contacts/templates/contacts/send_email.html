@@ -7,25 +7,50 @@
 
 {% block content %}
 <div class="email-form-container">
-    <h2 class="email-form-title">Send Email to {{ contact.name|default:contact.church_name }}</h2>
+    {% if contact_role %}
+        <h2 class="email-form-title">Send Email to {{ contact_name }}</h2>
+        <p class="email-recipient-info">{{ contact_role }} of {{ church_name }}</p>
+    {% else %}
+        <h2 class="email-form-title">Send Email to {{ contact_name }}</h2>
+    {% endif %}
 
     {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
         {% endfor %}
     {% endif %}
 
-    <form method="post">
+    <form method="post" class="email-form">
         {% csrf_token %}
+        
         <div class="form-group">
-            <label for="id_subject">Subject:</label>
+            <label for="{{ form.subject.id_for_label }}">Subject:</label>
             {{ form.subject }}
         </div>
+
         <div class="form-group">
-            <label for="id_body">Message:</label>
+            <label for="{{ form.body.id_for_label }}">Message:</label>
             {{ form.body }}
         </div>
-        <button type="submit" class="btn-send-email">Send Email</button>
+
+        <div class="email-preview">
+            <h3>Email Preview:</h3>
+            <div id="email-body-preview"></div>
+            <div id="email-signature-preview">
+                {{ request.user.email_signature|linebreaks }}
+            </div>
+            <div class="company-logo">
+                <img src="{% static 'images/company_logo.png' %}" alt="Company Logo" style="max-width: 200px;">
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Send Email</button>
     </form>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/email_preview.js' %}"></script>
 {% endblock %}
