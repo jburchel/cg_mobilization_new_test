@@ -213,7 +213,8 @@ class ChurchUpdateView(UpdateView, LoginRequiredMixin):
     template_name = 'contacts/edit_contact.html'
     
     def form_valid(self, form):
-        response = super().form_valid(form)            
+        response = super().form_valid(form)
+        messages.success(self.request, f'Church "{self.object.church_name}" has been updated successfully.')
         return response
     
     def get_context_data(self, **kwargs):
@@ -222,7 +223,7 @@ class ChurchUpdateView(UpdateView, LoginRequiredMixin):
         return context
 
     def get_success_url(self):
-        return reverse_lazy('contacts:contact_list', kwargs={'pk': self.object.pk})
+        return reverse_lazy('contacts:contact_list')
     
 @method_decorator(login_required, name='dispatch')
 class PeopleListView(ListView, LoginRequiredMixin):
