@@ -428,7 +428,6 @@ class SendEmailView(LoginRequiredMixin, FormView):
                 {body}
                 <br><br>
                 <div style="border-top: 1px solid #ccc; padding-top: 10px;">
-                    {'<img src="cid:signature_logo" alt="Signature Logo" style="max-width: 200px; max-height: 100px;">' if self.request.user.signature_logo else ''}
                     {self.request.user.email_signature or ''}
                 </div>
             </body>
@@ -437,15 +436,6 @@ class SendEmailView(LoginRequiredMixin, FormView):
             
             # Attach the HTML content
             message.attach(MIMEText(html_content, 'html'))
-
-            # If the user has a signature logo, attach it to the email
-            if self.request.user.signature_logo:
-                logo_path = os.path.join(settings.MEDIA_ROOT, self.request.user.signature_logo.name)
-                with open(logo_path, 'rb') as logo_file:
-                    logo_content = logo_file.read()
-                logo_image = MIMEImage(logo_content)
-                logo_image.add_header('Content-ID', '<signature_logo>')
-                message.attach(logo_image)
 
             # Encode the entire message
             raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()

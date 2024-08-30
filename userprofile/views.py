@@ -59,14 +59,7 @@ def account_view(request):
                     user.profile_thumbnail = None
                     logger.info("Profile image removed")
             user.save()
-            if 'signature_logo' in form.changed_data:
-                if 'signature_logo' in request.FILES:
-                    user.signature_logo = request.FILES['signature_logo']
-                    user.create_signature_logo_thumbnail()
-                else:
-                    user.signature_logo = None
-
-            user.save()
+            
             messages.success(request, 'Profile updated successfully.')
             return redirect('userprofile:account')
         else:
