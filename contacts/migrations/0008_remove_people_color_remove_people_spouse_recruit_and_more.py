@@ -9,15 +9,7 @@ class Migration(migrations.Migration):
         ('contacts', '0007_people_person_type'),
     ]
 
-    operations = [
-        migrations.RemoveField(
-            model_name='people',
-            name='color',
-        ),
-        migrations.RemoveField(
-            model_name='people',
-            name='spouse_recruit',
-        ),
+    operations = [        
         migrations.AddField(
             model_name='people',
             name='spouse_first_name',

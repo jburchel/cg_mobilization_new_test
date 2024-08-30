@@ -12,29 +12,16 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='people',
-            name='person_type',
+            name='',
             field=models.CharField(blank=True, choices=[('Student PR', 'Student PR'), ('Student', 'Student'), ('Webform', 'Webform'), ('Church PR', 'Church PR'), ('Couple PR', 'Couple PR'), ('Denied', 'Denied'), ('Intern', 'Intern')], max_length=100, null=True),
         ),
-        migrations.AddField(
-            model_name='people',
-            name='spouse_first_name',
-            field=models.CharField(blank=True, max_length=100, null=True),
-        ),
-        migrations.AddField(
-            model_name='people',
-            name='spouse_last_name',
-            field=models.CharField(blank=True, max_length=100, null=True),
-        ),
+        
         migrations.AlterField(
             model_name='church',
             name='church_pipeline',
             field=models.CharField(choices=[('COLD', 'COLD'), ('WARM', 'WARM'), ('CONTACTED', 'CONTACTED'), ('MISSION VISION', 'MISSION VISION'), ('COMMITTED', 'COMMITTED'), ('EN42', 'EN42'), ('AUTOMATED', 'AUTOMATED')], default='UNKNOWN', max_length=100),
         ),
-        migrations.AlterField(
-            model_name='people',
-            name='color',
-            field=models.CharField(blank=True, max_length=10, null=True),
-        ),
+        
         migrations.AlterField(
             model_name='people',
             name='marital_status',

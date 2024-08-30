@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='people',
-            name='person_type',
+            name='',
             field=models.CharField(blank=True, choices=[('Student PR', 'Student PR'), ('Student', 'Student'), ('Webform', 'Webform'), ('Church PR', 'Church PR'), ('Couple PR', 'Couple PR'), ('Denied', 'Denied'), ('Intern', 'Intern')], max_length=100, null=True),
         ),
     ]

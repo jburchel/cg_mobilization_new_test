@@ -47,22 +47,13 @@ class ContactListView(ListView):
         contacts_data = []
         
         for contact in context['contacts']:
-            if hasattr(contact, 'people'):
-                person_type = contact.people.person_type
-                person_type_display = contact.people.person_type_display
-            else:
-                person_type = ''
-                person_type_display = ''
-
             contact_dict = {
                 'id': contact.id,
                 'name': contact.get_name(),
                 'type': 'Person' if hasattr(contact, 'people') else 'Church',
                 'email': contact.email,
                 'phone': contact.phone,
-                'last_contact': contact.date_modified.strftime('%Y-%m-%d') if contact.date_modified else '',
-                'person_type': person_type,
-                'person_type_display': person_type_display
+                'last_contact': contact.date_modified.strftime('%Y-%m-%d') if contact.date_modified else '',                
             }
             contacts_data.append(contact_dict)
         

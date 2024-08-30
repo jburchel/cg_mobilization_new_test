@@ -7,7 +7,7 @@ class PeopleForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'email', 'phone', 'preferred_contact_method',
                   'street_address', 'city', 'state', 'zip_code', 'home_country',
                   'affiliated_church', 'marital_status', 'spouse_first_name', 'spouse_last_name',
-                  'people_pipeline','person_type','priority', 'assigned_to', 'source', 'referred_by','image',
+                  'people_pipeline','priority', 'assigned_to', 'source', 'referred_by','image',
                   'initial_notes', 'info_given', 'desired_service',                                  
                   ]
         
@@ -33,10 +33,6 @@ class ChurchForm(forms.ModelForm):
             'initial_notes': forms.Textarea(attrs={'rows': 4}),
             'info_given': forms.Textarea(attrs={'rows': 4}),
         }
-
-# contacts/forms.py
-
-from django import forms
 
 class EmailForm(forms.Form):
     subject = forms.CharField(

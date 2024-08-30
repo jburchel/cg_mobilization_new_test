@@ -134,33 +134,24 @@ class People(Contact):
         ('CIU', 'CIU'), ('CHURCH', 'CHURCH'), ('OTHER', 'OTHER'),
     )  
     
-    PERSON_TYPE_CHOICES = (
-        ('Student PR','Student PR'), ('Student','Student'), ('Webform','Webform'),
-        ('Church PR','Church PR'), ('Couple PR','Couple PR'), ('Denied','Denied'),
-        ('Intern','Intern'), 
-    )  
-    
     affiliated_church = models.ForeignKey(Church, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Affiliated Church")
     spouse_first_name = models.CharField(max_length=100, null=True, blank=True)
     spouse_last_name = models.CharField(max_length=100, null=True, blank=True)
     virtuous = models.BooleanField(default=False)
-    title = models.CharField(max_length=100, null=True, blank=True)
+    title = models.CharField(max_length=100, null=True, blank=True)    
     home_country = models.CharField(max_length=100, null=True, blank=True)
+    color= models.CharField(max_length=10, null=True, blank=True)
     marital_status = models.CharField(max_length=100, choices=MARITAL_STATUS, null=True, blank=True)
     people_pipeline = models.CharField(max_length=100, choices=PEOPLE_PIPELINE, null=True, blank=True)    
     priority = models.CharField(max_length=100, choices=PRIORITY, null=True, blank=True)
     assigned_to = models.CharField(max_length=100, choices=ASSIGNED_TO, null=True, blank=True)
+    color = models.CharField(max_length=50, null=True, blank=True)
     source = models.CharField(max_length=100, choices=SOURCE, null=True, blank=True)
-    referred_by = models.CharField(max_length=100, null=True, blank=True)
-    person_type = models.CharField(max_length=100, choices=PERSON_TYPE_CHOICES, null=True, blank=True)
+    referred_by = models.CharField(max_length=100, null=True, blank=True)    
     info_given = models.TextField(null=True, blank=True)
     desired_service = models.TextField(null=True, blank=True)
     reason_closed = models.TextField(null=True, blank=True)
     date_closed = models.DateField(null=True, blank=True)
-    
-    @property
-    def person_type_display(self):
-        return dict(self.PERSON_TYPE_CHOICES).get(self.person_type, '')
     
     def __str__(self):
         return f"{self.first_name} {self.last_name}".strip() or "Unnamed Person"

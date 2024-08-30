@@ -31,8 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td><a href="${detailUrl}">${contact.name}</a></td>
-                    <td>${contact.type}</td>
-                    <td>${contact.person_type_display || 'N/A'}</td>
+                    <td>${contact.type}</td>                    
                     <td>${contact.email}</td>
                     <td>${contact.phone}</td>
                     <td>${contact.last_contact}</td>                   
@@ -57,9 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 contact.type,
                 contact.email,
                 contact.phone,
-                contact.last_contact,
-                contact.person_type,
-                contact.person_type_display,
+                contact.last_contact,                
             ];
             return searchFields.some(field => 
                 field && field.toLowerCase().includes(searchTerm.toLowerCase())

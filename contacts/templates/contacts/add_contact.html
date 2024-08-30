@@ -168,7 +168,7 @@
             <h2 class="form-section-title">Family Information</h2>
             <div class="form-grid">
                 {% for field in form %}
-                    {% if field.name in 'marital_status,spouse_recruit' %}
+                    {% if field.name in 'marital_status %}
                         <div class="form-group">
                             {{ field.label_tag }}
                             {{ field }}

@@ -75,10 +75,10 @@ class PeopleResource(ContactResource):
     class Meta(ContactResource.Meta):
         model = People
         import_id_fields = ('first_name', 'last_name', 'email')
-        fields = ContactResource.Meta.fields + ('affiliated_church', 'virtuous', 'home_country', 'spouse_recruit',
+        fields = ContactResource.Meta.fields + ('affiliated_church', 'virtuous', 'home_country',
                                                 'marital_status', 'spouse_first_name', 'spouse_last_name', 
                                                 'people_pipeline', 'priority', 'assigned_to','source', 'referred_by', 
-                                                'person_type','info_given', 'desired_service', 'reason_closed','date_closed')
+                                                'info_given', 'desired_service', 'reason_closed','date_closed')
         skip_unchanged = True
         report_skipped = False
 
@@ -137,7 +137,7 @@ class PeopleAdmin(ImportExportModelAdmin):
     import_form_class = CustomImportForm
     list_display = ('get_full_name', 'email', 'phone', 'get_church_name', 'people_pipeline', 'priority', 'assigned_to')
     search_fields = ('first_name', 'last_name', 'email', 'church_name', 'affiliated_church__church_name')
-    list_filter = ('people_pipeline', 'priority', 'assigned_to', 'marital_status','person_type')
+    list_filter = ('people_pipeline', 'priority', 'assigned_to', 'marital_status',)
     autocomplete_fields = ['affiliated_church']
 
     def get_full_name(self, obj):
@@ -160,7 +160,7 @@ class PeopleAdmin(ImportExportModelAdmin):
             'fields': ('street_address', 'city', 'state', 'zip_code', 'home_country')
         }),
         ('CRM Details', {
-            'fields': ('people_pipeline', 'priority', 'assigned_to', 'source','person_type')
+            'fields': ('people_pipeline', 'priority', 'assigned_to', 'source')
         }),
         ('Family Information', {
             'fields': ('marital_status', 'spouse_first_name', 'spouse_last_name',)
