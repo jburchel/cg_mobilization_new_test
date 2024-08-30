@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/contact_interactions_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/com_log_list.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -26,7 +26,7 @@
                 <td>{{ interaction.notes|truncatewords:20 }}</td>
                 <td>
                     <a href="{% url 'com_log:detail' interaction.id %}" class="btn btn-sm btn-info">View</a>
-                    <a href="{% url 'com_log:update' interaction.id %}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{% url 'com_log:update' interaction.id %}" class="btn btn-sm btn-primary">Edit</a>
                 </td>
             </tr>
             {% empty %}
