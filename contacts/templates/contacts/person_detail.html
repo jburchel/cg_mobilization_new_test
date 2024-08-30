@@ -37,7 +37,8 @@
                         <p><strong>Source:</strong> {{ person.get_source_display }}</p>
                         <p><strong>Referred By:</strong> {{ person.referred_by|default:"Not specified" }}</p>
                         <p><strong>Marital Status:</strong> {{ person.get_marital_status_display }}</p>
-                        <p><strong>Spouse Recruit:</strong> {{ person.spouse_recruit|yesno:"Yes,No" }}</p>
+                        {% if person.marital_status == 'Married' %}
+                        <p><strong>Spouse:</strong> {{ person.spouse_first_name }} {{person.spouse_last_name }}</p>
                         <p><strong>Color:</strong> {{ person.get_color_display }}</p>
                         <p><strong>Virtuous:</strong> {{ person.virtuous|yesno:"Yes,No" }}</p>
                     </div>

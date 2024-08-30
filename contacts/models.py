@@ -52,9 +52,9 @@ class Church(Contact):
     )
     
     CHURCH_PIPELINE_CHOICES = (
-        ('COLD', 'COLD'), ('WARM', 'WARM'),
-        ('REPEATED FOLLOWUP', 'REPEATED FOLLOWUP'),
-        ('MISSION VISION', 'MISSION VISION'), ('EN42', 'EN42')
+        ('COLD', 'COLD'), ('WARM', 'WARM'),('CONTACTED', 'CONTACTED'),
+        ('MISSION VISION', 'MISSION VISION'), ('COMMITTED', 'COMMITTED'),('EN42', 'EN42'),
+        ('AUTOMATED', 'AUTOMATED'),
     )
     
     PRIORITY = (
@@ -112,13 +112,9 @@ class People(Contact):
         ('separated', 'Separated'), ('unknown', 'Unknown'),('engaged', 'Engaged')
     )
     
-    COLOR = (
-        ('red', 'Red'),('yellow', 'Yellow'),('blue', 'Blue'),('green', 'Green'),('unknown', 'Unknown'),
-    )
-    
     PEOPLE_PIPELINE = (
-        ('contacted','Contacted'), ('mission-vision', 'Mission Vision'),('conversations', 'Conversations'),
-        ('potential-recruit', 'Potential Recruit'),('handed off', 'Handed Off')
+        ('uncontacted', 'Uncontacted'),('contacted','Contacted'), ('mission-vision', 'Mission Vision'),
+        ('conversations', 'Conversations'),('potential-recruit', 'Potential Recruit'),('automated', 'Automated'),
     )
     
     PRIORITY = (
@@ -132,8 +128,10 @@ class People(Contact):
     )
     
     SOURCE = (
-        ('WEBFORM', 'WEBFORM'), ('INCOMING CALL', 'INCOMING CALL'), ('EMAIL', 'EMAIL'), ('SOCIAL MEDIA', 'SOCIAL MEDIA'),
-        ('COLD CALL', 'COLD CALL'),('PERSPECTIVES', 'PERSPECTIVES'),('REFERAL', 'REFERAL'),('OTHER', 'OTHER'), ('UNKNOWN', 'UNKNOWN')
+        ('WEBFORM', 'WEBFORM'), ('INCOMING CALL', 'INCOMING CALL'), ('EMAIL', 'EMAIL'), ('INSTAGRAM', 'INSTAGRAM'),
+        ('FACEBOOK', 'FACEBOOK'), ('X - TWITTER', 'X- TWITTER'), ('LINKEDIN', 'LINKEDIN'), 
+        ('COLD CALL', 'COLD CALL'),('PERSPECTIVES', 'PERSPECTIVES'),('REFERAL', 'REFERAL'),
+        ('CIU', 'CIU'), ('CHURCH', 'CHURCH'), ('OTHER', 'OTHER'),
     )  
     
     PERSON_TYPE_CHOICES = (
@@ -143,12 +141,12 @@ class People(Contact):
     )  
     
     affiliated_church = models.ForeignKey(Church, on_delete=models.SET_NULL, null=True, blank=True, verbose_name="Affiliated Church")
+    spouse_first_name = models.CharField(max_length=100, null=True, blank=True)
+    spouse_last_name = models.CharField(max_length=100, null=True, blank=True)
     virtuous = models.BooleanField(default=False)
     title = models.CharField(max_length=100, null=True, blank=True)
     home_country = models.CharField(max_length=100, null=True, blank=True)
-    spouse_recruit = models.BooleanField(default=False)
     marital_status = models.CharField(max_length=100, choices=MARITAL_STATUS, null=True, blank=True)
-    color = models.CharField(max_length=100, choices=COLOR, null=True, blank=True)
     people_pipeline = models.CharField(max_length=100, choices=PEOPLE_PIPELINE, null=True, blank=True)    
     priority = models.CharField(max_length=100, choices=PRIORITY, null=True, blank=True)
     assigned_to = models.CharField(max_length=100, choices=ASSIGNED_TO, null=True, blank=True)

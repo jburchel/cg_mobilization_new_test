@@ -46,7 +46,7 @@ class TaskListView(ListView, LoginRequiredMixin):
         context = super().get_context_data(**kwargs)
         context['task_statuses'] = {
             'todo': Task.objects.filter(status='todo').order_by('due_date'),
-            'in_progress': Task.objects.filter(status='in_progress').order_by('due_date'),
+            'in progress': Task.objects.filter(status='in progress').order_by('due_date'),
             'review': Task.objects.filter(status='review').order_by('due_date'),
             'done': Task.objects.filter(status='done').order_by('due_date')
         }

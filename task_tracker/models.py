@@ -8,7 +8,7 @@ User = get_user_model()
 class Task(models.Model):
     STATUS_CHOICES = [
         ('todo', 'To Do'),
-        ('in_progress', 'In Progress'),
+        ('in progress', 'In Progress'),
         ('review', 'Review'),
         ('done', 'Done'),
     ]

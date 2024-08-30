@@ -76,9 +76,9 @@ class PeopleResource(ContactResource):
         model = People
         import_id_fields = ('first_name', 'last_name', 'email')
         fields = ContactResource.Meta.fields + ('affiliated_church', 'virtuous', 'home_country', 'spouse_recruit',
-                                                'marital_status', 'color', 'people_pipeline', 'priority', 
-                                                'assigned_to','source', 'referred_by', 'person_type',
-                                                'info_given', 'desired_service', 'reason_closed','date_closed')
+                                                'marital_status', 'spouse_first_name', 'spouse_last_name', 
+                                                'people_pipeline', 'priority', 'assigned_to','source', 'referred_by', 
+                                                'person_type','info_given', 'desired_service', 'reason_closed','date_closed')
         skip_unchanged = True
         report_skipped = False
 
@@ -160,10 +160,10 @@ class PeopleAdmin(ImportExportModelAdmin):
             'fields': ('street_address', 'city', 'state', 'zip_code', 'home_country')
         }),
         ('CRM Details', {
-            'fields': ('color', 'people_pipeline', 'priority', 'assigned_to', 'source','person_type')
+            'fields': ('people_pipeline', 'priority', 'assigned_to', 'source','person_type')
         }),
         ('Family Information', {
-            'fields': ('marital_status', 'spouse_recruit')
+            'fields': ('marital_status', 'spouse_first_name', 'spouse_last_name',)
         }),
         ('Recruitment Information', {
             'fields': ('desired_service', 'info_given')
