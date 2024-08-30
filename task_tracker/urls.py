@@ -12,4 +12,7 @@ urlpatterns = [
     path('<int:pk>/update-status/', views.update_task_status, name='update_task_status'),
     path('<int:pk>/update-status/', views.update_task_status, name='update_task_status'),
     path('<int:pk>/', TaskDetailView.as_view(), name='task_detail'),
+    path('google-auth/', views.google_auth, name='google_auth'),
+    path('google-auth-callback/', views.google_auth_callback, name='google_auth_callback'),
+    path('initiate-google-auth/', views.initiate_google_auth, name='initiate_google_auth'),
 ]

@@ -1,4 +1,5 @@
 from .base import *
+import os
 
 DEBUG = True
 
@@ -25,3 +26,5 @@ GOOGLE_CLIENT_CONFIG = {
 }
 
 GOOGLE_REDIRECT_URI = "http://localhost:8000/integrations/google/auth/callback/"
+GOOGLE_CALENDAR_CREDENTIALS_FILE = os.path.join(BASE_DIR, 'credentials_dev.json')
+GOOGLE_CALENDAR_SCOPES = ['https://www.googleapis.com/auth/calendar.events']

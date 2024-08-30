@@ -30,6 +30,7 @@ GOOGLE_CLIENT_CONFIG = {
 }
 
 GOOGLE_REDIRECT_URI = "https://mobilize.onrender.com/integrations/google/auth/callback/"
+GOOGLE_CALENDAR_CREDENTIALS_FILE = BASE_DIR / 'credentials_prod.json'
 
 # Additional security settings for production
 SECURE_SSL_REDIRECT = True

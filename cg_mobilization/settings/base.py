@@ -88,9 +88,33 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Common Google OAuth settings
 GOOGLE_OAUTH_SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
+GOOGLE_CLIENT_SECRETS_FILE = os.path.join(BASE_DIR, 'client_secret.json')
+GOOGLE_CALENDAR_SCOPES = ['https://www.googleapis.com/auth/calendar.events']
+GOOGLE_CALENDAR_CREDENTIALS_FILE = None
 
 # Media files (Uploaded files)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = 'userprofile.CustomUser'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'task_tracker': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}

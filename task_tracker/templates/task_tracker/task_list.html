@@ -45,6 +45,7 @@
                             {% endif %}
                         </div>
                         {% endif %}
+                        <a href="{% url 'task_tracker:task_delete' task.id %}" class="task-delete-link">Delete</a>    
                     </a>
                 </div>
                 {% empty %}
