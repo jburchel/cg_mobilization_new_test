@@ -401,74 +401,40 @@ class SendEmailView(LoginRequiredMixin, FormView):
     def form_valid(self, form):
         credentials_dict = self.request.session.get('google_credentials')
         if not credentials_dict:
-            self.request.session['email_redirect_url'] = self.request.get_full_path()
-            messages.info(self.request, 'Please connect your Google account to send emails.')
-            return redirect(reverse('integrations:google_auth'))
+            logger.error("No Google credentials found in session")
+            messages.error(self.request, "Google credentials not found. Please reconnect your Google account.")
+            return redirect('google_auth_view')  # Redirect to start OAuth flow
 
-        credentials = Credentials(**credentials_dict)
-        
-        if credentials.expired and credentials.refresh_token:
-            try:
-                credentials.refresh(Request())
-                self.request.session['google_credentials'] = credentials_to_dict(credentials)
-            except Exception as e:
-                logger.error(f'Failed to refresh Google credentials: {str(e)}')
-                messages.error(self.request, 'Failed to refresh Google credentials. Please reconnect your account.')
-                return redirect(reverse('integrations:google_auth'))
+        logger.info(f"Credentials dict: {json.dumps(credentials_dict, indent=2)}")
 
         try:
-            service = build_gmail_service(credentials)
+            credentials = Credentials(
+                token=credentials_dict['token'],
+                refresh_token=credentials_dict['refresh_token'],
+                token_uri=credentials_dict['token_uri'],
+                client_id=credentials_dict['client_id'],
+                client_secret=credentials_dict['client_secret'],
+                scopes=credentials_dict['scopes']
+            )
+        except KeyError as e:
+            logger.error(f"Missing key in credentials: {str(e)}")
+            messages.error(self.request, f"Invalid credentials. Missing: {str(e)}")
+            return redirect('google_auth_view')
 
-            contact_type = self.kwargs['contact_type']
-            contact_id = self.kwargs['contact_id']
-            contact = get_object_or_404(Church if contact_type == 'church' else People, id=contact_id)
+        if credentials.expired and credentials.refresh_token:
+            from google.auth.transport.requests import Request
+            credentials.refresh(Request())
+            # Update the session with the new token
+            self.request.session['google_credentials']['token'] = credentials.token
 
-            subject = form.cleaned_data['subject']
-            body = form.cleaned_data['body']
+        try:
+            service = build('gmail', 'v1', credentials=credentials)
+            # Your email sending logic here
+            # ...
 
-            message = MIMEMultipart()
-            message['to'] = contact.email
-            message['subject'] = subject
-
-            html_content = f"""
-            <html>
-            <body>
-                {body}
-                <br><br>
-                <div style="border-top: 1px solid #ccc; padding-top: 10px;">
-                    {self.request.user.email_signature or ''}
-                </div>
-            </body>
-            </html>
-            """
-            
-            message.attach(MIMEText(html_content, 'html'))
-            raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
-
-            try:
-                sent_message = service.users().messages().send(userId='me', body={'raw': raw_message}).execute()
-                logger.info(f"Email sent successfully. Message ID: {sent_message['id']}")
-
-                ComLog.objects.create(
-                    user=self.request.user,
-                    content_type=ContentType.objects.get_for_model(contact),
-                    object_id=contact.id,
-                    interaction_type='Email',
-                    communication_type='Email',
-                    subject=subject,
-                    notes=body,
-                    direction='Outgoing'
-                )
-                logger.info(f"ComLog entry created for email to {contact_type} {contact_id}")
-
-                messages.success(self.request, 'Email sent successfully and logged.')
-            except HttpError as error:
-                logger.error(f'An error occurred while sending the email: {error}')
-                messages.error(self.request, f'An error occurred while sending the email: {error}')
-                return self.form_invalid(form)
         except Exception as e:
-            logger.error(f'An unexpected error occurred: {str(e)}')
-            messages.error(self.request, f'An unexpected error occurred: {str(e)}')
+            logger.error(f"Error sending email: {str(e)}")
+            messages.error(self.request, f"Error sending email: {str(e)}")
             return self.form_invalid(form)
 
         return super().form_valid(form)
