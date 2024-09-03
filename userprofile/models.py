@@ -18,6 +18,7 @@ class CustomUser(AbstractUser):
     profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
     profile_thumbnail = models.ImageField(upload_to='profile_thumbnails/', null=True, blank=True)
     email_signature = models.TextField(blank=True, null=True)
+    google_refresh_token = models.CharField(max_length=255, blank=True, null=True)
 
     # Add related_name to avoid clashes
     groups = models.ManyToManyField(

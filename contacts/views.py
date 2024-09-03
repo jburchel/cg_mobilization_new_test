@@ -407,11 +407,9 @@ class SendEmailView(LoginRequiredMixin, FormView):
 
         credentials = Credentials(**credentials_dict)
         
-        # Check if credentials are expired and refresh if necessary
         if credentials.expired and credentials.refresh_token:
             try:
                 credentials.refresh(Request())
-                # Update the session with refreshed credentials
                 self.request.session['google_credentials'] = credentials_to_dict(credentials)
             except Exception as e:
                 logger.error(f'Failed to refresh Google credentials: {str(e)}')
@@ -423,20 +421,15 @@ class SendEmailView(LoginRequiredMixin, FormView):
 
             contact_type = self.kwargs['contact_type']
             contact_id = self.kwargs['contact_id']
-            if contact_type == 'church':
-                contact = get_object_or_404(Church, id=contact_id)
-            else:  # person
-                contact = get_object_or_404(People, id=contact_id)
+            contact = get_object_or_404(Church if contact_type == 'church' else People, id=contact_id)
 
             subject = form.cleaned_data['subject']
             body = form.cleaned_data['body']
 
-            # Create the email message
             message = MIMEMultipart()
             message['to'] = contact.email
             message['subject'] = subject
 
-            # Create HTML content with signature
             html_content = f"""
             <html>
             <body>
@@ -449,17 +442,13 @@ class SendEmailView(LoginRequiredMixin, FormView):
             </html>
             """
             
-            # Attach the HTML content
             message.attach(MIMEText(html_content, 'html'))
-
-            # Encode the entire message
             raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
 
             try:
                 sent_message = service.users().messages().send(userId='me', body={'raw': raw_message}).execute()
                 logger.info(f"Email sent successfully. Message ID: {sent_message['id']}")
 
-                # Create ComLog entry
                 ComLog.objects.create(
                     user=self.request.user,
                     content_type=ContentType.objects.get_for_model(contact),
@@ -476,16 +465,15 @@ class SendEmailView(LoginRequiredMixin, FormView):
             except HttpError as error:
                 logger.error(f'An error occurred while sending the email: {error}')
                 messages.error(self.request, f'An error occurred while sending the email: {error}')
+                return self.form_invalid(form)
         except Exception as e:
             logger.error(f'An unexpected error occurred: {str(e)}')
             messages.error(self.request, f'An unexpected error occurred: {str(e)}')
+            return self.form_invalid(form)
 
         return super().form_valid(form)
 
     def get_success_url(self):
         contact_type = self.kwargs['contact_type']
         contact_id = self.kwargs['contact_id']
-        if contact_type == 'church':
-            return reverse('contacts:church_detail', kwargs={'pk': contact_id})
-        else:
-            return reverse('contacts:person_detail', kwargs={'pk': contact_id})
+        return reverse(f'contacts:{contact_type}_detail', kwargs={'pk': contact_id})
