@@ -11,28 +11,34 @@ from django.views.generic import TemplateView
 
 @login_required
 def google_auth(request):
-    flow = get_flow()
-    authorization_url, state = flow.authorization_url(
-        access_type='offline',
-        include_granted_scopes='true'
-    )
-    request.session['google_auth_state'] = state
-    request.session['email_redirect_url'] = request.GET.get('next', reverse('contacts:contact_list'))
-    return redirect(authorization_url)
-
-@login_required
-def google_auth_callback(request):
     flow = Flow.from_client_config(
         client_config=settings.GOOGLE_CLIENT_CONFIG,
         scopes=['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/calendar.events']
     )
     flow.redirect_uri = settings.GOOGLE_REDIRECT_URI
-    
+
+    authorization_url, state = flow.authorization_url(
+        access_type='offline',
+        include_granted_scopes='true',
+        prompt='consent'
+    )
+
+    request.session['google_auth_state'] = state
+    return redirect(authorization_url)
+
+@login_required
+def google_auth_callback(request):
+    state = request.session['google_auth_state']
+    flow = Flow.from_client_config(
+        client_config=settings.GOOGLE_CLIENT_CONFIG,
+        scopes=['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/calendar.events'],
+        state=state
+    )
+    flow.redirect_uri = settings.GOOGLE_REDIRECT_URI
+
     flow.fetch_token(code=request.GET.get('code'))
-    
+
     credentials = flow.credentials
-    
-    # Store the credentials in the session
     request.session['google_credentials'] = {
         'token': credentials.token,
         'refresh_token': credentials.refresh_token,

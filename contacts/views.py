@@ -401,9 +401,8 @@ class SendEmailView(LoginRequiredMixin, FormView):
     def form_valid(self, form):
         credentials_dict = self.request.session.get('google_credentials')
         if not credentials_dict:
-            logger.error("No Google credentials found in session")
             messages.error(self.request, "Google credentials not found. Please reconnect your Google account.")
-            return redirect('google_auth_view')  # Redirect to start OAuth flow
+            return redirect('google_auth_view')
 
         logger.info(f"Credentials dict: {json.dumps(credentials_dict, indent=2)}")
 
@@ -421,11 +420,14 @@ class SendEmailView(LoginRequiredMixin, FormView):
             messages.error(self.request, f"Invalid credentials. Missing: {str(e)}")
             return redirect('google_auth_view')
 
-        if credentials.expired and credentials.refresh_token:
-            from google.auth.transport.requests import Request
-            credentials.refresh(Request())
-            # Update the session with the new token
-            self.request.session['google_credentials']['token'] = credentials.token
+        if not credentials.valid:
+            if credentials.expired and credentials.refresh_token:
+                credentials.refresh(Request())
+                # Update the session with the new token
+                self.request.session['google_credentials']['token'] = credentials.token
+            else:
+                messages.error(self.request, "Google credentials have expired. Please reconnect your Google account.")
+                return redirect('google_auth_view')
 
         try:
             service = build('gmail', 'v1', credentials=credentials)
@@ -438,8 +440,3 @@ class SendEmailView(LoginRequiredMixin, FormView):
             return self.form_invalid(form)
 
         return super().form_valid(form)
-
-    def get_success_url(self):
-        contact_type = self.kwargs['contact_type']
-        contact_id = self.kwargs['contact_id']
-        return reverse(f'contacts:{contact_type}_detail', kwargs={'pk': contact_id})
