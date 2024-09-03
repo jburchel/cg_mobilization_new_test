@@ -22,10 +22,17 @@ def google_auth(request):
 
 @login_required
 def google_auth_callback(request):
-    flow = get_flow()
+    flow = Flow.from_client_config(
+        client_config=settings.GOOGLE_CLIENT_CONFIG,
+        scopes=['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/calendar.events']
+    )
+    flow.redirect_uri = settings.GOOGLE_REDIRECT_URI
+    
     flow.fetch_token(code=request.GET.get('code'))
+    
     credentials = flow.credentials
-    # Save credentials to session or database
+    
+    # Store the credentials in the session
     request.session['google_credentials'] = {
         'token': credentials.token,
         'refresh_token': credentials.refresh_token,
@@ -34,8 +41,11 @@ def google_auth_callback(request):
         'client_secret': credentials.client_secret,
         'scopes': credentials.scopes
     }
-    return_url = request.session.get('email_redirect_url', reverse('contacts:contact_list'))
-    return redirect(reverse('integrations:google_auth_success'))
+    
+    request.user.google_refresh_token = credentials.refresh_token
+    request.user.save()
+    
+    return redirect("{% url 'contacts:contact_list' %}")
 
 
 class GoogleAuthSuccessView(TemplateView):
