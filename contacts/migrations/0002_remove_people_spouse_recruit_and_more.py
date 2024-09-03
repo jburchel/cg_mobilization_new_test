@@ -80,7 +80,8 @@ class Migration(migrations.Migration):
             field=models.CharField(max_length=50),
         ),
         migrations.AlterField(
-            model_name='people',            
+            model_name='people', 
+            name='color',           
             field=models.CharField(blank=True, max_length=50, null=True),
         ),
         migrations.AlterField(
