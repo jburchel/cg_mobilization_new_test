@@ -30,6 +30,7 @@ from email.mime.text import MIMEText
 import base64
 import os
 from django.conf import settings
+from django.http import HttpResponseRedirect
 
 
 logger = logging.getLogger(__name__)
@@ -329,8 +330,6 @@ class PersonDetailView(DetailView, LoginRequiredMixin):
             object_id=self.object.id
         ).order_by('-date_created')[:3]
         return context
-    
-logger = logging.getLogger(__name__)
 
 def contact_search(request):
     logger.debug(f"Contact search called with GET params: {request.GET}")
@@ -359,17 +358,9 @@ def contact_search(request):
 
     return JsonResponse(results, safe=False)
 
-logger = logging.getLogger(__name__)
-
 class SendEmailView(LoginRequiredMixin, FormView):
     template_name = 'contacts/send_email.html'
     form_class = EmailForm
-    
-    def get_success_url(self):
-        contact_type = self.kwargs['contact_type']
-        contact_id = self.kwargs['contact_id']
-        return reverse_lazy(f'contacts:{contact_type}_detail', kwargs={'pk': contact_id})
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -377,42 +368,25 @@ class SendEmailView(LoginRequiredMixin, FormView):
         contact_id = self.kwargs['contact_id']
         
         if contact_type == 'church':
-            church = get_object_or_404(Church, id=contact_id)
-            context['contact'] = church
-            context['church_name'] = church.church_name
-
-            # Determine the specific person we're sending to
-            if church.primary_contact_first_name and church.primary_contact_last_name:
-                contact_name = f"{church.primary_contact_first_name} {church.primary_contact_last_name}"
-                context['contact_role'] = "Primary Contact"
-            elif church.senior_pastor_first_name and church.senior_pastor_last_name:
-                contact_name = f"{church.senior_pastor_first_name} {church.senior_pastor_last_name}"
-                context['contact_role'] = "Senior Pastor"
-            elif church.missions_pastor_first_name and church.missions_pastor_last_name:
-                contact_name = f"{church.missions_pastor_first_name} {church.missions_pastor_last_name}"
-                context['contact_role'] = "Missions Pastor"
-            else:
-                contact_name = "Church Representative"
-                context['contact_role'] = "Representative"
-
-            context['contact_name'] = contact_name
-
+            contact = get_object_or_404(Church, id=contact_id)
         else:  # person
-            person = get_object_or_404(People, id=contact_id)
-            context['contact'] = person
-            context['contact_name'] = f"{person.first_name} {person.last_name}"
+            contact = get_object_or_404(People, id=contact_id)
 
+        context['contact'] = contact
         return context
-    
-    def form_valid(self, form):
-        credentials_dict = self.request.session.get('google_credentials')
-        if not credentials_dict:
-            messages.error(self.request, "Google credentials not found. Please reconnect your Google account.")
-            return redirect('google/auth'),
 
-        logger.info(f"Credentials dict: {json.dumps(credentials_dict, indent=2)}")
+    def get_success_url(self):
+        contact_type = self.kwargs['contact_type']
+        contact_id = self.kwargs['contact_id']
+        return reverse(f'contacts:{contact_type}_detail', kwargs={'pk': contact_id})
 
+def form_valid(self, form):
         try:
+            credentials_dict = self.request.session.get('google_credentials')
+            if not credentials_dict:
+                self.request.session['email_redirect_url'] = self.request.get_full_path()
+                return HttpResponseRedirect(reverse('integrations:google_auth'))
+
             credentials = Credentials(
                 token=credentials_dict['token'],
                 refresh_token=credentials_dict['refresh_token'],
@@ -421,30 +395,68 @@ class SendEmailView(LoginRequiredMixin, FormView):
                 client_secret=credentials_dict['client_secret'],
                 scopes=credentials_dict['scopes']
             )
-        except KeyError as e:
-            logger.error(f"Missing key in credentials: {str(e)}")
-            messages.error(self.request, f"Invalid credentials. Missing: {str(e)}")
-            return redirect('integrations:google_auth'),
 
-        if not credentials.valid:
             if credentials.expired and credentials.refresh_token:
                 credentials.refresh(Request())
-                # Update the session with the new token
-                self.request.session['google_credentials']['token'] = credentials.token
-            else:
-                messages.error(self.request, "Google credentials have expired. Please reconnect your Google account.")
-                return redirect('integrations:google_auth'),
+                self.request.session['google_credentials'] = {
+                    'token': credentials.token,
+                    'refresh_token': credentials.refresh_token,
+                    'token_uri': credentials.token_uri,
+                    'client_id': credentials.client_id,
+                    'client_secret': credentials.client_secret,
+                    'scopes': credentials.scopes
+                }
 
-        try:
             service = build('gmail', 'v1', credentials=credentials)
-            # Your email sending logic here
-            # ...
+
+            contact_type = self.kwargs['contact_type']
+            contact_id = self.kwargs['contact_id']
+            if contact_type == 'church':
+                contact = get_object_or_404(Church, id=contact_id)
+            else:  # person
+                contact = get_object_or_404(People, id=contact_id)
+
+            subject = form.cleaned_data['subject']
+            body = form.cleaned_data['body']
+
+            message = MIMEText(body)
+            message['to'] = contact.email
+            message['subject'] = subject
+            
+            # Create the email content with signature
+            full_body = f"{body}\n\n{self.request.user.email_signature or ''}"
+            message.set_payload(full_body)
+
+            raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
+
+            try:
+                sent_message = service.users().messages().send(userId='me', body={'raw': raw_message}).execute()
+                logger.info(f"Email sent successfully. Message ID: {sent_message['id']}")
+
+                # Create ComLog entry
+                ComLog.objects.create(
+                    user=self.request.user,
+                    content_type=ContentType.objects.get_for_model(contact),
+                    object_id=contact.id,
+                    interaction_type='Email',
+                    communication_type='Email',
+                    subject=subject,
+                    notes=body,
+                    direction='Outgoing'
+                )
+
+                messages.success(self.request, "Email sent successfully and logged.")
+            except Exception as e:
+                logger.error(f"Error sending email: {str(e)}")
+                raise  # Re-raise the exception to be caught by the outer try-except
+
+            return HttpResponseRedirect(self.get_success_url())
 
         except Exception as e:
-            logger.error(f"Error sending email: {str(e)}")
+            logger.exception("Error in SendEmailView.form_valid")
             messages.error(self.request, f"Error sending email: {str(e)}")
             return self.form_invalid(form)
-        
-        messages.success(self.request, "Email sent successfully!")
 
-        return super().form_valid(form)
+        def form_invalid(self, form):
+            messages.error(self.request, "There was an error with your form. Please check and try again.")
+            return super().form_invalid(form)

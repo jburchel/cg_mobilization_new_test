@@ -36,22 +36,40 @@ def google_auth_callback(request):
     )
     flow.redirect_uri = settings.GOOGLE_REDIRECT_URI
 
-    flow.fetch_token(code=request.GET.get('code'))
+    try:
+        flow.fetch_token(code=request.GET.get('code'))
 
-    credentials = flow.credentials
-    request.session['google_credentials'] = {
-        'token': credentials.token,
-        'refresh_token': credentials.refresh_token,
-        'token_uri': credentials.token_uri,
-        'client_id': credentials.client_id,
-        'client_secret': credentials.client_secret,
-        'scopes': credentials.scopes
-    }
+        # Check if the returned scopes match our requested scopes
+        returned_scopes = set(flow.credentials.scopes)
+        requested_scopes = set(flow.scopes)
+        
+        credentials = flow.credentials
+        request.session['google_credentials'] = {
+            'token': credentials.token,
+            'refresh_token': credentials.refresh_token,
+            'token_uri': credentials.token_uri,
+            'client_id': credentials.client_id,
+            'client_secret': credentials.client_secret,
+            'scopes': list(credentials.scopes)  # Convert to list for JSON serialization
+        }
+        
+        request.user.google_refresh_token = credentials.refresh_token
+        request.user.save()
+        
+        messages.success(request, 'Successfully authenticated with Google.')
+        
+        # Check if there's a stored redirect URL in the session
+        redirect_url = request.session.get('email_redirect_url')
+        if redirect_url:
+            del request.session['email_redirect_url']
+            return redirect(redirect_url)
+        
+        # If no stored redirect URL, go to the contact list
+        return redirect(reverse('contacts:contact_list'))
     
-    request.user.google_refresh_token = credentials.refresh_token
-    request.user.save()
-    
-    return redirect("{% url 'contacts:contact_list' %}")
+    except Exception as e:       
+        messages.error(request, f"Error during Google authentication: {str(e)}")
+        return redirect(reverse('contacts:contact_list'))
 
 
 class GoogleAuthSuccessView(TemplateView):

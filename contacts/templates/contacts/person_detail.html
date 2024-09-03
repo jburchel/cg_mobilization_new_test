@@ -7,79 +7,87 @@
 
 {% block content %}
 <div class="person-detail-container">
-    <h1 class="page-title">{{ person.first_name }} {{ person.last_name }}</h1>
+    <div class="person-header">
+        <div class="person-image">
+            {% if person.image %}
+                <img src="{{ person.image.url }}" alt="{{ person.get_name }}" width="200">
+            {% else %}
+                <img src="{% static 'images/default_person.png' %}" alt="Default Person Image" width="200">
+            {% endif %}
+        </div>
 
-    <div class="content-divider"></div>
+        <div class="person-title-and-actions">
+            <h1 class="person-name">{{ person.first_name }} {{ person.last_name }}</h1>
 
-    <div class="person-details">
-        <div class="person-image-and-info">
-            <div class="person-image">
-                {% if person.image %}
-                    <img src="{{ person.image.url }}" alt="{{ person.get_name }}" width="300">
-                {% else %}
-                    <img src="{% static 'images/default_person.png' %}" alt="Default Person Image" width="300">
-                {% endif %}
+            <div class="person-actions">
+                <a href="{% url 'contacts:send_email' contact_type='person' contact_id=person.id %}" class="btn btn-edit">Send Email</a>
+                <a href="{% url 'contacts:person_edit' person.pk %}" class="btn btn-edit">Edit</a>
+                <a href="{% url 'com_log:create' %}" class="btn btn-log">Log Interaction</a>
+                <a href="{% url 'task_tracker:task_create' %}" class="btn btn-task">Create Task</a>
+                <a href="{% url 'com_log:contact_interactions' contact_type='person' contact_id=person.id %}" class="btn btn-task">View History</a>
             </div>
 
-            <div class="person-info">
-                <h2>Contact Information</h2>
-                <div class="info-grid">
-                    <div class="info-column">
-                        <a href="{% url 'contacts:send_email' contact_type='person' contact_id=person.id %}" class="btn btn-primary">Send Email</a>
-                        <p><strong>Phone:</strong> {{ person.phone }}</p>
-                        <p><strong>Title:</strong> {{ person.title }}</p>
-                        <p><strong>Preferred Contact:</strong> {{ person.get_preferred_contact_method_display }}</p>
-                        <p><strong>Address:</strong> {{ person.street_address }}</p>
-                        <p><strong>City:</strong> {{ person.city }}</p>
-                        <p><strong>State:</strong> {{ person.get_state_display }}</p>
-                        <p><strong>Zip Code:</strong> {{ person.zip_code }}</p>
-                        <p><strong>Home Country:</strong> {{ person.home_country|default:"Not specified" }}</p>
-                    </div>
-                    <div class="info-column">                        
-                        <p><strong>Pipeline Stage:</strong> {{ person.get_people_pipeline_display }}</p>
-                        <p><strong>Priority:</strong> {{ person.get_priority_display }}</p>
-                        <p><strong>Assigned To:</strong> {{ person.get_assigned_to_display }}</p>
-                        <p><strong>Source:</strong> {{ person.get_source_display }}</p>
-                        <p><strong>Referred By:</strong> {{ person.referred_by|default:"Not specified" }}</p>
-                        <p><strong>Marital Status:</strong> {{ person.get_marital_status_display }}</p>
-                        {% if person.spouse_first_name or person.spouse_last_name %}
-                            <p><strong>Spouse:</strong> {{ person.spouse_first_name }} {{ person.spouse_last_name }}</p>
-                        {% endif %}
-                        <p><strong>Virtuous:</strong> {{ person.virtuous|yesno:"Yes,No" }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <div class="additional-info">
+                <h2>Initial Notes</h2>
+                <p>{{ person.initial_notes|default:"No notes available" }}</p>        
+            </div> 
 
-        <div class="full-width-fields">
-            <p><strong>Desired Service:</strong> {{ person.desired_service|default:"Not specified" }}</p>
-            <p><strong>Info Given:</strong> {{ person.info_given|default:"Not specified" }}</p>
-            <p><strong>Initial Notes:</strong> {{ person.initial_notes|default:"No notes available" }}</p>
-        </div>
+        </div>               
 
-        <p><strong>Date Created:</strong> {{ person.date_created|date:"F d, Y" }}</p>
-        <p><strong>Date Modified:</strong> {{ person.date_modified|date:"F d, Y" }}</p>
-
-        <div class="person-actions">
-            <a href="{% url 'contacts:person_edit' person.pk %}" class="btn btn-warning">Edit</a>
-            <a href="{% url 'com_log:create' %}" class="btn btn-info">Log Communication</a>
-            <a href="{% url 'com_log:contact_interactions' contact_type='person' contact_id=person.id %}" class="btn btn-info">Communication History</a>
-            <a href="{% url 'task_tracker:task_create' %}" class="btn btn-primary">Create Task</a>
-        </div>
     </div>
+
+    <div class="person-content">
+        <div class="person-info">
+            <div class="info-section">
+                <h2>Contact Information</h2>
+                <p><strong>Phone:</strong> {{ person.phone }}</p>
+                <p><strong>Email:</strong> {{ person.email }}</p>
+                <p><strong>Preferred Contact:</strong> {{ person.get_preferred_contact_method_display }}</p>
+                <p><strong>Address:</strong> {{ person.street_address }}, {{ person.city }}, {{ person.get_state_display }} {{ person.zip_code }}</p>
+                <p><strong>Home Country:</strong> {{ person.home_country|default:"Not specified" }}</p>
+            </div>
+
+            <div class="info-section">
+                <h2>Personal Information</h2>
+                <p><strong>Title:</strong> {{ person.title }}</p>
+                <p><strong>Marital Status:</strong> {{ person.get_marital_status_display }}</p>
+                {% if person.spouse_first_name or person.spouse_last_name %}
+                    <p><strong>Spouse:</strong> {{ person.spouse_first_name }} {{ person.spouse_last_name }}</p>
+                {% endif %}
+                <p><strong>Virtuous:</strong> {{ person.virtuous|yesno:"Yes,No" }}</p>
+            </div>
+
+            <div class="info-section">
+                <h2>CRM Details</h2>
+                <p><strong>Pipeline Stage:</strong> {{ person.get_people_pipeline_display }}</p>
+                <p><strong>Priority:</strong> {{ person.get_priority_display }}</p>
+                <p><strong>Assigned To:</strong> {{ person.get_assigned_to_display }}</p>
+                <p><strong>Source:</strong> {{ person.get_source_display }}</p>
+                <p><strong>Referred By:</strong> {{ person.referred_by|default:"Not specified" }}</p>
+            </div>
+
+            <div class="info-section">
+                <h2>Additional Information</h2>
+                <p><strong>Desired Service:</strong> {{ person.desired_service|default:"Not specified" }}</p>
+                <p><strong>Info Given:</strong> {{ person.info_given|default:"Not specified" }}</p>
+                <p><strong>Date Created:</strong> {{ person.date_created|date:"F d, Y" }}</p>
+                <p><strong>Date Modified:</strong> {{ person.date_modified|date:"F d, Y" }}</p>
+            </div>
+        </div>
+    </div>    
 
     <div class="interaction-history">
         <h2>Recent Interactions</h2>
-        {% if recent_communications %}
+            {% if recent_communications %}
             {% for comm in recent_communications %}
                 <div class="interaction">
                     <p><strong>{{ comm.date_created|date:"Y-m-d" }}</strong> - {{ comm.get_communication_type_display }}</p>
                     <p>{{ comm.notes }}</p>
                 </div>
             {% endfor %}
-        {% else %}
-            <p>No recent communications recorded.</p>
-        {% endif %}
+            {% else %}
+                <p>No recent communications recorded.</p>
+            {% endif %}
     </div>
 </div>
 {% endblock %}

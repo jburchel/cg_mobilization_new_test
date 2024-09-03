@@ -6,9 +6,9 @@
     <div class="church-header">
         <div class="church-image">
             {% if church.image %}
-                <img src="{{ church.image.url }}" alt="{{ church.church_name }}" width="300">
+                <img src="{{ church.image.url }}" alt="{{ church.church_name }}" width="200">
             {% else %}
-                <img src="{% static 'images/default_church.png' %}" alt="Default Church Image" width="300">
+                <img src="{% static 'images/default_church.png' %}" alt="Default Church Image" width="200">
             {% endif %}
         </div>
         <div class="church-title-and-actions">
