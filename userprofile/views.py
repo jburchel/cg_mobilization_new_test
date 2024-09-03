@@ -76,14 +76,12 @@ def account_view(request):
 
 def signup_view(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST, request.FILES)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
             messages.success(request, "Account created successfully!")
-            return redirect('home')  # Redirect to home page after signup
-        else:
-            messages.error(request, "There was an error with your submission. Please check the form.")
+            return redirect('home')  # or wherever you want to redirect after signup
     else:
         form = CustomUserCreationForm()
     return render(request, 'userprofile/signup.html', {'form': form})

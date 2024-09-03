@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
+from django.core.exceptions import ValidationError
 
 
 class ProfileImageForm(forms.ModelForm):
@@ -13,20 +14,28 @@ class ProfileImageForm(forms.ModelForm):
         }
         
 class CustomUserCreationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+    email = forms.EmailField(required=True,
+                             help_text="Please use your crossoverglobal.net email address.")
     profile_image = forms.ImageField(required=False)
     email_signature = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 50}),
                                       required=False,
                                       help_text="Enter your email signature. Line breaks will be preserved.")
+    username = forms.EmailField(required=True,
+                                help_text="Please use your crossoverglobal.net email address.")
 
     class Meta:
         model = CustomUser
         fields = ("username", "email", "password1", "password2", "profile_image", "email_signature")
 
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if not email.endswith('@crossoverglobal.net'):
+            raise ValidationError("Please use your @crossoverglobal.net email address.")
+        return email
+    
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.email = self.cleaned_data["email"]
-        user.email_signature = self.cleaned_data["email_signature"]
+        user.username = user.email  # Set username to email
         if commit:
             user.save()
         return user

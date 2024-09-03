@@ -232,6 +232,7 @@ input[type="file"] {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width:auto !important;
 }
 
 .userprofile-container h1 {
