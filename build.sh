@@ -6,4 +6,4 @@ pip install -r requirements.txt
 
 python manage.py collectstatic --no-input
 python manage.py migrate
-python manage.py apply_migrations
+python manage.py apply_userprofile_migration
