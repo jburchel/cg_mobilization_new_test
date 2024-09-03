@@ -366,8 +366,10 @@ class SendEmailView(LoginRequiredMixin, FormView):
     form_class = EmailForm
     
     def get_success_url(self):
-        # Redirect back to the person's detail page after sending the email
-        return reverse_lazy('contacts:person_detail', kwargs={'pk': self.kwargs['contact_id']})
+        contact_type = self.kwargs['contact_type']
+        contact_id = self.kwargs['contact_id']
+        return reverse_lazy(f'contacts:{contact_type}_detail', kwargs={'pk': contact_id})
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -406,7 +408,7 @@ class SendEmailView(LoginRequiredMixin, FormView):
         credentials_dict = self.request.session.get('google_credentials')
         if not credentials_dict:
             messages.error(self.request, "Google credentials not found. Please reconnect your Google account.")
-            return redirect('google_auth_view')
+            return redirect('google/auth'),
 
         logger.info(f"Credentials dict: {json.dumps(credentials_dict, indent=2)}")
 
@@ -422,7 +424,7 @@ class SendEmailView(LoginRequiredMixin, FormView):
         except KeyError as e:
             logger.error(f"Missing key in credentials: {str(e)}")
             messages.error(self.request, f"Invalid credentials. Missing: {str(e)}")
-            return redirect('google_auth_view')
+            return redirect('integrations:google_auth'),
 
         if not credentials.valid:
             if credentials.expired and credentials.refresh_token:
@@ -431,7 +433,7 @@ class SendEmailView(LoginRequiredMixin, FormView):
                 self.request.session['google_credentials']['token'] = credentials.token
             else:
                 messages.error(self.request, "Google credentials have expired. Please reconnect your Google account.")
-                return redirect('google_auth_view')
+                return redirect('integrations:google_auth'),
 
         try:
             service = build('gmail', 'v1', credentials=credentials)
@@ -442,5 +444,7 @@ class SendEmailView(LoginRequiredMixin, FormView):
             logger.error(f"Error sending email: {str(e)}")
             messages.error(self.request, f"Error sending email: {str(e)}")
             return self.form_invalid(form)
+        
+        messages.success(self.request, "Email sent successfully!")
 
         return super().form_valid(form)
