@@ -364,6 +364,10 @@ logger = logging.getLogger(__name__)
 class SendEmailView(LoginRequiredMixin, FormView):
     template_name = 'contacts/send_email.html'
     form_class = EmailForm
+    
+    def get_success_url(self):
+        # Redirect back to the person's detail page after sending the email
+        return reverse_lazy('contacts:person_detail', kwargs={'pk': self.kwargs['contact_id']})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
