@@ -39,7 +39,7 @@
             <h3>Email Preview:</h3>
             <div id="email-body-preview"></div>
             <div id="email-signature-preview">
-                {{ request.user.email_signature|linebreaks }}
+                {{ request.user.email_signature|safe }}
             </div>
             <div class="company-logo">
                 <img src="{% static 'images/company_logo.png' %}" alt="Company Logo" style="max-width: 200px;">

@@ -8,6 +8,8 @@ from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
+from django.utils.html import linebreaks
+
 logger = logging.getLogger(__name__)
 
 fs = FileSystemStorage(location=settings.MEDIA_ROOT)
@@ -37,12 +39,16 @@ class CustomUser(AbstractUser):
     
     def save(self, *args, **kwargs):
         is_new = self.pk is None
-        old_image = None if is_new else CustomUser.objects.get(pk=self.pk).profile_image
-        
-        super().save(*args, **kwargs)
+        old_image = None if is_new else CustomUser.objects.get(pk=self.pk).profile_image        
         
         if is_new or (self.profile_image and self.profile_image != old_image):
             self.create_thumbnail()
+            
+        if self.email_signature:
+            self.email_signature = linebreaks(self.email_signature)
+            
+            super().save(*args, **kwargs)
+            
 
     def create_thumbnail(self):
         if not self.profile_image:

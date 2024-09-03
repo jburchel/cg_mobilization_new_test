@@ -1,42 +1,40 @@
 from django import forms
 from .models import ComLog
-from contacts.models import Church, People, Contact
+from contacts.models import Contact
 from django.contrib.contenttypes.models import ContentType
-import logging
-
-logger = logging.getLogger(__name__)
 
 class ComLogForm(forms.ModelForm):
-    CONTACT_TYPES = [
-        ('church', 'Church'),
-        ('person', 'Person'),
-    ]
-
-    contact_type = forms.ChoiceField(choices=CONTACT_TYPES, widget=forms.Select(attrs={'class': 'form-control'}))
-    contact = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'off'}))
-    contact_id = forms.IntegerField(widget=forms.HiddenInput())
+    contact = forms.ModelChoiceField(
+        queryset=Contact.objects.all(),
+        label="Contact",
+        empty_label="Select a contact"
+    )
 
     class Meta:
         model = ComLog
-        fields = ['contact_type', 'contact', 'contact_id', 'communication_type', 'notes']
-        widgets = {
-            'communication_type': forms.Select(attrs={'class': 'form-control'}),
-            'notes': forms.Textarea(attrs={'class': 'form-control'}),
-        }
+        fields = ['contact', 'communication_type', 'notes']
 
-    def clean(self):
-        cleaned_data = super().clean()
-        contact_type = cleaned_data.get('contact_type')
-        contact_id = cleaned_data.get('contact_id')
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+        self.fields['contact'].queryset = Contact.objects.all().order_by('church_name', 'last_name', 'first_name')
+        self.fields['contact'].label_from_instance = self.label_from_instance
 
-        if contact_type == 'church':
-            content_type = ContentType.objects.get_for_model(Church)
-        elif contact_type == 'person':
-            content_type = ContentType.objects.get_for_model(People)
+    @staticmethod
+    def label_from_instance(obj):
+        if hasattr(obj, 'church'):
+            return f"{obj.church_name} (Church)"
+        elif hasattr(obj, 'people'):
+            return f"{obj.first_name} {obj.last_name} (Person)"
         else:
-            raise forms.ValidationError("Invalid contact type")
+            return f"{obj.email} (Contact)"
 
-        cleaned_data['content_type'] = content_type
-        cleaned_data['object_id'] = contact_id
-
-        return cleaned_data
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        contact = self.cleaned_data['contact']
+        instance.content_type = ContentType.objects.get_for_model(contact)
+        instance.object_id = contact.id
+        instance.user = self.user
+        if commit:
+            instance.save()
+        return instance

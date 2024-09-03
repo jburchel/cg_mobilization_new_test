@@ -168,12 +168,14 @@
             <h2 class="form-section-title">Family Information</h2>
             <div class="form-grid">
                 {% for field in form %}
-                    {% if field.name in 'marital_status %}
+                    {% if field.name == "marital_status" %}
                         <div class="form-group">
                             {{ field.label_tag }}
                             {{ field }}
                             {% if field.errors %}
-                                <div class="error-message">{{ field.errors.0 }}</div>
+                                <div class="error-message">
+                                    {{ field.errors.0 }}
+                                </div>
                             {% endif %}
                         </div>
                     {% endif %}

@@ -44,7 +44,12 @@ class Contact(models.Model):
             return self.church_name or f"{self.first_name} {self.last_name}".strip() or "Unnamed Contact"
        
     def __str__(self):
-        return self.get_name()
+        if hasattr(self, 'church'):
+            return self.church_name
+        elif hasattr(self, 'people'):
+            return f"{self.first_name} {self.last_name}"
+        else:
+            return self.email
     
 class Church(Contact):
     COLOR = (

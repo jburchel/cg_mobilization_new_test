@@ -48,24 +48,21 @@ class ComLogDetailView(DetailView, LoginRequiredMixin):
     template_name = 'com_log/com_log_detail.html'
     context_object_name = 'com_log'
 @method_decorator(login_required, name='dispatch')
-class ComLogCreateView(LoginRequiredMixin, CreateView):
+class ComLogCreateView(CreateView):
     model = ComLog
     form_class = ComLogForm
     template_name = 'com_log/com_log_form.html'
     success_url = reverse_lazy('com_log:list')
+    
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
     def form_valid(self, form):
-        logger.info(f"Form data: {form.cleaned_data}")
-        try:
-            self.object = form.save()
-            logger.info(f"ComLog created: {self.object.id}")
-            messages.success(self.request, 'Communication log created successfully.')
-            return redirect(self.get_success_url())
-        except Exception as e:
-            logger.error(f"Error creating ComLog: {str(e)}")
-            messages.error(self.request, 'An error occurred while creating the communication log.')
-            return self.form_invalid(form)
-
+        self.object = form.save()
+        return super().form_valid(form)
+    
     def form_invalid(self, form):
         logger.error(f"ComLog form invalid: {form.errors}")
         messages.error(self.request, 'Please correct the errors below.')
