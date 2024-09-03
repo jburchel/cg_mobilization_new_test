@@ -64,7 +64,7 @@
             <h2 class="form-section-title">CRM Details</h2>
             <div class="form-grid">
                 {% for field in form %}
-                    {% if field.name in 'color,church_pipeline,priority,assigned_to,source,referred_by' %}
+                    {% if field.name in 'church_pipeline,priority,assigned_to,source,referred_by' %}
                         <div class="form-group">
                             {{ field.label_tag }}
                             {{ field }}
@@ -141,7 +141,7 @@
             <h2 class="form-section-title">CRM Details</h2>
             <div class="form-grid">
                 {% for field in form %}
-                    {% if field.name in 'color,people_pipeline,priority,assigned_to,source,referred_by' %}
+                    {% if field.name in 'people_pipeline,priority,assigned_to,source,referred_by' %}
                         <div class="form-group">
                             {{ field.label_tag }}
                             {{ field }}

@@ -45,7 +45,7 @@ class ChurchResource(ContactResource):
                                                 'missions_pastor_last_name', 'mission_pastor_phone', 'mission_pastor_email',
                                                 'primary_contact_first_name', 'primary_contact_last_name',
                                                 'primary_contact_phone', 'primary_contact_email', 'website',
-                                                'denomination', 'congregation_size', 'color', 'church_pipeline',
+                                                'denomination', 'congregation_size', 'church_pipeline',
                                                 'priority', 'assigned_to', 'source', 'referred_by', 'info_given',
                                                 'reason_closed', 'year_founded', 'date_closed')
         skip_unchanged = True
@@ -194,7 +194,7 @@ class ChurchAdmin(ImportExportModelAdmin):
     import_form_class = CustomImportForm
     list_display = ('church_name', 'email', 'phone', 'church_pipeline', 'priority', 'assigned_to')
     search_fields = ('church_name', 'email', 'senior_pastor_last_name')
-    list_filter = ('church_pipeline', 'priority', 'assigned_to', 'denomination', 'color')
+    list_filter = ('church_pipeline', 'priority', 'assigned_to', 'denomination',)
     
     # Fields to exclude from the form
     exclude = ('first_name', 'last_name')
@@ -215,7 +215,7 @@ class ChurchAdmin(ImportExportModelAdmin):
             )
         }),
         ('CRM Details', {
-            'fields': ('color', 'church_pipeline', 'priority', 'assigned_to', 'source', 'referred_by')
+            'fields': ('church_pipeline', 'priority', 'assigned_to', 'source', 'referred_by')
         }),
         ('Additional Information', {
             'fields': ('info_given', 'initial_notes', 'virtuous', 'image')                        

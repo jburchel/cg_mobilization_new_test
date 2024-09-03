@@ -25,7 +25,7 @@ class ChurchForm(forms.ModelForm):
                   'senior_pastor_first_name','senior_pastor_last_name', 'senior_pastor_phone', 'senior_pastor_email',
                   'missions_pastor_first_name', 'missions_pastor_last_name','mission_pastor_phone', 'mission_pastor_email',
                   'virtuous', 'website', 'denomination','congregation_size', 
-                  'color', 'church_pipeline', 'priority', 'assigned_to','source', 'referred_by', 'year_founded','initial_notes', 'info_given',
+                  'church_pipeline', 'priority', 'assigned_to','source', 'referred_by', 'year_founded','initial_notes', 'info_given',
                   'image'
                   ]
         

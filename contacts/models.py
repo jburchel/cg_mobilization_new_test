@@ -52,10 +52,7 @@ class Contact(models.Model):
             return self.email
     
 class Church(Contact):
-    COLOR = (
-        ('RED', 'RED'),('YELLOW', 'YELLOW'), ('BLUE', 'BLUE'),('GREEN', 'GREEN')
-    )
-    
+
     CHURCH_PIPELINE_CHOICES = (
         ('COLD', 'COLD'), ('WARM', 'WARM'),('CONTACTED', 'CONTACTED'),
         ('MISSION VISION', 'MISSION VISION'), ('COMMITTED', 'COMMITTED'),('EN42', 'EN42'),
