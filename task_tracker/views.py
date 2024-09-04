@@ -219,4 +219,34 @@ def add_task_to_google_calendar(request, task):
             reminder_minutes = 60
         elif task.reminder == '2_hours':
             reminder_minutes = 120
-        elif task.reminder == '1_
+        elif task.reminder == '1_day':
+            reminder_minutes = 1440
+
+        event['reminders']['overrides'].append({
+            'method': 'popup',
+            'minutes': reminder_minutes
+        })
+
+        logger.info(f"Inserting event into calendar: {event}")
+        try:
+            event = service.events().insert(calendarId='primary', body=event).execute()
+            logger.info(f'Event created: {event.get("htmlLink")}')
+            task.google_calendar_event_id = event['id']
+            task.save()
+        except HttpError as error:
+            if error.resp.status == 401:
+                logger.error("Authentication Error: Credentials might be expired")
+                return redirect('task_tracker:initiate_google_auth')
+            elif error.resp.status == 400:
+                logger.error(f"Bad Request Error: {error.content}")
+                # Handle the bad request error (e.g., invalid event data)
+            else:
+                logger.error(f"Google Calendar API Error: {error}")
+            # You might want to set a flag or message to inform the user that the calendar event creation failed
+
+    except Exception as e:
+        logger.exception(f"Unexpected error in Google Calendar integration: {str(e)}")
+
+    return None  # If we get here, no redirection was needed
+
+# ... (other views and functions remain the same)
