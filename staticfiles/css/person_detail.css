@@ -11,23 +11,35 @@
 }
 
 .person-image {
+    flex-shrink: 0;
     margin-right: 20px;
+    width: 200px;
 }
 
 .person-image img {
+    width: 100%;
+    height: auto;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.person-title-and-actions {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .person-name {
     color: #183963;
     margin: 0 0 10px 0;
+    font-size: 2em;
 }
 
 .person-actions {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    margin-bottom: 1rem;
 }
 
 .btn {
@@ -43,11 +55,28 @@
 .btn-log { background-color: #183963; }
 .btn-task { background-color: #7F7F7F; }
 
-.person-info {
-    display: contents;
+.additional-info {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 15px;
+    margin-top: 1rem;
+}
+
+.additional-info h2 {
+    color: #183963;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.additional-info p {
+    margin-top: 0.5rem;
+}
+
+.person-content {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    margin-bottom: 20px;
 }
 
 .info-section {
@@ -58,23 +87,17 @@
 }
 
 .info-section h2 {
+    color: #183963;
     margin-top: 0;
-    padding-top: 5px;
+    margin-bottom: 10px;
 }
 
-.additional-info, .metadata, .interaction-history {
+.interaction-history {
     margin-top: 20px;
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
     border-radius: 5px;
-    padding: 5px 15px;
-}
-
-.additional-info {
-    grid-column: 2;
-    grid-row: 1 / span 3; /* This makes it span all three rows */
-    display: flex;
-    flex-direction: column;
+    padding: 15px;
 }
 
 .interaction {
@@ -85,19 +108,4 @@
 
 .interaction:last-child {
     border-bottom: none;
-}
-
-.additional-info h2 {
-    margin-top: 0;
-    padding-top: 5px; /* Adjust this value as needed */
-}
-
-.person-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.additional-info p {
-    flex-grow: 1; /* This will make the paragraph fill the remaining space */
 }
