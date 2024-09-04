@@ -23,7 +23,7 @@ class ComLogListView(ListView, LoginRequiredMixin):
     paginate_by = 10
 
     def get_queryset(self):
-        queryset = ComLog.objects.select_related('content_type').order_by('-date_created')
+        queryset = ComLog.objects.select_related('content_type').order_by('-date')
         logger.info(f"ComLog queryset count: {queryset.count()}")
         return queryset
 
@@ -36,7 +36,7 @@ class ComLogListView(ListView, LoginRequiredMixin):
                 'type': log.get_contact_type(),
                 'communication_type': log.get_communication_type_display(),
                 'notes': log.notes,
-                'date_created': log.date_created,
+                'date': log.date,
             }
             for log in context['com_logs']
         ]
