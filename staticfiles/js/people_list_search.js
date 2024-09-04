@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('peopleSearch');
     const pipelineStages = document.querySelectorAll('.pipeline-stage');
 
-    // Search functionality
     searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
 
@@ -30,19 +29,8 @@ document.addEventListener('DOMContentLoaded', function() {
             stage.style.display = visibleCards === 0 ? 'none' : '';
         });
 
+        // Update summary counts
         updateSummaryCounts();
-    });
-
-    // Collapse functionality
-    pipelineStages.forEach(stage => {
-        const header = stage.querySelector('.stage-header');
-        const content = stage.querySelector('.stage-content');
-        const arrow = header.querySelector('.collapse-arrow');
-
-        header.addEventListener('click', () => {
-            content.style.display = content.style.display === 'none' ? '' : 'none';
-            arrow.textContent = content.style.display === 'none' ? '▶' : '▼';
-        });
     });
 
     function updateSummaryCounts() {

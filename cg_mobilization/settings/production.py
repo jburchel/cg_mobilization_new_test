@@ -57,3 +57,7 @@ if render_dir.exists():
     print(f"Contents of {render_dir}: {os.listdir(render_dir)}")
 else:
     print(f"Directory {render_dir} does not exist (this is expected in local environment)")
+    
+print(f"STATIC_URL: {STATIC_URL}")
+print(f"STATIC_ROOT: {STATIC_ROOT}")
+print(f"STATICFILES_DIRS: {STATICFILES_DIRS}")
