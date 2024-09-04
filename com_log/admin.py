@@ -3,10 +3,10 @@ from .models import ComLog
 
 @admin.register(ComLog)
 class CommunicationLogAdmin(admin.ModelAdmin):
-    list_display = ('contact', 'communication_type', 'date_created', 'summary_preview')
-    list_filter = ('communication_type', 'date_created')
+    list_display = ('contact', 'communication_type', 'date', 'summary_preview')
+    list_filter = ('communication_type', 'date')
     search_fields = ('contact__first_name', 'contact__last_name', 'summary')
-    date_hierarchy = 'date_created'
+    date_hierarchy = 'date'
 
     def summary_preview(self, obj):
         return obj.summary[:50] + '...' if len(obj.summary) > 50 else obj.summary

@@ -24,10 +24,10 @@ class ComLog(models.Model):
     subject = models.CharField(max_length=255, blank=True)
     notes = models.TextField()
     direction = models.CharField(max_length=10, choices=[('Incoming', 'Incoming'), ('Outgoing', 'Outgoing')],default='Outgoing')
-    date_created = models.DateTimeField(auto_now_add=True)
+    date = models.DateTimeField(auto_now_add=True)
         
     class Meta:
-        ordering = ['-date_created']
+        ordering = ['-date']
 
     def __str__(self):
         return f"Communication with {self.contact} on {self.date_created}"
