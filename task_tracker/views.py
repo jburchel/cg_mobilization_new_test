@@ -68,10 +68,12 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         logger.info("TaskCreateView form_valid method called")
         self.object = form.save(commit=False)
         self.object.created_by = self.request.user
-
-        logger.info(f"Task due date: {self.object.due_date}")
-
         self.object.save()
+
+        if 'google_credentials' not in self.request.session:
+            logger.info("No Google credentials found. Redirecting to Google auth.")
+            self.request.session['pending_task_id'] = self.object.id
+            return redirect('integrations:google_auth')
 
         calendar_response = add_task_to_google_calendar(self.request, self.object)
         if isinstance(calendar_response, HttpResponseRedirect):
@@ -195,31 +197,18 @@ def add_task_to_google_calendar(request, task):
         with open(settings.GOOGLE_CALENDAR_CREDENTIALS_FILE, 'r') as f:
             client_config = json.load(f)
 
-        # Handle the due_date
-        if task.due_date:
-            # Convert to UTC
-            due_date = task.due_date.astimezone(datetime.timezone.utc)
-        else:
-            due_date = timezone.now().astimezone(datetime.timezone.utc)
-
-        # Format the date-time string correctly for Google Calendar API
-        formatted_date = due_date.strftime('%Y-%m-%dT%H:%M:%S%z')
-        
-        logger.info(f"Formatted date for Google Calendar: {formatted_date}")
-
         if 'web' not in client_config:
             logger.error("Invalid client config. 'web' key not found.")
             return
 
-        flow = Flow.from_client_config(
-            client_config,
-            scopes=settings.GOOGLE_CALENDAR_SCOPES,
-            redirect_uri=request.build_absolute_uri(reverse('task_tracker:google_auth_callback'))
-        )
-        logger.info("Flow created successfully")
-
+        # Check if we have credentials in the session
         if 'credentials' not in request.session:
             logger.info("No credentials in session, starting authorization flow")
+            flow = Flow.from_client_config(
+                client_config,
+                scopes=settings.GOOGLE_CALENDAR_SCOPES,
+                redirect_uri=request.build_absolute_uri(reverse('task_tracker:google_auth_callback'))
+            )
             authorization_url, _ = flow.authorization_url(prompt='consent')
             return redirect(authorization_url)
 
@@ -240,6 +229,18 @@ def add_task_to_google_calendar(request, task):
         logger.info("Building calendar service")
         service = build('calendar', 'v3', credentials=credentials)
 
+        # Handle the due_date
+        if task.due_date:
+            # Convert to UTC
+            due_date = task.due_date.astimezone(datetime.timezone.utc)
+        else:
+            due_date = timezone.now().astimezone(datetime.timezone.utc)
+
+        # Format the date-time string correctly for Google Calendar API
+        formatted_date = due_date.strftime('%Y-%m-%dT%H:%M:%S%z')
+        
+        logger.info(f"Formatted date for Google Calendar: {formatted_date}")
+
         event = {
             'summary': task.title,
             'description': task.description,
@@ -248,7 +249,7 @@ def add_task_to_google_calendar(request, task):
                 'timeZone': 'UTC',
             },
             'end': {
-                'dateTime': formatted_date,
+                'dateTime': (due_date + datetime.timedelta(hours=1)).strftime('%Y-%m-%dT%H:%M:%S%z'),
                 'timeZone': 'UTC',
             },
             'reminders': {
