@@ -38,8 +38,16 @@ def google_auth_callback(request):
 
     try:
         flow.fetch_token(code=request.GET.get('code'))
+
         credentials = flow.credentials
-        request.session['google_credentials'] = credentials_to_dict(credentials)
+        request.session['google_credentials'] = {
+            'token': credentials.token,
+            'refresh_token': credentials.refresh_token,
+            'token_uri': credentials.token_uri,
+            'client_id': credentials.client_id,
+            'client_secret': credentials.client_secret,
+            'scopes': list(credentials.scopes)  # Convert to list for JSON serialization
+        }
         
         request.user.google_refresh_token = credentials.refresh_token
         request.user.save()
@@ -49,7 +57,6 @@ def google_auth_callback(request):
         # Check if there's a pending task
         pending_task_id = request.session.pop('pending_task_id', None)
         if pending_task_id:
-            task = Task.objects.get(id=pending_task_id)
             return redirect('task_tracker:task_create')
         
         return redirect(reverse('contacts:contact_list'))
