@@ -181,7 +181,7 @@ class ChurchDetailView(DetailView, LoginRequiredMixin):
         context['recent_communications'] = ComLog.objects.filter(
             content_type=church_content_type,
             object_id=self.object.id
-        ).order_by('-date_created')[:3]
+        ).order_by('-date')[:3]
         return context
 @method_decorator(login_required, name='dispatch')    
 class ChurchAddView(LoginRequiredMixin, CreateView):
@@ -328,7 +328,7 @@ class PersonDetailView(DetailView, LoginRequiredMixin):
         context['recent_communications'] = ComLog.objects.filter(
             content_type=person_content_type,
             object_id=self.object.id
-        ).order_by('-date_created')[:3]
+        ).order_by('-date')[:3]
         return context
 
 def contact_search(request):

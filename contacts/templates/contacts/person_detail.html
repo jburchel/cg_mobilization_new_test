@@ -36,43 +36,41 @@
 
     </div>
 
-    <div class="person-content">
-        <div class="person-info">
-            <div class="info-section">
-                <h2>Contact Information</h2>
-                <p><strong>Phone:</strong> {{ person.phone }}</p>
-                <p><strong>Email:</strong> {{ person.email }}</p>
-                <p><strong>Preferred Contact:</strong> {{ person.get_preferred_contact_method_display }}</p>
-                <p><strong>Address:</strong> {{ person.street_address }}, {{ person.city }}, {{ person.get_state_display }} {{ person.zip_code }}</p>
-                <p><strong>Home Country:</strong> {{ person.home_country|default:"Not specified" }}</p>
-            </div>
+    <div class="person-content">        
+        <div class="info-section">
+            <h2>Contact Information</h2>
+            <p><strong>Phone:</strong> {{ person.phone }}</p>
+            <p><strong>Email:</strong> {{ person.email }}</p>
+            <p><strong>Preferred Contact:</strong> {{ person.get_preferred_contact_method_display }}</p>
+            <p><strong>Address:</strong> {{ person.street_address }}, {{ person.city }}, {{ person.get_state_display }} {{ person.zip_code }}</p>
+            <p><strong>Home Country:</strong> {{ person.home_country|default:"Not specified" }}</p>
+        </div>
 
-            <div class="info-section">
-                <h2>Personal Information</h2>
-                <p><strong>Title:</strong> {{ person.title }}</p>
-                <p><strong>Marital Status:</strong> {{ person.get_marital_status_display }}</p>
-                {% if person.spouse_first_name or person.spouse_last_name %}
-                    <p><strong>Spouse:</strong> {{ person.spouse_first_name }} {{ person.spouse_last_name }}</p>
-                {% endif %}
-                <p><strong>Virtuous:</strong> {{ person.virtuous|yesno:"Yes,No" }}</p>
-            </div>
+        <div class="info-section">
+            <h2>Personal Information</h2>
+            <p><strong>Title:</strong> {{ person.title }}</p>
+            <p><strong>Marital Status:</strong> {{ person.get_marital_status_display }}</p>
+            {% if person.spouse_first_name or person.spouse_last_name %}
+                <p><strong>Spouse:</strong> {{ person.spouse_first_name }} {{ person.spouse_last_name }}</p>
+            {% endif %}
+            <p><strong>Virtuous:</strong> {{ person.virtuous|yesno:"Yes,No" }}</p>
+        </div>
 
-            <div class="info-section">
-                <h2>CRM Details</h2>
-                <p><strong>Pipeline Stage:</strong> {{ person.get_people_pipeline_display }}</p>
-                <p><strong>Priority:</strong> {{ person.get_priority_display }}</p>
-                <p><strong>Assigned To:</strong> {{ person.get_assigned_to_display }}</p>
-                <p><strong>Source:</strong> {{ person.get_source_display }}</p>
-                <p><strong>Referred By:</strong> {{ person.referred_by|default:"Not specified" }}</p>
-            </div>
+        <div class="info-section">
+            <h2>CRM Details</h2>
+            <p><strong>Pipeline Stage:</strong> {{ person.get_people_pipeline_display }}</p>
+            <p><strong>Priority:</strong> {{ person.get_priority_display }}</p>
+            <p><strong>Assigned To:</strong> {{ person.get_assigned_to_display }}</p>
+            <p><strong>Source:</strong> {{ person.get_source_display }}</p>
+            <p><strong>Referred By:</strong> {{ person.referred_by|default:"Not specified" }}</p>
+        </div>
 
-            <div class="info-section">
-                <h2>Additional Information</h2>
-                <p><strong>Desired Service:</strong> {{ person.desired_service|default:"Not specified" }}</p>
-                <p><strong>Info Given:</strong> {{ person.info_given|default:"Not specified" }}</p>
-                <p><strong>Date Created:</strong> {{ person.date_created|date:"F d, Y" }}</p>
-                <p><strong>Date Modified:</strong> {{ person.date_modified|date:"F d, Y" }}</p>
-            </div>
+        <div class="info-section">
+            <h2>Additional Information</h2>
+            <p><strong>Desired Service:</strong> {{ person.desired_service|default:"Not specified" }}</p>
+            <p><strong>Info Given:</strong> {{ person.info_given|default:"Not specified" }}</p>
+            <p><strong>Date Created:</strong> {{ person.date_created|date:"F d, Y" }}</p>
+            <p><strong>Date Modified:</strong> {{ person.date_modified|date:"F d, Y" }}</p>
         </div>
     </div>    
 

@@ -19,15 +19,19 @@
                 <a href="{% url 'task_tracker:task_create' %}" class="btn btn-task">Create Task</a>
                 <a href="{% url 'com_log:contact_interactions' contact_type='church' contact_id=church.id %}" class="btn btn-task">View History</a>
             </div>
+            <div class="info-section">
+                <p><strong>Info Given:</strong> {{ church.info_given|default:"Not specified" }}</p>
+                <p><strong>Initial Notes:</strong> {{ church.initial_notes|default:"No notes available" }}</p>
+            </div>
         </div>
     </div>
     
     <div class="church-info">
         <div class="info-section">
             <h2>Contact Information</h2>
+            <p><a href="{% url 'contacts:send_email' contact_type='church' contact_id=church.id %}" class="btn btn-edit">Send Email</a></p>
             <p><strong>Primary Contact:</strong> {{ church.primary_contact_first_name }} {{ church.primary_contact_last_name }}</p>
-            <p><strong>Phone:</strong> {{ church.phone }}</p>
-            <p><a href="{% url 'contacts:send_email' contact_type='church' contact_id=church.id %}" class="btn btn-log">Send Email</a></p>
+            <p><strong>Phone:</strong> {{ church.phone }}</p>            
             <p><strong>Address:</strong> {{ church.street_address }}, {{ church.city }}, {{ church.get_state_display }} {{ church.zip_code }}</p>
             <p><strong>Website:</strong> <a href="{{ church.website }}" target="_blank">{{ church.website }}</a></p>
         </div>
