@@ -5,7 +5,7 @@ from .models import ComLog
 class CommunicationLogAdmin(admin.ModelAdmin):
     list_display = ('contact', 'communication_type', 'date', 'summary_preview')
     list_filter = ('communication_type', 'date')
-    search_fields = ('contact__first_name', 'contact__last_name', 'summary')
+    search_fields = ('contact__first_name', 'contact__last_name', 'notes')
     date_hierarchy = 'date'
 
     def summary_preview(self, obj):
