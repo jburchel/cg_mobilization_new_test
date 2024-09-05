@@ -106,6 +106,11 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         except Exception as e:
             logger.exception(f"Error adding task {task.id} to Google Calendar: {str(e)}")
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Add any additional context data here if needed
+        return context
+
 @method_decorator(login_required, name='dispatch')    
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
@@ -159,38 +164,26 @@ def update_task_status(request, pk):
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'error'}, status=400)
 
-def add_task_to_google_calendar(request, task):
-    logger.info("Starting Google Calendar integration")
-
-    if not settings.GOOGLE_CALENDAR_CREDENTIALS_FILE:
-        logger.warning("Google Calendar credentials file not set. Skipping calendar integration.")
-        return
-
-    if not os.path.exists(settings.GOOGLE_CALENDAR_CREDENTIALS_FILE):
-        logger.error(f"Credentials file not found: {settings.GOOGLE_CALENDAR_CREDENTIALS_FILE}")
-        return
-
+def add_task_to_google_calendar(self, request, task):
+    logger.info(f"Attempting to add task {task.id} to Google Calendar")
     try:
-        with open(settings.GOOGLE_CALENDAR_CREDENTIALS_FILE, 'r') as f:
-            client_config = json.load(f)
-
-        # Handle the due_date
-        if task.due_date:
-            # Convert to UTC
-            due_date = task.due_date.astimezone(datetime.timezone.utc)
-        else:
-            due_date = timezone.now().astimezone(datetime.timezone.utc)
-
-        # Format the date-time string correctly for Google Calendar API
-        formatted_date = due_date.strftime('%Y-%m-%dT%H:%M:%S%z')
-        
-        logger.info(f"Formatted date for Google Calendar: {formatted_date}")
-
-        if 'web' not in client_config:
-            logger.error("Invalid client config. 'web' key not found.")
-            return
-
         credentials = Credentials(**request.session['google_credentials'])
+        logger.info("Credentials retrieved from session")
+        service = get_calendar_service(request.session['google_credentials'])
+        logger.info("Calendar service created")
+        
+        event_id = create_calendar_event(service, task)
+        logger.info(f"create_calendar_event returned: {event_id}")
+        if event_id:
+            task.google_calendar_event_id = event_id
+            task.save()
+            logger.info(f"Successfully added task {task.id} to Google Calendar with event_id {event_id}")
+        else:
+            logger.error(f"Failed to create event for task {task.id}")
+    except KeyError as e:
+        logger.error(f"KeyError in add_task_to_google_calendar: {str(e)}")
+    except Exception as e:
+        logger.exception(f"Error adding task {task.id} to Google Calendar: {str(e)}")
 
         if not credentials.valid:
             logger.info("Credentials not valid, refreshing")

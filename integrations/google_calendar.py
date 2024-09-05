@@ -14,6 +14,7 @@ def get_calendar_service(credentials_dict):
     return build('calendar', 'v3', credentials=credentials)
 
 def create_calendar_event(service, task):
+    logger.info(f"Creating calendar event for task: {task.title}")
     event = {
         'summary': task.title,
         'description': task.description,
@@ -26,11 +27,12 @@ def create_calendar_event(service, task):
             'timeZone': 'UTC',
         },
     }
+    logger.info(f"Event details: {event}")
 
     try:
-        event = service.events().insert(calendarId='primary', body=event).execute()
-        logger.info(f"Event created: {event.get('htmlLink')}")
-        return event['id']
+        created_event = service.events().insert(calendarId='primary', body=event).execute()
+        logger.info(f"Event created: {created_event.get('htmlLink')}")
+        return created_event['id']
     except HttpError as error:
         logger.error(f'An error occurred: {error}')
         return None
