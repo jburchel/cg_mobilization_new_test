@@ -49,13 +49,21 @@ document.addEventListener('DOMContentLoaded', function() {
             taskList.classList.remove('drag-over');
             const taskId = e.dataTransfer.getData('text');
             const draggableElement = document.querySelector(`[data-task-id="${taskId}"]`);
-            const dropzone = taskList;
-            dropzone.appendChild(draggableElement);
-            updateTaskStatus(taskId, taskList.id);
+            const sourceList = draggableElement.parentElement;
+
+            // Move the task card immediately
+            taskList.appendChild(draggableElement);
+
+            // Update "No tasks" message for both source and target lists immediately
+            updateNoTasksMessage(sourceList);
+            updateNoTasksMessage(taskList);
+
+            // Update the server
+            updateTaskStatus(taskId, taskList.id, sourceList, draggableElement);
         }
     }
 
-    function updateTaskStatus(taskId, newStatus) {
+    function updateTaskStatus(taskId, newStatus, sourceList, taskElement) {
         const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         fetch(`/task-tracker/${taskId}/update-status/`, {
             method: 'POST',
@@ -67,16 +75,37 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            if (data.status === 'success') {
-                console.log('Task status updated successfully');
-            } else {
+            if (data.status !== 'success') {
                 console.error('Failed to update task status');
-                // You might want to move the card back if the update fails
+                // Revert the change if the server update fails
+                sourceList.appendChild(taskElement);
+                updateNoTasksMessage(sourceList);
+                updateNoTasksMessage(taskElement.parentElement);
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            // You might want to move the card back if there's an error
+            // Revert the change if there's an error
+            sourceList.appendChild(taskElement);
+            updateNoTasksMessage(sourceList);
+            updateNoTasksMessage(taskElement.parentElement);
         });
     }
+
+    function updateNoTasksMessage(taskList) {
+        const noTasksMessage = taskList.querySelector('.no-tasks-message');
+        const hasTasks = taskList.querySelector('.task-card');
+
+        if (noTasksMessage) {
+            noTasksMessage.style.display = hasTasks ? 'none' : 'block';
+        } else if (!hasTasks) {
+            const newMessage = document.createElement('p');
+            newMessage.classList.add('no-tasks-message');
+            newMessage.textContent = 'No tasks in this status.';
+            taskList.appendChild(newMessage);
+        }
+    }
+
+    // Initialize "No tasks" messages on page load
+    taskLists.forEach(updateNoTasksMessage);
 });
