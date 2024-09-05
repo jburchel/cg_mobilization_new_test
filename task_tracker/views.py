@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404, redirect
 from contacts.models import Church, People
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib import messages
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
@@ -83,22 +84,31 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         self.object = form.save(commit=False)
         self.object.created_by = self.request.user
         self.object.save()
+        logger.info(f"Task created with ID: {self.object.id}")
 
         if 'google_credentials' not in self.request.session:
             logger.info("No Google credentials found. Redirecting to Google auth.")
             self.request.session['pending_task_id'] = self.object.id
             return redirect('integrations:google_auth')
 
+        logger.info("Google credentials found in session. Attempting to add task to Google Calendar.")
         result = self.add_task_to_google_calendar(self.request, self.object)
         if not result:
-            # If calendar integration failed, we should still save the task
+            logger.warning("Failed to add task to Google Calendar.")
             messages.warning(self.request, "Task saved, but failed to add to Google Calendar. Please try again later.")
+        else:
+            logger.info("Task successfully added to Google Calendar.")
+            messages.success(self.request, "Task created and added to Google Calendar.")
         return super().form_valid(form)
 
     def add_task_to_google_calendar(self, request, task):
         logger.info(f"Attempting to add task {task.id} to Google Calendar")
         try:
-            credentials_dict = request.session['google_credentials']
+            credentials_dict = request.session.get('google_credentials')
+            if not credentials_dict:
+                logger.error("Google credentials not found in session")
+                return False
+            
             logger.info(f"Credentials from session: {json.dumps(credentials_dict, indent=2)}")
             
             credentials = Credentials(**credentials_dict)
@@ -134,15 +144,6 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         except Exception as e:
             logger.exception(f"Error adding task {task.id} to Google Calendar: {str(e)}")
         return False
-    def get_context_data(self, **kwargs):
-        context = {}
-        if 'form' not in kwargs:
-            context['form'] = self.get_form()
-        else:
-            context['form'] = kwargs['form']
-        if 'task' in kwargs:
-            context['task'] = kwargs['task']
-        return context
 
 @method_decorator(login_required, name='dispatch')    
 class TaskUpdateView(LoginRequiredMixin, UpdateView):

@@ -4,6 +4,7 @@ from googleapiclient.errors import HttpError
 from google.auth.transport.requests import Request
 import datetime
 import logging
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -17,19 +18,24 @@ def get_calendar_service(credentials_dict):
 
 def create_calendar_event(service, task):
     logger.info(f"Creating calendar event for task: {task.title}")
+    
+    # Convert to UTC
+    due_date = task.due_date.astimezone(datetime.timezone.utc)
+    
     event = {
         'summary': task.title,
         'description': task.description,
         'start': {
-            'dateTime': task.due_date.isoformat(),
+            'dateTime': due_date.isoformat(),
             'timeZone': 'UTC',
         },
         'end': {
-            'dateTime': (task.due_date + datetime.timedelta(hours=1)).isoformat(),
+            'dateTime': (due_date + datetime.timedelta(hours=1)).isoformat(),
             'timeZone': 'UTC',
         },
     }
-    logger.info(f"Event details: {json.dumps(event, indent=2, default=str)}")
+    
+    logger.info(f"Event details: {json.dumps(event, default=str)}")
 
     try:
         created_event = service.events().insert(calendarId='primary', body=event).execute()

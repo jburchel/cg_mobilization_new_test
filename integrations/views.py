@@ -8,7 +8,9 @@ from django.conf import settings
 from .google_auth import get_flow, credentials_to_dict
 from google_auth_oauthlib.flow import Flow
 from django.views.generic import TemplateView
+import logging
 
+logger = logging.getLogger(__name__)
 @login_required
 def google_auth(request):
     flow = Flow.from_client_config(
@@ -49,19 +51,26 @@ def google_auth_callback(request):
             'scopes': list(credentials.scopes)  # Convert to list for JSON serialization
         }
         
+        logger.info(f"Google credentials saved to session: {request.session['google_credentials']}")
+        
         request.user.google_refresh_token = credentials.refresh_token
         request.user.save()
+        
+        logger.info("Google refresh token saved to user model")
         
         messages.success(request, 'Successfully authenticated with Google.')
         
         # Check if there's a pending task
         pending_task_id = request.session.pop('pending_task_id', None)
         if pending_task_id:
+            logger.info(f"Redirecting to task creation with pending task ID: {pending_task_id}")
             return redirect('task_tracker:task_create')
         
+        logger.info("Redirecting to contact list")
         return redirect(reverse('contacts:contact_list'))
     
     except Exception as e:       
+        logger.exception(f"Error during Google authentication: {str(e)}")
         messages.error(request, f"Error during Google authentication: {str(e)}")
         return redirect(reverse('contacts:contact_list'))
 
