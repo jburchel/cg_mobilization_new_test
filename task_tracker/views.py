@@ -71,7 +71,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
             try:
                 task = Task.objects.get(id=pending_task_id)
                 form = self.get_form_class()(instance=task)
-                return self.render_to_response(self.get_context_data(form=form))
+                return self.render_to_response(self.get_context_data(form=form, task=task))
             except Task.DoesNotExist:
                 logger.warning(f"Pending task with id {pending_task_id} not found")
         return super().get(request, *args, **kwargs)
@@ -94,21 +94,27 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         logger.info(f"Attempting to add task {task.id} to Google Calendar")
         try:
             credentials = Credentials(**request.session['google_credentials'])
+            logger.info("Credentials retrieved from session")
             service = get_calendar_service(request.session['google_credentials'])
+            logger.info("Calendar service created")
             
             event_id = create_calendar_event(service, task)
+            logger.info(f"create_calendar_event returned: {event_id}")
             if event_id:
                 task.google_calendar_event_id = event_id
                 task.save()
-                logger.info(f"Successfully added task {task.id} to Google Calendar")
+                logger.info(f"Successfully added task {task.id} to Google Calendar with event_id {event_id}")
             else:
                 logger.error(f"Failed to create event for task {task.id}")
+        except KeyError as e:
+            logger.error(f"KeyError in add_task_to_google_calendar: {str(e)}")
         except Exception as e:
             logger.exception(f"Error adding task {task.id} to Google Calendar: {str(e)}")
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        # Add any additional context data here if needed
+        context = super(CreateView, self).get_context_data(**kwargs)
+        if 'task' in kwargs:
+            context['task'] = kwargs['task']
         return context
 
 @method_decorator(login_required, name='dispatch')    

@@ -8,8 +8,10 @@ import logging
 logger = logging.getLogger(__name__)
 
 def get_calendar_service(credentials_dict):
+    logger.info("Creating Google Calendar service")
     credentials = Credentials(**credentials_dict)
     if credentials.expired and credentials.refresh_token:
+        logger.info("Refreshing expired credentials")
         credentials.refresh(Request())
     return build('calendar', 'v3', credentials=credentials)
 
@@ -34,7 +36,7 @@ def create_calendar_event(service, task):
         logger.info(f"Event created: {created_event.get('htmlLink')}")
         return created_event['id']
     except HttpError as error:
-        logger.error(f'An error occurred: {error}')
+        logger.error(f'An error occurred while creating the event: {error}')
         return None
 
 def update_calendar_event(service, task):

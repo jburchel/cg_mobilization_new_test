@@ -109,7 +109,17 @@ LOGGING = {
         'level': 'INFO',
     },
     'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
         'task_tracker': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+        'integrations': {
             'handlers': ['console'],
             'level': 'INFO',
             'propagate': False,
