@@ -29,7 +29,7 @@ def create_calendar_event(service, task):
             'timeZone': 'UTC',
         },
     }
-    logger.info(f"Event details: {event}")
+    logger.info(f"Event details: {json.dumps(event, indent=2, default=str)}")
 
     try:
         created_event = service.events().insert(calendarId='primary', body=event).execute()
@@ -37,6 +37,10 @@ def create_calendar_event(service, task):
         return created_event['id']
     except HttpError as error:
         logger.error(f'An error occurred while creating the event: {error}')
+        if error.resp.status == 401:
+            logger.error("Unauthorized. The credentials may be invalid or expired.")
+        elif error.resp.status == 403:
+            logger.error("Forbidden. The application may not have permission to create events.")
         return None
 
 def update_calendar_event(service, task):

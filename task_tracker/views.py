@@ -22,6 +22,7 @@ from django.utils import timezone
 import os
 import json
 import logging
+from google.auth.exceptions import RefreshError
 
 logger = logging.getLogger(__name__)
 
@@ -88,15 +89,29 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
             self.request.session['pending_task_id'] = self.object.id
             return redirect('integrations:google_auth')
 
-        self.add_task_to_google_calendar(self.request, self.object)
+        result = self.add_task_to_google_calendar(self.request, self.object)
+        if not result:
+            # If calendar integration failed, we should still save the task
+            messages.warning(self.request, "Task saved, but failed to add to Google Calendar. Please try again later.")
         return super().form_valid(form)
 
     def add_task_to_google_calendar(self, request, task):
         logger.info(f"Attempting to add task {task.id} to Google Calendar")
         try:
-            credentials = Credentials(**request.session['google_credentials'])
-            logger.info("Credentials retrieved from session")
-            service = get_calendar_service(request.session['google_credentials'])
+            credentials_dict = request.session['google_credentials']
+            logger.info(f"Credentials from session: {json.dumps(credentials_dict, indent=2)}")
+            
+            credentials = Credentials(**credentials_dict)
+            logger.info("Credentials object created")
+            
+            if credentials.expired and credentials.refresh_token:
+                logger.info("Credentials expired. Attempting to refresh.")
+                credentials.refresh(Request())
+                # Update the session with refreshed credentials
+                request.session['google_credentials'] = credentials_to_dict(credentials)
+                logger.info("Credentials refreshed and updated in session")
+            
+            service = get_calendar_service(credentials)
             logger.info("Calendar service created")
             
             event_id = create_calendar_event(service, task)
@@ -105,13 +120,20 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
                 task.google_calendar_event_id = event_id
                 task.save()
                 logger.info(f"Successfully added task {task.id} to Google Calendar with event_id {event_id}")
+                return True
             else:
                 logger.error(f"Failed to create event for task {task.id}")
+                return False
         except KeyError as e:
             logger.error(f"KeyError in add_task_to_google_calendar: {str(e)}")
+        except RefreshError as e:
+            logger.error(f"RefreshError: {str(e)}. User may need to re-authenticate.")
+            # Clear the invalid credentials from the session
+            request.session.pop('google_credentials', None)
+            return False
         except Exception as e:
             logger.exception(f"Error adding task {task.id} to Google Calendar: {str(e)}")
-
+        return False
     def get_context_data(self, **kwargs):
         context = {}
         if 'form' not in kwargs:
