@@ -66,6 +66,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('task_tracker:task_list')
 
     def get(self, request, *args, **kwargs):
+        form = self.get_form()
         pending_task_id = request.session.pop('pending_task_id', None)
         if pending_task_id:
             try:
@@ -74,7 +75,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
                 return self.render_to_response(self.get_context_data(form=form, task=task))
             except Task.DoesNotExist:
                 logger.warning(f"Pending task with id {pending_task_id} not found")
-        return super().get(request, *args, **kwargs)
+        return self.render_to_response(self.get_context_data(form=form))
 
     def form_valid(self, form):
         logger.info("TaskCreateView form_valid method called")
@@ -112,7 +113,11 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
             logger.exception(f"Error adding task {task.id} to Google Calendar: {str(e)}")
 
     def get_context_data(self, **kwargs):
-        context = super(CreateView, self).get_context_data(**kwargs)
+        context = {}
+        if 'form' not in kwargs:
+            context['form'] = self.get_form()
+        else:
+            context['form'] = kwargs['form']
         if 'task' in kwargs:
             context['task'] = kwargs['task']
         return context
