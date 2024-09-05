@@ -5,7 +5,7 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from django.conf import settings
 
-SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
+SCOPES = ['https://www.googleapis.com/auth/calendar.events', 'https://www.googleapis.com/auth/gmail.modify']
 
 def get_flow():
     return Flow.from_client_config(
