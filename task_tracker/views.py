@@ -57,6 +57,8 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
     template_name = 'task_tracker/task_detail.html'
     context_object_name = 'task'
 
+logger = logging.getLogger(__name__)
+
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
     form_class = TaskForm
@@ -66,8 +68,12 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     def get(self, request, *args, **kwargs):
         pending_task_id = request.session.pop('pending_task_id', None)
         if pending_task_id:
-            task = Task.objects.get(id=pending_task_id)
-            return self.form_valid(self.get_form_class()(instance=task))
+            try:
+                task = Task.objects.get(id=pending_task_id)
+                form = self.get_form_class()(instance=task)
+                return self.render_to_response(self.get_context_data(form=form))
+            except Task.DoesNotExist:
+                logger.warning(f"Pending task with id {pending_task_id} not found")
         return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -81,19 +87,15 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
             self.request.session['pending_task_id'] = self.object.id
             return redirect('integrations:google_auth')
 
-        calendar_response = self.add_task_to_google_calendar(self.request, self.object)
-        if isinstance(calendar_response, HttpResponseRedirect):
-            logger.info("Redirecting to Google authorization")
-            self.request.session['pending_task_id'] = self.object.id
-            return calendar_response
-
-        logger.info("Task created successfully")
+        self.add_task_to_google_calendar(self.request, self.object)
         return super().form_valid(form)
 
     def add_task_to_google_calendar(self, request, task):
         logger.info(f"Attempting to add task {task.id} to Google Calendar")
         try:
+            credentials = Credentials(**request.session['google_credentials'])
             service = get_calendar_service(request.session['google_credentials'])
+            
             event_id = create_calendar_event(service, task)
             if event_id:
                 task.google_calendar_event_id = event_id
@@ -103,7 +105,6 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
                 logger.error(f"Failed to create event for task {task.id}")
         except Exception as e:
             logger.exception(f"Error adding task {task.id} to Google Calendar: {str(e)}")
-        return None
 
 @method_decorator(login_required, name='dispatch')    
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
