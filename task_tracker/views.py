@@ -70,14 +70,20 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     def get(self, request, *args, **kwargs):
         form = self.get_form()
         pending_task_id = request.session.pop('pending_task_id', None)
+        context = self.get_context_data(form=form)
         if pending_task_id:
             try:
                 task = Task.objects.get(id=pending_task_id)
                 form = self.get_form_class()(instance=task)
-                return self.render_to_response(self.get_context_data(form=form, task=task))
+                context['form'] = form
+                context['task'] = task
             except Task.DoesNotExist:
                 logger.warning(f"Pending task with id {pending_task_id} not found")
-        return self.render_to_response(self.get_context_data(form=form))
+        return self.render_to_response(context)
+
+    def get_context_data(self, **kwargs):
+        context = super(CreateView, self).get_context_data(**kwargs)
+        return context
 
     def form_valid(self, form):
         logger.info("TaskCreateView form_valid method called")
