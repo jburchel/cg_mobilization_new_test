@@ -45,9 +45,9 @@
                 <span class="collapse-arrow">▼</span>
                 <h2>{{ stage }}</h2>
             </div>
-            <div class="stage-content" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <div class="stage-content">
                 {% for church in churches %}
-                <div class="church-card" draggable="true" ondragstart="drag(event)" data-church-id="{{ church.id }}" data-name="{{ church.church_name }}">
+                <div class="church-card" data-church-id="{{ church.id }}">
                     <div class="church-info">
                         <h3><a href="{% url 'contacts:church_detail' church.id %}" class="church-name-link">{{ church.church_name }}</a></h3>
                         <p>{{ church.email }}</p>
@@ -62,7 +62,7 @@
                     {% endif %}
                 </div>
                 {% empty %}
-                <p>No churches in this stage.</p>
+                <p class="empty-stage">No churches in this stage.</p>
                 {% endfor %}
             </div>
         </div>
@@ -72,5 +72,6 @@
 {% endblock %}
 
 {% block extra_js %}
+<script src="{% static 'js/church_list.js' %}"></script>
 <script src="{% static 'js/church_list_search.js' %}"></script>
 {% endblock %}
