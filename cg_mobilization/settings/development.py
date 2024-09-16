@@ -31,3 +31,4 @@ GOOGLE_CALENDAR_SCOPES = ['https://www.googleapis.com/auth/calendar.events']
 
 # Use console email backend for development
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+SECURE_SSL_REDIRECT = False
