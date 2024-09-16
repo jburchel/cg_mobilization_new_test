@@ -4,7 +4,8 @@ import dj_database_url
 from django.core.exceptions import ImproperlyConfigured
 from dotenv import load_dotenv
 
-load_dotenv()
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
 def get_env_variable(var_name):
     try:
@@ -12,8 +13,6 @@ def get_env_variable(var_name):
     except KeyError:
         error_msg = f"Set the {var_name} environment variable"
         raise ImproperlyConfigured(error_msg)
-
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = get_env_variable('DJANGO_SECRET_KEY')
 
@@ -77,7 +76,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [BASE_DIR / 'static',]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
