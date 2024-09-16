@@ -127,12 +127,12 @@ LOGGING = {
 }
 
 # Email configuration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = get_env_variable('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = get_env_variable('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = get_env_variable('DJANGO_EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
+EMAIL_HOST = get_env_variable('EMAIL_HOST', 'localhost')
+EMAIL_PORT = int(get_env_variable('EMAIL_PORT', '25'))
+EMAIL_USE_TLS = get_env_variable('EMAIL_USE_TLS', 'False') == 'True'
+EMAIL_HOST_USER = get_env_variable('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = get_env_variable('EMAIL_HOST_PASSWORD', '')
 
 # Security settings
 CSRF_COOKIE_SECURE = False
