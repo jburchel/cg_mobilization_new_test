@@ -1,301 +1,199 @@
+/* Church List Styles */
+
 :root {
-    --pipeline-start: #183963;
-    --pipeline-end: #39A949;
-    --primary-white: #FFFFFF;
-    --light-gray: #f0f0f0;
-    --border-color: #e0e0e0;
-    --border-radius: 10px;
-    --collapsed-width: 40px;
+    /* Color variables */
+    --primary-color: #183963;
+    --secondary-color: #39A949;
+    --background-color: #ffffff;
+    --border-color: #dddddd;
+    --hover-shadow-color: rgba(0, 0, 0, 0.1);
+    --error-color: #f44336;
+
+    /* Spacing variables */
+    --spacing-small: 10px;
+    --spacing-medium: 20px;
+
+    /* Border radius */
+    --border-radius: 4px;
+
+    /* Transition */
+    --transition-duration: 0.3s;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--primary-white);
-}
-
+/* Pipeline container */
 .pipeline-container {
-    max-width: 1600px;
+    padding: var(--spacing-medium);
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
 }
 
-h1 {
-    color: var(--pipeline-start);
-    margin-bottom: 20px;
-}
-
-.btn-primary {
-    background-color: var(--pipeline-start);
-    color: var(--primary-white);
-    border: none;
-    padding: 10px 15px;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    margin-bottom: 20px;
-    text-decoration: none;
-    display: inline-block;
-}
-
-.btn-primary:hover {
-    background-color: #122b4a;
-}
-
-/* Updated Pipeline Summary Styles */
-.pipeline-summary {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
-    background: linear-gradient(to right, var(--pipeline-start), var(--pipeline-end));
-    padding: 15px;
-    border-radius: var(--border-radius);
-    color: var(--primary-white);
-}
-
-.summary-item {
-    text-align: center;
-    padding: 8px;
+.actions-container {
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    align-items: center;
+    margin-bottom: var(--spacing-medium);
 }
 
-.summary-item:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
+.search-container {
+    flex-grow: 1;
+    margin-left: var(--spacing-medium);
 }
 
-.summary-label {
-    font-size: 0.8em;
-    margin-bottom: 5px;
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.pipeline-summary-container {
+    margin-bottom: var(--spacing-medium);
 }
 
-.summary-value {
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-/* Make the Total item stand out */
-.total-item {
-    background-color: rgba(255, 255, 255, 0.3);
-    grid-column: 1;
-    grid-row: 1;
-}
-
-.total-item .summary-label {
-    font-size: 1em;
-}
-
-.total-item .summary-value {
-    font-size: 1.5em;
-}
-
-/* Pipeline Grid Styles */
+/* Pipeline grid layout */
 .pipeline-grid {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    overflow-x: auto;
-    padding-bottom: 20px;
-    height: calc(100vh - 250px);
+    flex-wrap: wrap;
+    gap: var(--spacing-medium);
 }
 
 .pipeline-stage {
     flex: 1;
-    min-width: 300px;
-    background-color: var(--light-gray);
-    border-radius: var(--border-radius);
-    transition: all 0.3s ease;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-
-.pipeline-stage.collapsed {
-    flex: 0 0 var(--collapsed-width);
-    min-width: var(--collapsed-width);
-}
-
-.stage-header {
-    cursor: pointer;
-    padding: 10px;
-    background-color: var(--pipeline-start);
-    color: var(--primary-white);
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-}
-
-.stage-header h2 {
-    margin: 0;
-    font-size: 1.2em;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.collapse-arrow {
-    margin-right: 10px;
-    transition: transform 0.3s ease;
-}
-
-.pipeline-stage.collapsed .stage-header {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(180deg);
-    height: 100%;
-    padding: 10px 5px;
-    justify-content: flex-start;
-}
-
-.pipeline-stage.collapsed .collapse-arrow {
-    transform: rotate(-90deg);
-}
-
-.pipeline-stage.collapsed .stage-content {
-    display: none;
-}
-
-.stage-content {
-    padding: 10px;
-    overflow-y: auto;
-    flex-grow: 1;
-}
-
-.church-card {
-    background-color: var(--primary-white);
+    min-width: 250px;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
-    padding: 10px;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: move;
-}
-
-.church-card:hover {
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.church-info {
-    flex-grow: 1;
-    margin-right: 10px;
-}
-
-.church-info h3 {
-    margin: 0 0 5px 0;
-    color: var(--pipeline-start);
-    font-size: 1em;
-}
-
-.church-info p {
-    margin: 2px 0;
-    color: #333;
-    font-size: 0.8em;
-}
-
-.church-image {
-    flex-shrink: 0;
-}
-
-.church-image img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.church-name-link, .church-image-link {
-    color: inherit;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.church-name-link:hover {
-    text-decoration: underline;
+    padding: var(--spacing-small);
+    background-color: var(--background-color);
+    transition: background-color var(--transition-duration) ease;
 }
 
 .pipeline-stage.drag-over {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #f0f0f0;
 }
 
-.empty-stage {
-    color: #666;
-    font-style: italic;
+/* Stage header */
+.stage-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: var(--spacing-small);
 }
 
-/* Responsive Styles */
-@media (max-width: 1200px) {
-    .pipeline-summary {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .total-item {
-        grid-column: 1 / span 3;
-    }
+.collapse-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
 }
 
-@media (max-width: 768px) {
+/* Church card styles */
+.church-card {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-small);
+    margin-bottom: var(--spacing-small);
+    transition: all var(--transition-duration) ease;
+    background-color: var(--background-color);
+}
+
+.church-card:hover,
+.church-card:focus {
+    box-shadow: 0 2px 5px var(--hover-shadow-color);
+}
+
+.church-card.dragging {
+    opacity: 0.5;
+    transform: scale(0.95);
+}
+
+.church-info h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.church-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+/* Drag feedback */
+.drag-feedback {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--background-color);
+    padding: var(--spacing-small) var(--spacing-medium);
+    border-radius: var(--border-radius);
+    display: none;
+}
+
+/* Error message */
+.error-message {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--error-color);
+    color: var(--background-color);
+    padding: var(--spacing-small) var(--spacing-medium);
+    border-radius: var(--border-radius);
+    display: none;
+    animation: fadeInOut 5s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0%, 100% { opacity: 0; }
+    10%, 90% { opacity: 1; }
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
     .pipeline-grid {
         flex-direction: column;
-        height: auto;
     }
 
     .pipeline-stage {
-        margin-bottom: 20px;
+        min-width: 100%;
     }
 
-    .pipeline-stage.collapsed {
-        flex: 0 0 auto;
-        height: var(--collapsed-width);
+    .actions-container {
+        flex-direction: column;
+        align-items: stretch;
     }
 
-    .pipeline-stage.collapsed .stage-header {
-        writing-mode: horizontal-tb;
-        transform: none;
-        height: 100%;
-        padding: 5px 10px;
-    }
-
-    .pipeline-summary {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .total-item {
-        grid-column: 1 / span 2;
+    .search-container {
+        margin-left: 0;
+        margin-top: var(--spacing-small);
     }
 }
 
-@media (max-width: 480px) {
-    .pipeline-summary {
-        grid-template-columns: 1fr;
+/* Accessibility improvements */
+.church-card:focus-within {
+    outline: 2px solid var(--secondary-color);
+}
+
+.collapse-toggle:focus {
+    outline: 2px solid var(--secondary-color);
+}
+
+/* Print styles */
+@media print {
+    .pipeline-container {
+        padding: 0;
     }
-    .total-item {
-        grid-column: 1;
+
+    .pipeline-grid {
+        display: block;
     }
-}
 
-.search-container {
-    margin-bottom: 20px;
-}
+    .pipeline-stage {
+        page-break-inside: avoid;
+        border: none;
+        padding: var(--spacing-small) 0;
+    }
 
-#peopleSearch,
-#churchSearch {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
+    .church-card {
+        page-break-inside: avoid;
+    }
 
-.pipeline-stage {
-    transition: opacity 0.3s ease;
+    .drag-feedback,
+    .error-message,
+    .collapse-toggle,
+    .actions-container {
+        display: none !important;
+    }
 }
