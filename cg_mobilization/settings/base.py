@@ -7,10 +7,12 @@ from dotenv import load_dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 
-def get_env_variable(var_name):
+def get_env_variable(var_name, default=None):
     try:
         return os.environ[var_name]
     except KeyError:
+        if default is not None:
+            return default
         error_msg = f"Set the {var_name} environment variable"
         raise ImproperlyConfigured(error_msg)
 
