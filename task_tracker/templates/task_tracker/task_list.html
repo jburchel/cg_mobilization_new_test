@@ -1,9 +1,11 @@
-{% extends 'core/base.html' %} 
-{% load static %} 
+{% extends 'core/base.html' %}
+{% load static %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/task_list.css' %}">
-{% endblock %} 
-{% block content %} 
+{% endblock %}
+
+{% block content %}
 {% csrf_token %}
 
 <div class="container task-tracker-container">
@@ -20,7 +22,7 @@
                 {% for task in tasks %}
                 <div class="task-card" draggable="true" data-task-id="{{ task.id }}">
                     <a href="{% url 'task_tracker:task_update' task.id %}">
-                        <h3>{{ task.title }}</h3>
+                        <h3>{{ task.title }}</h3></a>
                         <p>{{ task.description|truncatewords:20 }}</p>
                         <div class="task-meta">
                             <span class="priority {{ task.priority }}">{{ task.get_priority_display }}</span>
@@ -37,23 +39,25 @@
                                 {{ task.contact.people.first_name }} {{ task.contact.people.last_name }} (Person)
                             </a>
                             {% else %}
-                            <span class="contact-link">{{ task.contact }} (Unknown type)</span>
+                            <span class="contact-link">
+                                {{ task.contact }} (Unknown type)
+                            </span>
                             {% endif %}
                         </div>
                         {% endif %}
+                        <a href="{% url 'task_tracker:task_delete' task.id %}" class="task-delete-link">Delete</a>    
                     </a>
-                    <a href="{% url 'task_tracker:task_delete' task.id %}" class="task-delete-link">Delete</a>
                 </div>
                 {% empty %}
-                <p class="no-tasks-message">No tasks in this status.</p>
+                <p>No tasks in this status.</p>
                 {% endfor %}
             </div>
         </div>
         {% endfor %}
     </div>
 </div>
+{% endblock %}
 
-{% endblock %} 
 {% block extra_js %}
 <script src="{% static 'js/task_list.js' %}"></script>
 {% endblock %}
