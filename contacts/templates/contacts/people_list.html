@@ -17,12 +17,15 @@
 
     <div class="pipeline-summary">
         {% for stage, count in pipeline_summary %}
-        <div class="summary-item {% if forloop.first %}total-item{% endif %}">
+        <div class="summary-item {% if forloop.first %}total-item{% endif %}" data-stage="{{ stage|lower|slugify }}">
             <span class="summary-label">{{ stage }}</span>
             <span class="summary-value">{{ count }}</span>
         </div>
         {% endfor %}
     </div>
+
+    <div id="dragFeedback" style="display: none;">Dragging person...</div>
+    <div id="errorMessage" class="error-message" style="display: none;"></div>
 
     <div class="pipeline-grid">
         {% for stage, people in pipeline_stages.items %}
@@ -58,5 +61,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/people_list_search.js' %}"></script>
+<script src="{% static 'js/people_list.js' %}"></script>
 {% endblock %}

@@ -3,3 +3,4 @@ db.sqlite3
 db.sqlite3
 credentials_dev.json
 credentials_prod.json
+.env

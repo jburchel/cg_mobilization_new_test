@@ -19,4 +19,5 @@ urlpatterns = [
     path('add/person/', views.PersonAddView.as_view(), name='add_person'),
     path('add/church/', views.ChurchAddView.as_view(), name='add_church'),
     path('<str:contact_type>/<int:contact_id>/send_email/', views.SendEmailView.as_view(), name='send_email'),
+    path('get-church-pipeline-summary/', views.get_church_pipeline_summary, name='get_church_pipeline_summary'),
 ]

@@ -52,9 +52,8 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data.success) {
                 console.log('Successfully updated pipeline stage');
-                setTimeout(() => {
-                    window.location.reload();
-                }, 100);
+                targetStage.querySelector('.stage-content').appendChild(draggedItem);
+                updatePipelineSummary();
             } else {
                 console.error('Failed to update pipeline stage:', data.error);
                 sourceStage.querySelector('.stage-content').appendChild(draggedItem);

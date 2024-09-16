@@ -1,86 +1,64 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% load custom_filters %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/church_list.css' %}">
 {% endblock %}
 
 {% block content %}
-<main class="pipeline-container" role="main">
-    <h1>Churches</h1>
-
+<div class="pipeline-container">
+    <h1>Church Pipeline</h1>
+    
     <div class="actions-container">
-        <a href="{% url 'contacts:add_church' %}" class="btn btn-primary" role="button">Add New Church</a>
-
+        <a href="{% url 'contacts:add_church' %}" class="btn btn-primary">Add New Church</a>
         <div class="search-container">
-            <label for="churchSearch" class="sr-only">Search churches</label>
-            <input type="text" id="churchSearch" placeholder="Search churches..." class="form-control" aria-label="Search churches">
+            <input type="text" id="churchSearch" placeholder="Search churches...">
         </div>
     </div>
 
-    <section class="pipeline-summary-container" aria-label="Pipeline Summary">
-        <div class="pipeline-summary total-row">
-            {% for stage, count in pipeline_summary %}
-                {% if forloop.first %}
-                <div class="summary-item total-item" title="{{ stage }}">
-                    <span class="summary-label">{{ stage }}</span>
-                    <span class="summary-value">{{ count }}</span>
-                </div>
-                {% endif %}
-            {% endfor %}
+    <div class="pipeline-summary">
+        <div class="summary-item total-item">
+            <span class="summary-label">Total</span>
+            <span class="summary-value">{{ total_churches }}</span>
         </div>
-        <div class="pipeline-summary stages-row">
-            {% for stage, count in pipeline_summary %}
-                {% if not forloop.first %}
-                <div class="summary-item" title="{{ stage }}">
-                    <span class="summary-label">{{ stage|truncatechars:15 }}</span>
-                    <span class="summary-value">{{ count }}</span>
-                </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-    </section>
-
-    <section class="pipeline-grid" aria-label="Church Pipeline">
-        {% for stage, churches in pipeline_stages.items %}
-        <div class="pipeline-stage" data-stage="{{ stage|lower|slugify }}" aria-labelledby="stage-header-{{ forloop.counter }}">
-            <div class="stage-header">
-                <button class="collapse-toggle" aria-expanded="true" aria-controls="stage-content-{{ forloop.counter }}">
-                    <span class="collapse-arrow" aria-hidden="true">▼</span>
-                    <span class="sr-only">Toggle {{ stage }} stage</span>
-                </button>
-                <h2 id="stage-header-{{ forloop.counter }}">{{ stage }}</h2>
+        {% for stage in all_stages %}
+            <div class="summary-item" data-stage="{{ stage }}">
+                <span class="summary-label">{{ stage }}</span>
+                <span class="summary-value">{{ pipeline_summary|get_item:stage|default:0 }}</span>
             </div>
-            <div id="stage-content-{{ forloop.counter }}" class="stage-content">
-                {% for church in churches %}
-                <article class="church-card" data-church-id="{{ church.id }}" tabindex="0">
-                    <div class="church-info">
-                        <h3><a href="{% url 'contacts:church_detail' church.id %}" class="church-name-link">{{ church.church_name }}</a></h3>
-                        <p>Email: <a href="mailto:{{ church.email }}">{{ church.email }}</a></p>
-                        <p>Last Contact: <time datetime="{{ church.date_modified|date:'Y-m-d' }}">{{ church.date_modified|default:"N/A" }}</time></p>
-                    </div>
-                    {% if church.image %}
-                    <div class="church-image">
-                        <a href="{% url 'contacts:church_detail' church.id %}" class="church-image-link">
-                            <img src="{{ church.image.url }}" alt="Logo of {{ church.church_name }}" loading="lazy">
-                        </a>
-                    </div>
-                    {% endif %}
-                </article>
-                {% empty %}
-                <p class="empty-stage">No churches in this stage.</p>
-                {% endfor %}
-            </div>
-        </div>
         {% endfor %}
-    </section>
-</main>
+    </div>
 
-<div id="dragFeedback" class="drag-feedback" aria-hidden="true">Moving church</div>
+    <div class="pipeline-grid">
+        {% for stage in all_stages %}
+            <div class="pipeline-stage" data-stage="{{ stage|slugify }}">
+                <div class="stage-header">
+                    <h2>▼ {{ stage }}</h2>
+                </div>
+                <div class="stage-content">
+                    {% for church in pipeline_stages|get_item:stage %}
+                        <div class="church-card" draggable="true" data-church-id="{{ church.id }}">
+                            <h3>{{ church.church_name }}</h3>
+                            <p>{{ church.email }}</p>
+                            <p>Last Contact: {{ church.date_modified|default:"N/A" }}</p>
+                        </div>
+                    {% empty %}
+                        <p class="empty-stage">No churches in this stage.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="dragFeedback" class="drag-feedback" aria-hidden="true">
+    Moving church
+</div>
+
 <div id="errorMessage" class="error-message" role="alert" aria-hidden="true"></div>
 {% endblock %}
 
 {% block extra_js %}
 <script src="{% static 'js/church_list.js' %}"></script>
-<script src="{% static 'js/church_list_search.js' %}"></script>
 {% endblock %}

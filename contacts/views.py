@@ -117,35 +117,37 @@ def edit_contact(request, pk):
     }
     return render(request, 'contacts/edit_contact.html', context)
 @method_decorator(login_required, name='dispatch')
-class ChurchListView(ListView, LoginRequiredMixin):
+class ChurchListView(ListView):
     model = Church
     template_name = 'contacts/church_list.html'
     context_object_name = 'churches'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        churches = self.get_queryset()
-        total_churches = churches.count()
-
-        pipeline_choices = dict(Church.CHURCH_PIPELINE_CHOICES)
-        pipeline_summary = dict(churches.values_list('church_pipeline').annotate(count=Count('church_pipeline')))
         
-        # Ensure all stages are included, even if count is zero
-        for key, value in pipeline_choices.items():
-            if value not in pipeline_summary:
-                pipeline_summary[value] = 0
-
-        # Create a list of tuples (stage, count) in the order of CHURCH_PIPELINE_CHOICES
-        sorted_summary = [(pipeline_choices[key], pipeline_summary[pipeline_choices[key]]) 
-                          for key, _ in Church.CHURCH_PIPELINE_CHOICES]
+        # Define all stages, even if they're empty
+        all_stages = ['COLD', 'WARM', 'CONTACTED', 'MISSION VISION', 'COMMITTED', 'EN42', 'AUTOMATED']
         
-        # Insert total at the beginning
-        sorted_summary.insert(0, ('Total', total_churches))
-
-        context['pipeline_summary'] = sorted_summary
-        context['pipeline_stages'] = {stage: churches.filter(church_pipeline=key) 
-                                      for key, stage in pipeline_choices.items()}
-
+        # Get pipeline summary
+        pipeline_summary = dict(Church.objects.values_list('church_pipeline').annotate(count=Count('church_pipeline')))
+        
+        # Get churches for each stage
+        pipeline_stages = {stage: list(Church.objects.filter(church_pipeline=stage).values('id', 'church_name', 'email', 'date_modified')) for stage in all_stages}
+        
+        context.update({
+            'all_stages': all_stages,
+            'total_churches': Church.objects.count(),
+            'pipeline_summary': pipeline_summary,
+            'pipeline_stages': pipeline_stages,
+        })
+        
+        # Add debug information
+        context['debug_info'] = {
+            'total_churches': context['total_churches'],
+            'pipeline_summary': context['pipeline_summary'],
+            'pipeline_stages_count': {stage: len(churches) for stage, churches in context['pipeline_stages'].items()},
+        }
+        
         return context
     
 @require_POST
@@ -164,7 +166,7 @@ def update_church_pipeline_stage(request):
         
         church.church_pipeline = new_stage_db_value
         church.save()
-        return JsonResponse({'success': True})
+        return JsonResponse({'success': True, 'new_stage': new_stage_db_value})
     except Church.DoesNotExist:
         return JsonResponse({'success': False, 'error': 'Church not found'}, status=404)
     except Exception as e:
@@ -176,7 +178,13 @@ class ChurchDetailView(DetailView, LoginRequiredMixin):
     context_object_name = 'church'
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        all_stages = ['Cold', 'Warm', 'Contacted', 'Mission Vision', 'Committed', 'EN42', 'Automated']
+        pipeline_summary = dict(Church.objects.values_list('church_pipeline').annotate(count=Count('church_pipeline')))
+        pipeline_stages = {stage: Church.objects.filter(church_pipeline=stage) for stage in all_stages}
+        context = super().get_context_data(**kwargs)        
+        context = {'all_stages': all_stages,'total_churches': Church.objects.count(),'pipeline_summary': pipeline_summary,
+                    'pipeline_stages': pipeline_stages,
+}
         church_content_type = ContentType.objects.get_for_model(Church)
         context['recent_communications'] = ComLog.objects.filter(
             content_type=church_content_type,
@@ -269,7 +277,6 @@ def update_pipeline_stage(request):
     
     try:
         person = People.objects.get(id=person_id)
-        # Find the matching database value for the new stage
         new_stage_db_value = next((key for key, value in People.PEOPLE_PIPELINE if value.lower().replace(' ', '-') == new_stage.lower()), None)
         
         if new_stage_db_value is None:
@@ -277,11 +284,31 @@ def update_pipeline_stage(request):
         
         person.people_pipeline = new_stage_db_value
         person.save()
-        return JsonResponse({'success': True})
+
+        # Calculate updated summary
+        pipeline_choices = dict(People.PEOPLE_PIPELINE)
+        pipeline_summary = {stage: People.objects.filter(people_pipeline=key).count() for key, stage in pipeline_choices.items()}
+        total_people = People.objects.count()
+
+        # Convert to list and sort by the order in PEOPLE_PIPELINE
+        sorted_summary = sorted(
+            pipeline_summary.items(),
+            key=lambda x: list(pipeline_choices.values()).index(x[0])
+        )
+
+        # Add total to the beginning of the summary
+        sorted_summary.insert(0, ('Total', total_people))
+
+        return JsonResponse({
+            'success': True,
+            'new_stage': new_stage_db_value,
+            'summary': sorted_summary
+        })
     except People.DoesNotExist:
         return JsonResponse({'success': False, 'error': 'Person not found'}, status=404)
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
+    
 @method_decorator(login_required, name='dispatch')    
 class PersonAddView(LoginRequiredMixin, CreateView):
     model = People
@@ -460,3 +487,12 @@ def form_valid(self, form):
         def form_invalid(self, form):
             messages.error(self.request, "There was an error with your form. Please check and try again.")
             return super().form_invalid(form)
+        
+def get_church_pipeline_summary(request):
+    pipeline_summary = dict(Church.objects.values_list('church_pipeline').annotate(count=Count('church_pipeline')))
+    total_churches = Church.objects.count()
+    
+    return JsonResponse({
+        'total_churches': total_churches,
+        'pipeline_summary': pipeline_summary
+    })
