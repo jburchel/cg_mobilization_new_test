@@ -40,3 +40,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 CSRF_COOKIE_SECURE = False
 SESSION_COOKIE_SECURE = False
 SECURE_SSL_REDIRECT = False
+
+LOGGING['loggers']['task_tracker']['level'] = 'DEBUG'
+LOGGING['loggers']['integrations']['level'] = 'DEBUG'

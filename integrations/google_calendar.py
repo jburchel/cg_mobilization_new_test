@@ -17,39 +17,36 @@ def get_calendar_service(credentials_dict):
     return build('calendar', 'v3', credentials=credentials)
 
 def create_calendar_event(service, task):
-    logger.info(f"Creating calendar event for task: {task.title}")
-    
-    # Convert to UTC
-    due_date = task.due_date.astimezone(datetime.timezone.utc)
-    
-    event = {
-        'summary': task.title,
-        'description': task.description,
-        'start': {
-            'dateTime': due_date.isoformat(),
-            'timeZone': 'UTC',
-        },
-        'end': {
-            'dateTime': (due_date + datetime.timedelta(hours=1)).isoformat(),
-            'timeZone': 'UTC',
-        },
-    }
-    
-    logger.info(f"Event details: {json.dumps(event, default=str)}")
-
+    logger.info(f"Attempting to create calendar event for task: {task.id}")
     try:
+        event = {
+            'summary': task.title,
+            'description': task.description,
+            'start': {
+                'dateTime': task.due_date.isoformat(),
+                'timeZone': 'UTC',
+            },
+            'end': {
+                'dateTime': (task.due_date + datetime.timedelta(hours=1)).isoformat(),
+                'timeZone': 'UTC',
+            },
+        }
+        
+        logger.info(f"Event details: {json.dumps(event, default=str)}")
+        
         created_event = service.events().insert(calendarId='primary', body=event).execute()
-        logger.info(f"Event created: {created_event.get('htmlLink')}")
+        logger.info(f"Event created successfully. Event ID: {created_event['id']}")
         return created_event['id']
-    except HttpError as error:
-        logger.error(f'An error occurred while creating the event: {error}')
-        if error.resp.status == 401:
-            logger.error("Unauthorized. The credentials may be invalid or expired.")
-        elif error.resp.status == 403:
-            logger.error("Forbidden. The application may not have permission to create events.")
+    except HttpError as e:
+        logger.error(f"HttpError occurred while creating calendar event: {e.content}")
+        logger.error(f"Error details: {e.error_details}")
+        return None
+    except Exception as e:
+        logger.exception(f"Unexpected error occurred while creating calendar event: {str(e)}")
         return None
 
 def update_calendar_event(service, task):
+    logger.info(f"Attempting to update calendar event for task: {task.id}")
     event = {
         'summary': task.title,
         'description': task.description,
@@ -64,18 +61,21 @@ def update_calendar_event(service, task):
     }
 
     try:
-        service.events().update(
+        updated_event = service.events().update(
             calendarId='primary',
             eventId=task.google_calendar_event_id,
             body=event
         ).execute()
-        logger.info(f"Event updated: {task.google_calendar_event_id}")
+        logger.info(f"Event updated successfully. Event ID: {updated_event['id']}")
     except HttpError as error:
-        logger.error(f'An error occurred: {error}')
+        logger.error(f'An error occurred while updating the event: {error}')
+        logger.error(f"Error details: {error.error_details}")
 
 def delete_calendar_event(service, event_id):
+    logger.info(f"Attempting to delete calendar event: {event_id}")
     try:
         service.events().delete(calendarId='primary', eventId=event_id).execute()
-        logger.info(f"Event deleted: {event_id}")
+        logger.info(f"Event deleted successfully. Event ID: {event_id}")
     except HttpError as error:
-        logger.error(f'An error occurred: {error}')
+        logger.error(f'An error occurred while deleting the event: {error}')
+        logger.error(f"Error details: {error.error_details}")

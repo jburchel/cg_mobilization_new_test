@@ -103,46 +103,12 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
             self.request.session['pending_task_id'] = self.object.id
             return redirect('integrations:google_auth')
 
-        result = self.add_task_to_google_calendar(self.request, self.object)
+        result = add_task_to_google_calendar(self.request, self.object)
         if not result:
             messages.warning(self.request, "Task saved, but failed to add to Google Calendar. Please try again later.")
         else:
             messages.success(self.request, "Task created and added to Google Calendar.")
         return super().form_valid(form)
-
-    def add_task_to_google_calendar(self, request, task):
-        try:
-            credentials_dict = request.session.get('google_credentials')
-            if not credentials_dict:
-                return False
-            
-            credentials = Credentials(**credentials_dict)
-            
-            if credentials.expired and credentials.refresh_token:
-                credentials.refresh(Request())
-                request.session['google_credentials'] = credentials_to_dict(credentials)
-            
-            service = get_calendar_service(credentials)
-            
-            event_id = create_calendar_event(service, task)
-            if event_id:
-                task.google_calendar_event_id = event_id
-                task.save()
-                return True
-            else:
-                return False
-        except Exception as e:
-            return False
-
-    def credentials_to_dict(credentials):
-        return {
-            'token': credentials.token,
-            'refresh_token': credentials.refresh_token,
-            'token_uri': credentials.token_uri,
-            'client_id': credentials.client_id,
-            'client_secret': credentials.client_secret,
-            'scopes': credentials.scopes
-        }
 
 @method_decorator(login_required, name='dispatch')    
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
@@ -197,12 +163,17 @@ def update_task_status(request, pk):
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'error'}, status=400)
 
-def add_task_to_google_calendar(self, request, task):
+def add_task_to_google_calendar(request, task):
     logger.info(f"Attempting to add task {task.id} to Google Calendar")
     try:
-        credentials = Credentials(**request.session['google_credentials'])
-        logger.info("Credentials retrieved from session")
-        service = get_calendar_service(request.session['google_credentials'])
+        credentials_dict = request.session.get('google_credentials')
+        if not credentials_dict:
+            logger.error("Google credentials not found in session")
+            return False
+        
+        logger.info(f"Credentials from session: {json.dumps(credentials_dict, indent=2)}")
+        
+        service = get_calendar_service(credentials_dict)
         logger.info("Calendar service created")
         
         event_id = create_calendar_event(service, task)
@@ -210,14 +181,17 @@ def add_task_to_google_calendar(self, request, task):
         if event_id:
             task.google_calendar_event_id = event_id
             task.save()
-            logger.info(f"Successfully added task {task.id} to Google Calendar with event_id {event_id}")
+            logger.info(f"Task {task.id} updated with Google Calendar event ID: {event_id}")
+            return True
         else:
             logger.error(f"Failed to create event for task {task.id}")
+            return False
     except KeyError as e:
         logger.error(f"KeyError in add_task_to_google_calendar: {str(e)}")
     except Exception as e:
         logger.exception(f"Error adding task {task.id} to Google Calendar: {str(e)}")
 
+        credentials = Credentials(**request.session.get('google_credentials', {}))
         if not credentials.valid:
             logger.info("Credentials not valid, refreshing")
             if credentials.expired and credentials.refresh_token:
@@ -227,10 +201,13 @@ def add_task_to_google_calendar(self, request, task):
                 request.session['google_credentials'] = credentials_to_dict(credentials)
             else:
                 logger.info("Credentials expired and can't be refreshed, starting new auth flow")
-                return redirect('task_tracker:initiate_google_auth')
+                return False
 
         logger.info("Building calendar service")
         service = build('calendar', 'v3', credentials=credentials)
+
+        formatted_date = task.due_date.strftime('%Y-%m-%dT%H:%M:%S%z')
+        due_date = task.due_date
 
         event = {
             'summary': task.title,
@@ -275,18 +252,16 @@ def add_task_to_google_calendar(self, request, task):
             logger.info(f'Event created: {event.get("htmlLink")}')
             task.google_calendar_event_id = event['id']
             task.save()
+            return True
         except HttpError as error:
             if error.resp.status == 401:
                 logger.error("Authentication Error: Credentials might be expired")
-                return redirect('task_tracker:initiate_google_auth')
+                return False
             elif error.resp.status == 400:
                 logger.error(f"Bad Request Error: {error.content}")
                 # Handle the bad request error (e.g., invalid event data)
             else:
                 logger.error(f"Google Calendar API Error: {error}")
-            # You might want to set a flag or message to inform the user that the calendar event creation failed
+            return False
 
-    except Exception as e:
-        logger.exception(f"Unexpected error in Google Calendar integration: {str(e)}")
-
-    return None  # If we get here, no redirection was needed
+    return False  # If we get here, an error occurred

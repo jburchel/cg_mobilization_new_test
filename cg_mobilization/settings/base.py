@@ -86,7 +86,11 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static',)]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Common Google OAuth settings
-GOOGLE_OAUTH_SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
+GOOGLE_OAUTH_SCOPES = [
+    'https://www.googleapis.com/auth/gmail.modify',
+    'https://www.googleapis.com/auth/gmail.send',
+    'https://www.googleapis.com/auth/calendar.events'
+]
 GOOGLE_CLIENT_SECRETS_FILE = os.path.join(BASE_DIR, 'client_secret.json')
 GOOGLE_CALENDAR_SCOPES = ['https://www.googleapis.com/auth/calendar.events']
 GOOGLE_CALENDAR_CREDENTIALS_FILE = None

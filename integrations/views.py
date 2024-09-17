@@ -8,17 +8,26 @@ from django.conf import settings
 from .google_auth import get_flow, credentials_to_dict
 from google_auth_oauthlib.flow import Flow
 from django.views.generic import TemplateView
+from oauthlib.oauth2.rfc6749.errors import OAuth2Error
 import logging
 
 logger = logging.getLogger(__name__)
-@login_required
-def google_auth(request):
+
+def google_auth_flow(request):
     flow = Flow.from_client_config(
         client_config=settings.GOOGLE_CLIENT_CONFIG,
-        scopes=['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/calendar.events']
+        scopes=[
+            'https://www.googleapis.com/auth/gmail.send',
+            'https://www.googleapis.com/auth/calendar.events',
+            'https://www.googleapis.com/auth/gmail.modify'  # Added this scope
+        ]
     )
     flow.redirect_uri = settings.GOOGLE_REDIRECT_URI
+    return flow
 
+@login_required
+def google_auth(request):
+    flow = google_auth_flow(request)
     authorization_url, state = flow.authorization_url(
         access_type='offline',
         include_granted_scopes='true',
@@ -30,50 +39,25 @@ def google_auth(request):
 
 @login_required
 def google_auth_callback(request):
-    state = request.session['google_auth_state']
-    flow = Flow.from_client_config(
-        client_config=settings.GOOGLE_CLIENT_CONFIG,
-        scopes=['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/calendar.events'],
-        state=state
-    )
-    flow.redirect_uri = settings.GOOGLE_REDIRECT_URI
-
     try:
+        flow = google_auth_flow(request)
         flow.fetch_token(code=request.GET.get('code'))
-
         credentials = flow.credentials
-        request.session['google_credentials'] = {
-            'token': credentials.token,
-            'refresh_token': credentials.refresh_token,
-            'token_uri': credentials.token_uri,
-            'client_id': credentials.client_id,
-            'client_secret': credentials.client_secret,
-            'scopes': list(credentials.scopes)  # Convert to list for JSON serialization
-        }
-        
-        logger.info(f"Google credentials saved to session: {request.session['google_credentials']}")
-        
-        request.user.google_refresh_token = credentials.refresh_token
-        request.user.save()
-        
-        logger.info("Google refresh token saved to user model")
-        
-        messages.success(request, 'Successfully authenticated with Google.')
-        
-        # Check if there's a pending task
-        pending_task_id = request.session.pop('pending_task_id', None)
-        if pending_task_id:
-            logger.info(f"Redirecting to task creation with pending task ID: {pending_task_id}")
-            return redirect('task_tracker:task_create')
-        
-        logger.info("Redirecting to contact list")
-        return redirect(reverse('contacts:contact_list'))
-    
-    except Exception as e:       
+        request.session['google_credentials'] = credentials_to_dict(credentials)
+        messages.success(request, "Successfully authenticated with Google.")
+        return redirect('task_tracker:task_list')
+    except OAuth2Error as e:
+        logger.error(f"OAuth2Error during Google authentication: {str(e)}")
+        messages.error(request, "An error occurred during Google authentication. Please try again.")
+    except Warning as w:
+        # Log the warning but continue with the authentication process
+        logger.warning(f"Warning during Google authentication: {str(w)}")
+        messages.warning(request, "Authentication successful, but with a change in requested permissions.")
+        return redirect('task_tracker:task_list')
+    except Exception as e:
         logger.exception(f"Error during Google authentication: {str(e)}")
-        messages.error(request, f"Error during Google authentication: {str(e)}")
-        return redirect(reverse('contacts:contact_list'))
-
+        messages.error(request, "An unexpected error occurred. Please try again.")
+    return redirect('task_tracker:task_list')
 
 class GoogleAuthSuccessView(TemplateView):
     template_name = 'integrations/google_auth_success.html'
