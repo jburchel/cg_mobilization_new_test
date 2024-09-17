@@ -66,7 +66,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('task_tracker:task_list')
 
     def get(self, request, *args, **kwargs):
-        self.object = None  # Explicitly set object to None for GET requests
+        self.object = None
         form = self.get_form()
         pending_task_id = request.session.pop('pending_task_id', None)
         context = self.get_context_data(form=form)
@@ -77,11 +77,11 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
                 context['form'] = form
                 context['task'] = task
             except Task.DoesNotExist:
-                logger.warning(f"Pending task with id {pending_task_id} not found")
+                pass
         return self.render_to_response(context)
 
     def post(self, request, *args, **kwargs):
-        self.object = None  # Explicitly set object to None for POST requests
+        self.object = None
         form = self.get_form()
         if form.is_valid():
             return self.form_valid(form)
@@ -90,33 +90,59 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if self.object:  # Add this check
+        if self.object:
             context['task'] = self.object
         return context
 
     def form_valid(self, form):
-        logger.info("TaskCreateView form_valid method called")
         self.object = form.save(commit=False)
         self.object.created_by = self.request.user
         self.object.save()
-        logger.info(f"Task created with ID: {self.object.id}")
 
         if 'google_credentials' not in self.request.session:
-            logger.info("No Google credentials found. Redirecting to Google auth.")
             self.request.session['pending_task_id'] = self.object.id
             return redirect('integrations:google_auth')
 
-        logger.info("Google credentials found in session. Attempting to add task to Google Calendar.")
         result = self.add_task_to_google_calendar(self.request, self.object)
         if not result:
-            logger.warning("Failed to add task to Google Calendar.")
             messages.warning(self.request, "Task saved, but failed to add to Google Calendar. Please try again later.")
         else:
-            logger.info("Task successfully added to Google Calendar.")
             messages.success(self.request, "Task created and added to Google Calendar.")
         return super().form_valid(form)
 
-    # ... (rest of the methods remain the same)
+    def add_task_to_google_calendar(self, request, task):
+        try:
+            credentials_dict = request.session.get('google_credentials')
+            if not credentials_dict:
+                return False
+            
+            credentials = Credentials(**credentials_dict)
+            
+            if credentials.expired and credentials.refresh_token:
+                credentials.refresh(Request())
+                request.session['google_credentials'] = credentials_to_dict(credentials)
+            
+            service = get_calendar_service(credentials)
+            
+            event_id = create_calendar_event(service, task)
+            if event_id:
+                task.google_calendar_event_id = event_id
+                task.save()
+                return True
+            else:
+                return False
+        except Exception as e:
+            return False
+
+    def credentials_to_dict(credentials):
+        return {
+            'token': credentials.token,
+            'refresh_token': credentials.refresh_token,
+            'token_uri': credentials.token_uri,
+            'client_id': credentials.client_id,
+            'client_secret': credentials.client_secret,
+            'scopes': credentials.scopes
+        }
 
 @method_decorator(login_required, name='dispatch')    
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
