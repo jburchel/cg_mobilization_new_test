@@ -30,8 +30,7 @@
     <div class="pipeline-grid">
         {% for stage, people in pipeline_stages.items %}
         <div class="pipeline-stage" data-stage="{{ stage|lower|slugify }}">
-            <div class="stage-header">
-                <span class="collapse-arrow">▼</span>
+            <div class="stage-header">                
                 <h2>{{ stage }}</h2>
             </div>
             <div class="stage-content">
