@@ -59,8 +59,6 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
     template_name = 'task_tracker/task_detail.html'
     context_object_name = 'task'
 
-logger = logging.getLogger(__name__)
-
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
     form_class = TaskForm
@@ -68,6 +66,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('task_tracker:task_list')
 
     def get(self, request, *args, **kwargs):
+        self.object = None  # Explicitly set object to None for GET requests
         form = self.get_form()
         pending_task_id = request.session.pop('pending_task_id', None)
         context = self.get_context_data(form=form)
@@ -81,8 +80,18 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
                 logger.warning(f"Pending task with id {pending_task_id} not found")
         return self.render_to_response(context)
 
+    def post(self, request, *args, **kwargs):
+        self.object = None  # Explicitly set object to None for POST requests
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
     def get_context_data(self, **kwargs):
-        context = super(CreateView, self).get_context_data(**kwargs)
+        context = super().get_context_data(**kwargs)
+        if self.object:  # Add this check
+            context['task'] = self.object
         return context
 
     def form_valid(self, form):
@@ -107,49 +116,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
             messages.success(self.request, "Task created and added to Google Calendar.")
         return super().form_valid(form)
 
-    def add_task_to_google_calendar(self, request, task):
-        logger.info(f"Attempting to add task {task.id} to Google Calendar")
-        try:
-            credentials_dict = request.session.get('google_credentials')
-            if not credentials_dict:
-                logger.error("Google credentials not found in session")
-                return False
-            
-            logger.info(f"Credentials from session: {json.dumps(credentials_dict, indent=2)}")
-            
-            credentials = Credentials(**credentials_dict)
-            logger.info("Credentials object created")
-            
-            if credentials.expired and credentials.refresh_token:
-                logger.info("Credentials expired. Attempting to refresh.")
-                credentials.refresh(Request())
-                # Update the session with refreshed credentials
-                request.session['google_credentials'] = credentials_to_dict(credentials)
-                logger.info("Credentials refreshed and updated in session")
-            
-            service = get_calendar_service(credentials)
-            logger.info("Calendar service created")
-            
-            event_id = create_calendar_event(service, task)
-            logger.info(f"create_calendar_event returned: {event_id}")
-            if event_id:
-                task.google_calendar_event_id = event_id
-                task.save()
-                logger.info(f"Successfully added task {task.id} to Google Calendar with event_id {event_id}")
-                return True
-            else:
-                logger.error(f"Failed to create event for task {task.id}")
-                return False
-        except KeyError as e:
-            logger.error(f"KeyError in add_task_to_google_calendar: {str(e)}")
-        except RefreshError as e:
-            logger.error(f"RefreshError: {str(e)}. User may need to re-authenticate.")
-            # Clear the invalid credentials from the session
-            request.session.pop('google_credentials', None)
-            return False
-        except Exception as e:
-            logger.exception(f"Error adding task {task.id} to Google Calendar: {str(e)}")
-        return False
+    # ... (rest of the methods remain the same)
 
 @method_decorator(login_required, name='dispatch')    
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
@@ -297,5 +264,3 @@ def add_task_to_google_calendar(self, request, task):
         logger.exception(f"Unexpected error in Google Calendar integration: {str(e)}")
 
     return None  # If we get here, no redirection was needed
-
-# ... (other views and functions remain the same)
