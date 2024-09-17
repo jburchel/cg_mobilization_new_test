@@ -1,0 +1,97 @@
+:root {
+    --pipeline-start: #183963;
+    --pipeline-end: #39A949;
+    --primary-white: #FFFFFF;
+    --light-gray: #f0f0f0;
+    --border-color: #e0e0e0;
+    --border-radius: 10px;
+    --collapsed-width: 40px;
+    --btn-hover-brightness: 1.1;
+    --error-color: #ff3860;
+}
+
+/* ... (previous styles remain the same) ... */
+
+.pipeline-grid {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    height: calc(100vh - 250px);
+}
+
+.pipeline-stage {
+    flex: 1;
+    min-width: 300px;
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ... (other styles remain the same) ... */
+
+.person-card {
+    background-color: var(--primary-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: move;
+    transition: opacity 0.3s ease;
+}
+
+.person-card:hover {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* ... (other styles remain the same) ... */
+
+/* Drag and Drop Styles */
+.drag-over {
+    border: 2px dashed var(--pipeline-start);
+    background-color: rgba(24, 57, 99, 0.1);
+}
+
+.dragging {
+    opacity: 0.5;
+}
+
+#dragFeedback {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--pipeline-start);
+    color: var(--primary-white);
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    z-index: 1000;
+}
+
+#errorMessage {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--error-color);
+    color: var(--primary-white);
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    z-index: 1000;
+}
+
+.empty-stage {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    padding: 20px 0;
+}
+
+/* ... (rest of the styles remain the same) ... */

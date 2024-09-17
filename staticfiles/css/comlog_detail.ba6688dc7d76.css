@@ -1,0 +1,103 @@
+:root {
+    --primary-blue: #183963;
+    --primary-green: #39A949;
+    --primary-gray: #7F7F7F;
+    --primary-white: #FFFFFF;
+}
+
+.comlog-detail-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.comlog-header {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 30px;
+}
+
+.comlog-title {
+    color: var(--primary-blue);
+    margin: 0 0 20px 0;
+    font-size: 2.5em;
+}
+
+.comlog-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.comlog-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.info-section {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.info-section h2 {
+    color: var(--primary-blue);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.info-section p {
+    margin-bottom: 10px;
+}
+
+.additional-info {
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    padding: 15px;
+}
+
+.additional-info h2 {
+    color: var(--primary-blue);
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--primary-white);
+    transition: background-color 0.3s;
+}
+
+.btn-edit {
+    background-color: var(--primary-green);
+}
+
+.btn-log {
+    background-color: var(--primary-blue);
+}
+
+.btn-back {
+    background-color: var(--primary-gray);
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-history {
+    background-color: #17a2b8;  /* Or any color that fits your design */
+    color: white;
+}
+
+.btn-history:hover {
+    background-color: #138496;  /* A slightly darker shade for hover effect */
+}
