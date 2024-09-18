@@ -76,7 +76,7 @@
     <div class="interaction-history">
         <h2>Recent Interactions</h2>
         {% if recent_communications %}
-            {% for comm in recent_communications %}
+            {% for comm in recent_communications|slice:":3" %}
             <div class="interaction">
                 <strong>{{ comm.date|date:"Y-m-d" }}</strong> - {{ comm.get_communication_type_display }}
                 <p>{{ comm.summary }}</p>

@@ -181,10 +181,18 @@ class ChurchDetailView(DetailView, LoginRequiredMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         church_content_type = ContentType.objects.get_for_model(Church)
-        context['recent_communications'] = ComLog.objects.filter(
-            content_type=church_content_type,
-            object_id=self.object.id
-        ).order_by('-date')[:3]
+        contact_content_type = ContentType.objects.get_for_model(Contact)
+        
+        recent_communications = ComLog.objects.filter(
+            (Q(content_type=church_content_type) & Q(object_id=self.object.id)) |
+            (Q(content_type=contact_content_type) & Q(object_id=self.object.contact_ptr_id))
+        ).order_by('-date')
+        
+        logger.info(f"ChurchDetailView: Fetched {recent_communications.count()} recent communications for Church {self.object.id}")
+        for comm in recent_communications:
+            logger.info(f"ChurchDetailView: ComLog: {comm.id}, Date: {comm.date}, Type: {comm.communication_type}, Content Type: {comm.content_type}")
+        
+        context['recent_communications'] = recent_communications
         return context
     
 @method_decorator(login_required, name='dispatch')    
@@ -348,12 +356,20 @@ class PersonDetailView(DetailView, LoginRequiredMixin):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         person_content_type = ContentType.objects.get_for_model(People)
-        context['recent_communications'] = ComLog.objects.filter(
-            content_type=person_content_type,
-            object_id=self.object.id
-        ).order_by('-date')[:3]
+        contact_content_type = ContentType.objects.get_for_model(Contact)
+        
+        recent_communications = ComLog.objects.filter(
+            (Q(content_type=person_content_type) & Q(object_id=self.object.id)) |
+            (Q(content_type=contact_content_type) & Q(object_id=self.object.contact_ptr_id))
+        ).order_by('-date')
+        
+        logger.info(f"PersonDetailView: Fetched {recent_communications.count()} recent communications for Person {self.object.id}")
+        for comm in recent_communications:
+            logger.info(f"PersonDetailView: ComLog: {comm.id}, Date: {comm.date}, Type: {comm.communication_type}, Content Type: {comm.content_type}")
+        
+        context['recent_communications'] = recent_communications
         return context
-
+    
 def contact_search(request):
     logger.debug(f"Contact search called with GET params: {request.GET}")
     
@@ -459,7 +475,7 @@ def form_valid(self, form):
                 # Create ComLog entry
                 ComLog.objects.create(
                     user=self.request.user,
-                    content_type=ContentType.objects.get_for_model(contact),
+                    content_type=ContentType.objects.get_for_model(Contact),
                     object_id=contact.id,
                     interaction_type='Email',
                     communication_type='Email',

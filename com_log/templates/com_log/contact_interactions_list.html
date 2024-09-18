@@ -7,7 +7,15 @@
 
 {% block content %}
 <div class="container">
-    <h1>Interactions for {{ contact }}</h1>
+    <h1>
+        {% if contact_type == 'person' %}
+        Communication history for {{ contact.first_name }} {{ contact.last_name }}
+    {% elif contact_type == 'church' %}
+        Communication history for {{ contact.church_name }}
+    {% else %}
+        Communication history
+    {% endif %}
+    </h1>
     <table class="table">
         <thead>
             <tr>

@@ -65,40 +65,29 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     template_name = 'task_tracker/task_form.html'
     success_url = reverse_lazy('task_tracker:task_list')
 
-    def get(self, request, *args, **kwargs):
-        self.object = None
-        form = self.get_form()
-        pending_task_id = request.session.pop('pending_task_id', None)
-        context = self.get_context_data(form=form)
-        if pending_task_id:
+    def get_initial(self):
+        initial = super().get_initial()
+        if 'com_log_id' in self.request.GET:
+            com_log_id = self.request.GET.get('com_log_id')
             try:
-                task = Task.objects.get(id=pending_task_id)
-                form = self.get_form_class()(instance=task)
-                context['form'] = form
-                context['task'] = task
-            except Task.DoesNotExist:
+                com_log = ComLog.objects.get(id=com_log_id)
+                initial['title'] = f"Follow-up: {com_log.get_contact_name()}"
+                initial['description'] = f"Follow-up on communication: {com_log.notes[:100]}..."
+                initial['associated_contact'] = com_log.contact
+            except ComLog.DoesNotExist:
                 pass
-        return self.render_to_response(context)
-
-    def post(self, request, *args, **kwargs):
-        self.object = None
-        form = self.get_form()
-        if form.is_valid():
-            return self.form_valid(form)
-        else:
-            return self.form_invalid(form)
+        return initial
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        if self.object:
-            context['task'] = self.object
+        if 'com_log_id' in self.request.GET:
+            context['from_com_log'] = True
         return context
 
     def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.created_by = self.request.user
-        self.object.save()
-
+        form.instance.created_by = self.request.user
+        response = super().form_valid(form)
+        
         if 'google_credentials' not in self.request.session:
             self.request.session['pending_task_id'] = self.object.id
             return redirect('integrations:google_auth')
@@ -108,7 +97,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
             messages.warning(self.request, "Task saved, but failed to add to Google Calendar. Please try again later.")
         else:
             messages.success(self.request, "Task created and added to Google Calendar.")
-        return super().form_valid(form)
+        return response
 
 @method_decorator(login_required, name='dispatch')    
 class TaskUpdateView(LoginRequiredMixin, UpdateView):

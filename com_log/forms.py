@@ -32,7 +32,7 @@ class ComLogForm(forms.ModelForm):
     def save(self, commit=True):
         instance = super().save(commit=False)
         contact = self.cleaned_data['contact']
-        instance.content_type = ContentType.objects.get_for_model(contact)
+        instance.content_type = ContentType.objects.get_for_model(Contact)
         instance.object_id = contact.id
         instance.user = self.user
         if commit:
