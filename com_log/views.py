@@ -140,7 +140,7 @@ class ContactInteractionsListView(ListView):
         return ComLog.objects.filter(
             content_type=content_type,
             object_id=contact.id
-        ).order_by('-date_created')
+        ).order_by('-date')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
