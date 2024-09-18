@@ -6,8 +6,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import ComLog
 from django.contrib import messages
 from .forms import ComLogForm
-from contacts.models import Church, People, Contact
-from django.http import JsonResponse
+from contacts.models import Church, People
+from django.http import JsonResponse, Http404
 from django.db.models import Q
 import logging
 from django.contrib.auth.decorators import login_required
@@ -16,16 +16,14 @@ from django.contrib.messages.views import SuccessMessageMixin
 
 logger = logging.getLogger(__name__)
 @method_decorator(login_required, name='dispatch')
-class ComLogListView(ListView, LoginRequiredMixin):
+class ComLogListView(ListView):
     model = ComLog
     template_name = 'com_log/com_log_list.html'
     context_object_name = 'com_logs'
     paginate_by = 10
 
     def get_queryset(self):
-        queryset = ComLog.objects.select_related('content_type').order_by('-date')
-        logger.info(f"ComLog queryset count: {queryset.count()}")
-        return queryset
+        return ComLog.objects.select_related('content_type').order_by('-date')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -40,13 +38,14 @@ class ComLogListView(ListView, LoginRequiredMixin):
             }
             for log in context['com_logs']
         ]
-        logger.info(f"ComLog context count: {len(context['com_logs'])}")
         return context
+    
 @method_decorator(login_required, name='dispatch')
 class ComLogDetailView(DetailView, LoginRequiredMixin):
     model = ComLog
     template_name = 'com_log/com_log_detail.html'
     context_object_name = 'com_log'
+    
 @method_decorator(login_required, name='dispatch')
 class ComLogCreateView(CreateView):
     model = ComLog
@@ -60,13 +59,24 @@ class ComLogCreateView(CreateView):
         return kwargs
 
     def form_valid(self, form):
-        self.object = form.save()
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        contact = form.cleaned_data['contact']
+        
+        if isinstance(contact, People):
+            content_type = ContentType.objects.get_for_model(People)
+        elif isinstance(contact, Church):
+            content_type = ContentType.objects.get_for_model(Church)
+        else:
+            # Handle other contact types if necessary
+            content_type = ContentType.objects.get_for_model(contact.__class__)
+        
+        self.object.content_type = content_type
+        self.object.object_id = contact.id
+        self.object.save()
+        
+        messages.success(self.request, 'Communication log added successfully.')
         return super().form_valid(form)
-    
-    def form_invalid(self, form):
-        logger.error(f"ComLog form invalid: {form.errors}")
-        messages.error(self.request, 'Please correct the errors below.')
-        return super().form_invalid(form)
 
 def contact_search(request):
     contact_type = request.GET.get('type')
@@ -121,6 +131,7 @@ class ComLogUpdateView(SuccessMessageMixin, UpdateView):
             }
         return kwargs
     
+@method_decorator(login_required, name='dispatch')
 class ContactInteractionsListView(ListView):
     template_name = 'com_log/contact_interactions_list.html'
     context_object_name = 'interactions'

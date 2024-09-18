@@ -171,6 +171,7 @@ def update_church_pipeline_stage(request):
         return JsonResponse({'success': False, 'error': 'Church not found'}, status=404)
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
+    
 @method_decorator(login_required, name='dispatch')    
 class ChurchDetailView(DetailView, LoginRequiredMixin):
     model = Church
@@ -178,19 +179,14 @@ class ChurchDetailView(DetailView, LoginRequiredMixin):
     context_object_name = 'church'
 
     def get_context_data(self, **kwargs):
-        all_stages = ['Cold', 'Warm', 'Contacted', 'Mission Vision', 'Committed', 'EN42', 'Automated']
-        pipeline_summary = dict(Church.objects.values_list('church_pipeline').annotate(count=Count('church_pipeline')))
-        pipeline_stages = {stage: Church.objects.filter(church_pipeline=stage) for stage in all_stages}
-        context = super().get_context_data(**kwargs)        
-        context = {'all_stages': all_stages,'total_churches': Church.objects.count(),'pipeline_summary': pipeline_summary,
-                    'pipeline_stages': pipeline_stages,
-}
+        context = super().get_context_data(**kwargs)
         church_content_type = ContentType.objects.get_for_model(Church)
         context['recent_communications'] = ComLog.objects.filter(
             content_type=church_content_type,
             object_id=self.object.id
         ).order_by('-date')[:3]
         return context
+    
 @method_decorator(login_required, name='dispatch')    
 class ChurchAddView(LoginRequiredMixin, CreateView):
     model = Church

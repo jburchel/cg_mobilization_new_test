@@ -30,7 +30,7 @@ class ComLog(models.Model):
         ordering = ['-date']
 
     def __str__(self):
-        return f"Communication with {self.contact} on {self.date_created}"
+        return f"Communication with {self.contact} on {self.date}"
 
     def get_contact_name(self):
         return str(self.contact) if self.contact else "No Contact"

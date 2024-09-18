@@ -2,13 +2,12 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/com_log_list.css' %}">
+<link rel="stylesheet" href="{% static 'css/com_log_list.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="container">
     <h1>Interactions for {{ contact }}</h1>
-    
     <table class="table">
         <thead>
             <tr>
@@ -21,7 +20,7 @@
         <tbody>
             {% for interaction in interactions %}
             <tr>
-                <td>{{ interaction.date_created }}</td>
+                <td>{{ interaction.date|date:"Y-m-d H:i" }}</td>
                 <td>{{ interaction.get_communication_type_display }}</td>
                 <td>{{ interaction.notes|truncatewords:20 }}</td>
                 <td>
