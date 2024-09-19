@@ -6,8 +6,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="container task-delete-container">
-    <h1>Delete Task</h1>
+<div class="task-delete-container">
+    <h1>Confirm Task Deletion</h1>
     <p>Are you sure you want to delete the task "{{ object.title }}"?</p>
     <form method="post">
         {% csrf_token %}

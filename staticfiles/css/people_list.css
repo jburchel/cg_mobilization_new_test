@@ -112,7 +112,7 @@ h1 {
 .pipeline-stage {
     flex: 1 1 200px;
     min-width: 200px;
-    max-width: calc(16.666% - 10px);
+    max-width: calc(20.2% - 10px);
     background-color: var(--light-gray);
     border-radius: 5px;
     overflow: hidden;

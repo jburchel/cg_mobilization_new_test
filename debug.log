@@ -275,3 +275,33 @@ INFO 2024-09-19 14:07:45,544 basehttp 51592 6163197952 "GET /task-tracker/ HTTP/
 INFO 2024-09-19 14:08:10,882 autoreload 52555 8106941504 Watching for file changes with StatReloader
 INFO 2024-09-19 14:08:11,043 wsgi 52555 6182875136 Static root path: /opt/render/project/src/staticfiles
 INFO 2024-09-19 14:08:11,043 wsgi 52555 6182875136 Media root path: /opt/render/project/src/media
+INFO 2024-09-19 14:08:30,306 basehttp 52555 6199701504 "GET / HTTP/1.1" 200 4383
+WARNING 2024-09-19 14:08:30,793 log 52555 6199701504 Not Found: /favicon.ico
+WARNING 2024-09-19 14:08:30,793 basehttp 52555 6199701504 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-19 14:08:37,613 basehttp 52555 6199701504 "GET /com-log/ HTTP/1.1" 200 9595
+INFO 2024-09-19 14:08:37,655 basehttp 52555 6199701504 "GET /static/css/com_log_list.css HTTP/1.1" 304 0
+INFO 2024-09-19 14:08:38,614 basehttp 52555 6199701504 "GET /task-tracker/ HTTP/1.1" 200 8188
+INFO 2024-09-19 14:08:42,910 basehttp 52555 6199701504 "GET /task-tracker/18/delete/ HTTP/1.1" 200 2666
+WARNING 2024-09-19 14:08:42,955 basehttp 52555 6199701504 "GET /static/css/task_confirm_delete.css HTTP/1.1" 404 1840
+INFO 2024-09-19 14:08:44,411 basehttp 52555 6199701504 "POST /task-tracker/18/delete/ HTTP/1.1" 302 0
+INFO 2024-09-19 14:08:44,435 basehttp 52555 6199701504 "GET /task-tracker/ HTTP/1.1" 200 7239
+INFO 2024-09-19 14:08:45,930 basehttp 52555 6199701504 "GET /task-tracker/create/ HTTP/1.1" 200 17732
+INFO 2024-09-19 14:09:04,260 basehttp 52555 6199701504 "POST /task-tracker/create/ HTTP/1.1" 302 0
+INFO 2024-09-19 14:09:04,269 basehttp 52555 6199701504 "GET /integrations/google/auth/ HTTP/1.1" 302 0
+INFO 2024-09-19 14:09:20,914 basehttp 52555 6199701504 "GET /integrations/google/auth/callback/?state=YXxtHtta44XLHeIdiHEEu3LmKXz2yc&code=4/0AQlEd8yfMzBZKvpErVwW6m5LI8iUFMQled2ZJOY4YbDrzBX70ItwnSSEU3cGS_5O76BR-A&scope=https://www.googleapis.com/auth/gmail.send%20https://www.googleapis.com/auth/calendar.events%20https://www.googleapis.com/auth/gmail.modify HTTP/1.1" 302 0
+INFO 2024-09-19 14:09:20,941 basehttp 52555 6199701504 "GET /task-tracker/ HTTP/1.1" 200 8296
+INFO 2024-09-19 15:49:39,583 basehttp 52555 6199701504 "GET /task-tracker/16/delete/ HTTP/1.1" 200 2662
+WARNING 2024-09-19 15:49:39,633 basehttp 52555 6199701504 "GET /static/css/task_confirm_delete.css HTTP/1.1" 404 1840
+INFO 2024-09-19 15:49:40,854 basehttp 52555 6199701504 "POST /task-tracker/16/delete/ HTTP/1.1" 302 0
+INFO 2024-09-19 15:49:40,879 basehttp 52555 6199701504 "GET /task-tracker/ HTTP/1.1" 200 7323
+INFO 2024-09-19 15:57:17,206 autoreload 53961 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-19 15:57:17,375 wsgi 53961 6151385088 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-19 15:57:17,375 wsgi 53961 6151385088 Media root path: /opt/render/project/src/media
+INFO 2024-09-19 15:57:23,799 basehttp 53961 6168211456 "GET /task-tracker/ HTTP/1.1" 200 7323
+INFO 2024-09-19 15:57:28,964 basehttp 53961 6168211456 "GET /task-tracker/17/delete/ HTTP/1.1" 200 2662
+INFO 2024-09-19 15:57:29,018 basehttp 53961 6168211456 "GET /static/css/task_confirm_delete.css HTTP/1.1" 200 1195
+INFO 2024-09-19 15:57:34,196 basehttp 53961 6168211456 "POST /task-tracker/17/delete/ HTTP/1.1" 302 0
+INFO 2024-09-19 15:57:34,217 basehttp 53961 6168211456 "GET /task-tracker/ HTTP/1.1" 200 6457
+INFO 2024-09-19 16:02:01,950 autoreload 54147 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-19 16:02:02,130 wsgi 54147 6175764480 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-19 16:02:02,130 wsgi 54147 6175764480 Media root path: /opt/render/project/src/media
