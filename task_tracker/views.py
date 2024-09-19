@@ -175,10 +175,8 @@ def add_task_to_google_calendar(request, task):
         else:
             logger.error(f"Failed to create event for task {task.id}")
             return False
-    except KeyError as e:
-        logger.error(f"KeyError in add_task_to_google_calendar: {str(e)}")
     except Exception as e:
-        logger.exception(f"Error adding task {task.id} to Google Calendar: {str(e)}")
+        logger.exception(f"Error adding task {task.id} to Google Calendar: {str(e)}")        
 
         credentials = Credentials(**request.session.get('google_credentials', {}))
         if not credentials.valid:
@@ -252,5 +250,3 @@ def add_task_to_google_calendar(request, task):
             else:
                 logger.error(f"Google Calendar API Error: {error}")
             return False
-
-    return False  # If we get here, an error occurred

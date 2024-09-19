@@ -401,25 +401,7 @@ class SendEmailView(LoginRequiredMixin, FormView):
     template_name = 'contacts/send_email.html'
     form_class = EmailForm
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        contact_type = self.kwargs['contact_type']
-        contact_id = self.kwargs['contact_id']
-        
-        if contact_type == 'church':
-            contact = get_object_or_404(Church, id=contact_id)
-        else:  # person
-            contact = get_object_or_404(People, id=contact_id)
-
-        context['contact'] = contact
-        return context
-
-    def get_success_url(self):
-        contact_type = self.kwargs['contact_type']
-        contact_id = self.kwargs['contact_id']
-        return reverse(f'contacts:{contact_type}_detail', kwargs={'pk': contact_id})
-
-def form_valid(self, form):
+    def form_valid(self, form):
         try:
             credentials_dict = self.request.session.get('google_credentials')
             if not credentials_dict:
@@ -437,16 +419,9 @@ def form_valid(self, form):
 
             if credentials.expired and credentials.refresh_token:
                 credentials.refresh(Request())
-                self.request.session['google_credentials'] = {
-                    'token': credentials.token,
-                    'refresh_token': credentials.refresh_token,
-                    'token_uri': credentials.token_uri,
-                    'client_id': credentials.client_id,
-                    'client_secret': credentials.client_secret,
-                    'scopes': credentials.scopes
-                }
+                self.request.session['google_credentials'] = credentials_to_dict(credentials)
 
-            service = build('gmail', 'v1', credentials=credentials)
+            service = build_gmail_service(credentials)
 
             contact_type = self.kwargs['contact_type']
             contact_id = self.kwargs['contact_id']
@@ -496,9 +471,9 @@ def form_valid(self, form):
             messages.error(self.request, f"Error sending email: {str(e)}")
             return self.form_invalid(form)
 
-        def form_invalid(self, form):
-            messages.error(self.request, "There was an error with your form. Please check and try again.")
-            return super().form_invalid(form)
+    def form_invalid(self, form):
+        messages.error(self.request, "There was an error with your form. Please check and try again.")
+        return super().form_invalid(form)
         
 def get_church_pipeline_summary(request):
     pipeline_summary = dict(Church.objects.values_list('church_pipeline').annotate(count=Count('church_pipeline')))
