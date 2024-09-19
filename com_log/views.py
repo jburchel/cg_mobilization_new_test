@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.shortcuts import redirect, get_object_or_404
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -48,11 +48,10 @@ class ComLogDetailView(DetailView, LoginRequiredMixin):
     context_object_name = 'com_log'
     
 @method_decorator(login_required, name='dispatch')
-class ComLogCreateView(LoginRequiredMixin, CreateView):
+class ComLogCreateView(CreateView):
     model = ComLog
     form_class = ComLogForm
     template_name = 'com_log/com_log_form.html'
-    success_url = reverse_lazy('task_tracker:task_create')
     
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -60,41 +59,40 @@ class ComLogCreateView(LoginRequiredMixin, CreateView):
         return kwargs
 
     def form_valid(self, form):
+        print("form_valid method called")
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         contact = form.cleaned_data['contact']
         
+        print(f"Contact type: {type(contact)}")
+        print(f"Contact ID: {contact.id}")
+        
         if isinstance(contact, Contact):
-            if hasattr(contact, 'church'):
-                content_type = ContentType.objects.get_for_model(Church)
-                self.object.object_id = contact.church.id
-            elif hasattr(contact, 'people'):
-                content_type = ContentType.objects.get_for_model(People)
-                self.object.object_id = contact.people.id
-            else:
-                content_type = ContentType.objects.get_for_model(Contact)
-                self.object.object_id = contact.id
+            if hasattr(contact, 'people'):
+                contact = contact.people
+            elif hasattr(contact, 'church'):
+                contact = contact.church
+        
+        if isinstance(contact, People):
+            content_type = ContentType.objects.get_for_model(People)
+            contact_type = 'person'
+        elif isinstance(contact, Church):
+            content_type = ContentType.objects.get_for_model(Church)
+            contact_type = 'church'
         else:
             content_type = ContentType.objects.get_for_model(contact.__class__)
-            self.object.object_id = contact.id
+            contact_type = 'unknown'
         
         self.object.content_type = content_type
+        self.object.object_id = contact.id
         self.object.save()
         
-        logger.info(f"ComLogCreateView: Created ComLog (id: {self.object.id}) for {content_type.model} (id: {self.object.object_id})")
-        
-        messages.success(self.request, 'Communication log added successfully. Create a task for follow-up?')
-        return super().form_valid(form)
+        messages.success(self.request, 'Communication log added successfully.')
+                
+        return redirect('task_tracker:task_create')
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Add Communication Log'
-        return context
-
-    def get_success_url(self):
-        if 'create_task' in self.request.POST:
-            return reverse_lazy('task_tracker:task_create')
-        return reverse_lazy('com_log:list')
+    def get_success_url(self):        
+        return reverse('com_log:list')
 
 def contact_search(request):
     contact_type = request.GET.get('type')
@@ -153,12 +151,11 @@ class ComLogUpdateView(SuccessMessageMixin, UpdateView):
 class ContactInteractionsListView(ListView):
     template_name = 'com_log/contact_interactions_list.html'
     context_object_name = 'interactions'
+    paginate_by = 10
 
     def get_queryset(self):
         contact_type = self.kwargs['contact_type']
         contact_id = self.kwargs['contact_id']
-        
-        logger.info(f"ContactInteractionsListView: Fetching interactions for {contact_type} with id {contact_id}")
         
         if contact_type == 'person':
             contact = get_object_or_404(People, id=contact_id)

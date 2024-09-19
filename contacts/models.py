@@ -1,5 +1,7 @@
 from django.db import models
 import os
+from django.contrib.contenttypes.fields import GenericRelation
+from com_log.models import ComLog
 
 def get_image_path(instance, filename):
     return os.path.join('contact_images', str(instance.id), filename)
@@ -34,6 +36,7 @@ class Contact(models.Model):
     initial_notes = models.TextField(null=True, blank=True)
     date_created = models.DateField(auto_now_add=True,null=True, blank=True)
     date_modified = models.DateField(auto_now=True,null=True, blank=True)
+    com_log = GenericRelation(ComLog)
 
     def get_name(self):
         if hasattr(self, 'church'):
