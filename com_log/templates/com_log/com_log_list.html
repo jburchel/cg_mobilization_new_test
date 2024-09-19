@@ -14,7 +14,6 @@
             <tr>
                 <th>Date</th>
                 <th>Contact</th>
-                <th>Type</th>
                 <th>Communication Type</th>
                 <th>Notes</th>
                 <th>Actions</th>
@@ -25,7 +24,6 @@
             <tr>
                 <td>{{ log.date|date:"Y-m-d H:i" }}</td>
                 <td>{{ log.name }}</td>
-                <td>{{ log.type }}</td>
                 <td>{{ log.communication_type }}</td>
                 <td>{{ log.notes|truncatewords:20 }}</td>
                 <td>

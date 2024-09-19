@@ -18,12 +18,10 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cg_mobilization.settings.produc
 application = get_wsgi_application()
 
 static_root = '/opt/render/project/src/staticfiles'
-application = WhiteNoise(application, root=settings.STATIC_ROOT)
-application.add_files(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static'), prefix='static/')
-application.add_files(settings.STATIC_ROOT, prefix="static/")
+application = WhiteNoise(application, root='/opt/render/project/src/staticfiles')
+application.add_files('/opt/render/project/src/static', prefix='static/')
 
 media_root = '/opt/render/project/src/media'
-application.add_files('/opt/render/project/src/media', prefix='media/')
 
 import logging
 logger = logging.getLogger(__name__)
