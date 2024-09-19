@@ -59,7 +59,7 @@ class Church(Contact):
     CHURCH_PIPELINE_CHOICES = (
         ('PROMOTION', 'PROMOTION'), ('INFORMATION', 'INFORMATION'),('INVITATION,', 'INVITATION,'),
         ('CONFIRMATION', 'CONFIRMATION'),('EN42', 'EN42'),
-        ('AUTOMATED', 'AUTOMATED'),
+        ('AUTOMATION', 'AUTOMATION'),
     )
     
     PRIORITY = (
@@ -119,7 +119,7 @@ class People(Contact):
     PEOPLE_PIPELINE = (
         ('PROMOTION', 'PROMOTION'), ('INFORMATION', 'INFORMATION'),('INVITATION,', 'INVITATION,'),
         ('CONFIRMATION', 'CONFIRMATION'),
-        ('AUTOMATED', 'AUTOMATED'),
+        ('AUTOMATION', 'AUTOMATION'),
     )
     
     PRIORITY = (
