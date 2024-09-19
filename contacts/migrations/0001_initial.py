@@ -53,7 +53,7 @@ class Migration(migrations.Migration):
                 ('website', models.URLField(blank=True, null=True)),
                 ('denomination', models.CharField(blank=True, max_length=100, null=True)),
                 ('congregation_size', models.IntegerField(blank=True, null=True)),
-                ('church_pipeline', models.CharField(choices=[('COLD', 'COLD'), ('WARM', 'WARM'), ('CONTACTED', 'CONTACTED'), ('MISSION VISION', 'MISSION VISION'), ('COMMITTED', 'COMMITTED'), ('EN42', 'EN42'), ('AUTOMATED', 'AUTOMATED')], default='UNKNOWN', max_length=100)),
+                ('church_pipeline', models.CharField(choices=[('PROMOTION','PROMOTION'), ('INFORMATION','INFORMATION'), ('INVITATION', 'INVITATION'), ('CONFIRMATION', 'CONFIRMATION'), ('EN42', 'EN42'), ('AUTOMATION', 'AUTOMATION')], default='PROMOTION', max_length=100)),
                 ('priority', models.CharField(choices=[('URGENT', 'URGENT'), ('HIGH', 'HIGH'), ('MEDIUM', 'MEDIUM'), ('LOW', 'LOW')], default='MEDIUM', max_length=10)),
                 ('assigned_to', models.CharField(choices=[('BILL JONES', 'BILL JONES'), ('JASON MODOMO', 'JASON MODOMO'), ('KEN KATAYAMA', 'KEN KATAYAMA'), ('MATTHEW RULE', 'MATTHEW RULE'), ('CHIP ATKINSON', 'CHIP ATKINSON'), ('RACHEL LIVELY', 'RACHEL LIVELY'), ('JIM BURCHEL', 'JIM BURCHEL'), ('JILL WALKER', 'JILL WALKER'), ('KARINA RAMPIN', 'KARINA RAMPIN'), ('UNASSIGNED', 'UNASSIGNED')], default='UNASSIGNED', max_length=100)),
                 ('source', models.CharField(choices=[('WEBFORM', 'WEBFORM'), ('INCOMING CALL', 'INCOMING CALL'), ('EMAIL', 'EMAIL'), ('SOCIAL MEDIA', 'SOCIAL MEDIA'), ('COLD CALL', 'COLD CALL'), ('PERSPECTIVES', 'PERSPECTIVES'), ('REFERAL', 'REFERAL'), ('OTHER', 'OTHER'), ('UNKNOWN', 'UNKNOWN')], default='UNKNOWN', max_length=100)),

@@ -126,7 +126,7 @@ class ChurchListView(ListView):
         context = super().get_context_data(**kwargs)
         
         # Define all stages, even if they're empty
-        all_stages = ['COLD', 'WARM', 'CONTACTED', 'MISSION VISION', 'COMMITTED', 'EN42', 'AUTOMATED']
+        all_stages = ['PROMOTION', 'INFORMATION', 'INVITATION', 'CONFIRMATION', 'EN42', 'AUTOMATION']
         
         # Get pipeline summary
         pipeline_summary = dict(Church.objects.values_list('church_pipeline').annotate(count=Count('church_pipeline')))
