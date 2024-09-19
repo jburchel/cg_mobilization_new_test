@@ -45,7 +45,7 @@ class EmailForm(forms.Form):
     body = forms.CharField(
         widget=forms.Textarea(attrs={
             'class': 'form-control',
-            'rows': 5,
+            'rows': 10,
             'placeholder': 'Enter your message here'
         })
     )
