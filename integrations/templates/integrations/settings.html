@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<h1>Google Integration Settings</h1>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if is_authenticated %}
+    <p>Your Google account is connected.</p>
+    <p>Connected email: {{ email }}</p>
+    <form action="{% url 'integrations:test_integration' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Test Integration</button>
+    </form>
+    <form action="{% url 'integrations:revoke_access' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Revoke Access</button>
+    </form>
+{% else %}
+    <p>Your Google account is not connected.</p>
+    <a href="{% url 'integrations:google_auth' %}" class="button">Connect Google Account</a>
+{% endif %}
+
+{% endblock %}

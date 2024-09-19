@@ -305,3 +305,96 @@ INFO 2024-09-19 15:57:34,217 basehttp 53961 6168211456 "GET /task-tracker/ HTTP/
 INFO 2024-09-19 16:02:01,950 autoreload 54147 8106941504 Watching for file changes with StatReloader
 INFO 2024-09-19 16:02:02,130 wsgi 54147 6175764480 Static root path: /opt/render/project/src/staticfiles
 INFO 2024-09-19 16:02:02,130 wsgi 54147 6175764480 Media root path: /opt/render/project/src/media
+INFO 2024-09-19 16:03:41,498 autoreload 54147 8106941504 /Users/jimburchel/cg_mobilization/task_tracker/views.py changed, reloading.
+INFO 2024-09-19 16:03:41,993 autoreload 54318 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-19 16:03:42,177 wsgi 54318 6185627648 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-19 16:03:42,177 wsgi 54318 6185627648 Media root path: /opt/render/project/src/media
+INFO 2024-09-19 16:06:36,861 autoreload 54318 8106941504 /Users/jimburchel/cg_mobilization/task_tracker/views.py changed, reloading.
+INFO 2024-09-19 16:06:37,770 autoreload 54422 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-19 16:06:38,075 wsgi 54422 6143569920 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-19 16:06:38,075 wsgi 54422 6143569920 Media root path: /opt/render/project/src/media
+INFO 2024-09-19 16:06:42,980 basehttp 54422 6160396288 "GET /com-log/ HTTP/1.1" 200 9595
+INFO 2024-09-19 16:06:43,012 basehttp 54422 6160396288 "GET /static/css/com_log_list.css HTTP/1.1" 304 0
+WARNING 2024-09-19 16:06:43,352 log 54422 6160396288 Not Found: /favicon.ico
+WARNING 2024-09-19 16:06:43,352 basehttp 54422 6160396288 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-19 16:06:46,619 basehttp 54422 6160396288 "GET /contacts/ HTTP/1.1" 200 175514
+INFO 2024-09-19 16:06:50,673 views 54422 6160396288 PersonDetailView: Fetched 27 recent communications for Person 236
+INFO 2024-09-19 16:06:50,676 views 54422 6160396288 PersonDetailView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:50,676 views 54422 6160396288 PersonDetailView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:50,676 views 54422 6160396288 PersonDetailView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:50,677 views 54422 6160396288 PersonDetailView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:50,677 views 54422 6160396288 PersonDetailView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:50,677 views 54422 6160396288 PersonDetailView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,677 views 54422 6160396288 PersonDetailView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,677 views 54422 6160396288 PersonDetailView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,678 views 54422 6160396288 PersonDetailView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,678 views 54422 6160396288 PersonDetailView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,678 views 54422 6160396288 PersonDetailView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,679 views 54422 6160396288 PersonDetailView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,679 views 54422 6160396288 PersonDetailView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,679 views 54422 6160396288 PersonDetailView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,679 views 54422 6160396288 PersonDetailView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,680 views 54422 6160396288 PersonDetailView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,680 views 54422 6160396288 PersonDetailView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,680 views 54422 6160396288 PersonDetailView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,680 views 54422 6160396288 PersonDetailView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,681 views 54422 6160396288 PersonDetailView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,681 views 54422 6160396288 PersonDetailView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:50,681 views 54422 6160396288 PersonDetailView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:50,681 views 54422 6160396288 PersonDetailView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:50,681 views 54422 6160396288 PersonDetailView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:50,682 views 54422 6160396288 PersonDetailView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:50,682 views 54422 6160396288 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:50,682 views 54422 6160396288 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:50,690 basehttp 54422 6160396288 "GET /contacts/person/236/ HTTP/1.1" 200 5495
+INFO 2024-09-19 16:06:52,367 views 54422 6160396288 ContactInteractionsListView: Fetched 27 interactions
+INFO 2024-09-19 16:06:52,370 views 54422 6160396288 ContactInteractionsListView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:52,371 views 54422 6160396288 ContactInteractionsListView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:52,372 views 54422 6160396288 ContactInteractionsListView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:52,372 views 54422 6160396288 ContactInteractionsListView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:52,374 views 54422 6160396288 ContactInteractionsListView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:52,376 views 54422 6160396288 ContactInteractionsListView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,377 views 54422 6160396288 ContactInteractionsListView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,378 views 54422 6160396288 ContactInteractionsListView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,378 views 54422 6160396288 ContactInteractionsListView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,379 views 54422 6160396288 ContactInteractionsListView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,379 views 54422 6160396288 ContactInteractionsListView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,380 views 54422 6160396288 ContactInteractionsListView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,380 views 54422 6160396288 ContactInteractionsListView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,380 views 54422 6160396288 ContactInteractionsListView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,381 views 54422 6160396288 ContactInteractionsListView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,381 views 54422 6160396288 ContactInteractionsListView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,381 views 54422 6160396288 ContactInteractionsListView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,382 views 54422 6160396288 ContactInteractionsListView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,384 views 54422 6160396288 ContactInteractionsListView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,384 views 54422 6160396288 ContactInteractionsListView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,385 views 54422 6160396288 ContactInteractionsListView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:52,385 views 54422 6160396288 ContactInteractionsListView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:52,385 views 54422 6160396288 ContactInteractionsListView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:52,386 views 54422 6160396288 ContactInteractionsListView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:52,386 views 54422 6160396288 ContactInteractionsListView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:52,386 views 54422 6160396288 ContactInteractionsListView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-19 16:06:52,387 views 54422 6160396288 ContactInteractionsListView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-19 16:06:52,394 basehttp 54422 6160396288 "GET /com-log/interactions/person/236/ HTTP/1.1" 200 7187
+INFO 2024-09-19 16:07:14,037 autoreload 54422 8106941504 /Users/jimburchel/cg_mobilization/integrations/gmail.py changed, reloading.
+INFO 2024-09-19 16:07:14,729 autoreload 54470 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-19 16:07:14,982 wsgi 54470 6154268672 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-19 16:07:14,982 wsgi 54470 6154268672 Media root path: /opt/render/project/src/media
+INFO 2024-09-19 16:07:44,902 autoreload 54470 8106941504 /Users/jimburchel/cg_mobilization/integrations/google_calendar.py changed, reloading.
+INFO 2024-09-19 16:07:45,290 autoreload 54489 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-19 16:07:45,460 wsgi 54489 6119108608 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-19 16:07:45,460 wsgi 54489 6119108608 Media root path: /opt/render/project/src/media
+INFO 2024-09-19 16:08:02,171 basehttp 54489 6135934976 "GET /com-log/ HTTP/1.1" 200 9595
+INFO 2024-09-19 16:08:12,195 autoreload 54489 8106941504 /Users/jimburchel/cg_mobilization/task_tracker/views.py changed, reloading.
+INFO 2024-09-19 16:08:12,732 autoreload 54522 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-19 16:08:12,913 wsgi 54522 6117699584 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-19 16:08:12,913 wsgi 54522 6117699584 Media root path: /opt/render/project/src/media
+INFO 2024-09-19 16:08:47,785 autoreload 54522 8106941504 /Users/jimburchel/cg_mobilization/integrations/views.py changed, reloading.
+INFO 2024-09-19 16:08:48,201 autoreload 54541 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-19 16:10:18,433 autoreload 54541 8106941504 /Users/jimburchel/cg_mobilization/integrations/urls.py changed, reloading.
+INFO 2024-09-19 16:10:18,835 autoreload 54646 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-19 16:10:19,008 wsgi 54646 6174650368 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-19 16:10:19,008 wsgi 54646 6174650368 Media root path: /opt/render/project/src/media
+INFO 2024-09-19 16:16:39,835 autoreload 54817 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-19 16:16:40,081 wsgi 54817 6106607616 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-19 16:16:40,081 wsgi 54817 6106607616 Media root path: /opt/render/project/src/media

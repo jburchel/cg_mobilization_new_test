@@ -21,6 +21,7 @@
                 <span class="user-menu-text">{{ user.username }}</span>
                 <div class="dropdown-content">
                     <a href="{% url 'userprofile:account' %}">My Account</a>
+                    <a href="{% url 'integrations:settings' %}">Google Integration</a>
                     <a href="{% url 'userprofile:logout' %}">Logout</a>
                 </div>
             </div>
@@ -29,15 +30,3 @@
         {% endif %}
     </div>
 </nav>
-
-<antArtifact identifier="navbar-template-with-debug" type="application/vnd.ant.code" language="html" title="core/templates/core/partials/nav.html (dropdown-content section)">
-    <div class="dropdown-content">
-        <!-- Debug info -->
-        <p style="color: red; font-size: 10px;">Debug: Dropdown content start</p>
-        
-        <a href="{% url 'userprofile:account' %}">My Account</a>
-        <a href="{% url 'userprofile:logout' %}">Logout</a>
-        
-        <!-- Debug info -->
-        <p style="color: red; font-size: 10px;">Debug: Dropdown content end</p>
-    </div>

@@ -1,24 +1,27 @@
-from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-from google.auth.transport.requests import Request
+from .utils import check_and_refresh_credentials
 import datetime
 import logging
-import json
 
 logger = logging.getLogger(__name__)
 
-def get_calendar_service(credentials_dict):
+def get_calendar_service(request):
     logger.info("Creating Google Calendar service")
-    credentials = Credentials(**credentials_dict)
-    if credentials.expired and credentials.refresh_token:
-        logger.info("Refreshing expired credentials")
-        credentials.refresh(Request())
+    credentials = check_and_refresh_credentials(request)
+    if not credentials:
+        logger.error("Failed to get valid credentials")
+        return None
     return build('calendar', 'v3', credentials=credentials)
 
-def create_calendar_event(service, task):
+def create_calendar_event(request, task):
     logger.info(f"Attempting to create calendar event for task: {task.id}")
     try:
+        service = get_calendar_service(request)
+        if not service:
+            logger.error("Failed to create Calendar service")
+            return None
+
         event = {
             'summary': task.title,
             'description': task.description,
@@ -32,8 +35,6 @@ def create_calendar_event(service, task):
             },
         }
         
-        logger.info(f"Event details: {json.dumps(event, default=str)}")
-        
         created_event = service.events().insert(calendarId='primary', body=event).execute()
         logger.info(f"Event created successfully. Event ID: {created_event['id']}")
         return created_event['id']
@@ -45,37 +46,51 @@ def create_calendar_event(service, task):
         logger.exception(f"Unexpected error occurred while creating calendar event: {str(e)}")
         return None
 
-def update_calendar_event(service, task):
+def update_calendar_event(request, task):
     logger.info(f"Attempting to update calendar event for task: {task.id}")
-    event = {
-        'summary': task.title,
-        'description': task.description,
-        'start': {
-            'dateTime': task.due_date.isoformat(),
-            'timeZone': 'UTC',
-        },
-        'end': {
-            'dateTime': (task.due_date + datetime.timedelta(hours=1)).isoformat(),
-            'timeZone': 'UTC',
-        },
-    }
-
     try:
+        service = get_calendar_service(request)
+        if not service:
+            logger.error("Failed to create Calendar service")
+            return False
+
+        event = {
+            'summary': task.title,
+            'description': task.description,
+            'start': {
+                'dateTime': task.due_date.isoformat(),
+                'timeZone': 'UTC',
+            },
+            'end': {
+                'dateTime': (task.due_date + datetime.timedelta(hours=1)).isoformat(),
+                'timeZone': 'UTC',
+            },
+        }
+
         updated_event = service.events().update(
             calendarId='primary',
             eventId=task.google_calendar_event_id,
             body=event
         ).execute()
         logger.info(f"Event updated successfully. Event ID: {updated_event['id']}")
+        return True
     except HttpError as error:
         logger.error(f'An error occurred while updating the event: {error}')
         logger.error(f"Error details: {error.error_details}")
+        return False
 
-def delete_calendar_event(service, event_id):
+def delete_calendar_event(request, event_id):
     logger.info(f"Attempting to delete calendar event: {event_id}")
     try:
+        service = get_calendar_service(request)
+        if not service:
+            logger.error("Failed to create Calendar service")
+            return False
+
         service.events().delete(calendarId='primary', eventId=event_id).execute()
         logger.info(f"Event deleted successfully. Event ID: {event_id}")
+        return True
     except HttpError as error:
         logger.error(f'An error occurred while deleting the event: {error}')
         logger.error(f"Error details: {error.error_details}")
+        return False
