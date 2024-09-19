@@ -9,7 +9,7 @@ sqlparse==0.5.1
 tablib==3.5.0
 typing_extensions==4.12.2
 gunicorn
-whitenoise
+whitenoise==6.2.0
 google-auth==2.22.0
 google-auth-oauthlib==1.0.0
 google-auth-httplib2==0.1.0

@@ -152,6 +152,7 @@ class ContactInteractionsListView(ListView):
     template_name = 'com_log/contact_interactions_list.html'
     context_object_name = 'interactions'
     paginate_by = 10
+    ordering = ['-date']
 
     def get_queryset(self):
         contact_type = self.kwargs['contact_type']

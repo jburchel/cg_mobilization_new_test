@@ -11,14 +11,16 @@ import os
 import sys
 from django.core.wsgi import get_wsgi_application
 from whitenoise import WhiteNoise
+from django.conf import settings
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cg_mobilization.settings.production')
 
 application = get_wsgi_application()
 
 static_root = '/opt/render/project/src/staticfiles'
-application = WhiteNoise(application, root=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'staticfiles'))
+application = WhiteNoise(application, root=settings.STATIC_ROOT)
 application.add_files(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static'), prefix='static/')
+application.add_files(settings.STATIC_ROOT, prefix="static/")
 
 media_root = '/opt/render/project/src/media'
 application.add_files('/opt/render/project/src/media', prefix='media/')
