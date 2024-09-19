@@ -401,6 +401,21 @@ class SendEmailView(LoginRequiredMixin, FormView):
     template_name = 'contacts/send_email.html'
     form_class = EmailForm
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        contact_type = self.kwargs['contact_type']
+        contact_id = self.kwargs['contact_id']
+        
+        if contact_type == 'church':
+            contact = get_object_or_404(Church, id=contact_id)
+            context['contact_name'] = contact.church_name            
+        else:  # person
+            contact = get_object_or_404(People, id=contact_id)
+            context['contact_name'] = f"{contact.first_name} {contact.last_name}"                        
+
+        context['contact_email'] = contact.email
+        return context
+
     def form_valid(self, form):
         try:
             credentials_dict = self.request.session.get('google_credentials')
@@ -474,6 +489,14 @@ class SendEmailView(LoginRequiredMixin, FormView):
     def form_invalid(self, form):
         messages.error(self.request, "There was an error with your form. Please check and try again.")
         return super().form_invalid(form)
+
+    def get_success_url(self):
+        contact_type = self.kwargs['contact_type']
+        contact_id = self.kwargs['contact_id']
+        if contact_type == 'church':
+            return reverse('contacts:church_detail', kwargs={'pk': contact_id})
+        else:  # person
+            return reverse('contacts:person_detail', kwargs={'pk': contact_id})
         
 def get_church_pipeline_summary(request):
     pipeline_summary = dict(Church.objects.values_list('church_pipeline').annotate(count=Count('church_pipeline')))
