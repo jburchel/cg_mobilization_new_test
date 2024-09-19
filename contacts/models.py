@@ -57,8 +57,8 @@ class Contact(models.Model):
 class Church(Contact):
 
     CHURCH_PIPELINE_CHOICES = (
-        ('COLD', 'COLD'), ('WARM', 'WARM'),('CONTACTED', 'CONTACTED'),
-        ('MISSION VISION', 'MISSION VISION'), ('COMMITTED', 'COMMITTED'),('EN42', 'EN42'),
+        ('PROMOTION', 'PROMOTION'), ('INFORMATION', 'INFORMATION'),('INVITATION,', 'INVITATION,'),
+        ('CONFIRMATION', 'CONFIRMATION'),('EN42', 'EN42'),
         ('AUTOMATED', 'AUTOMATED'),
     )
     
@@ -117,8 +117,9 @@ class People(Contact):
     )
     
     PEOPLE_PIPELINE = (
-        ('uncontacted', 'Uncontacted'),('contacted','Contacted'), ('mission-vision', 'Mission Vision'),
-        ('conversations', 'Conversations'),('potential-recruit', 'Potential Recruit'),('automated', 'Automated'),
+        ('PROMOTION', 'PROMOTION'), ('INFORMATION', 'INFORMATION'),('INVITATION,', 'INVITATION,'),
+        ('CONFIRMATION', 'CONFIRMATION'),('EN42', 'EN42'),
+        ('AUTOMATED', 'AUTOMATED'),
     )
     
     PRIORITY = (
