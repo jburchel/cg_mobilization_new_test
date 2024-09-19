@@ -21,24 +21,45 @@ class ComLogListView(ListView):
     template_name = 'com_log/com_log_list.html'
     context_object_name = 'com_logs'
     paginate_by = 10
-    ordering = ['-date']
-
+    
     def get_queryset(self):
-        return ComLog.objects.select_related('content_type').order_by('-date')
+        return ComLog.objects.select_related('content_type', 'user').order_by('-date')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['com_logs'] = [
-            {
+        com_logs = []
+        
+        # Prefetch related Church and People objects
+        church_type = ContentType.objects.get_for_model(Church)
+        people_type = ContentType.objects.get_for_model(People)
+        
+        church_ids = [log.object_id for log in context['com_logs'] if log.content_type_id == church_type.id]
+        people_ids = [log.object_id for log in context['com_logs'] if log.content_type_id == people_type.id]
+        
+        churches = {church.id: church for church in Church.objects.filter(id__in=church_ids)}
+        people = {person.id: person for person in People.objects.filter(id__in=people_ids)}
+        
+        for log in context['com_logs']:
+            if log.content_type_id == church_type.id:
+                contact = churches.get(log.object_id)
+                contact_type = 'Church'
+            elif log.content_type_id == people_type.id:
+                contact = people.get(log.object_id)
+                contact_type = 'Person'
+            else:
+                contact = None
+                contact_type = 'Unknown'
+
+            com_logs.append({
                 'id': log.id,
-                'name': log.get_contact_name(),
-                'type': log.get_contact_type(),
+                'contact_id': log.object_id if contact else None,
+                'name': contact.church_name if contact_type == 'Church' else f"{contact.first_name} {contact.last_name}" if contact_type == 'Person' else 'Unknown',
+                'type': contact_type,
                 'communication_type': log.get_communication_type_display(),
                 'notes': log.notes,
                 'date': log.date,
-            }
-            for log in context['com_logs']
-        ]
+            })
+        context['com_logs'] = com_logs
         return context
     
 @method_decorator(login_required, name='dispatch')
