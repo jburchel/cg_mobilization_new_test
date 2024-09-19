@@ -118,7 +118,7 @@ class People(Contact):
     
     PEOPLE_PIPELINE = (
         ('PROMOTION', 'PROMOTION'), ('INFORMATION', 'INFORMATION'),('INVITATION,', 'INVITATION,'),
-        ('CONFIRMATION', 'CONFIRMATION'),('EN42', 'EN42'),
+        ('CONFIRMATION', 'CONFIRMATION'),
         ('AUTOMATED', 'AUTOMATED'),
     )
     
