@@ -39,7 +39,7 @@
                 <div class="stage-content">
                     {% for church in pipeline_stages|get_item:stage %}
                         <div class="church-card" draggable="true" data-church-id="{{ church.id }}">
-                            <h3>{{ church.church_name }}</h3>
+                            <h3><a href="{% url 'contacts:church_detail' church.id %}">{{ church.church_name }}</a></h3>
                             <p>{{ church.email }}</p>
                             <p>Last Contact: {{ church.date_modified|default:"N/A" }}</p>
                         </div>
