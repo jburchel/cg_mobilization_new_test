@@ -505,7 +505,7 @@ class SendEmailView(LoginRequiredMixin, FormView):
                 logger.error(f"Error sending email: {str(e)}")
                 raise
 
-            return HttpResponseRedirect(self.get_success_url())
+            return HttpResponseRedirect(reverse('task_tracker:task_create'))
 
         except Exception as e:
             logger.exception("Error in SendEmailView.form_valid")
