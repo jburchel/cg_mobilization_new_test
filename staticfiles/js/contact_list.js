@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 contact.type,
                 contact.email,
                 contact.phone,
-                contact.last_contact,                
+                contact.last_contact,   
             ];
             return searchFields.some(field => 
                 field && field.toLowerCase().includes(searchTerm.toLowerCase())
