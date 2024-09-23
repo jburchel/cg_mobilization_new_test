@@ -1152,3 +1152,44 @@ INFO 2024-09-23 10:53:48,617 google_auth_httplib2 83511 6128332800 Refreshing cr
 INFO 2024-09-23 10:53:49,418 views 83511 6128332800 Email sent successfully. Message ID: 1921f5fdcef0ed3f
 INFO 2024-09-23 10:53:49,422 basehttp 83511 6128332800 "POST /contacts/person/236/send_email/ HTTP/1.1" 302 0
 INFO 2024-09-23 10:53:49,578 basehttp 83511 6128332800 "GET /task-tracker/create/ HTTP/1.1" 200 17356
+INFO 2024-09-23 11:32:00,573 autoreload 85359 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 11:32:00,689 wsgi 85359 6108082176 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 11:32:00,689 wsgi 85359 6108082176 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 11:32:03,757 basehttp 85359 6124908544 "GET /contacts/people/ HTTP/1.1" 200 5632
+INFO 2024-09-23 11:32:04,958 basehttp 85359 6124908544 "GET /contacts/people/ HTTP/1.1" 200 5632
+INFO 2024-09-23 11:32:28,461 autoreload 85359 8106941504 /Users/jimburchel/cg_mobilization/contacts/migrations/0007_alter_people_people_pipeline.py changed, reloading.
+INFO 2024-09-23 11:32:28,824 autoreload 85413 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 11:32:29,003 wsgi 85413 6184628224 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 11:32:29,003 wsgi 85413 6184628224 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 11:32:32,751 basehttp 85413 6201454592 "GET /contacts/people/ HTTP/1.1" 200 5632
+INFO 2024-09-23 11:32:38,266 autoreload 85427 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 11:32:38,415 wsgi 85427 6109769728 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 11:32:38,415 wsgi 85427 6109769728 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 11:32:41,170 basehttp 85427 6126596096 "GET /contacts/people/ HTTP/1.1" 200 5632
+INFO 2024-09-23 11:32:44,579 basehttp 85427 6126596096 "GET /contacts/people/ HTTP/1.1" 200 5632
+INFO 2024-09-23 11:32:44,620 basehttp 85427 6126596096 "GET /static/css/people_list.css HTTP/1.1" 200 4410
+INFO 2024-09-23 11:32:44,623 basehttp 85427 6143422464 "GET /static/css/main.css HTTP/1.1" 200 2425
+INFO 2024-09-23 11:32:44,625 basehttp 85427 6160248832 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-23 11:32:44,626 basehttp 85427 6177075200 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-23 11:32:44,628 basehttp 85427 6177075200 "GET /static/js/people_list.js HTTP/1.1" 200 6785
+WARNING 2024-09-23 11:32:44,766 log 85427 6177075200 Not Found: /favicon.ico
+WARNING 2024-09-23 11:32:44,767 basehttp 85427 6177075200 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-23 11:32:46,623 basehttp 85427 6126596096 "GET /contacts/people/ HTTP/1.1" 200 5632
+INFO 2024-09-23 11:33:12,299 autoreload 85427 8106941504 /Users/jimburchel/cg_mobilization/contacts/models.py changed, reloading.
+INFO 2024-09-23 11:33:12,729 autoreload 85492 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 11:33:12,905 wsgi 85492 6119649280 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 11:33:12,905 wsgi 85492 6119649280 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 11:33:24,565 autoreload 85528 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 11:33:24,679 wsgi 85528 6151204864 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 11:33:24,679 wsgi 85528 6151204864 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 11:33:26,803 basehttp 85528 6168031232 "GET /contacts/people/ HTTP/1.1" 200 5630
+INFO 2024-09-23 11:33:28,423 basehttp 85528 6168031232 "GET /contacts/people/ HTTP/1.1" 200 5630
+INFO 2024-09-23 11:33:30,554 basehttp 85528 6168031232 "GET /contacts/people/ HTTP/1.1" 200 5630
+INFO 2024-09-23 11:33:31,605 basehttp 85528 6168031232 "GET /contacts/ HTTP/1.1" 200 175034
+INFO 2024-09-23 11:33:36,037 views 85528 6168031232 PersonDetailView: Fetched 0 recent communications for Person 94
+INFO 2024-09-23 11:33:36,044 basehttp 85528 6168031232 "GET /contacts/person/94/ HTTP/1.1" 200 4420
+INFO 2024-09-23 11:33:43,723 basehttp 85528 6168031232 "GET /contacts/person/94/edit/ HTTP/1.1" 200 25028
+INFO 2024-09-23 11:33:57,585 basehttp 85528 6168031232 "POST /contacts/person/94/edit/ HTTP/1.1" 302 0
+INFO 2024-09-23 11:33:57,601 views 85528 6168031232 PersonDetailView: Fetched 0 recent communications for Person 94
+INFO 2024-09-23 11:33:57,605 basehttp 85528 6168031232 "GET /contacts/person/94/ HTTP/1.1" 200 4425
+INFO 2024-09-23 11:34:00,403 basehttp 85528 6168031232 "GET /contacts/people/ HTTP/1.1" 200 5990
