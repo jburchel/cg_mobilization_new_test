@@ -31,6 +31,8 @@ import base64
 import os
 from django.conf import settings
 from django.http import HttpResponseRedirect
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 
 logger = logging.getLogger(__name__)
@@ -448,13 +450,21 @@ class SendEmailView(LoginRequiredMixin, FormView):
             subject = form.cleaned_data['subject']
             body = form.cleaned_data['body']
 
-            message = MIMEText(body)
+            message = MIMEMultipart('alternative')
             message['to'] = contact.email
             message['subject'] = subject
-            
-            # Create the email content with signature
-            full_body = f"{body}\n\n{self.request.user.email_signature or ''}"
-            message.set_payload(full_body)
+
+            # Plain text version
+            text_body = f"{body}\n\n{self.request.user.email_signature or ''}"
+            part1 = MIMEText(text_body, 'plain')
+
+            # HTML version
+            html_body = f"<html><body><p>{body}</p><br>{self.request.user.email_signature or ''}</body></html>"
+            part2 = MIMEText(html_body, 'html')
+
+            # Attach both versions
+            message.attach(part1)
+            message.attach(part2)
 
             raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
 
