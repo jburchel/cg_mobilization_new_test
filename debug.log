@@ -1193,3 +1193,273 @@ INFO 2024-09-23 11:33:57,585 basehttp 85528 6168031232 "POST /contacts/person/94
 INFO 2024-09-23 11:33:57,601 views 85528 6168031232 PersonDetailView: Fetched 0 recent communications for Person 94
 INFO 2024-09-23 11:33:57,605 basehttp 85528 6168031232 "GET /contacts/person/94/ HTTP/1.1" 200 4425
 INFO 2024-09-23 11:34:00,403 basehttp 85528 6168031232 "GET /contacts/people/ HTTP/1.1" 200 5990
+INFO 2024-09-23 11:35:29,775 basehttp 85528 6168031232 "GET /contacts/ HTTP/1.1" 200 175034
+INFO 2024-09-23 11:35:49,296 basehttp 85528 6168031232 "GET /contacts/people/ HTTP/1.1" 200 5990
+INFO 2024-09-23 11:35:59,739 basehttp 85528 6168031232 "GET /contacts/churches/ HTTP/1.1" 200 10012
+INFO 2024-09-23 11:36:10,662 basehttp 85528 6168031232 "GET /contacts/ HTTP/1.1" 200 175034
+INFO 2024-09-23 11:53:09,377 basehttp 85528 6168031232 "GET /contacts/add/people/ HTTP/1.1" 200 25336
+INFO 2024-09-23 11:58:43,187 autoreload 86204 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 11:58:43,358 wsgi 86204 6173323264 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 11:58:43,358 wsgi 86204 6173323264 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 11:58:46,632 basehttp 86204 6190149632 "GET /contacts/add/people/ HTTP/1.1" 200 24671
+INFO 2024-09-23 11:59:59,646 autoreload 86298 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 11:59:59,813 wsgi 86298 6181662720 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 11:59:59,813 wsgi 86298 6181662720 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 12:00:02,062 basehttp 86298 6198489088 "GET /contacts/add/people/ HTTP/1.1" 200 26626
+ERROR 2024-09-23 12:00:29,555 log 86298 6198489088 Internal Server Error: /contacts/add/people/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/smartif.py", line 180, in translate_token
+    op = OPERATORS[token]
+KeyError: '==='
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/jimburchel/cg_mobilization/contacts/views.py", line 88, in add_contact
+    return render(request, 'contacts/add_contact.html', {'form': form, 'contact_type': contact_type})
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 196, in compile_nodelist
+    return parser.parse()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 975, in do_if
+    nodelist = parser.parse(("endif",))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 861, in do_for
+    nodelist_loop = parser.parse(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 960, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 893, in __init__
+    super().__init__(*args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/smartif.py", line 171, in __init__
+    mapped_tokens.append(self.translate_token(token))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/smartif.py", line 182, in translate_token
+    return self.create_var(token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 896, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 597, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 698, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '===' from '==='
+ERROR 2024-09-23 12:00:29,558 basehttp 86298 6198489088 "GET /contacts/add/people/ HTTP/1.1" 500 329903
+INFO 2024-09-23 12:00:36,445 basehttp 86298 6198489088 "GET /contacts/add/people/ HTTP/1.1" 200 24671
+ERROR 2024-09-23 12:00:48,782 log 86298 6198489088 Internal Server Error: /contacts/add/people/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/jimburchel/cg_mobilization/contacts/views.py", line 88, in add_contact
+    return render(request, 'contacts/add_contact.html', {'form': form, 'contact_type': contact_type})
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 196, in compile_nodelist
+    return parser.parse()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 975, in do_if
+    nodelist = parser.parse(("endif",))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 861, in do_for
+    nodelist_loop = parser.parse(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 960, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/smartif.py", line 195, in parse
+    retval = self.expression()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/smartif.py", line 210, in expression
+    left = t.led(left, self)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/smartif.py", line 56, in led
+    self.second = parser.expression(bp)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/smartif.py", line 206, in expression
+    left = t.nud(self)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/smartif.py", line 24, in nud
+    raise parser.error_class(
+django.template.exceptions.TemplateSyntaxError: Not expecting '==' in this position in if tag.
+ERROR 2024-09-23 12:00:48,783 basehttp 86298 6198489088 "GET /contacts/add/people/ HTTP/1.1" 500 308061
+INFO 2024-09-23 12:00:55,456 basehttp 86298 6198489088 "GET /contacts/add/people/ HTTP/1.1" 200 26626
+ERROR 2024-09-23 12:01:16,355 log 86298 6198489088 Internal Server Error: /contacts/add/people/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/smartif.py", line 180, in translate_token
+    op = OPERATORS[token]
+KeyError: '='
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/jimburchel/cg_mobilization/contacts/views.py", line 88, in add_contact
+    return render(request, 'contacts/add_contact.html', {'form': form, 'contact_type': contact_type})
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 196, in compile_nodelist
+    return parser.parse()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 975, in do_if
+    nodelist = parser.parse(("endif",))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 861, in do_for
+    nodelist_loop = parser.parse(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 960, in do_if
+    condition = TemplateIfParser(parser, bits).parse()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 893, in __init__
+    super().__init__(*args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/smartif.py", line 171, in __init__
+    mapped_tokens.append(self.translate_token(token))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/smartif.py", line 182, in translate_token
+    return self.create_var(token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 896, in create_var
+    return TemplateLiteral(self.template_parser.compile_filter(value), value)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 597, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 698, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '=' from '='
+ERROR 2024-09-23 12:01:16,356 basehttp 86298 6198489088 "GET /contacts/add/people/ HTTP/1.1" 500 329851
+INFO 2024-09-23 12:01:22,101 basehttp 86298 6198489088 "GET /contacts/add/people/ HTTP/1.1" 200 24671
+INFO 2024-09-23 12:02:26,363 basehttp 86298 6198489088 "GET /contacts/add/people/ HTTP/1.1" 200 26000
+INFO 2024-09-23 12:03:19,567 basehttp 86298 6198489088 "POST /contacts/add/people/ HTTP/1.1" 302 0
+INFO 2024-09-23 12:03:19,646 basehttp 86298 6198489088 "GET /contacts/ HTTP/1.1" 200 175896
+INFO 2024-09-23 12:03:23,368 basehttp 86298 6198489088 "GET /contacts/ HTTP/1.1" 200 175789
+INFO 2024-09-23 12:03:27,921 views 86298 6198489088 PersonDetailView: Fetched 0 recent communications for Person 237
+INFO 2024-09-23 12:03:27,929 basehttp 86298 6198489088 "GET /contacts/person/237/ HTTP/1.1" 200 4466
+INFO 2024-09-23 12:03:29,525 basehttp 86298 6198489088 "GET /contacts/person/237/send_email/ HTTP/1.1" 200 3229
+INFO 2024-09-23 12:03:54,494 __init__ 86298 6198489088 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-23 12:03:54,836 google_auth_httplib2 86298 6198489088 Refreshing credentials due to a 401 response. Attempt 1/2.
+INFO 2024-09-23 12:03:55,530 views 86298 6198489088 Email sent successfully. Message ID: 1921fa00b1e3e12d
+INFO 2024-09-23 12:03:55,533 basehttp 86298 6198489088 "POST /contacts/person/237/send_email/ HTTP/1.1" 302 0
+INFO 2024-09-23 12:03:55,685 basehttp 86298 6198489088 "GET /task-tracker/create/ HTTP/1.1" 200 17401
+INFO 2024-09-23 12:04:42,795 views 86298 6198489088 Task reminder set to: 15_min
+INFO 2024-09-23 12:04:42,795 google_calendar 86298 6198489088 Attempting to create calendar event for task: 22
+INFO 2024-09-23 12:04:42,795 google_calendar 86298 6198489088 Creating Google Calendar service
+INFO 2024-09-23 12:04:42,797 __init__ 86298 6198489088 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-23 12:04:42,977 google_auth_httplib2 86298 6198489088 Refreshing credentials due to a 401 response. Attempt 1/2.
+INFO 2024-09-23 12:04:43,552 google_calendar 86298 6198489088 Event created successfully. Event ID: of6mdl9pn2u3qb5hdd2bam8guo
+INFO 2024-09-23 12:04:43,558 basehttp 86298 6198489088 "POST /task-tracker/create/ HTTP/1.1" 302 0
+INFO 2024-09-23 12:04:43,600 basehttp 86298 6198489088 "GET /task-tracker/ HTTP/1.1" 200 8814
