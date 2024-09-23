@@ -17,23 +17,20 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 import logging
-from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from google.auth.transport.requests import Request
 from integrations.google_auth import credentials_to_dict, build_gmail_service
-from email.mime.text import MIMEText
 import base64
 import os
+import html
 from django.conf import settings
 from django.http import HttpResponseRedirect
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
-
 
 logger = logging.getLogger(__name__)
 @method_decorator(login_required, name='dispatch')
@@ -449,38 +446,42 @@ class SendEmailView(LoginRequiredMixin, FormView):
             
             subject = form.cleaned_data['subject']
             body = form.cleaned_data['body']
-
+            
             message = MIMEMultipart('related')
             message['to'] = contact.email
             message['subject'] = subject
 
-            # HTML version
+            # Convert line breaks to HTML paragraphs
+            body_html = ''.join(f'<p>{html.escape(paragraph)}</p>' for paragraph in body.split('\n\n'))
+            # Convert single line breaks to <br> tags
+            body_html = body_html.replace('\n', '<br>')
+
             logo_cid = "company_logo"
             html_content = f"""
             <html>
             <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-                <p>{body}</p>            
-                {self.request.user.email_signature or ''}                
-                <img src="cid:{logo_cid}" alt="Company Logo" style="max-width: 200px;">
+                {body_html}
+                {self.request.user.email_signature or ''}
+                <img src="cid:{logo_cid}" alt="Company Logo" style="max-width: 300px; margin-top: 10px;">
             </body>
             </html>
             """
             html_part = MIMEText(html_content, 'html')
-            message.attach(html_part)  
+            message.attach(html_part)
             
-            # Attach the logo
+             # Attach the logo
             logo_path = os.path.join(settings.STATIC_ROOT, 'images', 'company_logo.png')
             with open(logo_path, 'rb') as img:
                 img_data = img.read()
-            logo = MIMEImage(img_data, name='company_logo.png')
-            logo.add_header('Content-ID', f'<{logo_cid}>')
-            logo.add_header('Content-Disposition', 'inline')
-            message.attach(logo)    
-            
+            logo_part = MIMEImage(img_data, name='company_logo.png')
+            logo_part.add_header('Content-ID', f'<{logo_cid}>')
+            logo_part.add_header('Content-Disposition', 'inline')
+            message.attach(logo_part)
+
             # Plain text version
             text_content = f"{body}\n\n{self.request.user.email_signature or ''}"
             text_part = MIMEText(text_content, 'plain')
-            message.attach(text_part)      
+            message.attach(text_part)  
 
             raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
 
