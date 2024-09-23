@@ -446,25 +446,41 @@ class SendEmailView(LoginRequiredMixin, FormView):
                 contact = get_object_or_404(Church, id=contact_id)
             else:  # person
                 contact = get_object_or_404(People, id=contact_id)
-
+            
             subject = form.cleaned_data['subject']
             body = form.cleaned_data['body']
 
-            message = MIMEMultipart('alternative')
+            message = MIMEMultipart('related')
             message['to'] = contact.email
             message['subject'] = subject
 
-            # Plain text version
-            text_body = f"{body}\n\n{self.request.user.email_signature or ''}"
-            part1 = MIMEText(text_body, 'plain')
-
             # HTML version
-            html_body = f"<html><body><p>{body}</p><br>{self.request.user.email_signature or ''}</body></html>"
-            part2 = MIMEText(html_body, 'html')
-
-            # Attach both versions
-            message.attach(part1)
-            message.attach(part2)
+            logo_cid = "company_logo"
+            html_content = f"""
+            <html>
+            <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+                <p>{body}</p>            
+                {self.request.user.email_signature or ''}                
+                <img src="cid:{logo_cid}" alt="Company Logo" style="max-width: 200px;">
+            </body>
+            </html>
+            """
+            html_part = MIMEText(html_content, 'html')
+            message.attach(html_part)  
+            
+            # Attach the logo
+            logo_path = os.path.join(settings.STATIC_ROOT, 'images', 'company_logo.png')
+            with open(logo_path, 'rb') as img:
+                img_data = img.read()
+            logo = MIMEImage(img_data, name='company_logo.png')
+            logo.add_header('Content-ID', f'<{logo_cid}>')
+            logo.add_header('Content-Disposition', 'inline')
+            message.attach(logo)    
+            
+            # Plain text version
+            text_content = f"{body}\n\n{self.request.user.email_signature or ''}"
+            text_part = MIMEText(text_content, 'plain')
+            message.attach(text_part)      
 
             raw_message = base64.urlsafe_b64encode(message.as_bytes()).decode()
 
@@ -487,7 +503,7 @@ class SendEmailView(LoginRequiredMixin, FormView):
                 messages.success(self.request, "Email sent successfully and logged.")
             except Exception as e:
                 logger.error(f"Error sending email: {str(e)}")
-                raise  # Re-raise the exception to be caught by the outer try-except
+                raise
 
             return HttpResponseRedirect(self.get_success_url())
 

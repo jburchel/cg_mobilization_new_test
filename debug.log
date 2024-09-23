@@ -642,3 +642,380 @@ INFO 2024-09-23 08:48:13,781 views 79492 6190247936 PersonDetailView: ComLog: 1,
 INFO 2024-09-23 08:48:13,791 basehttp 79492 6190247936 "GET /contacts/person/236/ HTTP/1.1" 200 5188
 INFO 2024-09-23 08:48:13,849 basehttp 79492 6190247936 "GET /static/css/person_detail.css HTTP/1.1" 304 0
 INFO 2024-09-23 08:48:13,859 basehttp 79492 6190247936 "GET /static/images/default_person.png HTTP/1.1" 304 0
+INFO 2024-09-23 09:43:44,429 autoreload 81153 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 09:43:44,604 wsgi 81153 6182383616 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 09:43:44,604 wsgi 81153 6182383616 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 09:43:46,740 autoreload 81153 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-23 09:43:47,018 autoreload 81171 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 09:43:47,136 wsgi 81171 6119305216 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 09:43:47,136 wsgi 81171 6119305216 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 09:49:41,723 autoreload 81171 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-23 09:49:42,218 autoreload 81280 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 09:49:42,404 wsgi 81280 6147829760 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 09:49:42,404 wsgi 81280 6147829760 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 09:49:55,265 views 81280 6164656128 PersonDetailView: Fetched 30 recent communications for Person 236
+INFO 2024-09-23 09:49:55,267 views 81280 6164656128 PersonDetailView: ComLog: 32, Date: 2024-09-23 12:48:13.740480+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,267 views 81280 6164656128 PersonDetailView: ComLog: 31, Date: 2024-09-19 20:47:40.008442+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,267 views 81280 6164656128 PersonDetailView: ComLog: 30, Date: 2024-09-19 20:19:39.289621+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,268 views 81280 6164656128 PersonDetailView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:49:55,268 views 81280 6164656128 PersonDetailView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:49:55,268 views 81280 6164656128 PersonDetailView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:49:55,268 views 81280 6164656128 PersonDetailView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:49:55,269 views 81280 6164656128 PersonDetailView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:49:55,269 views 81280 6164656128 PersonDetailView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,269 views 81280 6164656128 PersonDetailView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,269 views 81280 6164656128 PersonDetailView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,270 views 81280 6164656128 PersonDetailView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,270 views 81280 6164656128 PersonDetailView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,270 views 81280 6164656128 PersonDetailView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,271 views 81280 6164656128 PersonDetailView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,271 views 81280 6164656128 PersonDetailView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,271 views 81280 6164656128 PersonDetailView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,272 views 81280 6164656128 PersonDetailView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,272 views 81280 6164656128 PersonDetailView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,273 views 81280 6164656128 PersonDetailView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,273 views 81280 6164656128 PersonDetailView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,274 views 81280 6164656128 PersonDetailView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,274 views 81280 6164656128 PersonDetailView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,274 views 81280 6164656128 PersonDetailView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:49:55,275 views 81280 6164656128 PersonDetailView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:49:55,275 views 81280 6164656128 PersonDetailView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:49:55,275 views 81280 6164656128 PersonDetailView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:49:55,275 views 81280 6164656128 PersonDetailView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:49:55,276 views 81280 6164656128 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:49:55,276 views 81280 6164656128 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:49:55,290 basehttp 81280 6164656128 "GET /contacts/person/236/ HTTP/1.1" 200 5084
+INFO 2024-09-23 09:49:55,381 basehttp 81280 6164656128 "GET /static/css/person_detail.css HTTP/1.1" 200 1867
+INFO 2024-09-23 09:49:55,381 basehttp 81280 6198308864 "GET /static/css/main.css HTTP/1.1" 200 2425
+INFO 2024-09-23 09:49:55,382 basehttp 81280 6215135232 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-23 09:49:55,383 basehttp 81280 6181482496 "GET /static/images/default_person.png HTTP/1.1" 200 3101
+INFO 2024-09-23 09:49:55,384 basehttp 81280 6181482496 "GET /static/js/navbar.js HTTP/1.1" 200 977
+WARNING 2024-09-23 09:49:55,582 log 81280 6181482496 Not Found: /favicon.ico
+WARNING 2024-09-23 09:49:55,582 basehttp 81280 6181482496 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-23 09:49:57,409 basehttp 81280 6164656128 "GET /contacts/person/236/send_email/ HTTP/1.1" 200 3228
+INFO 2024-09-23 09:50:10,064 __init__ 81280 6164656128 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-23 09:50:10,363 google_auth_httplib2 81280 6164656128 Refreshing credentials due to a 401 response. Attempt 1/2.
+INFO 2024-09-23 09:50:11,149 views 81280 6164656128 Email sent successfully. Message ID: 1921f2599192fe6f
+INFO 2024-09-23 09:50:11,152 basehttp 81280 6164656128 "POST /contacts/person/236/send_email/ HTTP/1.1" 302 0
+INFO 2024-09-23 09:50:11,160 views 81280 6164656128 PersonDetailView: Fetched 31 recent communications for Person 236
+INFO 2024-09-23 09:50:11,161 views 81280 6164656128 PersonDetailView: ComLog: 33, Date: 2024-09-23 13:50:11.149923+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,161 views 81280 6164656128 PersonDetailView: ComLog: 32, Date: 2024-09-23 12:48:13.740480+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,161 views 81280 6164656128 PersonDetailView: ComLog: 31, Date: 2024-09-19 20:47:40.008442+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,162 views 81280 6164656128 PersonDetailView: ComLog: 30, Date: 2024-09-19 20:19:39.289621+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,162 views 81280 6164656128 PersonDetailView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:50:11,162 views 81280 6164656128 PersonDetailView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:50:11,163 views 81280 6164656128 PersonDetailView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:50:11,163 views 81280 6164656128 PersonDetailView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:50:11,163 views 81280 6164656128 PersonDetailView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:50:11,163 views 81280 6164656128 PersonDetailView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,164 views 81280 6164656128 PersonDetailView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,164 views 81280 6164656128 PersonDetailView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,164 views 81280 6164656128 PersonDetailView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,165 views 81280 6164656128 PersonDetailView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,165 views 81280 6164656128 PersonDetailView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,165 views 81280 6164656128 PersonDetailView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,166 views 81280 6164656128 PersonDetailView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,166 views 81280 6164656128 PersonDetailView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,166 views 81280 6164656128 PersonDetailView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,167 views 81280 6164656128 PersonDetailView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,167 views 81280 6164656128 PersonDetailView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,167 views 81280 6164656128 PersonDetailView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,167 views 81280 6164656128 PersonDetailView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,168 views 81280 6164656128 PersonDetailView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,168 views 81280 6164656128 PersonDetailView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:50:11,168 views 81280 6164656128 PersonDetailView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:50:11,168 views 81280 6164656128 PersonDetailView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:50:11,169 views 81280 6164656128 PersonDetailView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:50:11,169 views 81280 6164656128 PersonDetailView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:50:11,169 views 81280 6164656128 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:50:11,169 views 81280 6164656128 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:50:11,171 basehttp 81280 6164656128 "GET /contacts/person/236/ HTTP/1.1" 200 5174
+INFO 2024-09-23 09:51:11,927 basehttp 81280 6164656128 "GET /contacts/person/236/send_email/ HTTP/1.1" 200 3228
+INFO 2024-09-23 09:51:26,558 __init__ 81280 6164656128 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-23 09:51:26,805 google_auth_httplib2 81280 6164656128 Refreshing credentials due to a 401 response. Attempt 1/2.
+INFO 2024-09-23 09:51:27,540 views 81280 6164656128 Email sent successfully. Message ID: 1921f26c4a8dd0b4
+INFO 2024-09-23 09:51:27,546 basehttp 81280 6164656128 "POST /contacts/person/236/send_email/ HTTP/1.1" 302 0
+INFO 2024-09-23 09:51:27,559 views 81280 6164656128 PersonDetailView: Fetched 32 recent communications for Person 236
+INFO 2024-09-23 09:51:27,562 views 81280 6164656128 PersonDetailView: ComLog: 34, Date: 2024-09-23 13:51:27.541766+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,563 views 81280 6164656128 PersonDetailView: ComLog: 33, Date: 2024-09-23 13:50:11.149923+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,563 views 81280 6164656128 PersonDetailView: ComLog: 32, Date: 2024-09-23 12:48:13.740480+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,564 views 81280 6164656128 PersonDetailView: ComLog: 31, Date: 2024-09-19 20:47:40.008442+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,565 views 81280 6164656128 PersonDetailView: ComLog: 30, Date: 2024-09-19 20:19:39.289621+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,565 views 81280 6164656128 PersonDetailView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:51:27,566 views 81280 6164656128 PersonDetailView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:51:27,566 views 81280 6164656128 PersonDetailView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:51:27,567 views 81280 6164656128 PersonDetailView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:51:27,567 views 81280 6164656128 PersonDetailView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 09:51:27,568 views 81280 6164656128 PersonDetailView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,568 views 81280 6164656128 PersonDetailView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,569 views 81280 6164656128 PersonDetailView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,569 views 81280 6164656128 PersonDetailView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,570 views 81280 6164656128 PersonDetailView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,570 views 81280 6164656128 PersonDetailView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,571 views 81280 6164656128 PersonDetailView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,571 views 81280 6164656128 PersonDetailView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,572 views 81280 6164656128 PersonDetailView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,572 views 81280 6164656128 PersonDetailView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,573 views 81280 6164656128 PersonDetailView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,573 views 81280 6164656128 PersonDetailView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,573 views 81280 6164656128 PersonDetailView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,574 views 81280 6164656128 PersonDetailView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,575 views 81280 6164656128 PersonDetailView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,576 views 81280 6164656128 PersonDetailView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:51:27,577 views 81280 6164656128 PersonDetailView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:51:27,578 views 81280 6164656128 PersonDetailView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:51:27,578 views 81280 6164656128 PersonDetailView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:51:27,578 views 81280 6164656128 PersonDetailView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:51:27,579 views 81280 6164656128 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 09:51:27,579 views 81280 6164656128 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 09:51:27,585 basehttp 81280 6164656128 "GET /contacts/person/236/ HTTP/1.1" 200 5166
+INFO 2024-09-23 09:55:21,508 autoreload 81280 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-23 09:55:21,989 autoreload 81449 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:00:29,330 autoreload 81449 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-23 10:00:29,815 autoreload 81636 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:01:45,435 autoreload 81636 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-23 10:01:45,877 autoreload 81683 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:01:46,061 wsgi 81683 6114291712 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:01:46,061 wsgi 81683 6114291712 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:01:51,177 basehttp 81683 6131118080 "GET /contacts/person/236/send_email/ HTTP/1.1" 200 3228
+INFO 2024-09-23 10:02:12,467 __init__ 81683 6131118080 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-23 10:02:12,767 google_auth_httplib2 81683 6131118080 Refreshing credentials due to a 401 response. Attempt 1/2.
+INFO 2024-09-23 10:02:13,667 views 81683 6131118080 Email sent successfully. Message ID: 1921f30a1424e017
+INFO 2024-09-23 10:02:13,673 basehttp 81683 6131118080 "POST /contacts/person/236/send_email/ HTTP/1.1" 302 0
+INFO 2024-09-23 10:02:13,694 views 81683 6131118080 PersonDetailView: Fetched 33 recent communications for Person 236
+INFO 2024-09-23 10:02:13,699 views 81683 6131118080 PersonDetailView: ComLog: 35, Date: 2024-09-23 14:02:13.669702+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,699 views 81683 6131118080 PersonDetailView: ComLog: 34, Date: 2024-09-23 13:51:27.541766+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,700 views 81683 6131118080 PersonDetailView: ComLog: 33, Date: 2024-09-23 13:50:11.149923+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,700 views 81683 6131118080 PersonDetailView: ComLog: 32, Date: 2024-09-23 12:48:13.740480+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,701 views 81683 6131118080 PersonDetailView: ComLog: 31, Date: 2024-09-19 20:47:40.008442+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,701 views 81683 6131118080 PersonDetailView: ComLog: 30, Date: 2024-09-19 20:19:39.289621+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,701 views 81683 6131118080 PersonDetailView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:02:13,702 views 81683 6131118080 PersonDetailView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:02:13,702 views 81683 6131118080 PersonDetailView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:02:13,702 views 81683 6131118080 PersonDetailView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:02:13,703 views 81683 6131118080 PersonDetailView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:02:13,703 views 81683 6131118080 PersonDetailView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,703 views 81683 6131118080 PersonDetailView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,704 views 81683 6131118080 PersonDetailView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,704 views 81683 6131118080 PersonDetailView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,705 views 81683 6131118080 PersonDetailView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,705 views 81683 6131118080 PersonDetailView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,705 views 81683 6131118080 PersonDetailView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,706 views 81683 6131118080 PersonDetailView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,706 views 81683 6131118080 PersonDetailView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,707 views 81683 6131118080 PersonDetailView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,707 views 81683 6131118080 PersonDetailView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,707 views 81683 6131118080 PersonDetailView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,708 views 81683 6131118080 PersonDetailView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,708 views 81683 6131118080 PersonDetailView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,708 views 81683 6131118080 PersonDetailView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,709 views 81683 6131118080 PersonDetailView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:02:13,709 views 81683 6131118080 PersonDetailView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:02:13,709 views 81683 6131118080 PersonDetailView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:02:13,710 views 81683 6131118080 PersonDetailView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:02:13,710 views 81683 6131118080 PersonDetailView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:02:13,711 views 81683 6131118080 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:02:13,711 views 81683 6131118080 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:02:13,718 basehttp 81683 6131118080 "GET /contacts/person/236/ HTTP/1.1" 200 5134
+INFO 2024-09-23 10:05:03,816 autoreload 81683 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-23 10:05:04,273 autoreload 81836 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:05:04,444 wsgi 81836 6178156544 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:05:04,444 wsgi 81836 6178156544 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:05:14,357 basehttp 81836 6194982912 "GET /contacts/person/236/send_email/ HTTP/1.1" 200 3228
+INFO 2024-09-23 10:05:21,884 __init__ 81836 6194982912 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-23 10:05:22,119 google_auth_httplib2 81836 6194982912 Refreshing credentials due to a 401 response. Attempt 1/2.
+INFO 2024-09-23 10:05:23,160 views 81836 6194982912 Email sent successfully. Message ID: 1921f338234dcdad
+INFO 2024-09-23 10:05:23,179 basehttp 81836 6194982912 "POST /contacts/person/236/send_email/ HTTP/1.1" 302 0
+INFO 2024-09-23 10:05:23,192 views 81836 6194982912 PersonDetailView: Fetched 34 recent communications for Person 236
+INFO 2024-09-23 10:05:23,195 views 81836 6194982912 PersonDetailView: ComLog: 36, Date: 2024-09-23 14:05:23.169628+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,196 views 81836 6194982912 PersonDetailView: ComLog: 35, Date: 2024-09-23 14:02:13.669702+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,196 views 81836 6194982912 PersonDetailView: ComLog: 34, Date: 2024-09-23 13:51:27.541766+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,196 views 81836 6194982912 PersonDetailView: ComLog: 33, Date: 2024-09-23 13:50:11.149923+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,197 views 81836 6194982912 PersonDetailView: ComLog: 32, Date: 2024-09-23 12:48:13.740480+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,197 views 81836 6194982912 PersonDetailView: ComLog: 31, Date: 2024-09-19 20:47:40.008442+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,197 views 81836 6194982912 PersonDetailView: ComLog: 30, Date: 2024-09-19 20:19:39.289621+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,198 views 81836 6194982912 PersonDetailView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:05:23,198 views 81836 6194982912 PersonDetailView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:05:23,198 views 81836 6194982912 PersonDetailView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:05:23,199 views 81836 6194982912 PersonDetailView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:05:23,199 views 81836 6194982912 PersonDetailView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:05:23,199 views 81836 6194982912 PersonDetailView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,199 views 81836 6194982912 PersonDetailView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,200 views 81836 6194982912 PersonDetailView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,200 views 81836 6194982912 PersonDetailView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,200 views 81836 6194982912 PersonDetailView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,200 views 81836 6194982912 PersonDetailView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,200 views 81836 6194982912 PersonDetailView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,201 views 81836 6194982912 PersonDetailView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,201 views 81836 6194982912 PersonDetailView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,201 views 81836 6194982912 PersonDetailView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,201 views 81836 6194982912 PersonDetailView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,202 views 81836 6194982912 PersonDetailView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,202 views 81836 6194982912 PersonDetailView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,202 views 81836 6194982912 PersonDetailView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,202 views 81836 6194982912 PersonDetailView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,203 views 81836 6194982912 PersonDetailView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:05:23,203 views 81836 6194982912 PersonDetailView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:05:23,203 views 81836 6194982912 PersonDetailView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:05:23,204 views 81836 6194982912 PersonDetailView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:05:23,204 views 81836 6194982912 PersonDetailView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:05:23,204 views 81836 6194982912 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:05:23,204 views 81836 6194982912 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:05:23,210 basehttp 81836 6194982912 "GET /contacts/person/236/ HTTP/1.1" 200 5128
+INFO 2024-09-23 10:06:11,513 autoreload 81836 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-23 10:06:11,954 autoreload 81911 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:06:12,126 wsgi 81911 6117748736 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:06:12,126 wsgi 81911 6117748736 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:12:25,417 autoreload 81911 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-23 10:12:25,879 autoreload 82073 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:12:26,049 wsgi 82073 6115209216 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:12:26,049 wsgi 82073 6115209216 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:12:29,056 basehttp 82073 6132035584 "GET /contacts/person/236/send_email/ HTTP/1.1" 200 3228
+INFO 2024-09-23 10:12:36,380 __init__ 82073 6132035584 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-23 10:12:36,646 google_auth_httplib2 82073 6132035584 Refreshing credentials due to a 401 response. Attempt 1/2.
+INFO 2024-09-23 10:12:37,415 views 82073 6132035584 Email sent successfully. Message ID: 1921f3a2460e243f
+INFO 2024-09-23 10:12:37,420 basehttp 82073 6132035584 "POST /contacts/person/236/send_email/ HTTP/1.1" 302 0
+INFO 2024-09-23 10:12:37,439 views 82073 6132035584 PersonDetailView: Fetched 35 recent communications for Person 236
+INFO 2024-09-23 10:12:37,441 views 82073 6132035584 PersonDetailView: ComLog: 37, Date: 2024-09-23 14:12:37.417830+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,441 views 82073 6132035584 PersonDetailView: ComLog: 36, Date: 2024-09-23 14:05:23.169628+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,441 views 82073 6132035584 PersonDetailView: ComLog: 35, Date: 2024-09-23 14:02:13.669702+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,441 views 82073 6132035584 PersonDetailView: ComLog: 34, Date: 2024-09-23 13:51:27.541766+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,442 views 82073 6132035584 PersonDetailView: ComLog: 33, Date: 2024-09-23 13:50:11.149923+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,442 views 82073 6132035584 PersonDetailView: ComLog: 32, Date: 2024-09-23 12:48:13.740480+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,443 views 82073 6132035584 PersonDetailView: ComLog: 31, Date: 2024-09-19 20:47:40.008442+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,443 views 82073 6132035584 PersonDetailView: ComLog: 30, Date: 2024-09-19 20:19:39.289621+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,443 views 82073 6132035584 PersonDetailView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:12:37,444 views 82073 6132035584 PersonDetailView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:12:37,444 views 82073 6132035584 PersonDetailView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:12:37,444 views 82073 6132035584 PersonDetailView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:12:37,444 views 82073 6132035584 PersonDetailView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:12:37,445 views 82073 6132035584 PersonDetailView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,445 views 82073 6132035584 PersonDetailView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,446 views 82073 6132035584 PersonDetailView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,446 views 82073 6132035584 PersonDetailView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,446 views 82073 6132035584 PersonDetailView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,447 views 82073 6132035584 PersonDetailView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,447 views 82073 6132035584 PersonDetailView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,448 views 82073 6132035584 PersonDetailView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,448 views 82073 6132035584 PersonDetailView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,448 views 82073 6132035584 PersonDetailView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,449 views 82073 6132035584 PersonDetailView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,450 views 82073 6132035584 PersonDetailView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,450 views 82073 6132035584 PersonDetailView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,451 views 82073 6132035584 PersonDetailView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,451 views 82073 6132035584 PersonDetailView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,451 views 82073 6132035584 PersonDetailView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:12:37,451 views 82073 6132035584 PersonDetailView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:12:37,452 views 82073 6132035584 PersonDetailView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:12:37,452 views 82073 6132035584 PersonDetailView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:12:37,452 views 82073 6132035584 PersonDetailView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:12:37,453 views 82073 6132035584 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:12:37,453 views 82073 6132035584 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:12:37,460 basehttp 82073 6132035584 "GET /contacts/person/236/ HTTP/1.1" 200 5116
+INFO 2024-09-23 10:17:38,556 autoreload 82073 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-23 10:17:39,279 autoreload 82231 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:17:39,451 wsgi 82231 6140653568 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:17:39,451 wsgi 82231 6140653568 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:18:11,361 autoreload 82231 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-23 10:18:11,869 autoreload 82254 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:18:12,112 wsgi 82254 6177550336 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:18:12,112 wsgi 82254 6177550336 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:18:52,571 autoreload 82254 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-23 10:18:52,977 autoreload 82280 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:18:53,145 wsgi 82280 6114078720 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:18:53,145 wsgi 82280 6114078720 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:18:56,440 basehttp 82280 6130905088 "GET /contacts/person/236/send_email/ HTTP/1.1" 200 3228
+INFO 2024-09-23 10:19:10,828 __init__ 82280 6130905088 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-23 10:19:11,129 google_auth_httplib2 82280 6130905088 Refreshing credentials due to a 401 response. Attempt 1/2.
+INFO 2024-09-23 10:19:11,882 views 82280 6130905088 Email sent successfully. Message ID: 1921f4028d0b4ab2
+INFO 2024-09-23 10:19:11,886 basehttp 82280 6130905088 "POST /contacts/person/236/send_email/ HTTP/1.1" 302 0
+INFO 2024-09-23 10:19:11,902 views 82280 6130905088 PersonDetailView: Fetched 36 recent communications for Person 236
+INFO 2024-09-23 10:19:11,905 views 82280 6130905088 PersonDetailView: ComLog: 38, Date: 2024-09-23 14:19:11.884037+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,905 views 82280 6130905088 PersonDetailView: ComLog: 37, Date: 2024-09-23 14:12:37.417830+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,906 views 82280 6130905088 PersonDetailView: ComLog: 36, Date: 2024-09-23 14:05:23.169628+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,907 views 82280 6130905088 PersonDetailView: ComLog: 35, Date: 2024-09-23 14:02:13.669702+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,907 views 82280 6130905088 PersonDetailView: ComLog: 34, Date: 2024-09-23 13:51:27.541766+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,908 views 82280 6130905088 PersonDetailView: ComLog: 33, Date: 2024-09-23 13:50:11.149923+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,913 views 82280 6130905088 PersonDetailView: ComLog: 32, Date: 2024-09-23 12:48:13.740480+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,915 views 82280 6130905088 PersonDetailView: ComLog: 31, Date: 2024-09-19 20:47:40.008442+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,916 views 82280 6130905088 PersonDetailView: ComLog: 30, Date: 2024-09-19 20:19:39.289621+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,917 views 82280 6130905088 PersonDetailView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:19:11,917 views 82280 6130905088 PersonDetailView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:19:11,919 views 82280 6130905088 PersonDetailView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:19:11,920 views 82280 6130905088 PersonDetailView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:19:11,920 views 82280 6130905088 PersonDetailView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:19:11,921 views 82280 6130905088 PersonDetailView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,921 views 82280 6130905088 PersonDetailView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,921 views 82280 6130905088 PersonDetailView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,922 views 82280 6130905088 PersonDetailView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,922 views 82280 6130905088 PersonDetailView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,922 views 82280 6130905088 PersonDetailView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,923 views 82280 6130905088 PersonDetailView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,923 views 82280 6130905088 PersonDetailView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,923 views 82280 6130905088 PersonDetailView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,924 views 82280 6130905088 PersonDetailView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,924 views 82280 6130905088 PersonDetailView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,925 views 82280 6130905088 PersonDetailView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,925 views 82280 6130905088 PersonDetailView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,925 views 82280 6130905088 PersonDetailView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,926 views 82280 6130905088 PersonDetailView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,926 views 82280 6130905088 PersonDetailView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:19:11,926 views 82280 6130905088 PersonDetailView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:19:11,927 views 82280 6130905088 PersonDetailView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:19:11,927 views 82280 6130905088 PersonDetailView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:19:11,927 views 82280 6130905088 PersonDetailView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:19:11,927 views 82280 6130905088 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:19:11,928 views 82280 6130905088 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:19:11,934 basehttp 82280 6130905088 "GET /contacts/person/236/ HTTP/1.1" 200 5119
+INFO 2024-09-23 10:20:58,900 autoreload 82280 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-23 10:20:59,356 autoreload 82377 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:20:59,524 wsgi 82377 6186840064 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:20:59,525 wsgi 82377 6186840064 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:21:14,050 autoreload 82377 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-23 10:21:14,390 autoreload 82395 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:21:14,552 wsgi 82395 6117879808 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:21:14,552 wsgi 82395 6117879808 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:21:19,779 basehttp 82395 6134706176 "GET /contacts/person/236/send_email/ HTTP/1.1" 200 3228
+INFO 2024-09-23 10:21:36,676 __init__ 82395 6134706176 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-23 10:21:36,922 google_auth_httplib2 82395 6134706176 Refreshing credentials due to a 401 response. Attempt 1/2.
+INFO 2024-09-23 10:21:37,680 views 82395 6134706176 Email sent successfully. Message ID: 1921f4262b6e872e
+INFO 2024-09-23 10:21:37,686 basehttp 82395 6134706176 "POST /contacts/person/236/send_email/ HTTP/1.1" 302 0
+INFO 2024-09-23 10:21:37,704 views 82395 6134706176 PersonDetailView: Fetched 37 recent communications for Person 236
+INFO 2024-09-23 10:21:37,706 views 82395 6134706176 PersonDetailView: ComLog: 39, Date: 2024-09-23 14:21:37.682558+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,707 views 82395 6134706176 PersonDetailView: ComLog: 38, Date: 2024-09-23 14:19:11.884037+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,707 views 82395 6134706176 PersonDetailView: ComLog: 37, Date: 2024-09-23 14:12:37.417830+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,708 views 82395 6134706176 PersonDetailView: ComLog: 36, Date: 2024-09-23 14:05:23.169628+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,708 views 82395 6134706176 PersonDetailView: ComLog: 35, Date: 2024-09-23 14:02:13.669702+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,708 views 82395 6134706176 PersonDetailView: ComLog: 34, Date: 2024-09-23 13:51:27.541766+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,709 views 82395 6134706176 PersonDetailView: ComLog: 33, Date: 2024-09-23 13:50:11.149923+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,709 views 82395 6134706176 PersonDetailView: ComLog: 32, Date: 2024-09-23 12:48:13.740480+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,709 views 82395 6134706176 PersonDetailView: ComLog: 31, Date: 2024-09-19 20:47:40.008442+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,710 views 82395 6134706176 PersonDetailView: ComLog: 30, Date: 2024-09-19 20:19:39.289621+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,710 views 82395 6134706176 PersonDetailView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:21:37,710 views 82395 6134706176 PersonDetailView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:21:37,711 views 82395 6134706176 PersonDetailView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:21:37,711 views 82395 6134706176 PersonDetailView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:21:37,712 views 82395 6134706176 PersonDetailView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 10:21:37,712 views 82395 6134706176 PersonDetailView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,712 views 82395 6134706176 PersonDetailView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,712 views 82395 6134706176 PersonDetailView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,713 views 82395 6134706176 PersonDetailView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,713 views 82395 6134706176 PersonDetailView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,713 views 82395 6134706176 PersonDetailView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,714 views 82395 6134706176 PersonDetailView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,714 views 82395 6134706176 PersonDetailView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,715 views 82395 6134706176 PersonDetailView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,715 views 82395 6134706176 PersonDetailView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,715 views 82395 6134706176 PersonDetailView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,716 views 82395 6134706176 PersonDetailView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,716 views 82395 6134706176 PersonDetailView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,717 views 82395 6134706176 PersonDetailView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,717 views 82395 6134706176 PersonDetailView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,717 views 82395 6134706176 PersonDetailView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:21:37,718 views 82395 6134706176 PersonDetailView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:21:37,718 views 82395 6134706176 PersonDetailView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:21:37,718 views 82395 6134706176 PersonDetailView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:21:37,718 views 82395 6134706176 PersonDetailView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:21:37,719 views 82395 6134706176 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 10:21:37,719 views 82395 6134706176 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 10:21:37,727 basehttp 82395 6134706176 "GET /contacts/person/236/ HTTP/1.1" 200 5159
