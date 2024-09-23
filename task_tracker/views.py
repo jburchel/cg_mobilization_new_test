@@ -69,6 +69,10 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         form.instance.created_by = self.request.user
         response = super().form_valid(form)
         
+        logger.info(f"Task reminder set to: {form.instance.reminder}")
+        if form.instance.reminder == 'custom':
+            logger.info(f"Custom reminder set to: {form.instance.custom_reminder} minutes")
+
         credentials = check_and_refresh_credentials(self.request)
         if not credentials:
             messages.warning(self.request, "Google integration is not set up. Please authenticate with Google.")
@@ -82,11 +86,11 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         else:
             messages.warning(self.request, "Task saved, but failed to add to Google Calendar. Please try again later.")
 
-        email_sent = send_task_email(self.request, self.object)
-        if email_sent:
-            messages.success(self.request, "Email notification sent successfully.")
-        else:
-            messages.warning(self.request, "Failed to send email notification. Please check your email settings.")
+            email_sent = send_task_email(self.request, self.object)
+            if email_sent:
+                messages.success(self.request, "Email notification sent successfully.")
+            else:
+                messages.warning(self.request, "Failed to send email notification. Please check your email settings.")
 
         return response
 
@@ -98,16 +102,25 @@ class TaskUpdateView(UpdateView):
     success_url = reverse_lazy('task_tracker:task_list')
 
     def form_valid(self, form):
+        form.instance.created_by = self.request.user
         response = super().form_valid(form)
         
+        logger.info(f"Task reminder set to: {form.instance.reminder}")
+        if form.instance.reminder == 'custom':
+            logger.info(f"Custom reminder set to: {form.instance.custom_reminder} minutes")
+
         credentials = check_and_refresh_credentials(self.request)
-        if credentials:
-            if update_calendar_event(self.request, self.object):
-                messages.success(self.request, "Task and Google Calendar event updated successfully.")
-            else:
-                messages.warning(self.request, "Task updated, but failed to update Google Calendar event.")
-        else:
+        if not credentials:
             messages.warning(self.request, "Google integration is not set up. Please authenticate with Google.")
+            return redirect('integrations:google_auth')
+
+        calendar_event_id = create_calendar_event(self.request, self.object)
+        if calendar_event_id:
+            self.object.google_calendar_event_id = calendar_event_id
+            self.object.save()
+            messages.success(self.request, "Task created and added to Google Calendar.")
+        else:
+            messages.warning(self.request, "Task saved, but failed to add to Google Calendar. Please try again later.")
 
         return response
 

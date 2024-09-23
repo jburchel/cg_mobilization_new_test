@@ -1019,3 +1019,39 @@ INFO 2024-09-23 10:21:37,718 views 82395 6134706176 PersonDetailView: ComLog: 3,
 INFO 2024-09-23 10:21:37,719 views 82395 6134706176 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
 INFO 2024-09-23 10:21:37,719 views 82395 6134706176 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
 INFO 2024-09-23 10:21:37,727 basehttp 82395 6134706176 "GET /contacts/person/236/ HTTP/1.1" 200 5159
+INFO 2024-09-23 10:28:15,791 autoreload 82659 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:28:15,971 wsgi 82659 6187479040 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:28:15,971 wsgi 82659 6187479040 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:34:53,321 autoreload 82659 8106941504 /Users/jimburchel/cg_mobilization/integrations/google_calendar.py changed, reloading.
+INFO 2024-09-23 10:34:53,810 autoreload 82872 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:34:53,980 wsgi 82872 6104854528 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:34:53,980 wsgi 82872 6104854528 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:35:48,450 autoreload 82872 8106941504 /Users/jimburchel/cg_mobilization/integrations/google_calendar.py changed, reloading.
+INFO 2024-09-23 10:35:48,898 autoreload 82915 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:35:49,063 wsgi 82915 6179909632 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:35:49,063 wsgi 82915 6179909632 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:36:16,783 autoreload 82915 8106941504 /Users/jimburchel/cg_mobilization/integrations/google_calendar.py changed, reloading.
+INFO 2024-09-23 10:36:17,128 autoreload 82964 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:36:17,285 wsgi 82964 6174683136 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:36:17,285 wsgi 82964 6174683136 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:39:42,935 autoreload 82964 8106941504 /Users/jimburchel/cg_mobilization/task_tracker/views.py changed, reloading.
+INFO 2024-09-23 10:39:43,324 autoreload 83061 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:39:43,490 wsgi 83061 6146371584 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:39:43,490 wsgi 83061 6146371584 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:40:23,478 autoreload 83061 8106941504 /Users/jimburchel/cg_mobilization/task_tracker/views.py changed, reloading.
+INFO 2024-09-23 10:40:23,860 autoreload 83086 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 10:40:24,341 wsgi 83086 6117306368 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 10:40:24,341 wsgi 83086 6117306368 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 10:40:38,585 basehttp 83086 6134132736 "GET /task-tracker/create/ HTTP/1.1" 200 17252
+INFO 2024-09-23 10:40:38,642 basehttp 83086 6134132736 "GET /static/css/task_form.css HTTP/1.1" 304 0
+INFO 2024-09-23 10:40:38,668 basehttp 83086 6134132736 "GET /static/js/task_form.js HTTP/1.1" 304 0
+INFO 2024-09-23 10:41:09,028 views 83086 6134132736 Task reminder set to: 2_hours
+INFO 2024-09-23 10:41:09,029 google_calendar 83086 6134132736 Attempting to create calendar event for task: 21
+INFO 2024-09-23 10:41:09,029 google_calendar 83086 6134132736 Creating Google Calendar service
+INFO 2024-09-23 10:41:09,033 __init__ 83086 6134132736 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-23 10:41:09,239 google_auth_httplib2 83086 6134132736 Refreshing credentials due to a 401 response. Attempt 1/2.
+INFO 2024-09-23 10:41:09,781 google_calendar 83086 6134132736 Event created successfully. Event ID: kq6v5lkteoa6e11ss32tmh7e7k
+INFO 2024-09-23 10:41:09,784 basehttp 83086 6134132736 "POST /task-tracker/create/ HTTP/1.1" 302 0
+INFO 2024-09-23 10:41:09,802 basehttp 83086 6134132736 "GET /task-tracker/ HTTP/1.1" 200 7901
+INFO 2024-09-23 10:41:09,853 basehttp 83086 6134132736 "GET /static/css/task_list.css HTTP/1.1" 304 0
+INFO 2024-09-23 10:41:09,863 basehttp 83086 6134132736 "GET /static/js/task_list.js HTTP/1.1" 304 0

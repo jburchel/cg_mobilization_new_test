@@ -22,6 +22,8 @@ def create_calendar_event(request, task):
             logger.error("Failed to create Calendar service")
             return None
 
+        reminder_minutes = get_reminder_minutes(task.reminder, task.custom_reminder)
+        
         event = {
             'summary': task.title,
             'description': task.description,
@@ -32,6 +34,12 @@ def create_calendar_event(request, task):
             'end': {
                 'dateTime': (task.due_date + datetime.timedelta(hours=1)).isoformat(),
                 'timeZone': 'UTC',
+            },
+            'reminders': {
+                'useDefault': False,
+                'overrides': [
+                    {'method': 'popup', 'minutes': reminder_minutes},
+                ],
             },
         }
         
@@ -54,6 +62,8 @@ def update_calendar_event(request, task):
             logger.error("Failed to create Calendar service")
             return False
 
+        reminder_minutes = get_reminder_minutes(task.reminder, task.custom_reminder)
+
         event = {
             'summary': task.title,
             'description': task.description,
@@ -64,6 +74,12 @@ def update_calendar_event(request, task):
             'end': {
                 'dateTime': (task.due_date + datetime.timedelta(hours=1)).isoformat(),
                 'timeZone': 'UTC',
+            },
+            'reminders': {
+                'useDefault': False,
+                'overrides': [
+                    {'method': 'popup', 'minutes': reminder_minutes},
+                ],
             },
         }
 
@@ -94,3 +110,15 @@ def delete_calendar_event(request, event_id):
         logger.error(f'An error occurred while deleting the event: {error}')
         logger.error(f"Error details: {error.error_details}")
         return False
+    
+def get_reminder_minutes(reminder_choice, custom_reminder):
+    reminder_mapping = {
+        '15_min': 15,
+        '30_min': 30,
+        '1_hour': 60,
+        '2_hours': 120,
+        '1_day': 1440,
+        '1_week': 10080,
+        'custom': custom_reminder
+    }
+    return reminder_mapping.get(reminder_choice, 30)  # Default to 30 minutes if not found
