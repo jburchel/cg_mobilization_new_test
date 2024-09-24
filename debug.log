@@ -1984,3 +1984,49 @@ INFO 2024-09-24 12:48:44,378 basehttp 12664 6128611328 "GET /contacts/person/236
 INFO 2024-09-24 12:48:49,677 basehttp 12664 6128611328 "GET /contacts/add/church/ HTTP/1.1" 200 24662
 INFO 2024-09-24 12:48:49,747 basehttp 12664 6128611328 "GET /static/css/form.css HTTP/1.1" 304 0
 INFO 2024-09-24 12:48:49,749 basehttp 12664 6128611328 "GET /static/js/form_validation.js HTTP/1.1" 304 0
+INFO 2024-09-24 12:57:33,232 autoreload 13049 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 12:57:33,420 wsgi 13049 6151434240 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 12:57:33,420 wsgi 13049 6151434240 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 12:57:36,863 basehttp 13049 6168260608 "GET /contacts/ HTTP/1.1" 200 176464
+INFO 2024-09-24 12:57:36,987 basehttp 13049 6168260608 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:57:37,007 basehttp 13049 6168260608 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 12:57:38,477 basehttp 13049 6168260608 "GET /contacts/ HTTP/1.1" 200 176464
+INFO 2024-09-24 12:57:39,676 basehttp 13049 6168260608 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:57:39,732 basehttp 13049 6168260608 "GET /static/css/church_list.css HTTP/1.1" 200 3509
+INFO 2024-09-24 12:58:14,325 basehttp 13049 6168260608 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:58:14,381 basehttp 13049 6168260608 "GET /static/css/church_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:58:15,072 basehttp 13049 6168260608 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:58:15,355 basehttp 13049 6168260608 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:58:15,535 basehttp 13049 6168260608 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:58:15,735 basehttp 13049 6168260608 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:58:15,903 basehttp 13049 6168260608 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:58:16,070 basehttp 13049 6168260608 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:58:16,253 basehttp 13049 6168260608 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:58:16,418 basehttp 13049 6168260608 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:58:16,593 basehttp 13049 6168260608 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:58:16,787 basehttp 13049 6168260608 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:58:25,933 basehttp 13049 6168260608 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:58:25,994 basehttp 13049 6168260608 "GET /static/css/church_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:58:34,017 basehttp 13049 6168260608 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 13:05:40,020 autoreload 13293 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 13:05:40,194 wsgi 13293 6110998528 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 13:05:40,194 wsgi 13293 6110998528 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 13:05:43,928 basehttp 13293 6127824896 "GET /contacts/churches/ HTTP/1.1" 200 9450
+INFO 2024-09-24 13:05:43,992 basehttp 13293 6127824896 "GET /static/css/church_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 13:05:57,458 basehttp 13293 6127824896 "GET /contacts/churches/ HTTP/1.1" 200 9450
+INFO 2024-09-24 13:10:12,167 autoreload 13443 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 13:10:12,343 wsgi 13443 6139998208 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 13:10:12,343 wsgi 13443 6139998208 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 13:10:15,847 basehttp 13443 6156824576 "GET /contacts/churches/ HTTP/1.1" 200 9450
+INFO 2024-09-24 13:10:15,959 basehttp 13443 6156824576 "GET /static/css/church_list.css HTTP/1.1" 200 3534
+INFO 2024-09-24 13:10:15,960 basehttp 13443 6173650944 "GET /static/css/main.css HTTP/1.1" 200 2425
+INFO 2024-09-24 13:10:15,961 basehttp 13443 6190477312 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 13:10:15,961 basehttp 13443 6207303680 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-24 13:10:15,965 basehttp 13443 6190477312 "GET /static/js/church_list.js HTTP/1.1" 200 6760
+WARNING 2024-09-24 13:10:16,234 log 13443 6190477312 Not Found: /favicon.ico
+WARNING 2024-09-24 13:10:16,235 basehttp 13443 6190477312 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 13:10:30,304 views 13443 6156824576 ChurchDetailView: Fetched 1 recent communications for Church 1
+INFO 2024-09-24 13:10:30,306 views 13443 6156824576 ChurchDetailView: ComLog: 17, Date: 2024-09-18 19:17:58.219260+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 13:10:30,317 basehttp 13443 6156824576 "GET /contacts/church/1/ HTTP/1.1" 200 5501
+INFO 2024-09-24 13:10:30,392 basehttp 13443 6156824576 "GET /static/css/church_detail.css HTTP/1.1" 304 0
+INFO 2024-09-24 13:10:30,398 basehttp 13443 6156824576 "GET /static/js/church_detail.js HTTP/1.1" 304 0

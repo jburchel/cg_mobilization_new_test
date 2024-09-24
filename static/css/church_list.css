@@ -108,11 +108,21 @@ h1 {
     padding: 10px 15px;
     font-weight: bold;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
 }
 
 .stage-header h2 {
     margin: 0;
     font-size: 1em;
+}
+
+.toggle-icon {
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+    margin-right: 10px;
 }
 
 .stage-content {
@@ -193,38 +203,4 @@ h1 {
         font-size: 1em;
     }
 
-    .summary-label {
-        font-size: 0.9em;
-    }
-
-    .summary-value {
-        font-size: 1.5em;
-    }
-
-    .pipeline-grid {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-
-    .pipeline-stage {
-        flex: 1 0 calc(33.333% - 20px);
-        max-width: calc(33.333% - 20px);
-    }
-
-    .stage-header h2 {
-        font-size: 1.2em;
-    }
-
-    .stage-content {
-        display: block;
-        max-height: calc(100vh - 250px);
-        overflow-y: auto;
-    }
-}
-
-@media (min-width: 1200px) {
-    .pipeline-stage {
-        flex: 1 0 calc(16.666% - 20px);
-        max-width: calc(16.666% - 20px);
-    }
-}
+    .summary-label

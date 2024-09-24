@@ -173,9 +173,16 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.stage-header').forEach(header => {
         header.addEventListener('click', function() {
             const content = this.nextElementSibling;
+            const toggleIcon = this.querySelector('.toggle-icon');
             const isExpanded = content.style.display !== 'none';
+            
             content.style.display = isExpanded ? 'none' : 'block';
-            this.querySelector('h2').textContent = isExpanded ? '▶ ' + this.textContent.slice(2) : '▼ ' + this.textContent.slice(2);
+            toggleIcon.textContent = isExpanded ? '▶' : '▼';
         });
+    });
+
+    // Initialize stage content visibility
+    document.querySelectorAll('.stage-content').forEach(content => {
+        content.style.display = 'none';
     });
 });

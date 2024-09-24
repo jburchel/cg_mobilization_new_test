@@ -34,6 +34,7 @@
         {% for stage in all_stages %}
         <div class="pipeline-stage" data-stage="{{ stage|slugify }}">
             <div class="stage-header">
+                <span class="toggle-icon">▶</span>
                 <h2>{{ stage }}</h2>
             </div>
             <div class="stage-content">
