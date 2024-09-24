@@ -2103,3 +2103,386 @@ INFO 2024-09-24 14:09:56,435 basehttp 14902 6122598400 "GET /contacts/person/94/
 INFO 2024-09-24 14:09:58,485 basehttp 14902 6122598400 "GET /contacts/person/94/edit/ HTTP/1.1" 200 27408
 INFO 2024-09-24 14:09:58,535 basehttp 14902 6122598400 "GET /static/css/edit_contact.css HTTP/1.1" 200 1603
 INFO 2024-09-24 14:09:58,542 basehttp 14902 6122598400 "GET /static/js/edit_contact.js HTTP/1.1" 200 927
+INFO 2024-09-24 14:14:12,812 autoreload 15331 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 14:14:12,987 wsgi 15331 6116323328 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 14:14:12,987 wsgi 15331 6116323328 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 14:14:17,695 basehttp 15331 6133149696 "GET /contacts/people/ HTTP/1.1" 200 6538
+INFO 2024-09-24 14:14:17,769 basehttp 15331 6149976064 "GET /static/images/cg_logo.png HTTP/1.1" 304 0
+INFO 2024-09-24 14:14:17,769 basehttp 15331 6133149696 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:14:20,076 basehttp 15331 6133149696 "GET / HTTP/1.1" 200 4027
+INFO 2024-09-24 14:14:21,600 basehttp 15331 6133149696 "GET /contacts/people/ HTTP/1.1" 200 6538
+INFO 2024-09-24 14:14:41,388 basehttp 15331 6133149696 "GET /contacts/people/ HTTP/1.1" 200 6538
+INFO 2024-09-24 14:17:30,234 basehttp 15331 6133149696 "GET /contacts/people/ HTTP/1.1" 200 6538
+INFO 2024-09-24 14:17:30,302 basehttp 15331 6133149696 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:21:57,580 autoreload 15584 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 14:21:57,759 wsgi 15584 6185512960 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 14:21:57,759 wsgi 15584 6185512960 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 14:22:01,496 basehttp 15584 6202339328 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:22:01,563 basehttp 15584 6202339328 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:22:01,564 basehttp 15584 6219165696 "GET /static/images/cg_logo.png HTTP/1.1" 304 0
+INFO 2024-09-24 14:22:06,438 basehttp 15584 6202339328 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:22:07,063 basehttp 15584 6202339328 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:22:07,693 basehttp 15584 6202339328 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:22:26,369 basehttp 15584 6202339328 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:22:26,420 basehttp 15584 6202339328 "GET /static/css/people_list.css HTTP/1.1" 200 3782
+INFO 2024-09-24 14:22:26,421 basehttp 15584 6219165696 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 14:22:26,425 basehttp 15584 6235992064 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 14:22:26,426 basehttp 15584 6252818432 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 14:22:26,433 basehttp 15584 6252818432 "GET /static/js/people_list.js HTTP/1.1" 200 6333
+INFO 2024-09-24 14:22:26,434 basehttp 15584 6235992064 "GET /static/js/navbar.js HTTP/1.1" 200 977
+WARNING 2024-09-24 14:22:26,677 log 15584 6252818432 Not Found: /favicon.ico
+WARNING 2024-09-24 14:22:26,678 basehttp 15584 6252818432 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 14:22:41,071 basehttp 15584 6202339328 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:22:41,118 basehttp 15584 6202339328 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:22:41,123 basehttp 15584 6202339328 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:28:16,706 autoreload 15733 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 14:28:16,883 wsgi 15733 6180679680 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 14:28:16,883 wsgi 15733 6180679680 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 14:28:20,343 basehttp 15733 6197506048 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:28:20,404 basehttp 15733 6197506048 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:28:20,412 basehttp 15733 6197506048 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:28:20,412 basehttp 15733 6214332416 "GET /static/images/cg_logo.png HTTP/1.1" 304 0
+INFO 2024-09-24 14:28:20,463 basehttp 15733 6214332416 "GET /static/js/people_list.js HTTP/1.1" 200 6709
+INFO 2024-09-24 14:28:23,791 basehttp 15733 6214332416 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:28:23,862 basehttp 15733 6214332416 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:28:25,018 basehttp 15733 6197506048 "GET /contacts/ HTTP/1.1" 200 176588
+INFO 2024-09-24 14:28:25,047 basehttp 15733 6197506048 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:28:25,052 basehttp 15733 6197506048 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:28:26,017 basehttp 15733 6197506048 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:28:26,073 basehttp 15733 6197506048 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:28:27,980 basehttp 15733 6197506048 "GET /contacts/churches/ HTTP/1.1" 200 9574
+INFO 2024-09-24 14:28:28,025 basehttp 15733 6197506048 "GET /static/css/church_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:28:28,038 basehttp 15733 6197506048 "GET /static/js/church_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:28:28,862 basehttp 15733 6197506048 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:28:28,906 basehttp 15733 6197506048 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:28:30,029 basehttp 15733 6197506048 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:28:30,071 basehttp 15733 6197506048 "GET /static/css/people_list.css HTTP/1.1" 200 3782
+INFO 2024-09-24 14:28:30,072 basehttp 15733 6214332416 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 14:28:30,072 basehttp 15733 6231158784 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 14:28:30,073 basehttp 15733 6247985152 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 14:28:30,081 basehttp 15733 6247985152 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-24 14:28:30,081 basehttp 15733 6231158784 "GET /static/js/people_list.js HTTP/1.1" 200 6709
+WARNING 2024-09-24 14:28:30,199 log 15733 6247985152 Not Found: /favicon.ico
+WARNING 2024-09-24 14:28:30,200 basehttp 15733 6247985152 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 14:28:37,426 basehttp 15733 6197506048 "GET /contacts/churches/ HTTP/1.1" 200 9574
+INFO 2024-09-24 14:28:39,525 basehttp 15733 6197506048 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:28:39,615 basehttp 15733 6197506048 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:28:49,573 basehttp 15733 6197506048 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:28:49,628 basehttp 15733 6197506048 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:28:50,476 basehttp 15733 6197506048 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:34:31,050 autoreload 15892 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 14:34:31,233 wsgi 15892 6186512384 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 14:34:31,233 wsgi 15892 6186512384 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 14:34:34,531 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 2684
+INFO 2024-09-24 14:34:34,593 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3227
+INFO 2024-09-24 14:34:34,608 basehttp 15892 6203338752 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 14:34:34,609 basehttp 15892 6236991488 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 14:34:34,610 basehttp 15892 6220165120 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 14:34:34,636 basehttp 15892 6236991488 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-24 14:34:34,636 basehttp 15892 6220165120 "GET /static/js/people_list.js HTTP/1.1" 200 6158
+WARNING 2024-09-24 14:34:34,928 log 15892 6220165120 Not Found: /favicon.ico
+WARNING 2024-09-24 14:34:34,928 basehttp 15892 6220165120 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 14:34:37,649 basehttp 15892 6220165120 "GET /contacts/people/ HTTP/1.1" 200 2684
+INFO 2024-09-24 14:34:37,694 basehttp 15892 6220165120 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:34:37,698 basehttp 15892 6220165120 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:37:19,272 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 2508
+INFO 2024-09-24 14:37:19,349 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:37:19,356 basehttp 15892 6203338752 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:37:21,107 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 2508
+INFO 2024-09-24 14:37:24,185 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 2508
+INFO 2024-09-24 14:37:24,239 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3227
+INFO 2024-09-24 14:37:24,243 basehttp 15892 6203338752 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 14:37:24,244 basehttp 15892 6220165120 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 14:37:24,245 basehttp 15892 6236991488 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 14:37:24,263 basehttp 15892 6220165120 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-24 14:37:24,263 basehttp 15892 6236991488 "GET /static/js/people_list.js HTTP/1.1" 200 6158
+WARNING 2024-09-24 14:37:24,437 log 15892 6203338752 Not Found: /favicon.ico
+WARNING 2024-09-24 14:37:24,438 basehttp 15892 6203338752 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 14:37:26,460 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 2508
+INFO 2024-09-24 14:37:36,449 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:38:46,672 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:38:46,740 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:38:46,766 basehttp 15892 6203338752 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:38:56,868 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:39:42,222 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:39:42,261 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3251
+INFO 2024-09-24 14:39:42,268 basehttp 15892 6203338752 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:39:54,041 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:39:54,093 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3264
+INFO 2024-09-24 14:40:02,229 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:40:02,280 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3262
+INFO 2024-09-24 14:41:27,566 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:41:27,636 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3242
+INFO 2024-09-24 14:41:27,639 basehttp 15892 6220165120 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:41:27,642 basehttp 15892 6203338752 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:41:53,624 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:41:53,664 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3258
+INFO 2024-09-24 14:41:54,686 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:41:54,719 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:42:35,053 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:42:35,119 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3279
+INFO 2024-09-24 14:42:35,124 basehttp 15892 6203338752 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:42:49,313 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:42:49,384 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3286
+INFO 2024-09-24 14:43:16,548 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:43:16,630 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3313
+INFO 2024-09-24 14:43:17,623 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:43:17,652 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:43:55,624 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:43:55,688 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3285
+INFO 2024-09-24 14:43:55,694 basehttp 15892 6203338752 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:43:56,733 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:43:56,757 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:44:07,406 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:44:07,467 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3274
+INFO 2024-09-24 14:44:08,178 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:44:08,211 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:44:08,590 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:44:08,624 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:44:10,028 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:44:10,062 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3274
+INFO 2024-09-24 14:44:10,069 basehttp 15892 6203338752 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 14:44:10,074 basehttp 15892 6220165120 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 14:44:10,084 basehttp 15892 6203338752 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 14:44:10,085 basehttp 15892 6220165120 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-24 14:44:10,093 basehttp 15892 6203338752 "GET /static/js/people_list.js HTTP/1.1" 200 6158
+WARNING 2024-09-24 14:44:10,209 log 15892 6203338752 Not Found: /favicon.ico
+WARNING 2024-09-24 14:44:10,209 basehttp 15892 6203338752 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 14:45:58,199 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:45:58,249 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3281
+INFO 2024-09-24 14:45:58,272 basehttp 15892 6203338752 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:46:30,298 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:46:30,349 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3266
+INFO 2024-09-24 14:46:31,687 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:46:31,725 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:46:40,589 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:46:40,639 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3246
+INFO 2024-09-24 14:48:27,688 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:48:27,737 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3286
+INFO 2024-09-24 14:48:27,741 basehttp 15892 6203338752 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:48:27,759 basehttp 15892 6203338752 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:48:28,540 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:48:28,576 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:48:33,921 basehttp 15892 6203338752 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:48:33,967 basehttp 15892 6203338752 "GET /static/css/people_list.css HTTP/1.1" 200 3286
+INFO 2024-09-24 14:48:33,974 basehttp 15892 6203338752 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 14:48:33,975 basehttp 15892 6236991488 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 14:48:33,977 basehttp 15892 6220165120 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 14:48:33,986 basehttp 15892 6236991488 "GET /static/js/people_list.js HTTP/1.1" 200 6158
+INFO 2024-09-24 14:48:33,988 basehttp 15892 6220165120 "GET /static/js/navbar.js HTTP/1.1" 200 977
+WARNING 2024-09-24 14:48:34,189 log 15892 6220165120 Not Found: /favicon.ico
+WARNING 2024-09-24 14:48:34,189 basehttp 15892 6220165120 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 14:48:35,882 basehttp 15892 6220165120 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:48:35,921 basehttp 15892 6220165120 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:50:24,612 autoreload 16614 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 14:50:24,785 wsgi 16614 6147878912 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 14:50:24,785 wsgi 16614 6147878912 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 14:50:29,444 basehttp 16614 6164705280 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:50:29,551 basehttp 16614 6181531648 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:50:29,551 basehttp 16614 6164705280 "GET /static/css/people_list.css HTTP/1.1" 200 4003
+INFO 2024-09-24 14:55:30,796 autoreload 16757 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 14:55:30,969 wsgi 16757 6178091008 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 14:55:30,969 wsgi 16757 6178091008 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 14:55:41,446 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:55:41,544 basehttp 16757 6211743744 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:55:41,546 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 200 4149
+INFO 2024-09-24 14:55:41,549 basehttp 16757 6228570112 "GET /static/js/people_list.js HTTP/1.1" 200 6313
+INFO 2024-09-24 14:55:53,916 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:55:54,015 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 200 4149
+INFO 2024-09-24 14:55:54,024 basehttp 16757 6211743744 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 14:55:54,025 basehttp 16757 6194917376 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 14:55:54,029 basehttp 16757 6228570112 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 14:55:54,047 basehttp 16757 6228570112 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-24 14:55:54,052 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 200 6313
+WARNING 2024-09-24 14:55:54,213 log 16757 6194917376 Not Found: /favicon.ico
+WARNING 2024-09-24 14:55:54,213 basehttp 16757 6194917376 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 14:56:00,837 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:56:00,898 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:56:29,890 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:56:29,953 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 200 4149
+INFO 2024-09-24 14:56:29,962 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:56:38,100 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:56:38,160 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 200 4149
+INFO 2024-09-24 14:56:38,162 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:56:51,197 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:56:51,243 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 200 4151
+INFO 2024-09-24 14:56:51,246 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:56:58,457 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:56:58,516 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 200 4149
+INFO 2024-09-24 14:58:50,812 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:58:50,874 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:58:50,904 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 200 6158
+INFO 2024-09-24 14:58:51,695 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:58:51,731 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:58:53,651 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:58:53,691 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 200 4149
+INFO 2024-09-24 14:58:53,698 basehttp 16757 6211743744 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 14:58:53,699 basehttp 16757 6194917376 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 14:58:53,700 basehttp 16757 6228570112 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 14:58:53,709 basehttp 16757 6228570112 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-24 14:58:53,709 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 200 6158
+WARNING 2024-09-24 14:58:53,845 log 16757 6194917376 Not Found: /favicon.ico
+WARNING 2024-09-24 14:58:53,846 basehttp 16757 6194917376 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 14:59:11,994 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:59:12,054 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:59:12,058 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 200 6709
+INFO 2024-09-24 14:59:12,984 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:59:13,493 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:59:13,530 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:59:25,764 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:59:25,823 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:59:25,826 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 200 6333
+INFO 2024-09-24 14:59:27,792 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:59:27,835 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 200 4149
+INFO 2024-09-24 14:59:27,847 basehttp 16757 6194917376 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 14:59:27,848 basehttp 16757 6211743744 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 14:59:27,848 basehttp 16757 6228570112 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 14:59:27,856 basehttp 16757 6228570112 "GET /static/js/people_list.js HTTP/1.1" 200 6333
+INFO 2024-09-24 14:59:27,857 basehttp 16757 6211743744 "GET /static/js/navbar.js HTTP/1.1" 200 977
+WARNING 2024-09-24 14:59:27,993 log 16757 6228570112 Not Found: /favicon.ico
+WARNING 2024-09-24 14:59:27,994 basehttp 16757 6228570112 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 14:59:44,408 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:59:44,465 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 14:59:44,471 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 200 6785
+INFO 2024-09-24 14:59:49,616 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:59:49,672 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:59:50,264 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:59:50,303 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 14:59:51,718 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 14:59:51,762 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 200 4149
+INFO 2024-09-24 14:59:51,763 basehttp 16757 6211743744 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 14:59:51,764 basehttp 16757 6245396480 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 14:59:51,765 basehttp 16757 6228570112 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 14:59:51,775 basehttp 16757 6228570112 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-24 14:59:51,776 basehttp 16757 6245396480 "GET /static/js/people_list.js HTTP/1.1" 200 6785
+WARNING 2024-09-24 14:59:51,878 log 16757 6245396480 Not Found: /favicon.ico
+WARNING 2024-09-24 14:59:51,878 basehttp 16757 6245396480 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 15:05:47,750 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:05:47,818 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 15:05:47,824 basehttp 16757 6194917376 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-24 15:05:47,866 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 15:05:55,607 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:06:09,824 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:06:14,842 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:06:27,423 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:06:27,468 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 200 4149
+INFO 2024-09-24 15:06:27,483 basehttp 16757 6211743744 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 15:06:27,486 basehttp 16757 6228570112 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 15:06:27,487 basehttp 16757 6194917376 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 15:06:27,496 basehttp 16757 6228570112 "GET /static/js/people_list.js HTTP/1.1" 200 6333
+INFO 2024-09-24 15:06:27,496 basehttp 16757 6194917376 "GET /static/js/navbar.js HTTP/1.1" 200 977
+WARNING 2024-09-24 15:06:27,657 log 16757 6194917376 Not Found: /favicon.ico
+WARNING 2024-09-24 15:06:27,657 basehttp 16757 6194917376 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 15:06:29,419 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:06:29,466 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 15:06:50,131 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:06:50,183 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 200 6709
+INFO 2024-09-24 15:06:52,078 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:06:52,112 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 200 4149
+INFO 2024-09-24 15:06:52,115 basehttp 16757 6194917376 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 15:06:52,116 basehttp 16757 6211743744 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 15:06:52,117 basehttp 16757 6228570112 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 15:06:52,126 basehttp 16757 6228570112 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-24 15:06:52,128 basehttp 16757 6211743744 "GET /static/js/people_list.js HTTP/1.1" 200 6709
+WARNING 2024-09-24 15:06:52,237 log 16757 6211743744 Not Found: /favicon.ico
+WARNING 2024-09-24 15:06:52,237 basehttp 16757 6211743744 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 15:07:05,847 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:07:05,890 basehttp 16757 6194917376 "GET /static/css/people_list.css HTTP/1.1" 200 4149
+INFO 2024-09-24 15:07:05,900 basehttp 16757 6194917376 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 15:07:05,901 basehttp 16757 6228570112 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 15:07:05,901 basehttp 16757 6211743744 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 15:07:05,926 basehttp 16757 6211743744 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-24 15:07:05,927 basehttp 16757 6228570112 "GET /static/js/people_list.js HTTP/1.1" 200 6158
+WARNING 2024-09-24 15:07:06,079 log 16757 6228570112 Not Found: /favicon.ico
+WARNING 2024-09-24 15:07:06,080 basehttp 16757 6228570112 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 15:07:08,049 basehttp 16757 6228570112 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:07:08,092 basehttp 16757 6228570112 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 15:07:33,636 basehttp 16757 6194917376 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:07:33,699 basehttp 16757 6194917376 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 15:12:52,315 autoreload 17463 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 15:12:52,494 wsgi 17463 6173175808 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 15:12:52,494 wsgi 17463 6173175808 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 15:12:55,862 basehttp 17463 6190002176 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:12:55,986 basehttp 17463 6206828544 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 15:12:55,986 basehttp 17463 6190002176 "GET /static/css/people_list.css HTTP/1.1" 200 4640
+INFO 2024-09-24 15:13:11,102 basehttp 17463 6190002176 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:13:11,148 basehttp 17463 6190002176 "GET /static/css/people_list.css HTTP/1.1" 200 4517
+INFO 2024-09-24 15:13:13,552 basehttp 17463 6190002176 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:13:13,594 basehttp 17463 6190002176 "GET /static/css/people_list.css HTTP/1.1" 200 4517
+INFO 2024-09-24 15:13:13,600 basehttp 17463 6206828544 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 15:13:13,603 basehttp 17463 6190002176 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 15:13:13,606 basehttp 17463 6223654912 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 15:13:13,620 basehttp 17463 6223654912 "GET /static/js/people_list.js HTTP/1.1" 200 6158
+INFO 2024-09-24 15:13:13,620 basehttp 17463 6190002176 "GET /static/js/navbar.js HTTP/1.1" 200 977
+WARNING 2024-09-24 15:13:13,748 log 17463 6190002176 Not Found: /favicon.ico
+WARNING 2024-09-24 15:13:13,749 basehttp 17463 6190002176 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 15:13:36,814 basehttp 17463 6190002176 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:13:36,879 basehttp 17463 6190002176 "GET /static/css/people_list.css HTTP/1.1" 200 4448
+INFO 2024-09-24 15:13:41,249 autoreload 17525 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 15:13:41,421 wsgi 17525 6172454912 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 15:13:41,421 wsgi 17525 6172454912 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 15:13:43,373 basehttp 17525 6189281280 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:13:43,421 basehttp 17525 6189281280 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 15:13:58,646 basehttp 17525 6189281280 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:13:58,713 basehttp 17525 6189281280 "GET /static/css/people_list.css HTTP/1.1" 200 4426
+INFO 2024-09-24 15:13:58,714 basehttp 17525 6206107648 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 15:14:30,523 basehttp 17525 6189281280 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:14:30,586 basehttp 17525 6189281280 "GET /static/css/people_list.css HTTP/1.1" 200 4149
+INFO 2024-09-24 15:15:05,952 basehttp 17525 6189281280 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:15:06,006 basehttp 17525 6189281280 "GET /static/css/people_list.css HTTP/1.1" 200 4271
+INFO 2024-09-24 15:15:06,013 basehttp 17525 6189281280 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 15:15:07,016 basehttp 17525 6189281280 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:15:07,048 basehttp 17525 6189281280 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 15:15:07,735 basehttp 17525 6189281280 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:15:07,758 basehttp 17525 6189281280 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 15:15:19,383 basehttp 17525 6189281280 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:15:19,435 basehttp 17525 6189281280 "GET /static/css/people_list.css HTTP/1.1" 200 4282
+INFO 2024-09-24 15:15:20,097 basehttp 17525 6189281280 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:15:20,129 basehttp 17525 6189281280 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 15:15:37,086 basehttp 17525 6189281280 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:15:37,142 basehttp 17525 6189281280 "GET /static/css/people_list.css HTTP/1.1" 200 4293
+INFO 2024-09-24 15:16:04,814 basehttp 17525 6189281280 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:16:04,872 basehttp 17525 6189281280 "GET /static/css/people_list.css HTTP/1.1" 200 4349
+INFO 2024-09-24 15:16:04,877 basehttp 17525 6189281280 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 15:16:05,475 basehttp 17525 6189281280 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:16:05,516 basehttp 17525 6189281280 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 15:16:15,940 basehttp 17525 6189281280 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:16:15,988 basehttp 17525 6189281280 "GET /static/css/people_list.css HTTP/1.1" 200 4349
+INFO 2024-09-24 15:16:15,990 basehttp 17525 6189281280 "GET /static/css/main.css HTTP/1.1" 200 1819
+INFO 2024-09-24 15:16:15,992 basehttp 17525 6206107648 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-24 15:16:15,993 basehttp 17525 6189281280 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-24 15:16:16,028 basehttp 17525 6189281280 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-24 15:16:16,028 basehttp 17525 6206107648 "GET /static/js/people_list.js HTTP/1.1" 200 6158
+WARNING 2024-09-24 15:16:16,179 log 17525 6189281280 Not Found: /favicon.ico
+WARNING 2024-09-24 15:16:16,181 basehttp 17525 6189281280 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 15:16:18,365 basehttp 17525 6189281280 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:16:18,403 basehttp 17525 6189281280 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 15:16:31,134 autoreload 17686 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 15:16:31,307 wsgi 17686 6184546304 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 15:16:31,307 wsgi 17686 6184546304 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 15:16:32,809 basehttp 17686 6201372672 "GET / HTTP/1.1" 200 4027
+INFO 2024-09-24 15:16:37,754 basehttp 17686 6201372672 "GET /contacts/ HTTP/1.1" 200 176588
+INFO 2024-09-24 15:16:37,799 basehttp 17686 6201372672 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 15:16:37,804 basehttp 17686 6201372672 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 15:16:40,288 basehttp 17686 6201372672 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:16:40,343 basehttp 17686 6201372672 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 15:16:42,412 basehttp 17686 6201372672 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:16:55,696 basehttp 17686 6201372672 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:16:55,746 basehttp 17686 6201372672 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 15:17:34,585 basehttp 17686 6201372672 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:17:34,665 basehttp 17686 6201372672 "GET /static/css/people_list.css HTTP/1.1" 200 4425
+INFO 2024-09-24 15:17:34,667 basehttp 17686 6201372672 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 15:18:40,573 basehttp 17686 6201372672 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:18:40,628 basehttp 17686 6201372672 "GET /static/css/people_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 15:18:40,632 basehttp 17686 6201372672 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 15:19:06,815 basehttp 17686 6201372672 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:19:06,868 basehttp 17686 6201372672 "GET /static/css/people_list.css HTTP/1.1" 200 4426
+INFO 2024-09-24 15:19:44,786 basehttp 17686 6201372672 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:19:44,835 basehttp 17686 6201372672 "GET /static/css/people_list.css HTTP/1.1" 200 4401
+INFO 2024-09-24 15:19:55,984 basehttp 17686 6201372672 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:19:56,033 basehttp 17686 6201372672 "GET /static/css/people_list.css HTTP/1.1" 200 4377
+INFO 2024-09-24 15:19:56,036 basehttp 17686 6201372672 "GET /static/js/people_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 15:20:11,991 basehttp 17686 6201372672 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:20:12,042 basehttp 17686 6201372672 "GET /static/css/people_list.css HTTP/1.1" 200 4399
+INFO 2024-09-24 15:20:41,265 basehttp 17686 6201372672 "GET /contacts/people/ HTTP/1.1" 200 6558
+INFO 2024-09-24 15:20:41,320 basehttp 17686 6201372672 "GET /static/css/people_list.css HTTP/1.1" 200 4422

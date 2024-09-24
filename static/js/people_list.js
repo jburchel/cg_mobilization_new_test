@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         this.classList.remove('drag-over');
         if (draggedItem && this !== sourceStage) {
-            const newStage = this.dataset.stage;
-            updatePersonStage(draggedItem.dataset.personId, newStage, this, sourceStage);
+            const newStage = this.getAttribute('stage');
+            updatePersonStage(draggedItem.getAttribute('person-id'), newStage, this, sourceStage);
         }
     }
 
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 targetStage.querySelector('.stage-content').appendChild(draggedItem);
                 updateEmptyStageMessage(targetStage);
                 updateEmptyStageMessage(sourceStage);
-                updatePipelineSummary();
+                updatePipelineSummary(data.summary);
             } else {
                 throw new Error(data.error || 'Failed to update person stage');
             }
@@ -96,29 +96,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function updatePipelineSummary() {
-        fetch('/contacts/get-people-pipeline-summary/')
-        .then(response => response.json())
-        .then(data => {
-            console.log('Pipeline summary updated:', data);
-            
-            // Update total people
-            const totalElement = document.querySelector('.summary-item.total-item .summary-value');
-            if (totalElement) {
-                totalElement.textContent = data.total_people;
+    function updatePipelineSummary(summary) {
+        Object.entries(summary).forEach(([stage, count]) => {
+            const summaryItem = document.querySelector(`.summary-item[stage="${stage}"] .summary-value`);
+            if (summaryItem) {
+                summaryItem.textContent = count;
             }
-    
-            // Update individual stage counts
-            Object.entries(data.pipeline_summary).forEach(([stage, count]) => {
-                const stageElement = document.querySelector(`.summary-item[data-stage="${stage}"] .summary-value`);
-                if (stageElement) {
-                    stageElement.textContent = count;
-                }
-            });
-        })
-        .catch(error => {
-            console.error('Error updating pipeline summary:', error);
-            showErrorMessage('Failed to update pipeline summary');
         });
     }
 
@@ -138,29 +121,43 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function showDragFeedback() {
-        if (dragFeedback) {
-            dragFeedback.style.display = 'block';
-        }
+        dragFeedback.style.display = 'block';
     }
 
     function hideDragFeedback() {
-        if (dragFeedback) {
-            dragFeedback.style.display = 'none';
-        }
+        dragFeedback.style.display = 'none';
     }
 
     function showErrorMessage(message) {
-        if (errorMessage) {
-            errorMessage.textContent = message;
-            errorMessage.style.display = 'block';
-            setTimeout(() => {
-                errorMessage.style.display = 'none';
-            }, 5000);
-        }
+        errorMessage.textContent = message;
+        errorMessage.style.display = 'block';
+        setTimeout(() => {
+            errorMessage.style.display = 'none';
+        }, 5000);
+    }
+
+    function initializeStageToggles() {
+        document.querySelectorAll('.stage-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('.toggle-icon');
+                
+                if (content.style.display === 'block') {
+                    content.style.display = 'none';
+                    icon.textContent = '▶';
+                } else {
+                    content.style.display = 'block';
+                    icon.textContent = '▼';
+                }
+            });
+        });
     }
 
     // Initialize drag and drop
     initDragAndDrop();
+
+    // Initialize stage toggles
+    initializeStageToggles();
 
     // Add search functionality
     const searchInput = document.getElementById('peopleSearch');
@@ -176,14 +173,4 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.pipeline-stage').forEach(updateEmptyStageMessage);
         });
     }
-
-    // Add stage toggle functionality
-    document.querySelectorAll('.stage-header').forEach(header => {
-        header.addEventListener('click', function() {
-            const content = this.nextElementSibling;
-            const isExpanded = content.style.display !== 'none';
-            content.style.display = isExpanded ? 'none' : 'block';
-            this.querySelector('h2').textContent = isExpanded ? '▶ ' + this.textContent.slice(2) : '▼ ' + this.textContent.slice(2);
-        });
-    });
 });

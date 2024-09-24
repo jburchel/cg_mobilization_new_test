@@ -9,10 +9,11 @@
 <div class="pipeline-container">
     <h1>Individual Pipeline</h1>
 
-    <a href="{% url 'contacts:add_person' %}" class="btn btn-primary">Add New Person</a>
-
-    <div class="search-container">
-        <input type="text" id="peopleSearch" placeholder="Search people..." class="form-control">
+    <div class="actions">
+        <a href="{% url 'contacts:add_person' %}" class="btn btn-primary">Add New Person</a>
+        <div class="search-container">
+            <input type="text" id="peopleSearch" placeholder="Search people...">
+        </div>
     </div>
 
     <div class="pipeline-summary">
@@ -24,20 +25,25 @@
         {% endfor %}
     </div>
 
-    <div id="dragFeedback" style="display: none;">Dragging person...</div>
-    <div id="errorMessage" class="error-message" style="display: none;"></div>
+    <div id="dragFeedback" class="drag-feedback">Dragging person...</div>
+    <div id="errorMessage" class="error-message"></div>
 
     <div class="pipeline-grid">
         {% for stage, people in pipeline_stages.items %}
         <div class="pipeline-stage" data-stage="{{ stage|lower|slugify }}">
-            <div class="stage-header">                
+            <div class="stage-header">
+                <span class="toggle-icon">&#9654;</span>
                 <h2>{{ stage }}</h2>
             </div>
             <div class="stage-content">
                 {% for person in people %}
                 <div class="person-card" draggable="true" data-person-id="{{ person.id }}" data-name="{{ person.first_name }} {{ person.last_name }}">
                     <div class="person-info">
-                        <h3><a href="{% url 'contacts:person_detail' person.id %}" class="person-name-link">{{ person.first_name }} {{ person.last_name }}</a></h3>
+                        <h3>
+                            <a href="{% url 'contacts:person_detail' person.id %}" class="person-name-link">
+                                {{ person.first_name }} {{ person.last_name }}
+                            </a>
+                        </h3>
                         <p>{{ person.email }}</p>
                         <p>Last Contact: {{ person.last_contact|default:"N/A" }}</p>
                     </div>
