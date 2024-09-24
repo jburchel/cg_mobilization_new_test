@@ -1,109 +1,73 @@
 /* static/css/form.css */
-
-:root {
-    --primary-blue: #183963;
-    --primary-green: #39A949;
-    --primary-gray: #7F7F7F;
-    --primary-white: #FFFFFF;
-}
-
-.styled-form {
-    max-width: 1200px;
+.responsive-form {
+    max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 .form-section-title {
-    color: var(--primary-blue);
-    font-size: 1.2em;
-    margin-top: 30px;
-    margin-bottom: 15px;
-    border-bottom: 2px solid var(--primary-green);
-    padding-bottom: 5px;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    color: #183963;
 }
 
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 1em;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 1em;
 }
 
 .form-group label {
     display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: var(--primary-blue);
+    margin-bottom: 0.5em;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 8px;
+    padding: 0.5em;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 14px;
-}
-
-.form-group textarea {
-    height: 100px;
-}
-
-.form-group.full-width {
-    grid-column: 1 / -1;
-}
-
-.form-group.full-width textarea {
-    height: 80px;
 }
 
 .error-message {
-    color: #d9534f;
-    font-size: 12px;
-    margin-top: 5px;
+    color: red;
+    font-size: 0.9em;
+    margin-top: 0.25em;
 }
 
 .form-actions {
-    margin-top: 20px;
+    margin-top: 2em;
     text-align: right;
 }
 
 .btn {
-    padding: 10px 15px;
+    padding: 0.5em 1em;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
-    text-decoration: none;
 }
 
 .btn-primary {
-    background-color: var(--primary-green);
+    background-color: #39A949;
     color: white;
 }
 
 .btn-secondary {
-    background-color: var(--primary-gray);
+    background-color: #7F7F7F;
     color: white;
-    margin-left: 10px;
+    margin-left: 1em;
 }
 
-.btn:hover {
-    opacity: 0.9;
-}
+@media (min-width: 768px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-.current-image {
-    margin-bottom: 10px;
-}
-
-.current-image img {
-    max-width: 100px;
-    height: auto;
+    .full-width {
+        grid-column: 1 / -1;
+    }
 }

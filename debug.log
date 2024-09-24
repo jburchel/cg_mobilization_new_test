@@ -1861,3 +1861,14 @@ INFO 2024-09-24 12:12:26,770 wsgi 10970 6109589504 Static root path: /opt/render
 INFO 2024-09-24 12:12:26,770 wsgi 10970 6109589504 Media root path: /opt/render/project/src/media
 INFO 2024-09-24 12:12:32,805 basehttp 10970 6126415872 "GET /com-log/ HTTP/1.1" 200 8857
 INFO 2024-09-24 12:12:32,854 basehttp 10970 6126415872 "GET /static/css/com_log_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:19:18,849 autoreload 11308 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 12:19:19,029 wsgi 11308 6152974336 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 12:19:19,029 wsgi 11308 6152974336 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 12:19:24,201 basehttp 11308 6169800704 "GET /contacts/ HTTP/1.1" 200 175789
+INFO 2024-09-24 12:19:26,796 basehttp 11308 6169800704 "GET /contacts/add/church/ HTTP/1.1" 200 24662
+INFO 2024-09-24 12:19:26,859 basehttp 11308 6169800704 "GET /static/css/form.css HTTP/1.1" 200 1048
+INFO 2024-09-24 12:19:26,864 basehttp 11308 6169800704 "GET /static/js/form_validation.js HTTP/1.1" 200 1377
+INFO 2024-09-24 12:19:42,572 basehttp 11308 6169800704 "GET /contacts/ HTTP/1.1" 200 175789
+INFO 2024-09-24 12:19:43,806 basehttp 11308 6169800704 "GET /contacts/add/people/ HTTP/1.1" 200 28323
+INFO 2024-09-24 12:19:43,850 basehttp 11308 6169800704 "GET /static/css/form.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:19:43,855 basehttp 11308 6169800704 "GET /static/js/form_validation.js HTTP/1.1" 304 0
