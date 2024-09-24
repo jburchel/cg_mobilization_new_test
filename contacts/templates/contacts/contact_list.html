@@ -13,14 +13,14 @@
         <div class="search-bar">
             <input type="text" id="contact-search" placeholder="Search contacts...">
         </div>
-
         <div class="add-buttons">
             <a href="{% url 'contacts:add_contact' contact_type='church' %}" class="btn btn-primary">Add New Church</a>
             <a href="{% url 'contacts:add_contact' contact_type='people' %}" class="btn btn-primary">Add New Person</a>
         </div>
     </div>
 
-    <table class="table">
+    <div class="table-responsive">
+        <table class="table">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -28,11 +28,11 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Last Contact</th>
-                    <th>Edit</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
-        <tbody id="contacts-body">
-            {% for contact in contacts %}
+            <tbody id="contacts-body">
+                {% for contact in contacts %}
                 <tr>
                     <td>
                         {% if contact.church %}
@@ -51,17 +51,18 @@
                         {% if contact.church %}
                             <a href="{% url 'contacts:church_edit' contact.church.id %}" class="btn btn-sm btn-warning">Edit</a>
                         {% elif contact.people %}
-                            <a href="{% url 'contacts:person_edit' contact.people.id %}" class="btn btn-sm btn-warning  ">Edit</a>
+                            <a href="{% url 'contacts:person_edit' contact.people.id %}" class="btn btn-sm btn-warning">Edit</a>
                         {% endif %}
                     </td>
                 </tr>
-            {% empty %}
+                {% empty %}
                 <tr>
                     <td colspan="6">No contacts found.</td>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
     <div id="no-results" style="display: none;">
         No contacts found.
@@ -71,8 +72,7 @@
 
 {% block extra_js %}
 <script>
-    const contactsData = {{ contacts_json|safe }};
-    console.log('Contacts Data:', contactsData);
+    var contactsData = {{ contacts_json|safe }};
 </script>
 <script src="{% static 'js/contact_list.js' %}"></script>
 {% endblock %}

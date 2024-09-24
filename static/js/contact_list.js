@@ -3,21 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactsBody = document.getElementById('contacts-body');
     const noResults = document.getElementById('no-results');
 
-    // Function to add submit button to edit forms
-    function addSubmitButton() {
-        const form = document.querySelector('form');
-        if (form && !form.querySelector('button[type="submit"]')) {
-            const submitButton = document.createElement('button');
-            submitButton.type = 'submit';
-            submitButton.className = 'btn btn-primary';
-            submitButton.textContent = 'Update Contact';
-            form.appendChild(submitButton);
-        }
-    }
-
-    // Call addSubmitButton on page load
-    addSubmitButton();
-
     function renderContacts(contacts) {
         contactsBody.innerHTML = '';
         if (contacts.length === 0) {
@@ -32,12 +17,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 row.innerHTML = `
                     <td><a href="${detailUrl}">${contact.name}</a></td>
                     <td>${contact.type}</td>
-                    
                     <td>${contact.email}</td>
                     <td>${contact.phone}</td>
-                    <td>${contact.last_contact}</td>                   
-                    <td class="actions">                        
-                        <a href="${editUrl}" class="btn btn-sm btn-info">Edit</a>
+                    <td>${contact.last_contact}</td>
+                    <td class="actions">
+                        <a href="${editUrl}" class="btn btn-sm btn-warning">Edit</a>
                     </td>
                 `;
                 contactsBody.appendChild(row);
@@ -57,13 +41,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 contact.type,
                 contact.email,
                 contact.phone,
-                contact.last_contact,   
+                contact.last_contact,
             ];
             return searchFields.some(field => 
                 field && field.toLowerCase().includes(searchTerm.toLowerCase())
             );
         });
-        console.log('Filtered contacts:', filtered);
         renderContacts(filtered);
     }
 
@@ -78,6 +61,24 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             console.error('contactsData is not defined or is not an array');
             noResults.style.display = 'block';
+        }
+    }
+
+    // Add touch-to-scroll hint for mobile devices
+    if ('ontouchstart' in window) {
+        const tableResponsive = document.querySelector('.table-responsive');
+        if (tableResponsive) {
+            const scrollHint = document.createElement('div');
+            scrollHint.className = 'scroll-hint';
+            scrollHint.textContent = 'Swipe to see more';
+            tableResponsive.appendChild(scrollHint);
+
+            tableResponsive.addEventListener('scroll', function() {
+                scrollHint.style.opacity = '0';
+                setTimeout(() => {
+                    scrollHint.remove();
+                }, 300);
+            }, { once: true });
         }
     }
 });
