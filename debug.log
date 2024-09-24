@@ -2553,3 +2553,6 @@ INFO 2024-09-24 15:56:17,898 basehttp 19076 6204649472 "GET /static/css/people_l
 INFO 2024-09-24 15:56:24,654 basehttp 19076 6204649472 "GET /contacts/people/ HTTP/1.1" 200 6536
 INFO 2024-09-24 15:56:24,726 basehttp 19076 6204649472 "GET /static/css/people_list.css HTTP/1.1" 200 3680
 INFO 2024-09-24 15:56:24,731 basehttp 19076 6204649472 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-24 15:58:59,879 autoreload 19740 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 15:59:00,056 wsgi 19740 6105444352 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 15:59:00,056 wsgi 19740 6105444352 Media root path: /opt/render/project/src/media
