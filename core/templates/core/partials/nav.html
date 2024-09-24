@@ -1,12 +1,16 @@
 {% load static %}
 
 <nav class="navbar">
-    <a href="/" class="navbar-brand">Mobilize CRM</a>
+    <div class="navbar-brand">
+        <img src="{% static 'images/cg_logo.png' %}" alt="Logo" class="navbar-logo">
+        <a href="/" class="navbar-title">Mobilize CRM</a>
+    </div>
+
     <div class="navbar-menu">
         <a href="{% url 'contacts:contact_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'all_contacts' %}active{% endif %}">All Contacts</a>
         <a href="{% url 'contacts:people_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'people_list' %}active{% endif %}">People</a>
         <a href="{% url 'contacts:church_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'church_list' %}active{% endif %}">Churches</a>
-        <a href=" {% url 'com_log:list' %}" class="navbar-item {% if request.resolver_match.url_name == 'com_log' %}active{% endif %}">Com-Log</a>
+        <a href="{% url 'com_log:list' %}" class="navbar-item {% if request.resolver_match.url_name == 'com_log' %}active{% endif %}">Com-Log</a>
         <a href="{% url 'task_tracker:task_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'task_tracker' %}active{% endif %}">Task-Tracker</a>
         
         {% if user.is_authenticated %}
