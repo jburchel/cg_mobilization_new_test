@@ -1872,3 +1872,11 @@ INFO 2024-09-24 12:19:42,572 basehttp 11308 6169800704 "GET /contacts/ HTTP/1.1"
 INFO 2024-09-24 12:19:43,806 basehttp 11308 6169800704 "GET /contacts/add/people/ HTTP/1.1" 200 28323
 INFO 2024-09-24 12:19:43,850 basehttp 11308 6169800704 "GET /static/css/form.css HTTP/1.1" 304 0
 INFO 2024-09-24 12:19:43,855 basehttp 11308 6169800704 "GET /static/js/form_validation.js HTTP/1.1" 304 0
+INFO 2024-09-24 12:26:42,428 autoreload 11667 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 12:26:42,611 wsgi 11667 6110769152 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 12:26:42,611 wsgi 11667 6110769152 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 12:26:49,615 views 11667 6127595520 ChurchDetailView: Fetched 1 recent communications for Church 1
+INFO 2024-09-24 12:26:49,617 views 11667 6127595520 ChurchDetailView: ComLog: 17, Date: 2024-09-18 19:17:58.219260+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:26:49,654 basehttp 11667 6127595520 "GET /contacts/church/1/ HTTP/1.1" 200 4902
+INFO 2024-09-24 12:26:49,776 basehttp 11667 6127595520 "GET /static/css/church_detail.css HTTP/1.1" 200 3529
+INFO 2024-09-24 12:26:49,776 basehttp 11667 6144421888 "GET /static/images/default_church.png HTTP/1.1" 200 23845
