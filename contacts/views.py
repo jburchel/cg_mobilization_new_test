@@ -216,6 +216,8 @@ class ChurchUpdateView(UpdateView, LoginRequiredMixin):
     template_name = 'contacts/edit_contact.html'
     
     def form_valid(self, form):
+        if 'image' in self.request.FILES:
+            form.instance.image = self.request.FILES['image']
         response = super().form_valid(form)
         messages.success(self.request, f'Church "{self.object.church_name}" has been updated successfully.')
         return response
@@ -335,7 +337,10 @@ class PersonUpdateView(UpdateView, LoginRequiredMixin):
     template_name = 'contacts/edit_contact.html'
     
     def form_valid(self, form):
+        if 'image' in self.request.FILES:
+            form.instance.image = self.request.FILES['image']
         response = super().form_valid(form)        
+        messages.success(self.request, f'Person "{self.object.get_name()}" has been updated successfully.')
         return response
     
     def get_context_data(self, **kwargs):

@@ -8,6 +8,12 @@ load_dotenv()
 
 DEBUG = True
 
+INSTALLED_APPS + ['whitenoise.runserver_nostatic'] + INSTALLED_APPS
+
+WHITENOISE_USE_FINDERS = True
+
+TEMPLATES[0]['OPTIONS']['context_processors'].append('django.template.context_processors.media')
+
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 DATABASES = {
@@ -16,6 +22,12 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Development-specific Google OAuth settings
 GOOGLE_CLIENT_CONFIG = {

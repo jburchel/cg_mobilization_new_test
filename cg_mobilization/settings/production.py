@@ -4,6 +4,8 @@ from pathlib import Path
 
 DEBUG = False
 
+# SECURITY WARNING: keep the secret key used in production secre
+
 ALLOWED_HOSTS = ['mobilize.onrender.com']  # Add your domain
 
 DATABASES = {
@@ -16,6 +18,15 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
+
+INSTALLED_APPS = ['whitenoise.runserver_nostatic'] + INSTALLED_APPS
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Production-specific Google OAuth settings
 GOOGLE_CLIENT_CONFIG = {

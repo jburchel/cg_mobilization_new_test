@@ -1655,3 +1655,85 @@ INFO 2024-09-23 13:05:14,240 basehttp 88189 6126006272 "GET /contacts/ HTTP/1.1"
 INFO 2024-09-23 13:18:42,540 autoreload 88662 8106941504 Watching for file changes with StatReloader
 INFO 2024-09-23 13:18:42,661 wsgi 88662 6105477120 Static root path: /opt/render/project/src/staticfiles
 INFO 2024-09-23 13:18:42,661 wsgi 88662 6105477120 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 13:32:41,963 autoreload 88662 8106941504 /Users/jimburchel/cg_mobilization/contacts/models.py changed, reloading.
+INFO 2024-09-23 13:32:42,465 autoreload 89268 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 13:32:42,650 wsgi 89268 6183972864 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 13:32:42,650 wsgi 89268 6183972864 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 15:53:52,394 autoreload 99956 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 16:10:49,877 autoreload 711 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 16:13:05,703 autoreload 711 8106941504 /Users/jimburchel/cg_mobilization/cg_mobilization/settings/base.py changed, reloading.
+INFO 2024-09-23 16:13:07,010 autoreload 783 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 16:13:07,217 wsgi 783 6176681984 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 16:13:07,217 wsgi 783 6176681984 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 16:13:37,165 autoreload 783 8106941504 /Users/jimburchel/cg_mobilization/cg_mobilization/settings/development.py changed, reloading.
+INFO 2024-09-23 16:13:37,460 autoreload 815 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 16:13:47,716 autoreload 815 8106941504 /Users/jimburchel/cg_mobilization/cg_mobilization/settings/development.py changed, reloading.
+INFO 2024-09-23 16:13:48,061 autoreload 829 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 16:13:48,235 wsgi 829 6142324736 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 16:13:48,235 wsgi 829 6142324736 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 16:14:04,735 autoreload 829 8106941504 /Users/jimburchel/cg_mobilization/cg_mobilization/settings/development.py changed, reloading.
+INFO 2024-09-23 16:14:05,099 autoreload 848 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 16:14:05,264 wsgi 848 6148288512 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 16:14:05,264 wsgi 848 6148288512 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 16:15:22,148 autoreload 848 8106941504 /Users/jimburchel/cg_mobilization/cg_mobilization/settings/development.py changed, reloading.
+INFO 2024-09-23 16:15:22,553 autoreload 890 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 16:15:22,734 wsgi 890 6141243392 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 16:15:22,734 wsgi 890 6141243392 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 16:16:36,474 autoreload 890 8106941504 /Users/jimburchel/cg_mobilization/cg_mobilization/settings/development.py changed, reloading.
+INFO 2024-09-23 16:16:36,857 autoreload 958 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 16:16:37,112 wsgi 958 6110720000 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 16:16:37,112 wsgi 958 6110720000 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 16:18:07,190 autoreload 1030 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-23 16:18:07,369 wsgi 1030 6144946176 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-23 16:18:07,369 wsgi 1030 6144946176 Media root path: /opt/render/project/src/media
+INFO 2024-09-23 16:18:12,458 basehttp 1030 6161772544 "GET /contacts/ HTTP/1.1" 200 175789
+INFO 2024-09-23 16:18:16,635 views 1030 6161772544 PersonDetailView: Fetched 42 recent communications for Person 236
+INFO 2024-09-23 16:18:16,637 views 1030 6161772544 PersonDetailView: ComLog: 45, Date: 2024-09-23 17:05:12.098821+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,638 views 1030 6161772544 PersonDetailView: ComLog: 44, Date: 2024-09-23 17:00:11.043478+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,638 views 1030 6161772544 PersonDetailView: ComLog: 43, Date: 2024-09-23 16:52:12.136244+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,638 views 1030 6161772544 PersonDetailView: ComLog: 41, Date: 2024-09-23 14:53:49.419536+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,639 views 1030 6161772544 PersonDetailView: ComLog: 40, Date: 2024-09-23 14:48:22.635754+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,639 views 1030 6161772544 PersonDetailView: ComLog: 39, Date: 2024-09-23 14:21:37.682558+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,639 views 1030 6161772544 PersonDetailView: ComLog: 38, Date: 2024-09-23 14:19:11.884037+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,640 views 1030 6161772544 PersonDetailView: ComLog: 37, Date: 2024-09-23 14:12:37.417830+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,640 views 1030 6161772544 PersonDetailView: ComLog: 36, Date: 2024-09-23 14:05:23.169628+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,640 views 1030 6161772544 PersonDetailView: ComLog: 35, Date: 2024-09-23 14:02:13.669702+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,641 views 1030 6161772544 PersonDetailView: ComLog: 34, Date: 2024-09-23 13:51:27.541766+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,642 views 1030 6161772544 PersonDetailView: ComLog: 33, Date: 2024-09-23 13:50:11.149923+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,643 views 1030 6161772544 PersonDetailView: ComLog: 32, Date: 2024-09-23 12:48:13.740480+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,643 views 1030 6161772544 PersonDetailView: ComLog: 31, Date: 2024-09-19 20:47:40.008442+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,644 views 1030 6161772544 PersonDetailView: ComLog: 30, Date: 2024-09-19 20:19:39.289621+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,644 views 1030 6161772544 PersonDetailView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 16:18:16,645 views 1030 6161772544 PersonDetailView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 16:18:16,645 views 1030 6161772544 PersonDetailView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 16:18:16,646 views 1030 6161772544 PersonDetailView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 16:18:16,647 views 1030 6161772544 PersonDetailView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-23 16:18:16,648 views 1030 6161772544 PersonDetailView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,648 views 1030 6161772544 PersonDetailView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,648 views 1030 6161772544 PersonDetailView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,649 views 1030 6161772544 PersonDetailView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,649 views 1030 6161772544 PersonDetailView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,649 views 1030 6161772544 PersonDetailView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,650 views 1030 6161772544 PersonDetailView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,650 views 1030 6161772544 PersonDetailView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,651 views 1030 6161772544 PersonDetailView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,651 views 1030 6161772544 PersonDetailView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,651 views 1030 6161772544 PersonDetailView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,652 views 1030 6161772544 PersonDetailView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,652 views 1030 6161772544 PersonDetailView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,652 views 1030 6161772544 PersonDetailView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,653 views 1030 6161772544 PersonDetailView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,654 views 1030 6161772544 PersonDetailView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 16:18:16,654 views 1030 6161772544 PersonDetailView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 16:18:16,654 views 1030 6161772544 PersonDetailView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 16:18:16,655 views 1030 6161772544 PersonDetailView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 16:18:16,655 views 1030 6161772544 PersonDetailView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 16:18:16,655 views 1030 6161772544 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-23 16:18:16,656 views 1030 6161772544 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-23 16:18:16,663 basehttp 1030 6161772544 "GET /contacts/person/236/ HTTP/1.1" 200 5223
+INFO 2024-09-24 10:13:06,762 autoreload 1030 8106941504 /Users/jimburchel/cg_mobilization/task_tracker/forms.py changed, reloading.
+INFO 2024-09-24 10:13:07,325 autoreload 7812 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 10:16:37,383 autoreload 7812 8106941504 /Users/jimburchel/cg_mobilization/task_tracker/forms.py changed, reloading.
+INFO 2024-09-24 10:16:37,835 autoreload 7960 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 10:16:38,014 wsgi 7960 6107017216 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 10:16:38,014 wsgi 7960 6107017216 Media root path: /opt/render/project/src/media
