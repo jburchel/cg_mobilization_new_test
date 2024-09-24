@@ -1,0 +1,239 @@
+/* com_log_list.css */
+
+:root {
+    --primary-blue: #183963;
+    --primary-green: #39A949;
+    --primary-gray: #7F7F7F;
+    --primary-white: #FFFFFF;
+    --light-gray: #f0f0f0;
+    --border-color: #e0e0e0;
+}
+
+.comlog-list-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.comlog-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.comlog-title {
+    color: var(--primary-blue);
+    font-size: 2rem;
+    margin: 0;
+}
+
+.comlog-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+}
+
+.btn-primary:hover {
+    background-color: #2d8a3a;
+}
+
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+}
+
+.comlog-table-container {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--primary-white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.table th {
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
+    font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+    background-color: var(--light-gray);
+}
+
+.table tr:hover {
+    background-color: #e6e6e6;
+}
+
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.875rem;
+}
+
+.btn-info {
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
+}
+
+.btn-edit {
+    background-color: var(--primary-gray);
+    color: var(--primary-white);
+}
+
+.btn-info:hover,
+.btn-edit:hover {
+    opacity: 0.9;
+}
+
+.add-log-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-green) !important; /* Bootstrap primary blue */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.add-log-button:hover {
+    background-color: var(--primary-blue); /* Darker blue on hover */
+    color: white;
+    text-decoration: none;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.page-item {
+    margin: 0 5px;
+}
+
+.page-link {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+    color: #333;
+}
+
+.page-item.active .page-link {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.page-link:hover {
+    background-color: #f8f9fa;
+}
+
+.com-log-table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.com-log-table th,
+.com-log-table td {
+    padding: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.com-log-table .col-date {
+    width: 12%;
+}
+
+.com-log-table .col-contact {
+    width: 18%;
+}
+
+.com-log-table .col-type {
+    width: 10%;
+}
+
+.com-log-table .col-comm-type {
+    width: 15%;
+}
+
+.com-log-table .col-notes {
+    width: 35%;
+}
+
+.com-log-table .col-actions {
+    width: 10%;
+}
+
+/* To allow the notes column to wrap text */
+.com-log-table .col-notes {
+    white-space: normal;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .com-log-table {
+        table-layout: auto;
+    }
+
+    .com-log-table th,
+    .com-log-table td {
+        white-space: normal;
+    }
+}
+
+@media (max-width: 768px) {
+    .comlog-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .comlog-actions {
+        margin-top: 10px;
+    }
+
+    .table {
+        font-size: 0.875rem;
+    }
+
+    .btn-sm {
+        padding: 3px 6px;
+        font-size: 0.75rem;
+    }
+}

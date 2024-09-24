@@ -1,0 +1,226 @@
+/* church_list.css */
+
+:root {
+    --primary-blue: #183963;
+    --primary-green: #39A949;
+    --primary-gray: #7F7F7F;
+    --primary-white: #FFFFFF;
+    --light-gray: #f0f0f0;
+    --border-color: #e0e0e0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--primary-white);
+    color: var(--primary-blue);
+}
+
+.pipeline-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: var(--primary-blue);
+    margin-bottom: 20px;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.search-container input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--primary-gray);
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.search-container button {
+    padding: 8px 15px;
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn {
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+    margin-bottom: 20px;
+}
+
+.pipeline-summary {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, var(--primary-blue), var(--primary-green));
+    padding: 15px;
+    border-radius: 5px;
+    color: var(--primary-white);
+}
+
+.summary-item {
+    text-align: center;
+    flex: 1 1 100px;
+    margin: 5px;
+}
+
+.summary-label {
+    font-size: 0.9em;
+    display: block;
+}
+
+.summary-value {
+    font-size: 1.5em;
+    font-weight: bold;
+    display: block;
+}
+
+.pipeline-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.pipeline-stage {
+    flex: 1 0 auto;
+    min-width: 200px;
+    max-width: calc(16.8% - 10px); /* Assuming 7 stages */
+    background-color: var(--light-gray);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.stage-header {
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
+    padding: 10px 15px;
+    font-weight: bold;
+}
+
+.stage-header h2 {
+    margin: 0;
+    font-size: 1.2em;
+    text-align: left;
+}
+
+.stage-content {
+    padding: 10px;
+    overflow-y: auto;
+    max-height: calc(100vh - 250px);
+}
+
+.church-card {
+    background-color: var(--primary-white);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    word-break: break-word;
+}
+
+.church-info h3 {
+    margin: 0 0 5px 0;
+    color: var(--primary-blue);
+    font-size: 1em;
+}
+
+.church-info p {
+    margin: 3px 0;
+    font-size: 0.8em;
+}
+
+.error-message {
+    background-color: #ff3860;
+    color: var(--primary-white);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+#dragFeedback {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-blue);
+    color: var(--primary-white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    display: none;
+}
+
+/* Drag and drop styles */
+.dragging {
+    opacity: 0.5;
+}
+
+.drag-over {
+    background-color: rgba(57, 169, 73, 0.1);
+    border: 2px dashed var(--primary-green);
+}
+
+/* Responsive design */
+@media (max-width: 1400px) {
+    .pipeline-stage {
+        min-width: 180px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .pipeline-stage {
+        min-width: 160px;
+    }
+}
+
+@media (max-width: 992px) {
+    .pipeline-grid {
+        flex-wrap: wrap;
+    }
+    .pipeline-stage {
+        min-width: calc(33.333% - 10px);
+        max-width: calc(33.333% - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .pipeline-stage {
+        min-width: calc(50% - 10px);
+        max-width: calc(50% - 10px);
+    }
+}
+
+@media (max-width: 576px) {
+    .pipeline-stage {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}

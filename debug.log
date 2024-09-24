@@ -1737,3 +1737,21 @@ INFO 2024-09-24 10:16:37,383 autoreload 7812 8106941504 /Users/jimburchel/cg_mob
 INFO 2024-09-24 10:16:37,835 autoreload 7960 8106941504 Watching for file changes with StatReloader
 INFO 2024-09-24 10:16:38,014 wsgi 7960 6107017216 Static root path: /opt/render/project/src/staticfiles
 INFO 2024-09-24 10:16:38,014 wsgi 7960 6107017216 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 10:18:19,788 basehttp 7960 6123843584 "GET /task-tracker/ HTTP/1.1" 200 8703
+INFO 2024-09-24 10:18:19,979 basehttp 7960 6123843584 "GET /static/js/task_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 10:18:22,023 basehttp 7960 6123843584 "GET /task-tracker/create/ HTTP/1.1" 200 17315
+INFO 2024-09-24 10:18:45,377 views 7960 6123843584 Task reminder set to: 1_hour
+INFO 2024-09-24 10:18:45,378 google_calendar 7960 6123843584 Attempting to create calendar event for task: 23
+INFO 2024-09-24 10:18:45,379 google_calendar 7960 6123843584 Creating Google Calendar service
+INFO 2024-09-24 10:18:45,393 __init__ 7960 6123843584 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-24 10:18:45,632 google_auth_httplib2 7960 6123843584 Refreshing credentials due to a 401 response. Attempt 1/2.
+INFO 2024-09-24 10:18:46,519 google_calendar 7960 6123843584 Event created successfully. Event ID: edion2ljm466lbum5ckaqdi7rg
+INFO 2024-09-24 10:18:46,522 basehttp 7960 6123843584 "POST /task-tracker/create/ HTTP/1.1" 302 0
+INFO 2024-09-24 10:18:46,562 basehttp 7960 6123843584 "GET /task-tracker/ HTTP/1.1" 200 9674
+INFO 2024-09-24 10:18:46,638 basehttp 7960 6123843584 "GET /static/js/task_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 10:22:56,465 autoreload 8456 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 10:22:56,652 wsgi 8456 6151057408 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 10:22:56,652 wsgi 8456 6151057408 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 10:26:23,712 autoreload 8670 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 10:26:23,891 wsgi 8670 6141210624 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 10:26:23,891 wsgi 8670 6141210624 Media root path: /opt/render/project/src/media
