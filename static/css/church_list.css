@@ -26,18 +26,18 @@ body {
 h1 {
     color: var(--primary-blue);
     margin-bottom: 20px;
+    font-size: 1.8em;
 }
 
-.actions {
+.actions-container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
     margin-bottom: 20px;
 }
 
 .search-container {
-    display: flex;
     width: 100%;
-    margin-bottom: 20px;
 }
 
 .search-container input[type="text"] {
@@ -45,16 +45,6 @@ h1 {
     padding: 8px;
     border: 1px solid var(--primary-gray);
     border-radius: 5px;
-    margin-right: 10px;
-}
-
-.search-container button {
-    padding: 8px 15px;
-    background-color: var(--primary-blue);
-    color: var(--primary-white);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 .btn {
@@ -64,12 +54,12 @@ h1 {
     text-decoration: none;
     display: inline-block;
     border-radius: 5px;
+    font-size: 0.9em;
 }
 
 .btn-primary {
     background-color: var(--primary-green);
     color: var(--primary-white);
-    margin-bottom: 20px;
 }
 
 .pipeline-summary {
@@ -90,28 +80,23 @@ h1 {
 }
 
 .summary-label {
-    font-size: 0.9em;
+    font-size: 0.8em;
     display: block;
 }
 
 .summary-value {
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: bold;
     display: block;
 }
 
 .pipeline-grid {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
-    overflow-x: auto;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .pipeline-stage {
-    flex: 1 0 auto;
-    min-width: 200px;
-    max-width: calc(16.8% - 10px); /* Assuming 7 stages */
     background-color: var(--light-gray);
     border-radius: 5px;
     overflow: hidden;
@@ -122,18 +107,17 @@ h1 {
     color: var(--primary-white);
     padding: 10px 15px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .stage-header h2 {
     margin: 0;
-    font-size: 1.2em;
-    text-align: left;
+    font-size: 1em;
 }
 
 .stage-content {
     padding: 10px;
-    overflow-y: auto;
-    max-height: calc(100vh - 250px);
+    display: none;
 }
 
 .church-card {
@@ -145,13 +129,13 @@ h1 {
     word-break: break-word;
 }
 
-.church-info h3 {
+.church-card h3 {
     margin: 0 0 5px 0;
     color: var(--primary-blue);
     font-size: 1em;
 }
 
-.church-info p {
+.church-card p {
     margin: 3px 0;
     font-size: 0.8em;
 }
@@ -178,7 +162,6 @@ h1 {
     display: none;
 }
 
-/* Drag and drop styles */
 .dragging {
     opacity: 0.5;
 }
@@ -188,39 +171,60 @@ h1 {
     border: 2px dashed var(--primary-green);
 }
 
-/* Responsive design */
-@media (max-width: 1400px) {
-    .pipeline-stage {
-        min-width: 180px;
+@media (min-width: 768px) {
+    .pipeline-container {
+        max-width: 1200px;
     }
-}
 
-@media (max-width: 1200px) {
-    .pipeline-stage {
-        min-width: 160px;
+    h1 {
+        font-size: 2.2em;
     }
-}
 
-@media (max-width: 992px) {
+    .actions-container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .search-container {
+        width: 50%;
+    }
+
+    .btn {
+        font-size: 1em;
+    }
+
+    .summary-label {
+        font-size: 0.9em;
+    }
+
+    .summary-value {
+        font-size: 1.5em;
+    }
+
     .pipeline-grid {
+        flex-direction: row;
         flex-wrap: wrap;
     }
+
     .pipeline-stage {
-        min-width: calc(33.333% - 10px);
-        max-width: calc(33.333% - 10px);
+        flex: 1 0 calc(33.333% - 20px);
+        max-width: calc(33.333% - 20px);
+    }
+
+    .stage-header h2 {
+        font-size: 1.2em;
+    }
+
+    .stage-content {
+        display: block;
+        max-height: calc(100vh - 250px);
+        overflow-y: auto;
     }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 1200px) {
     .pipeline-stage {
-        min-width: calc(50% - 10px);
-        max-width: calc(50% - 10px);
-    }
-}
-
-@media (max-width: 576px) {
-    .pipeline-stage {
-        min-width: 100%;
-        max-width: 100%;
+        flex: 1 0 calc(16.666% - 20px);
+        max-width: calc(16.666% - 20px);
     }
 }

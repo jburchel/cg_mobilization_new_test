@@ -1,56 +1,164 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('churchSearch');
-    const pipelineStages = document.querySelectorAll('.pipeline-stage');
+    let draggedItem = null;
+    let sourceStage = null;
+    const dragFeedback = document.getElementById('dragFeedback');
+    const errorMessage = document.getElementById('errorMessage');
 
-    searchInput.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-
-        pipelineStages.forEach(stage => {
-            const churchCards = stage.querySelectorAll('.church-card');
-            let visibleCards = 0;
-
-            churchCards.forEach(card => {
-                const name = card.dataset.name.toLowerCase();
-                if (name.includes(searchTerm)) {
-                    card.style.display = '';
-                    visibleCards++;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-
-            // Show/hide empty message
-            const emptyMessage = stage.querySelector('.empty-stage');
-            if (emptyMessage) {
-                emptyMessage.style.display = visibleCards === 0 ? '' : 'none';
-            }
-
-            // Show/hide the entire stage
-            stage.style.display = visibleCards === 0 ? 'none' : '';
+    function initDragAndDrop() {
+        document.querySelectorAll('.church-card').forEach(card => {
+            card.addEventListener('dragstart', handleDragStart);
+            card.addEventListener('dragend', handleDragEnd);
+            card.addEventListener('touchstart', handleTouchStart);
+            card.addEventListener('touchmove', handleTouchMove);
+            card.addEventListener('touchend', handleTouchEnd);
         });
 
-        // Update summary counts
-        updateSummaryCounts();
-    });
-
-    function updateSummaryCounts() {
-        const summaryItems = document.querySelectorAll('.summary-item');
-        let totalVisibleCards = 0;
-
-        summaryItems.forEach(item => {
-            const stageName = item.getAttribute('title');
-            const stageElement = document.querySelector(`.pipeline-stage[stage="${stageName.toLowerCase().replace(/\s+/g, '-')}"]`);
-            if (stageElement) {
-                const visibleCards = stageElement.querySelectorAll('.church-card[style="display: "]').length;
-                item.querySelector('.summary-value').textContent = visibleCards;
-                totalVisibleCards += visibleCards;
-            }
+        document.querySelectorAll('.pipeline-stage').forEach(stage => {
+            stage.addEventListener('dragover', handleDragOver);
+            stage.addEventListener('dragleave', handleDragLeave);
+            stage.addEventListener('drop', handleDrop);
         });
+    }
 
-        // Update total count
-        const totalItem = document.querySelector('.summary-item.total-item');
-        if (totalItem) {
-            totalItem.querySelector('.summary-value').textContent = totalVisibleCards;
+    function handleDragStart(e) {
+        draggedItem = this;
+        sourceStage = this.closest('.pipeline-stage');
+        setTimeout(() => this.style.opacity = '0.5', 0);
+        showDragFeedback();
+    }
+
+    function handleDragEnd() {
+        this.style.opacity = '1';
+        hideDragFeedback();
+    }
+
+    function handleDragOver(e) {
+        e.preventDefault();
+        this.classList.add('drag-over');
+    }
+
+    function handleDragLeave() {
+        this.classList.remove('drag-over');
+    }
+
+    function handleDrop(e) {
+        e.preventDefault();
+        this.classList.remove('drag-over');
+        if (draggedItem && this !== sourceStage) {
+            const newStage = this.dataset.stage;
+            updateChurchStage(draggedItem.dataset.churchId, newStage, this, sourceStage);
         }
     }
-});
+
+    let touchStartY;
+
+    function handleTouchStart(e) {
+        draggedItem = this;
+        sourceStage = this.closest('.pipeline-stage');
+        touchStartY = e.touches[0].clientY;
+        showDragFeedback();
+    }
+
+    function handleTouchMove(e) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const stage = document.elementFromPoint(touch.clientX, touch.clientY).closest('.pipeline-stage');
+        if (stage && stage !== sourceStage) {
+            stage.classList.add('drag-over');
+        }
+    }
+
+    function handleTouchEnd(e) {
+        const touch = e.changedTouches[0];
+        const stage = document.elementFromPoint(touch.clientX, touch.clientY).closest('.pipeline-stage');
+        if (stage && stage !== sourceStage) {
+            const newStage = stage.dataset.stage;
+            updateChurchStage(draggedItem.dataset.churchId, newStage, stage, sourceStage);
+        }
+        hideDragFeedback();
+    }
+
+    function updateChurchStage(churchId, newStage, targetStage, sourceStage) {
+        fetch('/contacts/update_church_pipeline_stage/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            },
+            body: JSON.stringify({
+                church_id: churchId,
+                new_stage: newStage
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                targetStage.querySelector('.stage-content').appendChild(draggedItem);
+                updateEmptyStageMessage(targetStage);
+                updateEmptyStageMessage(sourceStage);
+                updatePipelineSummary();
+            } else {
+                throw new Error(data.error || 'Failed to update church stage');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            sourceStage.querySelector('.stage-content').appendChild(draggedItem);
+            showErrorMessage(error.message);
+        });
+    }
+
+    function updateEmptyStageMessage(stage) {
+        const stageContent = stage.querySelector('.stage-content');
+        const emptyMessage = stageContent.querySelector('.empty-stage');
+        const churchCards = stageContent.querySelectorAll('.church-card');
+
+        if (churchCards.length === 0) {
+            if (!emptyMessage) {
+                const newEmptyMessage = document.createElement('p');
+                newEmptyMessage.className = 'empty-stage';
+                newEmptyMessage.textContent = 'No churches in this stage.';
+                stageContent.appendChild(newEmptyMessage);
+            }
+        } else {
+            if (emptyMessage) {
+                emptyMessage.remove();
+            }
+        }
+    }
+
+    function updatePipelineSummary() {
+        fetch('/contacts/get-church-pipeline-summary/')
+        .then(response => response.json())
+        .then(data => {
+            const totalElement = document.querySelector('.summary-item.total-item .summary-value');
+            if (totalElement) {
+                totalElement.textContent = data.total_churches;
+            }
+    
+            Object.entries(data.pipeline_summary).forEach(([stage, count]) => {
+                const stageElement = document.querySelector(`.summary-item[data-stage="${stage}"] .summary-value`);
+                if (stageElement) {
+                    stageElement.textContent = count;
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Error updating pipeline summary:', error);
+            showErrorMessage('Failed to update pipeline summary');
+        });
+    }
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue

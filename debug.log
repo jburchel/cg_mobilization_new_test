@@ -1880,3 +1880,29 @@ INFO 2024-09-24 12:26:49,617 views 11667 6127595520 ChurchDetailView: ComLog: 17
 INFO 2024-09-24 12:26:49,654 basehttp 11667 6127595520 "GET /contacts/church/1/ HTTP/1.1" 200 4902
 INFO 2024-09-24 12:26:49,776 basehttp 11667 6127595520 "GET /static/css/church_detail.css HTTP/1.1" 200 3529
 INFO 2024-09-24 12:26:49,776 basehttp 11667 6144421888 "GET /static/images/default_church.png HTTP/1.1" 200 23845
+INFO 2024-09-24 12:27:49,382 views 11667 6127595520 ChurchDetailView: Fetched 1 recent communications for Church 1
+INFO 2024-09-24 12:27:49,384 views 11667 6127595520 ChurchDetailView: ComLog: 17, Date: 2024-09-18 19:17:58.219260+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:27:49,388 basehttp 11667 6127595520 "GET /contacts/church/1/ HTTP/1.1" 200 4902
+INFO 2024-09-24 12:27:49,444 basehttp 11667 6127595520 "GET /static/css/church_detail.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:27:55,738 autoreload 11804 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 12:27:55,969 wsgi 11804 6174994432 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 12:27:55,969 wsgi 11804 6174994432 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 12:28:02,078 views 11804 6191820800 ChurchDetailView: Fetched 1 recent communications for Church 1
+INFO 2024-09-24 12:28:02,080 views 11804 6191820800 ChurchDetailView: ComLog: 17, Date: 2024-09-18 19:17:58.219260+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:28:02,106 basehttp 11804 6191820800 "GET /contacts/church/1/ HTTP/1.1" 200 4902
+INFO 2024-09-24 12:28:02,153 basehttp 11804 6191820800 "GET /static/css/church_detail.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:34:49,766 autoreload 12064 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 12:34:49,941 wsgi 12064 6114603008 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 12:34:49,941 wsgi 12064 6114603008 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 12:34:54,621 basehttp 12064 6131429376 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:34:54,733 basehttp 12064 6148255744 "GET /static/js/church_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 12:34:54,734 basehttp 12064 6131429376 "GET /static/css/church_list.css HTTP/1.1" 200 3950
+INFO 2024-09-24 12:35:00,439 basehttp 12064 6131429376 "POST /contacts/update_church_pipeline_stage/ HTTP/1.1" 200 46
+INFO 2024-09-24 12:35:00,450 basehttp 12064 6131429376 "GET /contacts/get-church-pipeline-summary/ HTTP/1.1" 200 171
+INFO 2024-09-24 12:35:03,599 basehttp 12064 6131429376 "POST /contacts/update_church_pipeline_stage/ HTTP/1.1" 200 38
+INFO 2024-09-24 12:35:03,609 basehttp 12064 6131429376 "GET /contacts/get-church-pipeline-summary/ HTTP/1.1" 200 152
+INFO 2024-09-24 12:35:08,735 basehttp 12064 6131429376 "GET /contacts/churches/ HTTP/1.1" 200 9132
+INFO 2024-09-24 12:35:08,799 basehttp 12064 6131429376 "GET /static/css/church_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:35:20,096 basehttp 12064 6131429376 "GET /contacts/add/church/ HTTP/1.1" 200 24662
+INFO 2024-09-24 12:35:20,195 basehttp 12064 6131429376 "GET /static/css/form.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:35:20,201 basehttp 12064 6131429376 "GET /static/js/form_validation.js HTTP/1.1" 304 0
