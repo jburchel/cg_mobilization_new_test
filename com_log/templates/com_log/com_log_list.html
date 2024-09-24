@@ -1,61 +1,62 @@
 {% extends 'core/base.html' %}
 {% load static %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/com_log_list.css' %}">
 {% endblock %}
-{% block content %}
 
-<div class="container">
+{% block content %}
+<div class="container comlog-list-container">
     <h1>Communication Logs</h1>
 
     <div class="actions">
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search communications...">
+            <input type="text" id="searchInput" placeholder="Search logs...">
         </div>
     </div>
 
-    <table class="table com-log-table">
-        <thead>
-            <tr>
-                <th class="col-date">Date</th>
-                <th class="col-contact">Contact</th>
-                <th class="col-type">Type</th>
-                <th class="col-comm-type">Communication Type</th>
-                <th class="col-notes">Notes</th>
-                <th class="col-actions">Actions</th>
-            </tr>
-        </thead>
-        <tbody id="comLogTableBody">
-            {% for log in com_logs %}
-            <tr>
-                <td class="col-date">{{ log.date|date:"Y-m-d H:i" }}</td>
-                <td class="col-contact">
-                    {% if log.type == 'Church' %}
-                        <a href="{% url 'contacts:church_detail' log.contact_id %}">{{ log.name }}</a>
-                    {% elif log.type == 'Person' %}
-                        <a href="{% url 'contacts:person_detail' log.contact_id %}">{{ log.name }}</a>
-                    {% else %}
-                        {{ log.name }}
-                    {% endif %}
-                </td>
-                <td class="col-type">{{ log.type }}</td>
-                <td class="col-comm-type">{{ log.communication_type }}</td>
-                <td class="col-notes">{{ log.notes|truncatewords:20 }}</td>
-                <td class="col-actions">
-                    <a href="{% url 'com_log:detail' log.id %}" class="btn btn-sm btn-info">View</a>
-                    <a href="{% url 'com_log:update' log.id %}" class="btn btn-sm btn-primary">Edit</a>
-                </td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="6">No communication logs found.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Contact</th>
+                    <th>Communication Type</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="comLogTableBody">
+                {% for log in com_logs %}
+                    <tr>
+                        <td>{{ log.date|date:"Y-m-d H:i" }}</td>
+                        <td>
+                            {% if log.type == 'Church' %}
+                                <a href="{% url 'contacts:church_detail' log.contact_id %}">{{ log.name }}</a>
+                            {% elif log.type == 'Person' %}
+                                <a href="{% url 'contacts:person_detail' log.contact_id %}">{{ log.name }}</a>
+                            {% else %}
+                                {{ log.name }}
+                            {% endif %}
+                        </td>
+                        <td>{{ log.communication_type }}</td>
+                        <td>{{ log.notes|truncatewords:20 }}</td>
+                        <td>
+                            <a href="{% url 'com_log:detail' log.id %}" class="btn btn-sm btn-info">View</a>
+                            <a href="{% url 'com_log:update' log.id %}" class="btn btn-sm btn-primary">Edit</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6">No communication logs found.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
-
 {% endblock %}
+
 {% block extra_js %}
 <script src="{% static 'js/com_log_list.js' %}"></script>
 {% endblock %}

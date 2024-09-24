@@ -1,6 +1,6 @@
 /* ComLog Form Styles */
 .comlog-form-container {
-    max-width: 800px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 20px;
 }
@@ -11,7 +11,7 @@
 
 .comlog-title {
     color: #183963;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
@@ -19,7 +19,7 @@
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
     border-radius: 5px;
-    padding: 20px;
+    padding: 15px;
 }
 
 .form-section {
@@ -28,7 +28,7 @@
 
 .form-section h2 {
     color: #183963;
-    font-size: 18px;
+    font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
@@ -49,6 +49,7 @@
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-size: 0.9rem;
 }
 
 .form-group textarea {
@@ -60,6 +61,7 @@
     margin-bottom: 15px;
     border: 1px solid transparent;
     border-radius: 4px;
+    font-size: 0.9rem;
 }
 
 .alert-danger {
@@ -70,17 +72,21 @@
 
 .form-actions {
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .btn {
     display: inline-block;
     padding: 10px 15px;
-    font-size: 14px;
+    font-size: 0.9rem;
     font-weight: bold;
     text-align: center;
     text-decoration: none;
     border-radius: 4px;
     cursor: pointer;
+    width: 100%;
 }
 
 .btn-primary {
@@ -93,7 +99,6 @@
     color: #fff;
     background-color: #6c757d;
     border: none;
-    margin-left: 10px;
 }
 
 /* Autocomplete styles */
@@ -108,8 +113,47 @@
 .ui-menu-item {
     padding: 8px;
     cursor: pointer;
+    font-size: 0.9rem;
 }
 
 .ui-menu-item:hover {
     background-color: #f0f0f0;
+}
+
+@media (min-width: 768px) {
+    .comlog-form-container {
+        max-width: 800px;
+    }
+
+    .comlog-title {
+        font-size: 2rem;
+    }
+
+    .comlog-form {
+        padding: 20px;
+    }
+
+    .form-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-group input[type="text"],
+    .form-group select,
+    .form-group textarea,
+    .ui-menu-item {
+        font-size: 1rem;
+    }
+
+    .form-actions {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .btn {
+        width: auto;
+    }
+
+    .btn-cancel {
+        margin-left: 10px;
+    }
 }

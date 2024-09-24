@@ -18,9 +18,8 @@
                     <a href="{% url 'com_log:contact_interactions' contact_type='person' contact_id=com_log.object_id %}" class="btn btn-log">View Contact History</a>
                 {% elif com_log.content_type.model == 'church' %}
                     <a href="{% url 'com_log:contact_interactions' contact_type='church' contact_id=com_log.object_id %}" class="btn btn-log">View Contact History</a>
-                {% endif %}                
-                <a href="{% url 'com_log:list' %}" class="btn btn-back">Back to List</a>                
-                {% comment %} <a href="{% url 'com_log:delete' com_log.pk %}" class="btn btn-delete">Delete</a> {% endcomment %}
+                {% endif %}
+                <a href="{% url 'com_log:list' %}" class="btn btn-back">Back to List</a>
             </div>
         </div>
     </div>
@@ -31,6 +30,7 @@
             <p><strong>Name:</strong> {{ com_log.get_contact_name }}</p>
             <p><strong>Type:</strong> {{ com_log.get_contact_type }}</p>
         </div>
+
         <div class="info-section">
             <h2>Communication Details</h2>
             <p><strong>Date:</strong> {{ com_log.date_created }}</p>
@@ -46,5 +46,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/comlog_detail.js' %}"></script>
+<script src="{% static 'js/com_log_detail.js' %}"></script>
 {% endblock %}

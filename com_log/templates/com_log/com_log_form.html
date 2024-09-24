@@ -12,24 +12,23 @@
     </div>
 
     {% if messages %}
-    <div class="messages">
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-            {{ message }}
-        </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-
-    <form method="post" action="{% url 'com_log:create' %}">
-        {% csrf_token %}
-
-        {% if form.non_field_errors %}
-        <div class="alert alert-danger">
-            {% for error in form.non_field_errors %}
-            {{ error }}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
             {% endfor %}
         </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
         {% endif %}
 
         <div class="form-section">
@@ -37,9 +36,9 @@
                 {{ form.contact.label_tag }}
                 {{ form.contact }}
                 {% if form.contact.errors %}
-                <div class="alert alert-danger">
-                    {{ form.contact.errors }}
-                </div>
+                    <div class="alert alert-danger">
+                        {{ form.contact.errors }}
+                    </div>
                 {% endif %}
             </div>
         </div>
@@ -49,9 +48,9 @@
                 {{ form.communication_type.label_tag }}
                 {{ form.communication_type }}
                 {% if form.communication_type.errors %}
-                <div class="alert alert-danger">
-                    {{ form.communication_type.errors }}
-                </div>
+                    <div class="alert alert-danger">
+                        {{ form.communication_type.errors }}
+                    </div>
                 {% endif %}
             </div>
 
@@ -59,9 +58,9 @@
                 {{ form.notes.label_tag }}
                 {{ form.notes }}
                 {% if form.notes.errors %}
-                <div class="alert alert-danger">
-                    {{ form.notes.errors }}
-                </div>
+                    <div class="alert alert-danger">
+                        {{ form.notes.errors }}
+                    </div>
                 {% endif %}
             </div>
         </div>

@@ -1755,3 +1755,109 @@ INFO 2024-09-24 10:22:56,652 wsgi 8456 6151057408 Media root path: /opt/render/p
 INFO 2024-09-24 10:26:23,712 autoreload 8670 8106941504 Watching for file changes with StatReloader
 INFO 2024-09-24 10:26:23,891 wsgi 8670 6141210624 Static root path: /opt/render/project/src/staticfiles
 INFO 2024-09-24 10:26:23,891 wsgi 8670 6141210624 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 12:02:06,460 autoreload 10425 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 12:02:06,644 wsgi 10425 6188707840 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 12:02:06,645 wsgi 10425 6188707840 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 12:02:15,212 basehttp 10425 6205534208 "GET / HTTP/1.1" 200 3903
+INFO 2024-09-24 12:02:15,268 basehttp 10425 6205534208 "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:02:15,318 basehttp 10425 6239186944 "GET /static/js/navbar.js HTTP/1.1" 304 0
+INFO 2024-09-24 12:02:15,321 basehttp 10425 6222360576 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:02:15,328 basehttp 10425 6205534208 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+WARNING 2024-09-24 12:02:15,773 log 10425 6205534208 Not Found: /favicon.ico
+WARNING 2024-09-24 12:02:15,773 basehttp 10425 6205534208 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-24 12:02:22,122 basehttp 10425 6205534208 "GET /com-log/ HTTP/1.1" 200 9300
+WARNING 2024-09-24 12:02:22,177 basehttp 10425 6205534208 "GET /static/css/comlog_list.css HTTP/1.1" 404 1816
+INFO 2024-09-24 12:02:22,179 basehttp 10425 6222360576 "GET /static/js/com_log_list.js HTTP/1.1" 304 0
+INFO 2024-09-24 12:04:19,112 basehttp 10425 6205534208 "GET /com-log/ HTTP/1.1" 200 9300
+WARNING 2024-09-24 12:04:19,169 basehttp 10425 6205534208 "GET /static/css/comlog_list.css HTTP/1.1" 404 1816
+INFO 2024-09-24 12:04:20,228 basehttp 10425 6205534208 "GET /com-log/ HTTP/1.1" 200 9300
+WARNING 2024-09-24 12:04:20,255 basehttp 10425 6205534208 "GET /static/css/comlog_list.css HTTP/1.1" 404 1816
+INFO 2024-09-24 12:04:28,682 autoreload 10529 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 12:04:28,864 wsgi 10529 6174978048 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 12:04:28,864 wsgi 10529 6174978048 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 12:04:31,563 basehttp 10529 6191804416 "GET /com-log/ HTTP/1.1" 200 9300
+WARNING 2024-09-24 12:04:31,629 basehttp 10529 6191804416 "GET /static/css/comlog_list.css HTTP/1.1" 404 1816
+INFO 2024-09-24 12:05:19,439 autoreload 10629 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 12:05:19,620 wsgi 10629 6182907904 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 12:05:19,620 wsgi 10629 6182907904 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 12:05:24,017 basehttp 10629 6199734272 "GET /com-log/ HTTP/1.1" 200 9300
+WARNING 2024-09-24 12:05:24,073 basehttp 10629 6199734272 "GET /static/css/comlog_list.css HTTP/1.1" 404 1816
+INFO 2024-09-24 12:05:25,326 basehttp 10629 6199734272 "GET /com-log/ HTTP/1.1" 200 9300
+WARNING 2024-09-24 12:05:25,368 basehttp 10629 6199734272 "GET /static/css/comlog_list.css HTTP/1.1" 404 1816
+INFO 2024-09-24 12:05:30,720 basehttp 10629 6199734272 "GET /com-log/ HTTP/1.1" 200 9300
+WARNING 2024-09-24 12:05:30,778 basehttp 10629 6199734272 "GET /static/css/comlog_list.css HTTP/1.1" 404 1816
+INFO 2024-09-24 12:05:57,822 basehttp 10629 6199734272 "GET /com-log/45/ HTTP/1.1" 200 2996
+INFO 2024-09-24 12:05:57,881 basehttp 10629 6199734272 "GET /static/css/comlog_detail.css HTTP/1.1" 200 2421
+WARNING 2024-09-24 12:05:57,890 basehttp 10629 6216560640 "GET /static/js/com_log_detail.js HTTP/1.1" 404 1819
+INFO 2024-09-24 12:06:42,369 basehttp 10629 6199734272 "GET /com-log/ HTTP/1.1" 200 9300
+WARNING 2024-09-24 12:06:42,431 basehttp 10629 6199734272 "GET /static/css/comlog_list.css HTTP/1.1" 404 1816
+INFO 2024-09-24 12:06:43,240 basehttp 10629 6216560640 "GET /com-log/ HTTP/1.1" 200 9300
+WARNING 2024-09-24 12:06:43,282 basehttp 10629 6216560640 "GET /static/css/comlog_list.css HTTP/1.1" 404 1816
+INFO 2024-09-24 12:07:16,828 basehttp 10629 6199734272 "GET /com-log/ HTTP/1.1" 200 9301
+INFO 2024-09-24 12:07:16,884 basehttp 10629 6199734272 "GET /static/css/com_log_list.css HTTP/1.1" 200 3076
+INFO 2024-09-24 12:07:54,352 basehttp 10629 6199734272 "GET /com-log/ HTTP/1.1" 200 9301
+INFO 2024-09-24 12:07:54,402 basehttp 10629 6199734272 "GET /static/css/com_log_list.css HTTP/1.1" 200 3076
+INFO 2024-09-24 12:08:32,379 basehttp 10629 6199734272 "GET /com-log/ HTTP/1.1" 200 8857
+INFO 2024-09-24 12:08:32,430 basehttp 10629 6199734272 "GET /static/css/com_log_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:09:49,946 basehttp 10629 6199734272 "GET /com-log/ HTTP/1.1" 200 8857
+INFO 2024-09-24 12:09:49,995 basehttp 10629 6199734272 "GET /static/css/com_log_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:09:53,155 basehttp 10629 6199734272 "GET /contacts/ HTTP/1.1" 200 175789
+INFO 2024-09-24 12:09:53,190 basehttp 10629 6199734272 "GET /static/css/contacts_list.css HTTP/1.1" 200 5256
+INFO 2024-09-24 12:09:53,195 basehttp 10629 6199734272 "GET /static/js/contact_list.js HTTP/1.1" 200 3153
+INFO 2024-09-24 12:09:56,846 views 10629 6199734272 PersonDetailView: Fetched 42 recent communications for Person 236
+INFO 2024-09-24 12:09:56,848 views 10629 6199734272 PersonDetailView: ComLog: 45, Date: 2024-09-23 17:05:12.098821+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,848 views 10629 6199734272 PersonDetailView: ComLog: 44, Date: 2024-09-23 17:00:11.043478+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,849 views 10629 6199734272 PersonDetailView: ComLog: 43, Date: 2024-09-23 16:52:12.136244+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,850 views 10629 6199734272 PersonDetailView: ComLog: 41, Date: 2024-09-23 14:53:49.419536+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,852 views 10629 6199734272 PersonDetailView: ComLog: 40, Date: 2024-09-23 14:48:22.635754+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,852 views 10629 6199734272 PersonDetailView: ComLog: 39, Date: 2024-09-23 14:21:37.682558+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,853 views 10629 6199734272 PersonDetailView: ComLog: 38, Date: 2024-09-23 14:19:11.884037+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,853 views 10629 6199734272 PersonDetailView: ComLog: 37, Date: 2024-09-23 14:12:37.417830+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,854 views 10629 6199734272 PersonDetailView: ComLog: 36, Date: 2024-09-23 14:05:23.169628+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,855 views 10629 6199734272 PersonDetailView: ComLog: 35, Date: 2024-09-23 14:02:13.669702+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,856 views 10629 6199734272 PersonDetailView: ComLog: 34, Date: 2024-09-23 13:51:27.541766+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,857 views 10629 6199734272 PersonDetailView: ComLog: 33, Date: 2024-09-23 13:50:11.149923+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,858 views 10629 6199734272 PersonDetailView: ComLog: 32, Date: 2024-09-23 12:48:13.740480+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,860 views 10629 6199734272 PersonDetailView: ComLog: 31, Date: 2024-09-19 20:47:40.008442+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,861 views 10629 6199734272 PersonDetailView: ComLog: 30, Date: 2024-09-19 20:19:39.289621+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,862 views 10629 6199734272 PersonDetailView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-24 12:09:56,862 views 10629 6199734272 PersonDetailView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-24 12:09:56,862 views 10629 6199734272 PersonDetailView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-24 12:09:56,863 views 10629 6199734272 PersonDetailView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-24 12:09:56,863 views 10629 6199734272 PersonDetailView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-24 12:09:56,863 views 10629 6199734272 PersonDetailView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,863 views 10629 6199734272 PersonDetailView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,864 views 10629 6199734272 PersonDetailView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,864 views 10629 6199734272 PersonDetailView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,864 views 10629 6199734272 PersonDetailView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,865 views 10629 6199734272 PersonDetailView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,865 views 10629 6199734272 PersonDetailView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,865 views 10629 6199734272 PersonDetailView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,866 views 10629 6199734272 PersonDetailView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,866 views 10629 6199734272 PersonDetailView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,867 views 10629 6199734272 PersonDetailView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,867 views 10629 6199734272 PersonDetailView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,868 views 10629 6199734272 PersonDetailView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,868 views 10629 6199734272 PersonDetailView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,869 views 10629 6199734272 PersonDetailView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,869 views 10629 6199734272 PersonDetailView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-24 12:09:56,870 views 10629 6199734272 PersonDetailView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-24 12:09:56,870 views 10629 6199734272 PersonDetailView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-24 12:09:56,871 views 10629 6199734272 PersonDetailView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-24 12:09:56,872 views 10629 6199734272 PersonDetailView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-24 12:09:56,872 views 10629 6199734272 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-24 12:09:56,873 views 10629 6199734272 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:09:56,878 basehttp 10629 6199734272 "GET /contacts/person/236/ HTTP/1.1" 200 5223
+INFO 2024-09-24 12:09:56,958 basehttp 10629 6199734272 "GET /static/css/person_detail.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:09:56,964 basehttp 10629 6199734272 "GET /static/images/default_person.png HTTP/1.1" 304 0
+INFO 2024-09-24 12:09:59,881 basehttp 10629 6199734272 "GET /com-log/new/ HTTP/1.1" 200 17636
+INFO 2024-09-24 12:09:59,919 basehttp 10629 6199734272 "GET /static/css/comlog_form.css HTTP/1.1" 200 2468
+INFO 2024-09-24 12:09:59,934 basehttp 10629 6199734272 "GET /static/js/com_log_form.js HTTP/1.1" 304 0
+INFO 2024-09-24 12:10:06,412 basehttp 10629 6199734272 "GET /com-log/ HTTP/1.1" 200 8857
+INFO 2024-09-24 12:10:06,471 basehttp 10629 6199734272 "GET /static/css/com_log_list.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:10:08,738 basehttp 10629 6199734272 "GET /com-log/ HTTP/1.1" 200 8857
+INFO 2024-09-24 12:12:26,593 autoreload 10970 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-24 12:12:26,770 wsgi 10970 6109589504 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-24 12:12:26,770 wsgi 10970 6109589504 Media root path: /opt/render/project/src/media
+INFO 2024-09-24 12:12:32,805 basehttp 10970 6126415872 "GET /com-log/ HTTP/1.1" 200 8857
+INFO 2024-09-24 12:12:32,854 basehttp 10970 6126415872 "GET /static/css/com_log_list.css HTTP/1.1" 304 0

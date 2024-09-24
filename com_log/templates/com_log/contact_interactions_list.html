@@ -1,11 +1,12 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/com_log_list.css' %}">
-{% endblock %}
-{% block content %}
 
-<div class="container">
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact_interactions_list.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container interactions-list-container">
     <h1>
         {% if contact_type == 'person' %}
             Communication history for {{ contact.first_name }} {{ contact.last_name }}
@@ -16,63 +17,70 @@
         {% endif %}
     </h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Notes</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for interaction in interactions %}
-            <tr>
-                <td>{{ interaction.date|date:"Y-m-d H:i" }}</td>
-                <td>{{ interaction.get_communication_type_display }}</td>
-                <td>{{ interaction.notes|truncatewords:20 }}</td>
-                <td>
-                    <a href="{% url 'com_log:detail' interaction.id %}" class="btn btn-sm btn-info">View</a>
-                    <a href="{% url 'com_log:update' interaction.id %}" class="btn btn-sm btn-primary">Edit</a>
-                </td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="4">No interactions found for this contact.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <input type="text" id="search-input" placeholder="Search interactions...">
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Notes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for interaction in interactions %}
+                    <tr class="interaction" data-content="{{ interaction.notes|lower }}">
+                        <td>{{ interaction.date|date:"Y-m-d H:i" }}</td>
+                        <td>{{ interaction.get_communication_type_display }}</td>
+                        <td>{{ interaction.notes|truncatewords:20 }}</td>
+                        <td>
+                            <a href="{% url 'com_log:detail' interaction.id %}" class="btn btn-sm btn-info">View</a>
+                            <a href="{% url 'com_log:update' interaction.id %}" class="btn btn-sm btn-primary">Edit</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="4">No interactions found for this contact.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
     {% if is_paginated %}
-    <nav aria-label="Page navigation">
-        <ul class="pagination">
-            {% if page_obj.has_previous %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo; Previous</a>
-                </li>
-            {% endif %}
-
-            {% for num in page_obj.paginator.page_range %}
-                {% if page_obj.number == num %}
-                    <li class="page-item active">
-                        <span class="page-link">{{ num }} <span class="sr-only">(current)</span></span>
-                    </li>
-                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo; Previous</a>
                     </li>
                 {% endif %}
-            {% endfor %}
 
-            {% if page_obj.has_next %}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next &raquo;</a>
-                </li>
-            {% endif %}
-        </ul>
-    </nav>
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <li class="page-item active">
+                            <span class="page-link">{{ num }} <span class="sr-only">(current)</span></span>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next &raquo;</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
     {% endif %}
 </div>
+{% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/contact_interactions_search.js' %}"></script>
 {% endblock %}

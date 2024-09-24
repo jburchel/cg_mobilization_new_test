@@ -10,37 +10,40 @@
 }
 
 .comlog-list-container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 20px;
 }
 
 .comlog-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     margin-bottom: 20px;
 }
 
 .comlog-title {
     color: var(--primary-blue);
-    font-size: 2rem;
-    margin: 0;
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
 }
 
 .comlog-actions {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
+    margin-top: 10px;
 }
 
 .btn {
-    padding: 10px 15px;
+    padding: 8px 12px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
     font-weight: bold;
     transition: background-color 0.3s;
+    font-size: 0.9rem;
 }
 
 .btn-primary {
@@ -53,6 +56,7 @@
 }
 
 .search-bar {
+    width: 100%;
     margin-bottom: 20px;
 }
 
@@ -72,11 +76,12 @@
     border-collapse: collapse;
     background-color: var(--primary-white);
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 0.9rem;
 }
 
 .table th,
 .table td {
-    padding: 12px;
+    padding: 10px;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
 }
@@ -96,8 +101,8 @@
 }
 
 .btn-sm {
-    padding: 5px 10px;
-    font-size: 0.875rem;
+    padding: 5px 8px;
+    font-size: 0.8rem;
 }
 
 .btn-info {
@@ -115,35 +120,17 @@
     opacity: 0.9;
 }
 
-.add-log-button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--primary-green) !important; /* Bootstrap primary blue */
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.add-log-button:hover {
-    background-color: var(--primary-blue); /* Darker blue on hover */
-    color: white;
-    text-decoration: none;
-}
-
 .pagination {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     list-style: none;
     padding: 0;
     margin-top: 20px;
 }
 
 .page-item {
-    margin: 0 5px;
+    margin: 5px;
 }
 
 .page-link {
@@ -152,6 +139,7 @@
     text-decoration: none;
     border: 1px solid #ddd;
     color: #333;
+    font-size: 0.9rem;
 }
 
 .page-item.active .page-link {
@@ -164,76 +152,38 @@
     background-color: #f8f9fa;
 }
 
-.com-log-table {
-    width: 100%;
-    table-layout: fixed;
-}
-
-.com-log-table th,
-.com-log-table td {
-    padding: 8px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.com-log-table .col-date {
-    width: 12%;
-}
-
-.com-log-table .col-contact {
-    width: 18%;
-}
-
-.com-log-table .col-type {
-    width: 10%;
-}
-
-.com-log-table .col-comm-type {
-    width: 15%;
-}
-
-.com-log-table .col-notes {
-    width: 35%;
-}
-
-.com-log-table .col-actions {
-    width: 10%;
-}
-
-/* To allow the notes column to wrap text */
-.com-log-table .col-notes {
-    white-space: normal;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .com-log-table {
-        table-layout: auto;
-    }
-
-    .com-log-table th,
-    .com-log-table td {
-        white-space: normal;
-    }
-}
-
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .comlog-header {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .comlog-title {
+        font-size: 2rem;
+        margin: 0;
     }
 
     .comlog-actions {
-        margin-top: 10px;
+        margin-top: 0;
+    }
+
+    .search-bar {
+        width: 50%;
     }
 
     .table {
-        font-size: 0.875rem;
+        font-size: 1rem;
     }
 
     .btn-sm {
-        padding: 3px 6px;
-        font-size: 0.75rem;
+        padding: 5px 10px;
+        font-size: 0.875rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .comlog-list-container {
+        max-width: 1200px;
     }
 }

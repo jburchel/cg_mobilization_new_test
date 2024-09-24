@@ -6,7 +6,7 @@
 }
 
 .comlog-detail-container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
@@ -14,26 +14,27 @@
 
 .comlog-header {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .comlog-title {
     color: var(--primary-blue);
-    margin: 0 0 20px 0;
-    font-size: 2.5em;
+    margin: 0 0 15px 0;
+    font-size: 1.8em;
 }
 
 .comlog-actions {
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
-    margin-top: 1rem;
+    gap: 10px;
+    margin-top: 10px;
 }
 
 .comlog-info {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 20px;
 }
 
@@ -48,10 +49,12 @@
     color: var(--primary-blue);
     margin-top: 0;
     margin-bottom: 15px;
+    font-size: 1.2em;
 }
 
 .info-section p {
     margin-bottom: 10px;
+    font-size: 0.9em;
 }
 
 .additional-info {
@@ -66,15 +69,17 @@
     color: var(--primary-blue);
     margin-top: 0;
     margin-bottom: 15px;
+    font-size: 1.2em;
 }
 
 .btn {
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 5px;
     text-decoration: none;
     font-weight: bold;
     color: var(--primary-white);
     transition: background-color 0.3s;
+    font-size: 0.9em;
 }
 
 .btn-edit {
@@ -94,10 +99,51 @@
 }
 
 .btn-history {
-    background-color: #17a2b8;  /* Or any color that fits your design */
+    background-color: #17a2b8;
     color: white;
 }
 
 .btn-history:hover {
-    background-color: #138496;  /* A slightly darker shade for hover effect */
+    background-color: #138496;
+}
+
+@media (min-width: 768px) {
+    .comlog-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .comlog-title {
+        font-size: 2.2em;
+        margin: 0;
+    }
+
+    .comlog-actions {
+        margin-top: 0;
+    }
+
+    .comlog-info {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .info-section h2,
+    .additional-info h2 {
+        font-size: 1.5em;
+    }
+
+    .info-section p {
+        font-size: 1em;
+    }
+
+    .btn {
+        font-size: 1em;
+        padding: 10px 15px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .comlog-detail-container {
+        max-width: 1200px;
+    }
 }
