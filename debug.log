@@ -1906,3 +1906,13 @@ INFO 2024-09-24 12:35:08,799 basehttp 12064 6131429376 "GET /static/css/church_l
 INFO 2024-09-24 12:35:20,096 basehttp 12064 6131429376 "GET /contacts/add/church/ HTTP/1.1" 200 24662
 INFO 2024-09-24 12:35:20,195 basehttp 12064 6131429376 "GET /static/css/form.css HTTP/1.1" 304 0
 INFO 2024-09-24 12:35:20,201 basehttp 12064 6131429376 "GET /static/js/form_validation.js HTTP/1.1" 304 0
+INFO 2024-09-24 12:41:53,098 views 12064 6131429376 ChurchDetailView: Fetched 1 recent communications for Church 1
+INFO 2024-09-24 12:41:53,100 views 12064 6131429376 ChurchDetailView: ComLog: 17, Date: 2024-09-18 19:17:58.219260+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:41:53,113 basehttp 12064 6131429376 "GET /contacts/church/1/ HTTP/1.1" 200 5501
+INFO 2024-09-24 12:41:53,175 basehttp 12064 6131429376 "GET /static/css/church_detail.css HTTP/1.1" 200 2779
+INFO 2024-09-24 12:41:53,210 basehttp 12064 6131429376 "GET /static/js/church_detail.js HTTP/1.1" 200 928
+INFO 2024-09-24 12:41:58,812 views 12064 6131429376 ChurchDetailView: Fetched 1 recent communications for Church 1
+INFO 2024-09-24 12:41:58,813 views 12064 6131429376 ChurchDetailView: ComLog: 17, Date: 2024-09-18 19:17:58.219260+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-24 12:41:58,817 basehttp 12064 6131429376 "GET /contacts/church/1/ HTTP/1.1" 200 5501
+INFO 2024-09-24 12:41:58,870 basehttp 12064 6131429376 "GET /static/css/church_detail.css HTTP/1.1" 304 0
+INFO 2024-09-24 12:41:58,875 basehttp 12064 6131429376 "GET /static/js/church_detail.js HTTP/1.1" 304 0

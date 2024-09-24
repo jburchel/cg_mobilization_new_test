@@ -25,54 +25,59 @@
                 <a href="{% url 'task_tracker:task_create' %}" class="btn btn-task">Create Task</a>
                 <a href="{% url 'com_log:contact_interactions' contact_type='church' contact_id=church.id %}" class="btn btn-history">View History</a>
             </div>
-
-            <div class="info-section quick-info">
-                <p><strong>Info Given:</strong> {{ church.info_given|default:"Not specified" }}</p>
-                <p><strong>Initial Notes:</strong> {{ church.initial_notes|default:"No notes available" }}</p>
-            </div>
         </div>
     </div>
 
     <div class="church-info">
-        <div class="info-section">
-            <h2>Contact Information</h2>
-            <a href="{% url 'contacts:send_email' contact_type='church' contact_id=church.id %}" class="btn btn-edit">Send Email</a>
-            <p><strong>Primary Contact:</strong> {{ church.primary_contact_first_name }} {{ church.primary_contact_last_name }}</p>
-            <p><strong>Phone:</strong> {{ church.phone }}</p>
-            <p><strong>Address:</strong> {{ church.street_address }}, {{ church.city }}, {{ church.get_state_display }} {{ church.zip_code }}</p>
-            <p><strong>Website:</strong> <a href="{{ church.website }}" target="_blank">{{ church.website }}</a></p>
+        <div class="info-section collapsible">
+            <h2>Contact Information <span class="toggle-icon">▼</span></h2>
+            <div class="section-content">
+                <a href="{% url 'contacts:send_email' contact_type='church' contact_id=church.id %}" class="btn btn-edit">Send Email</a>
+                <p><strong>Primary Contact:</strong> {{ church.primary_contact_first_name }} {{ church.primary_contact_last_name }}</p>
+                <p><strong>Phone:</strong> {{ church.phone }}</p>
+                <p><strong>Address:</strong> {{ church.street_address }}, {{ church.city }}, {{ church.get_state_display }} {{ church.zip_code }}</p>
+                <p><strong>Website:</strong> <a href="{{ church.website }}" target="_blank">{{ church.website }}</a></p>
+            </div>
         </div>
 
-        <div class="info-section">
-            <h2>Church Information</h2>
-            <p><strong>Denomination:</strong> {{ church.denomination }}</p>
-            <p><strong>Year Founded:</strong> {{ church.year_founded|default:"Unknown" }}</p>
-            <p><strong>Congregation Size:</strong> {{ church.congregation_size }}</p>
-            <p><strong>Virtuous:</strong> {{ church.virtuous|yesno:"Yes,No" }}</p>
+        <div class="info-section collapsible">
+            <h2>Church Information <span class="toggle-icon">▼</span></h2>
+            <div class="section-content">
+                <p><strong>Denomination:</strong> {{ church.denomination }}</p>
+                <p><strong>Year Founded:</strong> {{ church.year_founded|default:"Unknown" }}</p>
+                <p><strong>Congregation Size:</strong> {{ church.congregation_size }}</p>
+                <p><strong>Virtuous:</strong> {{ church.virtuous|yesno:"Yes,No" }}</p>
+            </div>
         </div>
 
-        <div class="info-section">
-            <h2>Key People</h2>
-            <p><strong>Senior Pastor:</strong> {{ church.senior_pastor_first_name }} {{ church.senior_pastor_last_name }}</p>
-            <p><strong>Phone/Email:</strong> {{ church.senior_pastor_phone }}, {{ church.senior_pastor_email }}</p>
-            <p><strong>Missions Pastor:</strong> {{ church.missions_pastor_first_name }} {{ church.missions_pastor_last_name|default:"Not specified" }}</p>
-            <p><strong>Phone/Email:</strong> {{ church.missions_pastor_phone }}, {{ church.missions_pastor_email|default:"Not specified" }}</p>
+        <div class="info-section collapsible">
+            <h2>Key People <span class="toggle-icon">▼</span></h2>
+            <div class="section-content">
+                <p><strong>Senior Pastor:</strong> {{ church.senior_pastor_first_name }} {{ church.senior_pastor_last_name }}</p>
+                <p><strong>Phone/Email:</strong> {{ church.senior_pastor_phone }}, {{ church.senior_pastor_email }}</p>
+                <p><strong>Missions Pastor:</strong> {{ church.missions_pastor_first_name }} {{ church.missions_pastor_last_name|default:"Not specified" }}</p>
+                <p><strong>Phone/Email:</strong> {{ church.missions_pastor_phone }}, {{ church.missions_pastor_email|default:"Not specified" }}</p>
+            </div>
         </div>
 
-        <div class="info-section">
-            <h2>CRM Details</h2>
-            <p><strong>Pipeline Stage:</strong> {{ church.get_church_pipeline_display }}</p>
-            <p><strong>Priority:</strong> {{ church.get_priority_display }}</p>
-            <p><strong>Assigned To:</strong> {{ church.get_assigned_to_display }}</p>
-            <p><strong>Source:</strong> {{ church.get_source_display }}</p>
-            <p><strong>Referred By:</strong> {{ church.referred_by|default:"Not specified" }}</p>
+        <div class="info-section collapsible">
+            <h2>CRM Details <span class="toggle-icon">▼</span></h2>
+            <div class="section-content">
+                <p><strong>Pipeline Stage:</strong> {{ church.get_church_pipeline_display }}</p>
+                <p><strong>Priority:</strong> {{ church.get_priority_display }}</p>
+                <p><strong>Assigned To:</strong> {{ church.get_assigned_to_display }}</p>
+                <p><strong>Source:</strong> {{ church.get_source_display }}</p>
+                <p><strong>Referred By:</strong> {{ church.referred_by|default:"Not specified" }}</p>
+            </div>
         </div>
     </div>
 
-    <div class="additional-info">
-        <h2>Additional Information</h2>
-        <p><strong>Info Given:</strong> {{ church.info_given|default:"Not specified" }}</p>
-        <p><strong>Initial Notes:</strong> {{ church.initial_notes|default:"No notes available" }}</p>
+    <div class="additional-info collapsible">
+        <h2>Additional Information <span class="toggle-icon">▼</span></h2>
+        <div class="section-content">
+            <p><strong>Info Given:</strong> {{ church.info_given|default:"Not specified" }}</p>
+            <p><strong>Initial Notes:</strong> {{ church.initial_notes|default:"No notes available" }}</p>
+        </div>
     </div>
 
     <div class="metadata">
@@ -80,20 +85,24 @@
         <p><strong>Date Modified:</strong> {{ church.date_modified|date:"F d, Y" }}</p>
     </div>
 
-    <div class="interaction-history">
-        <h2>Recent Interactions</h2>
-        {% if recent_communications %}
-            {% for comm in recent_communications|slice:":3" %}
-                <div class="interaction">
-                    <p><strong>{{ comm.date|date:"Y-m-d" }}</strong> - {{ comm.get_communication_type_display }}</p>
-                    <p>{{ comm.summary }}</p>
-                </div>
-            {% endfor %}
-        {% else %}
-            <p>No recent communications recorded.</p>
-        {% endif %}
+    <div class="interaction-history collapsible">
+        <h2>Recent Interactions <span class="toggle-icon">▼</span></h2>
+        <div class="section-content">
+            {% if recent_communications %}
+                {% for comm in recent_communications|slice:":3" %}
+                    <div class="interaction">
+                        <p><strong>{{ comm.date|date:"Y-m-d" }}</strong> - {{ comm.get_communication_type_display }}</p>
+                        <p>{{ comm.summary }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No recent communications recorded.</p>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}
 
+{% block extra_js %}
 <script src="{% static 'js/church_detail.js' %}"></script>
+{% endblock %}
