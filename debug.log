@@ -2677,3 +2677,76 @@ INFO 2024-09-25 10:06:23,884 basehttp 27176 6161133568 "GET /contacts/people/ HT
 INFO 2024-09-25 10:06:24,601 basehttp 27176 6161133568 "GET /contacts/churches/ HTTP/1.1" 200 9750
 INFO 2024-09-25 10:06:25,219 basehttp 27176 6161133568 "GET /com-log/ HTTP/1.1" 200 9157
 INFO 2024-09-25 10:06:25,852 basehttp 27176 6161133568 "GET /task-tracker/ HTTP/1.1" 200 9863
+INFO 2024-09-25 10:12:45,353 basehttp 27176 6161133568 "GET /task-tracker/ HTTP/1.1" 200 9863
+INFO 2024-09-25 10:12:45,462 basehttp 27176 6177959936 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2024-09-25 10:12:45,462 basehttp 27176 6161133568 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-25 10:12:54,728 basehttp 27176 6161133568 "GET /task-tracker/ HTTP/1.1" 200 9863
+INFO 2024-09-25 10:12:55,716 basehttp 27176 6161133568 "GET /com-log/ HTTP/1.1" 200 9157
+INFO 2024-09-25 10:13:01,989 basehttp 27176 6161133568 "GET /integrations/settings/ HTTP/1.1" 200 2132
+INFO 2024-09-25 10:13:16,654 basehttp 27176 6161133568 "GET /task-tracker/ HTTP/1.1" 200 9863
+INFO 2024-09-25 10:13:22,459 basehttp 27176 6161133568 "GET /task-tracker/ HTTP/1.1" 200 9863
+INFO 2024-09-25 10:13:25,782 basehttp 27176 6161133568 "GET / HTTP/1.1" 200 4203
+INFO 2024-09-25 10:13:25,845 basehttp 27176 6161133568 "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2024-09-25 10:13:38,079 basehttp 27176 6161133568 "GET /task-tracker/ HTTP/1.1" 200 9863
+INFO 2024-09-25 10:13:38,129 basehttp 27176 6161133568 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2024-09-25 10:20:15,473 basehttp 27176 6161133568 "GET /task-tracker/ HTTP/1.1" 200 10044
+INFO 2024-09-25 10:20:15,548 basehttp 27176 6161133568 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-09-25 10:20:15,597 basehttp 27176 6161133568 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-09-25 10:20:19,667 basehttp 27176 6161133568 "GET /accounts/account/ HTTP/1.1" 200 3873
+INFO 2024-09-25 10:20:19,720 basehttp 27176 6161133568 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-25 10:20:19,730 basehttp 27176 6177959936 "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2024-09-25 10:20:19,737 basehttp 27176 6161133568 "GET /static/images/default_profile.png HTTP/1.1" 404 1837
+INFO 2024-09-25 10:20:37,020 basehttp 27176 6161133568 "GET /accounts/account/ HTTP/1.1" 200 3873
+INFO 2024-09-25 10:20:37,083 basehttp 27176 6161133568 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-25 10:20:37,090 basehttp 27176 6177959936 "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2024-09-25 10:20:37,097 basehttp 27176 6161133568 "GET /static/images/default_profile.png HTTP/1.1" 404 1837
+INFO 2024-09-25 10:25:10,984 basehttp 27176 6161133568 "GET /accounts/account/ HTTP/1.1" 200 4465
+INFO 2024-09-25 10:25:11,044 basehttp 27176 6161133568 "GET /static/css/account.css HTTP/1.1" 200 2772
+INFO 2024-09-25 10:25:11,052 basehttp 27176 6161133568 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-25 10:25:11,064 basehttp 27176 6177959936 "GET /static/js/main.js HTTP/1.1" 304 0
+WARNING 2024-09-25 10:25:11,067 basehttp 27176 6161133568 "GET /static/images/default_profile.png HTTP/1.1" 404 1837
+INFO 2024-09-25 10:25:32,625 basehttp 27176 6161133568 "GET /accounts/account/ HTTP/1.1" 200 4465
+INFO 2024-09-25 10:25:32,707 basehttp 27176 6161133568 "GET /static/css/account.css HTTP/1.1" 304 0
+WARNING 2024-09-25 10:25:32,718 basehttp 27176 6161133568 "GET /static/images/default_profile.png HTTP/1.1" 404 1837
+INFO 2024-09-25 10:25:35,840 basehttp 27176 6161133568 "GET /integrations/settings/ HTTP/1.1" 200 2313
+INFO 2024-09-25 10:25:40,003 basehttp 27176 6161133568 "GET /integrations/google/auth/ HTTP/1.1" 302 0
+INFO 2024-09-25 10:25:44,532 basehttp 27176 6177959936 "GET /integrations/google/auth/callback/?state=w8JCwf23sJzSLwobcxhMIXgdm8Aafl&code=4/0AQlEd8xPTJU_FK0co52jjofy1lmLDTzRmLAsjkacYi4bkCljUV61MdUuds3EJuUEWQdSJw&scope=https://www.googleapis.com/auth/gmail.send%20https://www.googleapis.com/auth/calendar.events%20https://www.googleapis.com/auth/gmail.modify HTTP/1.1" 302 0
+INFO 2024-09-25 10:25:44,544 __init__ 27176 6177959936 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-25 10:25:44,937 basehttp 27176 6177959936 "GET /integrations/settings/ HTTP/1.1" 200 3003
+INFO 2024-09-25 10:25:45,001 basehttp 27176 6177959936 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-25 10:25:45,063 basehttp 27176 6161133568 "GET /static/js/main.js HTTP/1.1" 200 1449
+WARNING 2024-09-25 10:25:45,304 log 27176 6161133568 Not Found: /favicon.ico
+WARNING 2024-09-25 10:25:45,305 basehttp 27176 6161133568 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-25 10:25:53,580 basehttp 27176 6161133568 "GET /task-tracker/ HTTP/1.1" 200 10044
+INFO 2024-09-25 10:25:53,641 basehttp 27176 6161133568 "GET /static/js/task_list.js HTTP/1.1" 304 0
+INFO 2024-09-25 10:25:55,351 basehttp 27176 6161133568 "GET /accounts/account/ HTTP/1.1" 200 4465
+INFO 2024-09-25 10:25:55,387 basehttp 27176 6161133568 "GET /static/css/account.css HTTP/1.1" 200 2772
+WARNING 2024-09-25 10:25:55,399 basehttp 27176 6161133568 "GET /static/images/default_profile.png HTTP/1.1" 404 1837
+INFO 2024-09-25 10:25:57,694 basehttp 27176 6177959936 "GET /accounts/account/ HTTP/1.1" 200 4465
+WARNING 2024-09-25 10:25:57,748 basehttp 27176 6177959936 "GET /static/images/default_profile.png HTTP/1.1" 404 1837
+INFO 2024-09-25 10:26:00,218 basehttp 27176 6161133568 "GET /contacts/ HTTP/1.1" 200 315787
+INFO 2024-09-25 10:26:06,529 basehttp 27176 6161133568 "GET /contacts/ HTTP/1.1" 200 315787
+INFO 2024-09-25 10:26:06,599 basehttp 27176 6161133568 "GET /static/css/contacts_list.css HTTP/1.1" 200 3142
+INFO 2024-09-25 10:26:06,609 basehttp 27176 6177959936 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-25 10:26:06,610 basehttp 27176 6161133568 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-09-25 10:26:06,614 basehttp 27176 6194786304 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-25 10:26:06,616 basehttp 27176 6161133568 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-25 10:26:06,618 basehttp 27176 6161133568 "GET /static/js/contact_list.js HTTP/1.1" 200 3223
+INFO 2024-09-25 10:26:06,620 basehttp 27176 6161133568 "GET /static/js/main.js HTTP/1.1" 200 1449
+WARNING 2024-09-25 10:26:06,876 log 27176 6161133568 Not Found: /favicon.ico
+WARNING 2024-09-25 10:26:06,876 basehttp 27176 6161133568 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-25 10:26:11,817 __init__ 27176 6161133568 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-25 10:26:12,144 basehttp 27176 6161133568 "GET /integrations/settings/ HTTP/1.1" 200 2787
+INFO 2024-09-25 10:26:14,996 basehttp 27176 6161133568 "GET /accounts/account/ HTTP/1.1" 200 4465
+INFO 2024-09-25 10:26:15,029 basehttp 27176 6161133568 "GET /static/css/account.css HTTP/1.1" 304 0
+WARNING 2024-09-25 10:26:15,034 basehttp 27176 6161133568 "GET /static/images/default_profile.png HTTP/1.1" 404 1837
+INFO 2024-09-25 10:26:17,298 __init__ 27176 6161133568 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-25 10:26:17,660 basehttp 27176 6161133568 "GET /integrations/settings/ HTTP/1.1" 200 2787
+INFO 2024-09-25 10:30:28,343 __init__ 27176 6161133568 file_cache is only supported with oauth2client<4.0.0
+INFO 2024-09-25 10:30:29,016 basehttp 27176 6161133568 "GET /integrations/settings/ HTTP/1.1" 200 3274
+INFO 2024-09-25 10:30:29,107 basehttp 27176 6161133568 "GET /static/css/google_settings.css HTTP/1.1" 200 1949
+INFO 2024-09-25 10:30:29,120 basehttp 27176 6161133568 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-25 10:30:29,140 basehttp 27176 6161133568 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2024-09-25 10:30:36,042 basehttp 27176 6161133568 "GET /accounts/account/ HTTP/1.1" 200 4465
+INFO 2024-09-25 10:30:36,102 basehttp 27176 6161133568 "GET /static/css/account.css HTTP/1.1" 304 0
+WARNING 2024-09-25 10:30:36,115 basehttp 27176 6161133568 "GET /static/images/default_profile.png HTTP/1.1" 404 1837

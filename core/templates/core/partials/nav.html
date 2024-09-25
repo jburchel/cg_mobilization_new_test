@@ -21,15 +21,18 @@
         
         {% if user.is_authenticated %}
         <div class="user-menu">
-            {% if user.has_profile_thumbnail %}
-                <img src="{{ user.profile_thumbnail.url }}" alt="{{ user.username }}" class="user-avatar">
-            {% elif user.has_profile_image %}
-                <img src="{{ user.profile_image.url }}" alt="{{ user.username }}" class="user-avatar">
-            {% else %}
-                <img src="{% static 'images/default_thumbnail.png' %}" alt="{{ user.username }}" class="user-avatar">
-            {% endif %}
-            <span class="user-menu-text">{{ user.username }}</span>
-            <div class="dropdown-content">
+            <button id="user-menu-toggle" class="user-menu-button">
+                {% if user.has_profile_thumbnail %}
+                    <img src="{{ user.profile_thumbnail.url }}" alt="{{ user.username }}" class="user-avatar">
+                {% elif user.has_profile_image %}
+                    <img src="{{ user.profile_image.url }}" alt="{{ user.username }}" class="user-avatar">
+                {% else %}
+                    <img src="{% static 'images/default_thumbnail.png' %}" alt="{{ user.username }}" class="user-avatar">
+                {% endif %}
+                <span class="user-menu-text">{{ user.username }}</span>
+                <span class="dropdown-arrow">▼</span>
+            </button>
+            <div id="user-dropdown" class="dropdown-content">
                 <a href="{% url 'userprofile:account' %}">My Account</a>
                 <a href="{% url 'integrations:settings' %}">Google Integration</a>
                 <a href="{% url 'userprofile:logout' %}">Logout</a>

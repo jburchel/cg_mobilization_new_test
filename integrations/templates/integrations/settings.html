@@ -1,30 +1,46 @@
 {% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/google_settings.css' %}">
+{% endblock %}
 
 {% block content %}
-<h1>Google Integration Settings</h1>
+<div class="settings-container">
+    <div class="settings-header">
+        <h1 class="settings-title">Google Integration Settings</h1>
+    </div>
 
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+    <div class="settings-content">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
 
-{% if is_authenticated %}
-    <p>Your Google account is connected.</p>
-    <p>Connected email: {{ email }}</p>
-    <form action="{% url 'integrations:test_integration' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Test Integration</button>
-    </form>
-    <form action="{% url 'integrations:revoke_access' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Revoke Access</button>
-    </form>
-{% else %}
-    <p>Your Google account is not connected.</p>
-    <a href="{% url 'integrations:google_auth' %}" class="button">Connect Google Account</a>
-{% endif %}
+        {% if is_authenticated %}
+        <p class="settings-status">Your Google account is connected.</p>
+        <p>Connected email: <span class="settings-email">{{ email }}</span></p>
 
+        <div class="settings-actions">
+            <form method="post" action="{% url 'integrations:test_integration' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Test Integration</button>
+            </form>
+
+            <form method="post" action="{% url 'integrations:revoke_access' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-secondary">Revoke Access</button>
+            </form>
+        </div>
+        {% else %}
+        <p class="settings-status">Your Google account is not connected.</p>
+        <div class="settings-actions">
+            <a href="{% url 'integrations:google_auth' %}" class="btn btn-primary">Connect Google Account</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

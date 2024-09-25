@@ -73,13 +73,21 @@
     position: relative;
     display: flex;
     align-items: center;
+}
+
+.user-menu-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
     cursor: pointer;
     padding: 5px 10px;
     border-radius: 15px;
     transition: background-color 0.3s ease;
+    color: var(--primary-white);
 }
 
-.user-menu:hover {
+.user-menu-button:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -92,8 +100,12 @@
 }
 
 .user-menu-text {
-    color: var(--primary-white);
     font-size: 14px;
+    margin-right: 5px;
+}
+
+.dropdown-arrow {
+    font-size: 10px;
 }
 
 .dropdown-content {
@@ -120,7 +132,7 @@
     background-color: #f1f1f1;
 }
 
-.user-menu:hover .dropdown-content {
+.dropdown-content.show {
     display: block;
 }
 
@@ -156,6 +168,10 @@
 
     .user-menu {
         width: 100%;
+    }
+
+    .user-menu-button {
+        width: 100%;
         justify-content: flex-start;
     }
 
@@ -163,9 +179,6 @@
         position: static;
         box-shadow: none;
         margin-top: 0.5rem;
+        width: 100%;
     }
 }
-
-
-
-/* ... (rest of your CSS remains unchanged) ... */

@@ -1,37 +1,71 @@
 {% extends 'core/base.html' %}
 {% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/account.css' %}">
+{% endblock %}
+
 {% block content %}
-<div class="userprofile-container">
-    <div class="account-container">
-        <h1>Your Account</h1>
-        <div class="account-info">
-            {% if user.profile_image %}
-                <img src="{{ user.profile_image.url }}" alt="Profile Image" class="profile-image">
-            {% else %}
-                <img src="{% static 'images/default_profile.png' %}" alt="Default Profile Image" class="profile-image">
-            {% endif %}
-            <p><strong>Username:</strong> {{ user.username }}</p>
-            <p><strong>Email:</strong> {{ user.email }}</p>
-            <p><strong>First Name:</strong> {{ user.first_name }}</p>
-            <p><strong>Last Name:</strong> {{ user.last_name }}</p>
-        </div>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Update Profile</button>
-        </form>
-        
-        {% if messages %}
-            <div class="messages">
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-            </div>
+<div class="account-container">
+    <div class="account-header">
+        <h1 class="account-title">Your Account</h1>
+        <p class="account-subtitle">Manage your profile information</p>
+    </div>
+
+    <div class="profile-image-container">
+        {% if user.profile_image %}
+            <img src="{{ user.profile_image.url }}" alt="Profile Image" class="profile-image">
+        {% else %}
+            <img src="{% static 'images/default_profile.png' %}" alt="Default Profile Image" class="profile-image">
         {% endif %}
+    </div>
+
+    <form class="account-form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="id_username">Username:</label>
+            <input type="text" id="id_username" value="{{ user.username }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="id_email">Email:</label>
+            <input type="email" id="id_email" value="{{ user.email }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label for="id_first_name">First Name:</label>
+            {{ form.first_name }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_last_name">Last Name:</label>
+            {{ form.last_name }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_profile_image">Profile Image:</label>
+            {{ form.profile_image }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_email_signature">Email Signature:</label>
+            {{ form.email_signature }}
+        </div>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
         <div class="account-actions">
-            <a href="{% url 'userprofile:password_reset' %}" class="btn btn-primary">Change Password</a>
+            <button type="submit" class="btn btn-primary">Update Profile</button>
+            <a href="{% url 'userprofile:password_reset' %}" class="btn btn-secondary">Change Password</a>
             <a href="{% url 'userprofile:logout' %}" class="btn btn-secondary">Logout</a>
         </div>
-    </div>
+    </form>
 </div>
 {% endblock %}

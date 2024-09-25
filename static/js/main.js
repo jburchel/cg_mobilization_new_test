@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const navbarToggle = document.getElementById('navbar-toggle');
     const navbarMenu = document.getElementById('navbar-menu');
+    const userMenuToggle = document.getElementById('user-menu-toggle');
+    const userDropdown = document.getElementById('user-dropdown');
 
     if (navbarToggle && navbarMenu) {
         navbarToggle.addEventListener('click', function() {
@@ -18,20 +20,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Toggle user menu dropdown
-    const userMenu = document.querySelector('.user-menu');
-    if (userMenu) {
-        userMenu.addEventListener('click', function(e) {
-            const dropdownContent = this.querySelector('.dropdown-content');
-            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+    if (userMenuToggle && userDropdown) {
+        userMenuToggle.addEventListener('click', function(e) {
             e.stopPropagation();
+            userDropdown.classList.toggle('show');
         });
 
         // Close dropdown when clicking outside
         document.addEventListener('click', function() {
-            const dropdownContent = userMenu.querySelector('.dropdown-content');
-            if (dropdownContent) {
-                dropdownContent.style.display = 'none';
-            }
+            userDropdown.classList.remove('show');
+        });
+
+        // Prevent dropdown from closing when clicking inside it
+        userDropdown.addEventListener('click', function(e) {
+            e.stopPropagation();
         });
     }
 });
