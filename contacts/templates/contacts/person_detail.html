@@ -5,10 +5,6 @@
 <link rel="stylesheet" href="{% static 'css/person_detail.css' %}">
 {% endblock %}
 
-{% block extra_js %}
-<script src="{% static 'js/person_detail.js' %}"></script>
-{% endblock %}
-
 {% block content %}
 <div class="person-detail-container">
     <div class="person-header">
@@ -29,11 +25,6 @@
                 <a href="{% url 'com_log:contact_interactions' contact_type='person' contact_id=person.id %}" class="btn btn-task">View History</a>
             </div>
         </div>
-    </div>
-
-    <div class="additional-info">
-        <h2>Initial Notes</h2>
-        <p>{{ person.initial_notes|default:"No notes available" }}</p>
     </div>
 
     <div class="person-content">
@@ -58,32 +49,13 @@
             <p><strong>Home Country:</strong> {{ person.home_country|default:"Not specified" }}</p>
         </div>
 
-        <div class="info-section">
-            <h2>Personal Information</h2>
-            <p><strong>Title:</strong> {{ person.title }}</p>
-            <p><strong>Marital Status:</strong> {{ person.get_marital_status_display }}</p>
-            {% if person.spouse_first_name or person.spouse_last_name %}
-                <p><strong>Spouse:</strong> {{ person.spouse_first_name }} {{ person.spouse_last_name }}</p>
-            {% endif %}
-            <p><strong>Virtuous:</strong> {{ person.virtuous|yesno:"Yes,No" }}</p>
-        </div>
+        <!-- Add other sections (Personal Information, CRM Details, etc.) here -->
 
-        <div class="info-section">
-            <h2>CRM Details</h2>
-            <p><strong>Pipeline Stage:</strong> {{ person.get_people_pipeline_display }}</p>
-            <p><strong>Priority:</strong> {{ person.get_priority_display }}</p>
-            <p><strong>Assigned To:</strong> {{ person.get_assigned_to_display }}</p>
-            <p><strong>Source:</strong> {{ person.get_source_display }}</p>
-            <p><strong>Referred By:</strong> {{ person.referred_by|default:"Not specified" }}</p>
-        </div>
+    </div>
 
-        <div class="info-section">
-            <h2>Additional Information</h2>
-            <p><strong>Desired Service:</strong> {{ person.desired_service|default:"Not specified" }}</p>
-            <p><strong>Info Given:</strong> {{ person.info_given|default:"Not specified" }}</p>
-            <p><strong>Date Created:</strong> {{ person.date_created|date:"F d, Y" }}</p>
-            <p><strong>Date Modified:</strong> {{ person.date_modified|date:"F d, Y" }}</p>
-        </div>
+    <div class="additional-info">
+        <h2>Initial Notes</h2>
+        <p>{{ person.initial_notes|default:"No notes available" }}</p>
     </div>
 
     <div class="interaction-history">
@@ -100,4 +72,8 @@
         {% endif %}
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/person_detail.js' %}"></script>
 {% endblock %}
