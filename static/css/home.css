@@ -17,11 +17,11 @@ body {
 .hero {
 
     background: linear-gradient(rgba(24, 57, 99, 0.8), rgba(57, 169, 73, 0.8)), no-repeat center center/cover;
-
     color: var(--primary-white);
     text-align: center;
-    padding: 30px 0;
-    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    padding: 1rem; /* Changed from 30px 0 to 1rem */
+    margin: 1rem; /* Added to match navbar and footer */
+    border-radius: 10px;
 }
 
 .hero-title {
@@ -36,8 +36,9 @@ body {
 
 .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 1rem auto; /* Changed to auto for horizontal centering */
     padding: 0 15px;
+    text-align: center; /* Center all text within containers */
 }
 
 section {

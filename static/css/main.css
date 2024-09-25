@@ -97,3 +97,21 @@
 .user-menu:hover .dropdown-content {
     display: block;
 }
+
+/* Add these styles at the end of your main.css file */
+
+.footer {
+    background-color: var(--primary-gray);
+    color: var(--primary-white);
+    padding: 1rem;
+    margin: 2rem 1rem;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-content {
+    text-align: center !important;
+    font-size: 0.9rem;
+}
