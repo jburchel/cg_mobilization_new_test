@@ -12,4 +12,5 @@ urlpatterns = [
     path('interactions/<str:contact_type>/<int:contact_id>/', views.ContactInteractionsListView.as_view(), name='contact_interactions'),
     path('contact-search/', views.contact_search, name='contact_search'),
     path('api/create/', views.create_com_log_entry, name='api_create'),  # New URL pattern for create_com_log_entry
+    path('api/update/<int:log_id>/', views.update_com_log_entry, name='update_com_log_entry'),
 ]

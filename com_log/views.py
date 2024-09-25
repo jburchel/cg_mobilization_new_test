@@ -9,19 +9,23 @@ from .forms import ComLogForm
 from contacts.models import Church, People, Contact
 from django.http import JsonResponse, Http404
 from django.db.models import Q
+from django.views.decorators.csrf import csrf_exempt
 import logging
+import json
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
 
 logger = logging.getLogger(__name__)
 
+@csrf_exempt
 @login_required
 def create_com_log_entry(request):
     if request.method == 'POST':
-        person_id = request.POST.get('person_id')
-        communication_type = request.POST.get('communication_type')
-        notes = request.POST.get('notes')
+        data = json.loads(request.body)
+        person_id = data.get('person_id')
+        communication_type = data.get('communication_type')
+        notes = data.get('notes')
 
         if not person_id:
             return JsonResponse({'error': 'person_id is required'}, status=400)
@@ -45,6 +49,30 @@ def create_com_log_entry(request):
             'notes': com_log.notes,
             'date': com_log.date.isoformat()
         }, status=201)
+
+    return JsonResponse({'error': 'Invalid request method'}, status=405)
+
+@csrf_exempt
+@login_required
+def update_com_log_entry(request, log_id):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        notes = data.get('notes')
+
+        try:
+            com_log = ComLog.objects.get(id=log_id)
+        except ComLog.DoesNotExist:
+            return JsonResponse({'error': 'Com log entry not found'}, status=404)
+
+        com_log.notes = notes
+        com_log.save()
+
+        return JsonResponse({
+            'id': com_log.id,
+            'communication_type': com_log.get_communication_type_display(),
+            'notes': com_log.notes,
+            'date': com_log.date.isoformat()
+        }, status=200)
 
     return JsonResponse({'error': 'Invalid request method'}, status=405)
 
