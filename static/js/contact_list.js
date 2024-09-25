@@ -3,28 +3,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactsBody = document.getElementById('contacts-body');
     const cardView = document.querySelector('.card-view');
     const noResults = document.getElementById('no-results');
+    const tableView = document.querySelector('.table-view');
 
     function renderContacts(contacts) {
         contactsBody.innerHTML = '';
         cardView.innerHTML = '';
         if (contacts.length === 0) {
             noResults.style.display = 'block';
+            tableView.style.display = 'none';
+            cardView.style.display = 'none';
         } else {
             noResults.style.display = 'none';
+            tableView.style.display = 'block';
+            cardView.style.display = 'block';
             contacts.forEach(contact => {
-                const detailUrl = contact.type === 'Church' ? `/contacts/church/${contact.id}/` : `/contacts/person/${contact.id}/`;
-                const editUrl = contact.type === 'Church' ? `/contacts/church/${contact.id}/edit/` : `/contacts/person/${contact.id}/edit/`;
-                
                 // Table row
                 const row = document.createElement('tr');
                 row.innerHTML = `
-                    <td><a href="${detailUrl}">${contact.name}</a></td>
+                    <td><a href="${contact.detail_url}">${contact.name}</a></td>
                     <td>${contact.type}</td>
                     <td class="hide-mobile">${contact.email}</td>
                     <td class="hide-mobile">${contact.phone}</td>
                     <td class="hide-mobile">${contact.last_contact}</td>
                     <td class="actions">
-                        <a href="${editUrl}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="${contact.edit_url}" class="btn btn-sm btn-warning">Edit</a>
                     </td>
                 `;
                 contactsBody.appendChild(row);
@@ -33,12 +35,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 const card = document.createElement('div');
                 card.className = 'contact-card';
                 card.innerHTML = `
-                    <h3><a href="${detailUrl}">${contact.name}</a></h3>
+                    <h3><a href="${contact.detail_url}">${contact.name}</a></h3>
                     <p>Type: ${contact.type}</p>
                     <p>Email: ${contact.email}</p>
                     <p>Phone: ${contact.phone}</p>
                     <p>Last Contact: ${contact.last_contact}</p>
-                    <a href="${editUrl}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="${contact.edit_url}" class="btn btn-sm btn-warning">Edit</a>
                 `;
                 cardView.appendChild(card);
             });
@@ -71,11 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
             filterContacts(this.value);
         });
 
-        if (typeof contactsData !== 'undefined' && Array.isArray(contactsData)) {
-            renderContacts(contactsData);
-        } else {
-            console.error('contactsData is not defined or is not an array');
-            noResults.style.display = 'block';
-        }
+        // Initial render
+        renderContacts(contactsData);
     }
 });

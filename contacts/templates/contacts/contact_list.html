@@ -1,10 +1,11 @@
 {% extends 'core/base.html' %}
 {% load static %}
+
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/contacts_list.css' %}">
 {% endblock %}
-{% block content %}
 
+{% block content %}
 <div class="container">
     <h1>All Contacts</h1>
 
@@ -48,7 +49,7 @@
                             <td class="hide-mobile">{{ contact.email }}</td>
                             <td class="hide-mobile">{{ contact.phone }}</td>
                             <td class="hide-mobile">{{ contact.date_modified|date:"Y-m-d" }}</td>
-                            <td>
+                            <td class="actions">
                                 {% if contact.church %}
                                     <a href="{% url 'contacts:church_edit' contact.church.id %}" class="btn btn-sm btn-warning">Edit</a>
                                 {% elif contact.people %}
@@ -98,8 +99,24 @@
         No contacts found.
     </div>
 </div>
-
 {% endblock %}
+
 {% block extra_js %}
+<script>
+    var contactsData = [
+        {% for contact in contacts %}
+        {
+            id: {{ contact.id }},
+            name: "{{ contact.get_name|escapejs }}",
+            type: "{{ contact.get_type_display|escapejs }}",
+            email: "{{ contact.email|escapejs }}",
+            phone: "{{ contact.phone|escapejs }}",
+            last_contact: "{{ contact.date_modified|date:"Y-m-d"|escapejs }}",
+            detail_url: "{% if contact.church %}{% url 'contacts:church_detail' contact.church.id %}{% elif contact.people %}{% url 'contacts:person_detail' contact.people.id %}{% endif %}",
+            edit_url: "{% if contact.church %}{% url 'contacts:church_edit' contact.church.id %}{% elif contact.people %}{% url 'contacts:person_edit' contact.people.id %}{% endif %}"
+        },
+        {% endfor %}
+    ];
+</script>
 <script src="{% static 'js/contact_list.js' %}"></script>
 {% endblock %}
