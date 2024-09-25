@@ -25,6 +25,13 @@
                     <p><strong>Due Date:</strong> {{ task.due_date|date:"F d, Y"|default:"No due date" }}</p>
                 </div>
             </div>
+            <p><strong>Associated Contact:</strong> 
+                {% if task.contact %}
+                    <a href="{% url 'contacts:contact_detail' task.contact.id %}">{{ task.contact }}</a>
+                {% else %}
+                    No contact associated
+                {% endif %}
+            </p>
         </div>
     </div>
 
@@ -34,55 +41,7 @@
     </div>
 
     <div class="task-actions">
-        <a hre{% extends 'core/base.html' %}
-        {% load static %}
-        
-        {% block extra_css %}
-        <link rel="stylesheet" href="{% static 'css/task_detail.css' %}">
-        {% endblock %}
-        
-        {% block content %}
-        <div class="container task-detail-container">
-            <h1 class="page-title">Task Details</h1>
-            <div class="content-divider"></div>
-        
-            <div class="task-details">
-                <div class="task-info">
-                    <h2>{{ task.title }}</h2>
-                    <div class="info-grid">
-                        <div class="info-column">
-                            <p><strong>Status:</strong> {{ task.get_status_display }}</p>
-                            <p><strong>Priority:</strong> {{ task.get_priority_display }}</p>
-                            <p><strong>Assigned to:</strong> {{ task.assigned_to|default:"Not assigned" }}</p>
-                        </div>
-                        <div class="info-column">
-                            <p><strong>Created by:</strong> {{ task.created_by }}</p>
-                            <p><strong>Created at:</strong> {{ task.created_at|date:"F d, Y H:i" }}</p>
-                            <p><strong>Due Date:</strong> {{ task.due_date|date:"F d, Y"|default:"No due date" }}</p>
-                        </div>
-                    </div>
-                    <p><strong>Associated Contact:</strong> 
-                        {% if task.contact %}
-                            <a href="{% url 'contacts:contact_detail' task.contact.id %}">{{ task.contact }}</a>
-                        {% else %}
-                            No contact associated
-                        {% endif %}
-                    </p>
-                </div>
-            </div>
-        
-            <div class="full-width-fields">
-                <h3>Description</h3>
-                <p>{{ task.description|linebreaks|default:"No description provided." }}</p>
-            </div>
-        
-            <div class="task-actions">
-                <a href="{% url 'task_tracker:task_update' task.pk %}" class="btn btn-warning">Edit Task</a>
-                <a href="{% url 'task_tracker:task_delete' task.pk %}" class="btn btn-danger">Delete Task</a>
-                <a href="{% url 'task_tracker:task_list' %}" class="btn btn-primary">Back to Task List</a>
-            </div>
-        </div>
-        {% endblock %}f="{% url 'task_tracker:task_update' task.pk %}" class="btn btn-warning">Edit Task</a>
+        <a href="{% url 'task_tracker:task_update' task.pk %}" class="btn btn-warning">Edit Task</a>
         <a href="{% url 'task_tracker:task_delete' task.pk %}" class="btn btn-danger">Delete Task</a>
         <a href="{% url 'task_tracker:task_list' %}" class="btn btn-primary">Back to Task List</a>
     </div>

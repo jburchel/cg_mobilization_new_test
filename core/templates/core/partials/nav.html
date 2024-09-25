@@ -6,13 +6,13 @@
         <a href="/" class="navbar-title">Mobilize CRM</a>
     </div>
 
-    <button class="navbar-toggle" id="navbar-toggle">
+    <button id="navbar-toggle" class="navbar-toggle">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
     </button>
 
-    <div class="navbar-menu" id="navbar-menu">
+    <div id="navbar-menu" class="navbar-menu">
         <a href="{% url 'contacts:contact_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'all_contacts' %}active{% endif %}">All Contacts</a>
         <a href="{% url 'contacts:people_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'people_list' %}active{% endif %}">People</a>
         <a href="{% url 'contacts:church_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'church_list' %}active{% endif %}">Churches</a>
