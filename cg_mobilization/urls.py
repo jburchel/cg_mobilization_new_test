@@ -30,7 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('contacts/', include('contacts.urls')),
     path('accounts/', include('userprofile.urls')),
-    path('com-log/', include('com_log.urls')),
+    path('com_log/', include('com_log.urls')),
     path('task-tracker/', include('task_tracker.urls')),
     path('integrations/', include('integrations.urls', namespace='integrations')),
 ]
