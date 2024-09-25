@@ -64,7 +64,8 @@ function handleCommunication(action, personId, phoneNumber) {
 }
 
 function createComLog(personId, communicationType, notes) {
-    return fetch('/com_log/api/create/', {
+    console.log("createComLog called", personId, communicationType, notes);
+    return fetch('/com_log/api/create/', {  // Make sure this matches your URL configuration
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -76,8 +77,21 @@ function createComLog(personId, communicationType, notes) {
             notes: notes
         })
     })
-    .then(response => response.json())
-    .then(data => data.id);  // Assuming the API returns the ID of the created log
+    .then(response => {
+        console.log("Response status:", response.status);
+        return response.json();
+    })
+    .then(data => {
+        console.log("Response data:", data);
+        if (data.error) {
+            throw new Error(data.error);
+        }
+        return data.id;
+    })
+    .catch(error => {
+        console.error("Error in createComLog:", error);
+        throw error;
+    });
 }
 
 function openTextModal(personId, phoneNumber, logId) {

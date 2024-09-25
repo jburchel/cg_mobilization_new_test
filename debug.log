@@ -3806,3 +3806,56 @@ INFO 2024-09-25 15:26:20,275 basehttp 38666 6128594944 "GET /static/css/person_d
 INFO 2024-09-25 15:26:20,313 basehttp 38666 6128594944 "GET /static/js/person_detail.js HTTP/1.1" 200 5197
 WARNING 2024-09-25 15:26:23,528 log 38666 6128594944 Not Found: /com_log/api/create/
 WARNING 2024-09-25 15:26:23,529 basehttp 38666 6128594944 "POST /com_log/api/create/ HTTP/1.1" 404 2935
+INFO 2024-09-25 15:34:51,084 autoreload 38987 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-25 15:34:51,272 wsgi 38987 6185988096 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-25 15:34:51,273 wsgi 38987 6185988096 Media root path: /opt/render/project/src/media
+INFO 2024-09-25 15:34:58,684 views 38987 6202814464 PersonDetailView: Fetched 42 recent communications for Person 236
+INFO 2024-09-25 15:34:58,685 views 38987 6202814464 PersonDetailView: ComLog: 45, Date: 2024-09-23 17:05:12.098821+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,685 views 38987 6202814464 PersonDetailView: ComLog: 44, Date: 2024-09-23 17:00:11.043478+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,685 views 38987 6202814464 PersonDetailView: ComLog: 43, Date: 2024-09-23 16:52:12.136244+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,686 views 38987 6202814464 PersonDetailView: ComLog: 41, Date: 2024-09-23 14:53:49.419536+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,686 views 38987 6202814464 PersonDetailView: ComLog: 40, Date: 2024-09-23 14:48:22.635754+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,686 views 38987 6202814464 PersonDetailView: ComLog: 39, Date: 2024-09-23 14:21:37.682558+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,686 views 38987 6202814464 PersonDetailView: ComLog: 38, Date: 2024-09-23 14:19:11.884037+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,686 views 38987 6202814464 PersonDetailView: ComLog: 37, Date: 2024-09-23 14:12:37.417830+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,687 views 38987 6202814464 PersonDetailView: ComLog: 36, Date: 2024-09-23 14:05:23.169628+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,687 views 38987 6202814464 PersonDetailView: ComLog: 35, Date: 2024-09-23 14:02:13.669702+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,687 views 38987 6202814464 PersonDetailView: ComLog: 34, Date: 2024-09-23 13:51:27.541766+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,687 views 38987 6202814464 PersonDetailView: ComLog: 33, Date: 2024-09-23 13:50:11.149923+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,687 views 38987 6202814464 PersonDetailView: ComLog: 32, Date: 2024-09-23 12:48:13.740480+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,688 views 38987 6202814464 PersonDetailView: ComLog: 31, Date: 2024-09-19 20:47:40.008442+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,688 views 38987 6202814464 PersonDetailView: ComLog: 30, Date: 2024-09-19 20:19:39.289621+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,688 views 38987 6202814464 PersonDetailView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-25 15:34:58,688 views 38987 6202814464 PersonDetailView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-25 15:34:58,688 views 38987 6202814464 PersonDetailView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-25 15:34:58,688 views 38987 6202814464 PersonDetailView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-25 15:34:58,689 views 38987 6202814464 PersonDetailView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-25 15:34:58,689 views 38987 6202814464 PersonDetailView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,689 views 38987 6202814464 PersonDetailView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,690 views 38987 6202814464 PersonDetailView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,690 views 38987 6202814464 PersonDetailView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,691 views 38987 6202814464 PersonDetailView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,692 views 38987 6202814464 PersonDetailView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,693 views 38987 6202814464 PersonDetailView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,697 views 38987 6202814464 PersonDetailView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,700 views 38987 6202814464 PersonDetailView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,703 views 38987 6202814464 PersonDetailView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,705 views 38987 6202814464 PersonDetailView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,706 views 38987 6202814464 PersonDetailView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,707 views 38987 6202814464 PersonDetailView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,708 views 38987 6202814464 PersonDetailView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,708 views 38987 6202814464 PersonDetailView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,709 views 38987 6202814464 PersonDetailView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-25 15:34:58,709 views 38987 6202814464 PersonDetailView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-25 15:34:58,710 views 38987 6202814464 PersonDetailView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-25 15:34:58,710 views 38987 6202814464 PersonDetailView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-25 15:34:58,711 views 38987 6202814464 PersonDetailView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-25 15:34:58,711 views 38987 6202814464 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-25 15:34:58,712 views 38987 6202814464 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-25 15:34:58,758 basehttp 38987 6202814464 "GET /contacts/person/236/ HTTP/1.1" 200 5152
+INFO 2024-09-25 15:34:58,849 basehttp 38987 6202814464 "GET /static/css/person_detail.css HTTP/1.1" 304 0
+INFO 2024-09-25 15:34:58,858 basehttp 38987 6202814464 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-25 15:34:58,893 basehttp 38987 6219640832 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2024-09-25 15:34:58,893 basehttp 38987 6202814464 "GET /static/js/person_detail.js HTTP/1.1" 200 5602
+WARNING 2024-09-25 15:35:01,801 log 38987 6202814464 Not Found: /com_log/api/create/
+WARNING 2024-09-25 15:35:01,801 basehttp 38987 6202814464 "POST /com_log/api/create/ HTTP/1.1" 404 2935
