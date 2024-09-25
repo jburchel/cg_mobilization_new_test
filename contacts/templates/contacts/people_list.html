@@ -3,6 +3,16 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/people_list.css' %}">
+<style>
+    .phone-link {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .phone-link:hover {
+        text-decoration: underline;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -44,6 +54,9 @@
                             </a>
                         </h3>
                         <p>{{ person.email }}</p>
+                        {% if person.phone %}
+                        <p><a href="tel:{{ person.phone }}" class="phone-link">{{ person.phone }}</a></p>
+                        {% endif %}
                         <p>Last Contact: {{ person.last_contact|default:"N/A" }}</p>
                     </div>
                     {% if person.image %}

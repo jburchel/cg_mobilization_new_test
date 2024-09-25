@@ -4,6 +4,16 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/church_list.css' %}">
+<style>
+    .phone-link {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .phone-link:hover {
+        text-decoration: underline;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -42,6 +52,9 @@
                 <div class="church-card" draggable="true" data-church-id="{{ church.id }}">
                     <h3><a href="{% url 'contacts:church_detail' church.id %}">{{ church.church_name }}</a></h3>
                     <p>{{ church.email }}</p>
+                    {% if church.phone %}
+                    <p><a href="tel:{{ church.phone }}" class="phone-link">{{ church.phone }}</a></p>
+                    {% endif %}
                     <p>Last Contact: {{ church.date_modified|default:"N/A" }}</p>
                 </div>
                 {% empty %}

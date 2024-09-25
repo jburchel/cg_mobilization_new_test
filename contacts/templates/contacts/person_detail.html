@@ -3,6 +3,16 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/person_detail.css' %}">
+<style>
+    .phone-link {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .phone-link:hover {
+        text-decoration: underline;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -39,7 +49,7 @@
     <div class="person-content">        
         <div class="info-section">
             <h2>Contact Information</h2>
-            <p><strong>Phone:</strong> {{ person.phone }}</p>
+            <p><strong>Phone:</strong> {% if person.phone %}<a href="tel:{{ person.phone }}" class="phone-link">{{ person.phone }}</a>{% else %}Not provided{% endif %}</p>
             <p><strong>Email:</strong> {{ person.email }}</p>
             <p><strong>Preferred Contact:</strong> {{ person.get_preferred_contact_method_display }}</p>
             <p><strong>Address:</strong> {{ person.street_address }}, {{ person.city }}, {{ person.get_state_display }} {{ person.zip_code }}</p>

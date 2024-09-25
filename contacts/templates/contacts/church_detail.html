@@ -3,6 +3,16 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/church_detail.css' %}">
+<style>
+    .phone-link {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .phone-link:hover {
+        text-decoration: underline;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -34,7 +44,7 @@
             <div class="section-content">
                 <a href="{% url 'contacts:send_email' contact_type='church' contact_id=church.id %}" class="btn btn-edit">Send Email</a>
                 <p><strong>Primary Contact:</strong> {{ church.primary_contact_first_name }} {{ church.primary_contact_last_name }}</p>
-                <p><strong>Phone:</strong> {{ church.phone }}</p>
+                <p><strong>Phone:</strong> {% if church.phone %}<a href="tel:{{ church.phone }}" class="phone-link">{{ church.phone }}</a>{% else %}Not provided{% endif %}</p>
                 <p><strong>Address:</strong> {{ church.street_address }}, {{ church.city }}, {{ church.get_state_display }} {{ church.zip_code }}</p>
                 <p><strong>Website:</strong> <a href="{{ church.website }}" target="_blank">{{ church.website }}</a></p>
             </div>
@@ -54,9 +64,11 @@
             <h2>Key People <span class="toggle-icon">▼</span></h2>
             <div class="section-content">
                 <p><strong>Senior Pastor:</strong> {{ church.senior_pastor_first_name }} {{ church.senior_pastor_last_name }}</p>
-                <p><strong>Phone/Email:</strong> {{ church.senior_pastor_phone }}, {{ church.senior_pastor_email }}</p>
+                <p><strong>Phone:</strong> {% if church.senior_pastor_phone %}<a href="tel:{{ church.senior_pastor_phone }}" class="phone-link">{{ church.senior_pastor_phone }}</a>{% else %}Not provided{% endif %}</p>
+                <p><strong>Email:</strong> {{ church.senior_pastor_email }}</p>
                 <p><strong>Missions Pastor:</strong> {{ church.missions_pastor_first_name }} {{ church.missions_pastor_last_name|default:"Not specified" }}</p>
-                <p><strong>Phone/Email:</strong> {{ church.missions_pastor_phone }}, {{ church.missions_pastor_email|default:"Not specified" }}</p>
+                <p><strong>Phone:</strong> {% if church.missions_pastor_phone %}<a href="tel:{{ church.missions_pastor_phone }}" class="phone-link">{{ church.missions_pastor_phone }}</a>{% else %}Not provided{% endif %}</p>
+                <p><strong>Email:</strong> {{ church.missions_pastor_email|default:"Not specified" }}</p>
             </div>
         </div>
 

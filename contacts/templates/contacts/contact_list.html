@@ -3,6 +3,16 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/contacts_list.css' %}">
+<style>
+    .phone-link {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .phone-link:hover {
+        text-decoration: underline;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -47,7 +57,11 @@
                             </td>
                             <td>{{ contact.get_type_display }}</td>
                             <td class="hide-mobile">{{ contact.email }}</td>
-                            <td class="hide-mobile">{{ contact.phone }}</td>
+                            <td class="hide-mobile">
+                                {% if contact.phone %}
+                                <a href="tel:{{ contact.phone }}" class="phone-link">{{ contact.phone }}</a>
+                                {% endif %}
+                            </td>
                             <td class="hide-mobile">{{ contact.date_modified|date:"Y-m-d" }}</td>
                             <td class="actions">
                                 {% if contact.church %}
@@ -81,7 +95,13 @@
                 </h3>
                 <p>Type: {{ contact.get_type_display }}</p>
                 <p>Email: {{ contact.email }}</p>
-                <p>Phone: {{ contact.phone }}</p>
+                <p>Phone: 
+                    {% if contact.phone %}
+                    <a href="tel:{{ contact.phone }}" class="phone-link">{{ contact.phone }}</a>
+                    {% else %}
+                    N/A
+                    {% endif %}
+                </p>
                 <p>Last Contact: {{ contact.date_modified|date:"Y-m-d" }}</p>
                 {% if contact.church %}
                     <a href="{% url 'contacts:church_edit' contact.church.id %}" class="btn btn-sm btn-warning">Edit</a>
