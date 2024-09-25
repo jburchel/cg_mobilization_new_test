@@ -6,7 +6,13 @@
         <a href="/" class="navbar-title">Mobilize CRM</a>
     </div>
 
-    <div class="navbar-menu">
+    <button class="navbar-toggle" id="navbar-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+
+    <div class="navbar-menu" id="navbar-menu">
         <a href="{% url 'contacts:contact_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'all_contacts' %}active{% endif %}">All Contacts</a>
         <a href="{% url 'contacts:people_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'people_list' %}active{% endif %}">People</a>
         <a href="{% url 'contacts:church_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'church_list' %}active{% endif %}">Churches</a>
@@ -14,23 +20,23 @@
         <a href="{% url 'task_tracker:task_list' %}" class="navbar-item {% if request.resolver_match.url_name == 'task_tracker' %}active{% endif %}">Task-Tracker</a>
         
         {% if user.is_authenticated %}
-            <div class="user-menu">
-                {% if user.has_profile_thumbnail %}
-                    <img src="{{ user.profile_thumbnail.url }}" alt="{{ user.username }}" class="user-avatar">
-                {% elif user.has_profile_image %}
-                    <img src="{{ user.profile_image.url }}" alt="{{ user.username }}" class="user-avatar">
-                {% else %}
-                    <img src="{% static 'images/default_thumbnail.png' %}" alt="{{ user.username }}" class="user-avatar">
-                {% endif %}
-                <span class="user-menu-text">{{ user.username }}</span>
-                <div class="dropdown-content">
-                    <a href="{% url 'userprofile:account' %}">My Account</a>
-                    <a href="{% url 'integrations:settings' %}">Google Integration</a>
-                    <a href="{% url 'userprofile:logout' %}">Logout</a>
-                </div>
+        <div class="user-menu">
+            {% if user.has_profile_thumbnail %}
+                <img src="{{ user.profile_thumbnail.url }}" alt="{{ user.username }}" class="user-avatar">
+            {% elif user.has_profile_image %}
+                <img src="{{ user.profile_image.url }}" alt="{{ user.username }}" class="user-avatar">
+            {% else %}
+                <img src="{% static 'images/default_thumbnail.png' %}" alt="{{ user.username }}" class="user-avatar">
+            {% endif %}
+            <span class="user-menu-text">{{ user.username }}</span>
+            <div class="dropdown-content">
+                <a href="{% url 'userprofile:account' %}">My Account</a>
+                <a href="{% url 'integrations:settings' %}">Google Integration</a>
+                <a href="{% url 'userprofile:logout' %}">Logout</a>
             </div>
+        </div>
         {% else %}
-            <a href="{% url 'userprofile:login' %}" class="navbar-item {% if request.resolver_match.url_name == 'login' %}active{% endif %}">Login</a>
+        <a href="{% url 'userprofile:login' %}" class="navbar-item {% if request.resolver_match.url_name == 'login' %}active{% endif %}">Login</a>
         {% endif %}
     </div>
 </nav>

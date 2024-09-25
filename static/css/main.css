@@ -1,3 +1,11 @@
+:root {
+    --primary-blue: #183963;
+    --primary-green: #39A949;
+    --primary-gray: #7F7F7F;
+    --primary-white: #FFFFFF;
+    --border-radius: 10px;
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -6,6 +14,7 @@
     padding: 1rem;
     margin: 1rem;
     border-radius: 10px;
+    flex-wrap: wrap;
 }
 
 .navbar-brand {
@@ -14,7 +23,7 @@
 }
 
 .navbar-logo {
-    height: 40px; /* Adjust this value to match your logo size */
+    height: 40px;
     margin-right: 10px;
 }
 
@@ -23,6 +32,23 @@
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
+}
+
+.navbar-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--primary-white);
+    transition: all 0.3s ease-in-out;
 }
 
 .navbar-menu {
@@ -98,20 +124,48 @@
     display: block;
 }
 
-/* Add these styles at the end of your main.css file */
-
 .footer {
     background-color: var(--primary-gray);
     color: var(--primary-white);
+    text-align: center;
     padding: 1rem;
-    margin: 2rem 1rem;
+    margin: 1rem;
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.footer-content {
-    text-align: center !important;
-    font-size: 0.9rem;
+@media screen and (max-width: 768px) {
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-menu {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+    }
+
+    .navbar-item {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .user-menu {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .dropdown-content {
+        position: static;
+        box-shadow: none;
+        margin-top: 0.5rem;
+    }
 }
+
+
+
+/* ... (rest of your CSS remains unchanged) ... */
