@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-import dj_database_url
 from django.core.exceptions import ImproperlyConfigured
 from dotenv import load_dotenv
 
@@ -21,6 +20,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
 INSTALLED_APPS = [
+    'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -33,7 +33,7 @@ INSTALLED_APPS = [
     'task_tracker',
     'userprofile',
     'import_export',
-    'integrations',
+    'integrations',    
 ]
 
 MIDDLEWARE = [

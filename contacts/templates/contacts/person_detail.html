@@ -15,6 +15,10 @@
 </style>
 {% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/person_detail.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 <div class="person-detail-container">
     <div class="person-header">
@@ -49,7 +53,7 @@
     <div class="person-content">        
         <div class="info-section">
             <h2>Contact Information</h2>
-            <p><strong>Phone:</strong> {% if person.phone %}<a href="tel:{{ person.phone }}" class="phone-link">{{ person.phone }}</a>{% else %}Not provided{% endif %}</p>
+            <p><strong>Phone:</strong> {% if person.phone %}<a href="tel:{{ person.phone }}" class="phone-link" data-person-id="{{ person.id }}" onclick="handlePhoneClick(event, {{ person.id }}, '{{ person.phone }}')">{{ person.phone }}</a>{% else %}Not provided{% endif %}</p>
             <p><strong>Email:</strong> {{ person.email }}</p>
             <p><strong>Preferred Contact:</strong> {{ person.get_preferred_contact_method_display }}</p>
             <p><strong>Address:</strong> {{ person.street_address }}, {{ person.city }}, {{ person.get_state_display }} {{ person.zip_code }}</p>

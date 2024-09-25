@@ -15,6 +15,39 @@ from django.utils.decorators import method_decorator
 from django.contrib.messages.views import SuccessMessageMixin
 
 logger = logging.getLogger(__name__)
+
+@login_required
+def create_com_log_entry(request):
+    if request.method == 'POST':
+        person_id = request.POST.get('person_id')
+        communication_type = request.POST.get('communication_type')
+        notes = request.POST.get('notes')
+
+        if not person_id:
+            return JsonResponse({'error': 'person_id is required'}, status=400)
+
+        try:
+            person = People.objects.get(id=person_id)
+        except People.DoesNotExist:
+            return JsonResponse({'error': 'Person not found'}, status=404)
+
+        com_log = ComLog.objects.create(
+            user=request.user,
+            content_type=ContentType.objects.get_for_model(People),
+            object_id=person.id,
+            communication_type=communication_type,
+            notes=notes
+        )
+
+        return JsonResponse({
+            'id': com_log.id,
+            'communication_type': com_log.get_communication_type_display(),
+            'notes': com_log.notes,
+            'date': com_log.date.isoformat()
+        }, status=201)
+
+    return JsonResponse({'error': 'Invalid request method'}, status=405)
+
 @method_decorator(login_required, name='dispatch')
 class ComLogListView(ListView):
     model = ComLog
@@ -96,13 +129,10 @@ class ComLogCreateView(CreateView):
         
         if isinstance(contact, People):
             content_type = ContentType.objects.get_for_model(People)
-            contact_type = 'person'
         elif isinstance(contact, Church):
             content_type = ContentType.objects.get_for_model(Church)
-            contact_type = 'church'
         else:
             content_type = ContentType.objects.get_for_model(contact.__class__)
-            contact_type = 'unknown'
         
         self.object.content_type = content_type
         self.object.object_id = contact.id
