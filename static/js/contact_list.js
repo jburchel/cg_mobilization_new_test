@@ -1,10 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('contact-search');
     const contactsBody = document.getElementById('contacts-body');
+    const cardView = document.querySelector('.card-view');
     const noResults = document.getElementById('no-results');
 
     function renderContacts(contacts) {
         contactsBody.innerHTML = '';
+        cardView.innerHTML = '';
         if (contacts.length === 0) {
             noResults.style.display = 'block';
         } else {
@@ -13,18 +15,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 const detailUrl = contact.type === 'Church' ? `/contacts/church/${contact.id}/` : `/contacts/person/${contact.id}/`;
                 const editUrl = contact.type === 'Church' ? `/contacts/church/${contact.id}/edit/` : `/contacts/person/${contact.id}/edit/`;
                 
+                // Table row
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td><a href="${detailUrl}">${contact.name}</a></td>
                     <td>${contact.type}</td>
-                    <td>${contact.email}</td>
-                    <td>${contact.phone}</td>
-                    <td>${contact.last_contact}</td>
+                    <td class="hide-mobile">${contact.email}</td>
+                    <td class="hide-mobile">${contact.phone}</td>
+                    <td class="hide-mobile">${contact.last_contact}</td>
                     <td class="actions">
                         <a href="${editUrl}" class="btn btn-sm btn-warning">Edit</a>
                     </td>
                 `;
                 contactsBody.appendChild(row);
+
+                // Card
+                const card = document.createElement('div');
+                card.className = 'contact-card';
+                card.innerHTML = `
+                    <h3><a href="${detailUrl}">${contact.name}</a></h3>
+                    <p>Type: ${contact.type}</p>
+                    <p>Email: ${contact.email}</p>
+                    <p>Phone: ${contact.phone}</p>
+                    <p>Last Contact: ${contact.last_contact}</p>
+                    <a href="${editUrl}" class="btn btn-sm btn-warning">Edit</a>
+                `;
+                cardView.appendChild(card);
             });
         }
     }
@@ -55,30 +71,11 @@ document.addEventListener('DOMContentLoaded', function() {
             filterContacts(this.value);
         });
 
-        // Initial render of all contacts
         if (typeof contactsData !== 'undefined' && Array.isArray(contactsData)) {
             renderContacts(contactsData);
         } else {
             console.error('contactsData is not defined or is not an array');
             noResults.style.display = 'block';
-        }
-    }
-
-    // Add touch-to-scroll hint for mobile devices
-    if ('ontouchstart' in window) {
-        const tableResponsive = document.querySelector('.table-responsive');
-        if (tableResponsive) {
-            const scrollHint = document.createElement('div');
-            scrollHint.className = 'scroll-hint';
-            scrollHint.textContent = 'Swipe to see more';
-            tableResponsive.appendChild(scrollHint);
-
-            tableResponsive.addEventListener('scroll', function() {
-                scrollHint.style.opacity = '0';
-                setTimeout(() => {
-                    scrollHint.remove();
-                }, 300);
-            }, { once: true });
         }
     }
 });

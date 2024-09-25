@@ -1,11 +1,10 @@
 {% extends 'core/base.html' %}
 {% load static %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/contacts_list.css' %}">
 {% endblock %}
-
 {% block content %}
+
 <div class="container">
     <h1>All Contacts</h1>
 
@@ -14,65 +13,93 @@
             <input type="text" id="contact-search" placeholder="Search contacts...">
         </div>
         <div class="add-buttons">
-            <a href="{% url 'contacts:add_contact' contact_type='church' %}" class="btn btn-primary">Add New Church</a>
-            <a href="{% url 'contacts:add_contact' contact_type='people' %}" class="btn btn-primary">Add New Person</a>
+            <a href="{% url 'contacts:add_contact' contact_type='church' %}" class="btn btn-primary">Add Church</a>
+            <a href="{% url 'contacts:add_contact' contact_type='people' %}" class="btn btn-primary">Add Person</a>
         </div>
     </div>
 
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Type</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Last Contact</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody id="contacts-body">
-                {% for contact in contacts %}
-                <tr>
-                    <td>
-                        {% if contact.church %}
-                            <a href="{% url 'contacts:church_detail' contact.church.id %}">{{ contact.church.church_name }}</a>
-                        {% elif contact.people %}
-                            <a href="{% url 'contacts:person_detail' contact.people.id %}">{{ contact.people.first_name }} {{ contact.people.last_name }}</a>
-                        {% else %}
-                            {{ contact.get_name }}
-                        {% endif %}
-                    </td>
-                    <td>{{ contact.get_type_display }}</td>
-                    <td>{{ contact.email }}</td>
-                    <td>{{ contact.phone }}</td>
-                    <td>{{ contact.date_modified|date:"Y-m-d" }}</td>
-                    <td>
-                        {% if contact.church %}
-                            <a href="{% url 'contacts:church_edit' contact.church.id %}" class="btn btn-sm btn-warning">Edit</a>
-                        {% elif contact.people %}
-                            <a href="{% url 'contacts:person_edit' contact.people.id %}" class="btn btn-sm btn-warning">Edit</a>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% empty %}
-                <tr>
-                    <td colspan="6">No contacts found.</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div class="contacts-list">
+        <div class="table-view">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th class="hide-mobile">Email</th>
+                            <th class="hide-mobile">Phone</th>
+                            <th class="hide-mobile">Last Contact</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contacts-body">
+                        {% for contact in contacts %}
+                        <tr>
+                            <td>
+                                {% if contact.church %}
+                                    <a href="{% url 'contacts:church_detail' contact.church.id %}">{{ contact.church.church_name }}</a>
+                                {% elif contact.people %}
+                                    <a href="{% url 'contacts:person_detail' contact.people.id %}">{{ contact.people.first_name }} {{ contact.people.last_name }}</a>
+                                {% else %}
+                                    {{ contact.get_name }}
+                                {% endif %}
+                            </td>
+                            <td>{{ contact.get_type_display }}</td>
+                            <td class="hide-mobile">{{ contact.email }}</td>
+                            <td class="hide-mobile">{{ contact.phone }}</td>
+                            <td class="hide-mobile">{{ contact.date_modified|date:"Y-m-d" }}</td>
+                            <td>
+                                {% if contact.church %}
+                                    <a href="{% url 'contacts:church_edit' contact.church.id %}" class="btn btn-sm btn-warning">Edit</a>
+                                {% elif contact.people %}
+                                    <a href="{% url 'contacts:person_edit' contact.people.id %}" class="btn btn-sm btn-warning">Edit</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="6">No contacts found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card-view">
+            {% for contact in contacts %}
+            <div class="contact-card">
+                <h3>
+                    {% if contact.church %}
+                        <a href="{% url 'contacts:church_detail' contact.church.id %}">{{ contact.church.church_name }}</a>
+                    {% elif contact.people %}
+                        <a href="{% url 'contacts:person_detail' contact.people.id %}">{{ contact.people.first_name }} {{ contact.people.last_name }}</a>
+                    {% else %}
+                        {{ contact.get_name }}
+                    {% endif %}
+                </h3>
+                <p>Type: {{ contact.get_type_display }}</p>
+                <p>Email: {{ contact.email }}</p>
+                <p>Phone: {{ contact.phone }}</p>
+                <p>Last Contact: {{ contact.date_modified|date:"Y-m-d" }}</p>
+                {% if contact.church %}
+                    <a href="{% url 'contacts:church_edit' contact.church.id %}" class="btn btn-sm btn-warning">Edit</a>
+                {% elif contact.people %}
+                    <a href="{% url 'contacts:person_edit' contact.people.id %}" class="btn btn-sm btn-warning">Edit</a>
+                {% endif %}
+            </div>
+            {% empty %}
+            <p>No contacts found.</p>
+            {% endfor %}
+        </div>
     </div>
 
     <div id="no-results" style="display: none;">
         No contacts found.
     </div>
 </div>
-{% endblock %}
 
+{% endblock %}
 {% block extra_js %}
-<script>
-    var contactsData = {{ contacts_json|safe }};
-</script>
 <script src="{% static 'js/contact_list.js' %}"></script>
 {% endblock %}

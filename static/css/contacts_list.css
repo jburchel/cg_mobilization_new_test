@@ -62,45 +62,34 @@ h1 {
     font-size: 14px;
 }
 
-.table-responsive {
-    overflow-x: auto;
+.table-view {
+    display: none;
 }
 
-.table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
+.card-view {
+    display: block;
 }
 
-.table th,
-.table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid var(--border-color);
+.contact-card {
+    background-color: var(--primary-white);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 15px;
 }
 
-.table th {
-    background-color: var(--primary-blue);
-    color: var(--primary-white);
-    position: sticky;
-    top: 0;
-    z-index: 10;
+.contact-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--primary-blue);
 }
 
-.table th:first-child {
-    border-top-left-radius: var(--border-radius);
+.contact-card p {
+    margin: 5px 0;
 }
 
-.table th:last-child {
-    border-top-right-radius: var(--border-radius);
-}
-
-.table tr:last-child td:first-child {
-    border-bottom-left-radius: var(--border-radius);
-}
-
-.table tr:last-child td:last-child {
-    border-bottom-right-radius: var(--border-radius);
+.contact-card .btn {
+    margin-top: 10px;
 }
 
 #no-results {
@@ -127,18 +116,66 @@ h1 {
     .add-buttons {
         flex-direction: row;
     }
-}
 
-@media (max-width: 767px) {
-    .table th,
-    .table td {
-        padding: 8px;
+    .table-view {
+        display: block;
     }
 
-    .table th:nth-child(4),
-    .table td:nth-child(4),
-    .table th:nth-child(5),
-    .table td:nth-child(5) {
+    .card-view {
         display: none;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid var(--border-color);
+        vertical-align: middle;
+    }
+
+    .table th {
+        background-color: var(--primary-blue);
+        color: var(--primary-white);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .table th:first-child {
+        border-top-left-radius: var(--border-radius);
+    }
+
+    .table th:last-child {
+        border-top-right-radius: var(--border-radius);
+    }
+
+    .table tr:last-child td:first-child {
+        border-bottom-left-radius: var(--border-radius);
+    }
+
+    .table tr:last-child td:last-child {
+        border-bottom-right-radius: var(--border-radius);
+    }
+
+    .table th:last-child,
+    .table td:last-child {
+        width: 100px;
+        text-align: center;
+    }
+
+    .table .btn-sm {
+        padding: 4px 8px;
+        font-size: 12px;
+        line-height: 1.5;
     }
 }
