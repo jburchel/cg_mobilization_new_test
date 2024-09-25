@@ -41,7 +41,13 @@
             <h2>Contact Information</h2>
             <p><strong>Phone:</strong> 
                 {% if person.phone %}
-                    <a href="tel:{{ person.phone }}" class="phone-link" person-id="{{ person.id }}" onclick="handlePhoneClick(event, {{ person.id }}, '{{ person.phone }}')">{{ person.phone }}</a>
+                    <div class="phone-dropdown">
+                        <a href="#" class="phone-link" person-id="{{ person.id }}" data-phone="{{ person.phone }}">{{ person.phone }}</a>
+                        <div class="dropdown-content">
+                            <a href="#" class="phone-option" data-action="phone">Phone</a>
+                            <a href="#" class="phone-option" data-action="text">Text</a>
+                        </div>
+                    </div>
                 {% else %}
                     Not provided
                 {% endif %}
