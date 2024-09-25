@@ -6,6 +6,7 @@
 
 .person-header {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     margin-bottom: 30px;
 }
@@ -14,6 +15,7 @@
     flex-shrink: 0;
     margin-right: 20px;
     width: 200px;
+    margin-bottom: 20px;
 }
 
 .person-image img {
@@ -55,49 +57,24 @@
 .btn-log { background-color: #183963; }
 .btn-task { background-color: #7F7F7F; }
 
-.additional-info {
+.additional-info, .info-section, .interaction-history {
     background-color: #f9f9f9;
     border: 1px solid #e0e0e0;
     border-radius: 5px;
     padding: 15px;
-    margin-top: 1rem;
+    margin-bottom: 20px;
 }
 
-.additional-info h2 {
-    color: #183963;
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-}
-
-.additional-info p {
-    margin-top: 0.5rem;
-}
-
-.person-content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
-
-.info-section {
-    background-color: #f9f9f9;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    padding: 15px;
-}
-
-.info-section h2 {
+.additional-info h2, .info-section h2, .interaction-history h2 {
     color: #183963;
     margin-top: 0;
     margin-bottom: 10px;
 }
 
-.interaction-history {
-    margin-top: 20px;
-    background-color: #f9f9f9;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    padding: 15px;
+.person-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
 }
 
 .interaction {
@@ -108,4 +85,30 @@
 
 .interaction:last-child {
     border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .person-header {
+        flex-direction: column;
+    }
+
+    .person-image {
+        width: 100%;
+        max-width: 200px;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .person-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .person-content {
+        grid-template-columns: 1fr;
+    }
 }

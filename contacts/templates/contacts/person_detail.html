@@ -3,16 +3,6 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/person_detail.css' %}">
-<style>
-    .phone-link {
-        color: #007bff;
-        text-decoration: none;
-        font-weight: bold;
-    }
-    .phone-link:hover {
-        text-decoration: underline;
-    }
-</style>
 {% endblock %}
 
 {% block extra_js %}
@@ -29,10 +19,8 @@
                 <img src="{% static 'images/default_person.png' %}" alt="Default Person Image" width="200">
             {% endif %}
         </div>
-
         <div class="person-title-and-actions">
             <h1 class="person-name">{{ person.first_name }} {{ person.last_name }}</h1>
-
             <div class="person-actions">
                 <a href="{% url 'contacts:send_email' contact_type='person' contact_id=person.id %}" class="btn btn-edit">Send Email</a>
                 <a href="{% url 'contacts:person_edit' person.pk %}" class="btn btn-edit">Edit</a>
@@ -40,20 +28,24 @@
                 <a href="{% url 'task_tracker:task_create' %}" class="btn btn-task">Create Task</a>
                 <a href="{% url 'com_log:contact_interactions' contact_type='person' contact_id=person.id %}" class="btn btn-task">View History</a>
             </div>
-
-            <div class="additional-info">
-                <h2>Initial Notes</h2>
-                <p>{{ person.initial_notes|default:"No notes available" }}</p>        
-            </div> 
-
-        </div>               
-
+        </div>
     </div>
 
-    <div class="person-content">        
+    <div class="additional-info">
+        <h2>Initial Notes</h2>
+        <p>{{ person.initial_notes|default:"No notes available" }}</p>
+    </div>
+
+    <div class="person-content">
         <div class="info-section">
             <h2>Contact Information</h2>
-            <p><strong>Phone:</strong> {% if person.phone %}<a href="tel:{{ person.phone }}" class="phone-link" data-person-id="{{ person.id }}" onclick="handlePhoneClick(event, {{ person.id }}, '{{ person.phone }}')">{{ person.phone }}</a>{% else %}Not provided{% endif %}</p>
+            <p><strong>Phone:</strong> 
+                {% if person.phone %}
+                    <a href="tel:{{ person.phone }}" class="phone-link" person-id="{{ person.id }}" onclick="handlePhoneClick(event, {{ person.id }}, '{{ person.phone }}')">{{ person.phone }}</a>
+                {% else %}
+                    Not provided
+                {% endif %}
+            </p>
             <p><strong>Email:</strong> {{ person.email }}</p>
             <p><strong>Preferred Contact:</strong> {{ person.get_preferred_contact_method_display }}</p>
             <p><strong>Address:</strong> {{ person.street_address }}, {{ person.city }}, {{ person.get_state_display }} {{ person.zip_code }}</p>
@@ -86,20 +78,20 @@
             <p><strong>Date Created:</strong> {{ person.date_created|date:"F d, Y" }}</p>
             <p><strong>Date Modified:</strong> {{ person.date_modified|date:"F d, Y" }}</p>
         </div>
-    </div>    
+    </div>
 
     <div class="interaction-history">
         <h2>Recent Interactions</h2>
-            {% if recent_communications %}
+        {% if recent_communications %}
             {% for comm in recent_communications|slice:":3" %}
                 <div class="interaction">
                     <p><strong>{{ comm.date|date:"m-d-Y" }}</strong> - {{ comm.get_communication_type_display }}</p>
                     <p>{{ comm.notes }}</p>
                 </div>
             {% endfor %}
-            {% else %}
-                <p>No recent communications recorded.</p>
-            {% endif %}
+        {% else %}
+            <p>No recent communications recorded.</p>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
