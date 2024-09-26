@@ -41,34 +41,16 @@
     color: var(--primary-white) !important;
 }
 
-.table thead th + th {
-    padding-left: 0;
-}
-
 .table thead th:first-child {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
-    padding-left: 1rem; /* Add some padding on the left side */
-}
-
-.table tbody + tbody {
-    border-top: 2px solid var(--border-color);
-}
-
-.table tbody {
-    margin-top: 5px; /* Adjust as needed */
-}
-
-/* Ensure the last column (Edit button) is center-aligned */
-.table th:last-child,
-.table td:last-child {
-    text-align: center !important;
+    padding-left: 1rem;
 }
 
 .table thead th:last-child {
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-    padding-right: 1rem; /* Add some padding on the right side */
+    padding-right: 1rem;
 }
 
 /* Button styles */
@@ -139,6 +121,15 @@
 
 /* Mobile-specific styles */
 @media (max-width: 767px) {
+    .container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
     .actions {
         flex-direction: column;
         align-items: stretch;
@@ -146,11 +137,21 @@
 
     .search-bar {
         margin-right: 0;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .search-bar input {
+        font-size: 0.9rem;
+        padding: 0.25rem 0.5rem;
     }
 
     .add-buttons {
         justify-content: space-between;
+    }
+
+    .add-buttons .btn {
+        font-size: 0.9rem;
+        padding: 0.25rem 0.5rem;
     }
 
     .table thead {
@@ -166,28 +167,33 @@
         margin-bottom: 1rem;
         border: 1px solid var(--border-color);
         border-radius: var(--border-radius);
+        padding: 0.5rem;
     }
 
     .table td {
-        text-align: right;
-        padding-left: 50%;
+        text-align: left;
+        padding: 0.25rem 0.5rem;
         position: relative;
         border-top: none;
+        font-size: 0.9rem;
     }
 
     .table td::before {
         content: attr(data-label);
-        position: absolute;
-        left: 6px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        text-align: left;
         font-weight: bold;
+        display: inline-block;
+        width: 100%;
+        margin-bottom: 0.25rem;
     }
 
     .table td:last-child {
         border-bottom: 0;
+        text-align: right;
+    }
+
+    .table .btn-sm {
+        padding: 0.15rem 0.3rem;
+        font-size: 0.8rem;
     }
 }
 

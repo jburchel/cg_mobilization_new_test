@@ -4162,3 +4162,9 @@ INFO 2024-09-26 09:22:58,145 basehttp 62303 6194655232 "GET /static/js/church_de
 INFO 2024-09-26 09:23:07,034 basehttp 62303 6194655232 "GET /contacts/ HTTP/1.1" 200 231619
 INFO 2024-09-26 09:23:07,120 basehttp 62303 6194655232 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
 INFO 2024-09-26 09:23:07,138 basehttp 62303 6194655232 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-09-26 09:28:41,881 basehttp 62303 6194655232 "GET /contacts/ HTTP/1.1" 200 231619
+INFO 2024-09-26 09:28:41,962 basehttp 62303 6194655232 "GET /static/css/contacts_list.css HTTP/1.1" 200 4248
+INFO 2024-09-26 09:28:41,992 basehttp 62303 6194655232 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-09-26 09:28:44,228 views 62303 6194655232 ChurchDetailView: Fetched 1 recent communications for Church 1
+INFO 2024-09-26 09:28:44,230 views 62303 6194655232 ChurchDetailView: ComLog: 17, Date: 2024-09-18 19:17:58.219260+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 09:28:44,246 basehttp 62303 6194655232 "GET /contacts/church/1/ HTTP/1.1" 200 6287
