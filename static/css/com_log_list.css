@@ -12,14 +12,14 @@
 .comlog-list-container {
     max-width: 100%;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
 }
 
 .comlog-header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .comlog-title {
@@ -57,17 +57,18 @@
 
 .search-bar {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 .search-bar input[type="text"] {
     width: 100%;
-    padding: 10px;
+    padding: 8px;
     border: 1px solid var(--border-color);
     border-radius: 5px;
+    font-size: 0.9rem;
 }
 
-.comlog-table-container {
+.table-responsive {
     overflow-x: auto;
 }
 
@@ -81,7 +82,7 @@
 
 .table th,
 .table td {
-    padding: 10px;
+    padding: 8px;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
 }
@@ -101,7 +102,7 @@
 }
 
 .btn-sm {
-    padding: 5px 8px;
+    padding: 4px 6px;
     font-size: 0.8rem;
 }
 
@@ -120,74 +121,11 @@
     opacity: 0.9;
 }
 
-.pagination {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-}
-
-.page-item {
-    margin: 5px;
-}
-
-.page-link {
-    display: block;
-    padding: 5px 10px;
-    text-decoration: none;
-    border: 1px solid #ddd;
-    color: #333;
-    font-size: 0.9rem;
-}
-
-.page-item.active .page-link {
-    background-color: #007bff;
-    color: white;
-    border-color: #007bff;
-}
-
-.page-link:hover {
-    background-color: #f8f9fa;
-}
-
-.table-responsive {
-    overflow-x: auto;
-}
-
-.table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-}
-
-.table th,
-.table td {
-    padding: 0.75rem;
-    vertical-align: middle;
-    border-top: 1px solid var(--border-color);
-    text-align: left;
-}
-
-.table th:last-child,
-.table td:last-child {
-    text-align: right;
-    white-space: nowrap;
-}
-
-.table .btn-group {
-    display: flex;
-    justify-content: flex-end;
-    gap: 0.25rem;
-}
-
-.table .btn {
-    padding: 0.25rem 0.5rem;
-    font-size: 0.875rem;
-}
-
 @media (max-width: 767px) {
+    .comlog-list-container {
+        padding: 5px;
+    }
+
     .table thead {
         display: none;
     }
@@ -198,9 +136,9 @@
     }
 
     .table tr {
-        margin-bottom: 1rem;
+        margin-bottom: 15px;
         border: 1px solid var(--border-color);
-        border-radius: var(--border-radius);
+        border-radius: 5px;
     }
 
     .table td {
@@ -208,6 +146,7 @@
         padding-left: 50%;
         position: relative;
         border-top: none;
+        font-size: 0.85rem;
     }
 
     .table td::before {
@@ -223,15 +162,26 @@
 
     .table td:last-child {
         text-align: right;
-        padding-left: 0.75rem;
+        padding-left: 6px;
     }
 
-    .table .btn-group {
+    .btn-group {
+        display: flex;
         justify-content: flex-end;
+        gap: 5px;
+    }
+
+    .btn-sm {
+        padding: 3px 5px;
+        font-size: 0.75rem;
     }
 }
 
 @media (min-width: 768px) {
+    .comlog-list-container {
+        padding: 20px;
+    }
+
     .comlog-header {
         flex-direction: row;
         justify-content: space-between;

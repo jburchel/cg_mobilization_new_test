@@ -6,11 +6,16 @@
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Communication Logs</h1>
-    
+<div class="comlog-list-container">
+    <div class="comlog-header">
+        <h1 class="comlog-title">Communication Logs</h1>
+        <div class="comlog-actions">
+            <a href="{% url 'com_log:create' %}" class="btn btn-primary">Add New Log</a>
+        </div>
+    </div>
+
     <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Search logs...">
+        <input type="text" id="searchInput" placeholder="Search communications...">
     </div>
 
     <div class="table-responsive">
@@ -19,25 +24,21 @@
                 <tr>
                     <th>Date</th>
                     <th>Contact</th>
-                    <th>Communication Type</th>
+                    <th>Type</th>
                     <th>Notes</th>
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="comLogTableBody">
                 {% for log in com_logs %}
                 <tr>
-                    <td>{{ log.date|date:"Y-m-d H:i" }}</td>
-                    <td>
+                    <td data-label="Date">{{ log.date|date:"Y-m-d H:i" }}</td>
+                    <td data-label="Contact">
                         {% if log.contact_id %}
                             {% if log.type == 'Church' %}
-                                <a href="{% url 'contacts:church_detail' log.contact_id %}">
-                                    {{ log.name }} (Church)
-                                </a>
+                                <a href="{% url 'contacts:church_detail' log.contact_id %}">{{ log.name }} (Church)</a>
                             {% elif log.type == 'Person' %}
-                                <a href="{% url 'contacts:person_detail' log.contact_id %}">
-                                    {{ log.name }} (Person)
-                                </a>
+                                <a href="{% url 'contacts:person_detail' log.contact_id %}">{{ log.name }} (Person)</a>
                             {% else %}
                                 {{ log.name }} ({{ log.type }})
                             {% endif %}
@@ -45,9 +46,9 @@
                             No contact ({{ log.type }})
                         {% endif %}
                     </td>
-                    <td>{{ log.communication_type }}</td>
-                    <td>{{ log.notes|truncatewords:20 }}</td>
-                    <td>
+                    <td data-label="Type">{{ log.communication_type }}</td>
+                    <td data-label="Notes">{{ log.notes|truncatewords:20 }}</td>
+                    <td data-label="Actions">
                         <div class="btn-group">
                             <a href="{% url 'com_log:detail' log.id %}" class="btn btn-sm btn-info">View</a>
                             <a href="{% url 'com_log:update' log.id %}" class="btn btn-sm btn-primary">Edit</a>

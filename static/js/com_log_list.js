@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const tableBody = document.getElementById('comLogTableBody');
     const originalRows = Array.from(tableBody.querySelectorAll('tr'));
     const noResultsMessage = document.createElement('tr');
-    noResultsMessage.innerHTML = '<td colspan="6">No communications found.</td>';
+    noResultsMessage.innerHTML = '<td colspan="5">No communications found.</td>';
 
     searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase().trim();
