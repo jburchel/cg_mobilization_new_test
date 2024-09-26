@@ -24,7 +24,6 @@
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Type</th>
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Last Contact</th>
@@ -36,18 +35,13 @@
                 <tr>
                     <td data-label="Name">
                         {% if contact.church %}
-                            <a href="{% url 'contacts:church_detail' contact.church.id %}">
-                                {{ contact.church.church_name }} (Church)
-                            </a>
+                            <a href="{% url 'contacts:church_detail' contact.church.id %}">{{ contact.church.church_name }} (Church)</a>
                         {% elif contact.people %}
-                            <a href="{% url 'contacts:person_detail' contact.people.id %}">
-                                {{ contact.people.first_name }} {{ contact.people.last_name }} (Person)
-                            </a>
+                            <a href="{% url 'contacts:person_detail' contact.people.id %}">{{ contact.people.first_name }} {{ contact.people.last_name }} (Person)</a>
                         {% else %}
                             {{ contact.get_name }} (Unknown)
                         {% endif %}
                     </td>
-                    <td data-label="Type">{{ contact.get_type_display }}</td>
                     <td data-label="Email">{{ contact.email }}</td>
                     <td data-label="Phone">{{ contact.phone }}</td>
                     <td data-label="Last Contact">{{ contact.date_modified|date:"Y-m-d" }}</td>
@@ -67,8 +61,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script>
-    const contactsData = {{ contacts_json|safe }};
-</script>
 <script src="{% static 'js/contact_list.js' %}"></script>
 {% endblock %}

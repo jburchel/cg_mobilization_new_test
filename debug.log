@@ -4805,3 +4805,29 @@ INFO 2024-09-26 13:15:39,043 basehttp 84407 6131478528 "GET /contacts/churches/ 
 INFO 2024-09-26 13:15:39,593 basehttp 84407 6131478528 "GET /com_log/ HTTP/1.1" 200 10465
 INFO 2024-09-26 13:15:39,625 basehttp 84407 6131478528 "GET /static/css/com_log_list.css HTTP/1.1" 304 0
 INFO 2024-09-26 13:15:40,227 basehttp 84407 6131478528 "GET /task-tracker/ HTTP/1.1" 200 10446
+INFO 2024-09-26 13:16:27,129 autoreload 84813 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 13:16:27,339 wsgi 84813 6105591808 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 13:16:27,339 wsgi 84813 6105591808 Media root path: /opt/render/project/src/media
+INFO 2024-09-26 14:40:57,292 basehttp 84407 6131478528 "GET /contacts/people/ HTTP/1.1" 200 7776
+INFO 2024-09-26 14:40:57,346 basehttp 84407 6131478528 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-26 14:40:57,413 basehttp 84407 6131478528 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2024-09-26 14:40:57,740 basehttp 84407 6131478528 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 304 0
+INFO 2024-09-26 15:48:39,993 basehttp 84407 6131478528 "GET /contacts/ HTTP/1.1" 200 232021
+INFO 2024-09-26 15:48:40,055 basehttp 84407 6131478528 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 15:48:40,136 basehttp 84407 6131478528 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-09-26 15:48:40,637 basehttp 84407 6131478528 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 304 0
+INFO 2024-09-26 15:58:46,777 basehttp 84407 6131478528 "GET /contacts/ HTTP/1.1" 200 161556
+INFO 2024-09-26 15:58:47,298 basehttp 84407 6131478528 "GET /static/images/favicon-32x32.png?v=1 HTTP/1.1" 304 0
+INFO 2024-09-26 15:59:06,958 basehttp 84407 6131478528 "GET /contacts/ HTTP/1.1" 200 161556
+INFO 2024-09-26 15:59:07,055 basehttp 84407 6131478528 "GET /static/css/contacts_list.css HTTP/1.1" 200 4433
+INFO 2024-09-26 15:59:07,056 basehttp 84407 6165131264 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-09-26 15:59:07,057 basehttp 84407 6181957632 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-26 15:59:07,057 basehttp 84407 6148304896 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-26 15:59:07,059 basehttp 84407 6148304896 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-26 15:59:07,061 basehttp 84407 6181957632 "GET /static/js/contact_list.js HTTP/1.1" 200 2024
+INFO 2024-09-26 15:59:07,063 basehttp 84407 6181957632 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-09-26 15:59:07,337 basehttp 84407 6181957632 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-09-26 15:59:21,722 basehttp 84407 6131478528 "GET /contacts/ HTTP/1.1" 200 161522
+INFO 2024-09-26 15:59:21,791 basehttp 84407 6131478528 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 15:59:35,238 basehttp 84407 6131478528 "GET /contacts/ HTTP/1.1" 200 150146
+INFO 2024-09-26 15:59:35,295 basehttp 84407 6131478528 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
