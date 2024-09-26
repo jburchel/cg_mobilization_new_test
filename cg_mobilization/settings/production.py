@@ -6,7 +6,7 @@ DEBUG = False
 
 # SECURITY WARNING: keep the secret key used in production secre
 
-ALLOWED_HOSTS = ['mobilize.onrender.com']  # Add your domain
+ALLOWED_HOSTS = ['mobilize.onrender.com', 'onrender.com']  # Add your domain
 
 DATABASES = {
     'default': {
@@ -47,6 +47,7 @@ GOOGLE_CALENDAR_SCOPES = ['https://www.googleapis.com/auth/calendar.events']
 
 # Additional security settings for production
 SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 

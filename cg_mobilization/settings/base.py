@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -99,6 +100,10 @@ GOOGLE_CALENDAR_CREDENTIALS_FILE = None
 # Media files (Uploaded files)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Ensure STATIC_ROOT and MEDIA_ROOT exist
+os.makedirs(STATIC_ROOT, exist_ok=True)
+os.makedirs(MEDIA_ROOT, exist_ok=True)
 
 AUTH_USER_MODEL = 'userprofile.CustomUser'
 
@@ -173,4 +178,4 @@ print(f"STATIC_ROOT: {STATIC_ROOT}")
 print(f"STATICFILES_DIRS: {STATICFILES_DIRS}")
 print(f"Static files in STATIC_ROOT: {os.listdir(STATIC_ROOT)}")
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
