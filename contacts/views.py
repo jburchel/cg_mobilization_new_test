@@ -53,7 +53,11 @@ class ContactListView(ListView):
                 'type': 'Person' if hasattr(contact, 'people') else 'Church',
                 'email': contact.email,
                 'phone': contact.phone,
-                'last_contact': contact.date_modified.strftime('%Y-%m-%d') if contact.date_modified else '',                
+                'last_contact': contact.date_modified.strftime('%Y-%m-%d') if contact.date_modified else '',
+                'edit_url': reverse('contacts:edit_contact', kwargs={'pk': contact.id}),
+                'detail_url': reverse('contacts:person_detail' if hasattr(contact, 'people') else 'contacts:church_detail', kwargs={'pk': contact.id}),
+                'source': contact.source if hasattr(contact, 'source') else '',
+                'title': contact.title if hasattr(contact, 'title') else '',
             }
             contacts_data.append(contact_dict)
         

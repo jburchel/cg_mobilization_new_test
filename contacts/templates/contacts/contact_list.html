@@ -3,16 +3,6 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/contacts_list.css' %}">
-<style>
-    .phone-link {
-        color: #007bff;
-        text-decoration: none;
-        font-weight: bold;
-    }
-    .phone-link:hover {
-        text-decoration: underline;
-    }
-</style>
 {% endblock %}
 
 {% block content %}
@@ -29,114 +19,56 @@
         </div>
     </div>
 
-    <div class="contacts-list">
-        <div class="table-view">
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th class="hide-mobile">Email</th>
-                            <th class="hide-mobile">Phone</th>
-                            <th class="hide-mobile">Last Contact</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="contacts-body">
-                        {% for contact in contacts %}
-                        <tr>
-                            <td>
-                                {% if contact.church %}
-                                    <a href="{% url 'contacts:church_detail' contact.church.id %}">{{ contact.church.church_name }}</a>
-                                {% elif contact.people %}
-                                    <a href="{% url 'contacts:person_detail' contact.people.id %}">{{ contact.people.first_name }} {{ contact.people.last_name }}</a>
-                                {% else %}
-                                    {{ contact.get_name }}
-                                {% endif %}
-                            </td>
-                            <td>{{ contact.get_type_display }}</td>
-                            <td class="hide-mobile">{{ contact.email }}</td>
-                            <td class="hide-mobile">
-                                {% if contact.phone %}
-                                <a href="tel:{{ contact.phone }}" class="phone-link">{{ contact.phone }}</a>
-                                {% endif %}
-                            </td>
-                            <td class="hide-mobile">{{ contact.date_modified|date:"Y-m-d" }}</td>
-                            <td class="actions">
-                                {% if contact.church %}
-                                    <a href="{% url 'contacts:church_edit' contact.church.id %}" class="btn btn-sm btn-warning">Edit</a>
-                                {% elif contact.people %}
-                                    <a href="{% url 'contacts:person_edit' contact.people.id %}" class="btn btn-sm btn-warning">Edit</a>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        {% empty %}
-                        <tr>
-                            <td colspan="6">No contacts found.</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="card-view">
-            {% for contact in contacts %}
-            <div class="contact-card">
-                <h3>
-                    {% if contact.church %}
-                        <a href="{% url 'contacts:church_detail' contact.church.id %}">{{ contact.church.church_name }}</a>
-                    {% elif contact.people %}
-                        <a href="{% url 'contacts:person_detail' contact.people.id %}">{{ contact.people.first_name }} {{ contact.people.last_name }}</a>
-                    {% else %}
-                        {{ contact.get_name }}
-                    {% endif %}
-                </h3>
-                <p>Type: {{ contact.get_type_display }}</p>
-                <p>Email: {{ contact.email }}</p>
-                <p>Phone: 
-                    {% if contact.phone %}
-                    <a href="tel:{{ contact.phone }}" class="phone-link">{{ contact.phone }}</a>
-                    {% else %}
-                    N/A
-                    {% endif %}
-                </p>
-                <p>Last Contact: {{ contact.date_modified|date:"Y-m-d" }}</p>
-                {% if contact.church %}
-                    <a href="{% url 'contacts:church_edit' contact.church.id %}" class="btn btn-sm btn-warning">Edit</a>
-                {% elif contact.people %}
-                    <a href="{% url 'contacts:person_edit' contact.people.id %}" class="btn btn-sm btn-warning">Edit</a>
-                {% endif %}
-            </div>
-            {% empty %}
-            <p>No contacts found.</p>
-            {% endfor %}
-        </div>
-    </div>
-
-    <div id="no-results" style="display: none;">
-        No contacts found.
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Last Contact</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="contacts-body">
+                {% for contact in contacts %}
+                <tr>
+                    <td data-label="Name">
+                        {% if contact.church %}
+                            <a href="{% url 'contacts:church_detail' contact.church.id %}">
+                                {{ contact.church.church_name }} (Church)
+                            </a>
+                        {% elif contact.people %}
+                            <a href="{% url 'contacts:person_detail' contact.people.id %}">
+                                {{ contact.people.first_name }} {{ contact.people.last_name }} (Person)
+                            </a>
+                        {% else %}
+                            {{ contact.get_name }} (Unknown)
+                        {% endif %}
+                    </td>
+                    <td data-label="Type">{{ contact.get_type_display }}</td>
+                    <td data-label="Email">{{ contact.email }}</td>
+                    <td data-label="Phone">{{ contact.phone }}</td>
+                    <td data-label="Last Contact">{{ contact.date_modified|date:"Y-m-d" }}</td>
+                    <td data-label="Actions">
+                        <a href="{% url 'contacts:edit_contact' contact.id %}" class="btn btn-sm btn-warning">Edit</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">No contacts found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-    var contactsData = [
-        {% for contact in contacts %}
-        {
-            id: {{ contact.id }},
-            name: "{{ contact.get_name|escapejs }}",
-            type: "{{ contact.get_type_display|escapejs }}",
-            email: "{{ contact.email|escapejs }}",
-            phone: "{{ contact.phone|escapejs }}",
-            last_contact: "{{ contact.date_modified|date:"Y-m-d"|escapejs }}",
-            detail_url: "{% if contact.church %}{% url 'contacts:church_detail' contact.church.id %}{% elif contact.people %}{% url 'contacts:person_detail' contact.people.id %}{% endif %}",
-            edit_url: "{% if contact.church %}{% url 'contacts:church_edit' contact.church.id %}{% elif contact.people %}{% url 'contacts:person_edit' contact.people.id %}{% endif %}"
-        },
-        {% endfor %}
-    ];
+    const contactsData = {{ contacts_json|safe }};
 </script>
 <script src="{% static 'js/contact_list.js' %}"></script>
 {% endblock %}

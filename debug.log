@@ -3913,3 +3913,252 @@ INFO 2024-09-25 15:47:53,273 basehttp 39436 6126841856 "GET /contacts/person/236
 INFO 2024-09-25 15:47:53,349 basehttp 39436 6126841856 "GET /static/css/person_detail.css HTTP/1.1" 304 0
 INFO 2024-09-25 15:47:53,407 basehttp 39436 6126841856 "GET /static/js/person_detail.js HTTP/1.1" 304 0
 INFO 2024-09-25 15:47:55,861 basehttp 39436 6126841856 "POST /com_log/api/create/ HTTP/1.1" 201 143
+INFO 2024-09-26 08:23:30,323 basehttp 39436 6126841856 "GET /contacts/ HTTP/1.1" 200 355890
+INFO 2024-09-26 08:23:30,479 basehttp 39436 6126841856 "GET /static/css/contacts_list.css HTTP/1.1" 200 3625
+INFO 2024-09-26 08:23:30,493 basehttp 39436 6126841856 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-09-26 08:23:30,493 basehttp 39436 6143668224 "GET /static/images/cg_logo.png HTTP/1.1" 304 0
+INFO 2024-09-26 08:23:30,510 basehttp 39436 6143668224 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-09-26 08:23:30,512 basehttp 39436 6143668224 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2024-09-26 08:23:44,307 basehttp 39436 6126841856 "GET /contacts/ HTTP/1.1" 200 355890
+INFO 2024-09-26 08:23:44,387 basehttp 39436 6126841856 "GET /static/css/contacts_list.css HTTP/1.1" 200 3625
+INFO 2024-09-26 08:23:44,399 basehttp 39436 6160494592 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-09-26 08:23:44,399 basehttp 39436 6126841856 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-26 08:23:44,399 basehttp 39436 6143668224 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-26 08:23:44,408 basehttp 39436 6126841856 "GET /static/js/contact_list.js HTTP/1.1" 200 3002
+INFO 2024-09-26 08:23:44,409 basehttp 39436 6143668224 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-26 08:23:44,412 basehttp 39436 6143668224 "GET /static/js/main.js HTTP/1.1" 200 1449
+WARNING 2024-09-26 08:23:44,748 log 39436 6143668224 Not Found: /favicon.ico
+WARNING 2024-09-26 08:23:44,748 basehttp 39436 6143668224 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-26 08:23:54,136 basehttp 39436 6126841856 "GET /contacts/ HTTP/1.1" 200 337728
+INFO 2024-09-26 08:25:35,710 basehttp 39436 6126841856 "GET /contacts/ HTTP/1.1" 200 337728
+INFO 2024-09-26 08:25:35,817 basehttp 39436 6126841856 "GET /static/css/contacts_list.css HTTP/1.1" 200 2796
+INFO 2024-09-26 08:25:47,304 basehttp 39436 6126841856 "GET /contacts/ HTTP/1.1" 200 337728
+INFO 2024-09-26 08:25:47,379 basehttp 39436 6126841856 "GET /static/css/contacts_list.css HTTP/1.1" 200 2796
+INFO 2024-09-26 08:25:47,393 basehttp 39436 6143668224 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-09-26 08:25:47,393 basehttp 39436 6160494592 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-26 08:25:47,394 basehttp 39436 6126841856 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-26 08:25:47,403 basehttp 39436 6126841856 "GET /static/js/contact_list.js HTTP/1.1" 200 3002
+INFO 2024-09-26 08:25:47,404 basehttp 39436 6160494592 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-26 08:25:47,407 basehttp 39436 6160494592 "GET /static/js/main.js HTTP/1.1" 200 1449
+WARNING 2024-09-26 08:25:47,691 log 39436 6160494592 Not Found: /favicon.ico
+WARNING 2024-09-26 08:25:47,692 basehttp 39436 6160494592 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-26 08:25:54,410 autoreload 58514 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 08:25:54,604 wsgi 58514 6106361856 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 08:25:54,604 wsgi 58514 6106361856 Media root path: /opt/render/project/src/media
+INFO 2024-09-26 08:25:57,133 basehttp 58514 6123188224 "GET /contacts/ HTTP/1.1" 200 337728
+INFO 2024-09-26 08:25:57,214 basehttp 58514 6123188224 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 08:27:53,561 autoreload 58514 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-26 08:27:53,985 autoreload 58670 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 08:27:54,179 wsgi 58670 6118830080 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 08:27:54,179 wsgi 58670 6118830080 Media root path: /opt/render/project/src/media
+INFO 2024-09-26 08:27:58,048 basehttp 58670 6135656448 "GET /contacts/ HTTP/1.1" 200 337728
+INFO 2024-09-26 08:27:58,128 basehttp 58670 6135656448 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 08:30:33,877 basehttp 58670 6135656448 "GET /contacts/ HTTP/1.1" 200 130273
+WARNING 2024-09-26 08:30:33,957 basehttp 58670 6135656448 "GET /static/css/contact_list.css HTTP/1.1" 404 1819
+INFO 2024-09-26 08:30:53,919 basehttp 58670 6135656448 "GET /contacts/ HTTP/1.1" 200 130274
+INFO 2024-09-26 08:30:53,965 basehttp 58670 6135656448 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 08:32:54,869 basehttp 58670 6135656448 "GET /contacts/ HTTP/1.1" 200 162379
+INFO 2024-09-26 08:32:54,958 basehttp 58670 6135656448 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 08:32:56,944 basehttp 58670 6135656448 "GET /contacts/ HTTP/1.1" 200 162379
+INFO 2024-09-26 08:32:57,764 basehttp 58670 6135656448 "GET /contacts/ HTTP/1.1" 200 162379
+INFO 2024-09-26 08:33:00,194 basehttp 58670 6135656448 "GET /contacts/ HTTP/1.1" 200 162379
+INFO 2024-09-26 08:33:00,262 basehttp 58670 6152482816 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-09-26 08:33:00,263 basehttp 58670 6169309184 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-26 08:33:00,263 basehttp 58670 6135656448 "GET /static/css/contacts_list.css HTTP/1.1" 200 2796
+INFO 2024-09-26 08:33:00,264 basehttp 58670 6186135552 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-26 08:33:00,266 basehttp 58670 6186135552 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-26 08:33:00,266 basehttp 58670 6135656448 "GET /static/js/contact_list.js HTTP/1.1" 200 1385
+INFO 2024-09-26 08:33:00,270 basehttp 58670 6135656448 "GET /static/js/main.js HTTP/1.1" 200 1449
+WARNING 2024-09-26 08:33:00,501 log 58670 6135656448 Not Found: /favicon.ico
+WARNING 2024-09-26 08:33:00,501 basehttp 58670 6135656448 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-26 08:38:51,179 autoreload 59755 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 08:38:51,369 wsgi 59755 6141390848 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 08:38:51,369 wsgi 59755 6141390848 Media root path: /opt/render/project/src/media
+ERROR 2024-09-26 08:38:54,308 log 59755 6158217216 Internal Server Error: /contacts/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 502, in parse
+    compile_func = self.tags[command]
+KeyError: 'empty'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/backends/django.py", line 33, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 196, in compile_nodelist
+    return parser.parse()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 861, in do_for
+    nodelist_loop = parser.parse(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 969, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 504, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 555, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 55: 'empty', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+ERROR 2024-09-26 08:38:54,309 basehttp 59755 6158217216 "GET /contacts/ HTTP/1.1" 500 231249
+INFO 2024-09-26 08:39:50,960 autoreload 59857 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 08:39:51,140 wsgi 59857 6105411584 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 08:39:51,140 wsgi 59857 6105411584 Media root path: /opt/render/project/src/media
+ERROR 2024-09-26 08:39:54,929 log 59857 6122237952 Internal Server Error: /contacts/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 242, in render
+    nodelist.append(node.render_annotated(context))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 326, in render
+    return nodelist.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/urls/resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'church_detail' with arguments '('',)' not found. 1 pattern(s) tried: ['contacts/church/(?P<pk>[0-9]+)/\\Z']
+ERROR 2024-09-26 08:39:54,930 basehttp 59857 6122237952 "GET /contacts/ HTTP/1.1" 500 346378
+INFO 2024-09-26 08:40:28,136 autoreload 59920 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 08:40:28,314 wsgi 59920 6144143360 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 08:40:28,314 wsgi 59920 6144143360 Media root path: /opt/render/project/src/media
+INFO 2024-09-26 08:40:30,846 basehttp 59920 6160969728 "GET /contacts/ HTTP/1.1" 200 218203
+INFO 2024-09-26 08:40:30,903 basehttp 59920 6160969728 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 08:40:30,931 basehttp 59920 6160969728 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-09-26 08:43:25,490 autoreload 60192 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 08:43:25,683 wsgi 60192 6107770880 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 08:43:25,683 wsgi 60192 6107770880 Media root path: /opt/render/project/src/media
+INFO 2024-09-26 08:43:29,195 basehttp 60192 6124597248 "GET /contacts/ HTTP/1.1" 200 152068
+INFO 2024-09-26 08:43:29,320 basehttp 60192 6124597248 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-09-26 08:43:57,102 basehttp 60192 6124597248 "GET /contacts/ HTTP/1.1" 200 152128
+WARNING 2024-09-26 08:43:57,175 basehttp 60192 6124597248 "GET /static/css/contact_list.css HTTP/1.1" 404 1819
+INFO 2024-09-26 08:44:05,865 basehttp 60192 6124597248 "GET /contacts/ HTTP/1.1" 200 152129
+INFO 2024-09-26 08:44:05,932 basehttp 60192 6124597248 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 08:44:55,099 basehttp 60192 6124597248 "GET /contacts/ HTTP/1.1" 200 144985
+INFO 2024-09-26 08:44:55,173 basehttp 60192 6124597248 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-09-26 09:08:29,366 basehttp 60192 6124597248 "GET /contacts/ HTTP/1.1" 200 144985
+INFO 2024-09-26 09:08:29,478 basehttp 60192 6124597248 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 09:08:29,508 basehttp 60192 6124597248 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-09-26 09:09:48,397 basehttp 60192 6124597248 "GET /contacts/ HTTP/1.1" 200 184137
+INFO 2024-09-26 09:10:18,908 basehttp 60192 6124597248 "GET /contacts/ HTTP/1.1" 200 184198
+INFO 2024-09-26 09:11:16,455 basehttp 60192 6124597248 "GET /contacts/ HTTP/1.1" 200 184198
+INFO 2024-09-26 09:12:24,193 basehttp 60192 6124597248 "GET /contacts/ HTTP/1.1" 200 144985
+INFO 2024-09-26 09:12:24,267 basehttp 60192 6124597248 "GET /static/js/contact_list.js HTTP/1.1" 200 1931
+INFO 2024-09-26 09:12:26,953 basehttp 60192 6124597248 "GET /contacts/ HTTP/1.1" 200 144985
+INFO 2024-09-26 09:12:27,057 basehttp 60192 6124597248 "GET /static/css/contacts_list.css HTTP/1.1" 200 2796
+INFO 2024-09-26 09:12:27,065 basehttp 60192 6124597248 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-26 09:12:27,066 basehttp 60192 6141423616 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-09-26 09:12:27,067 basehttp 60192 6158249984 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-26 09:12:27,076 basehttp 60192 6158249984 "GET /static/js/contact_list.js HTTP/1.1" 200 1931
+INFO 2024-09-26 09:12:27,076 basehttp 60192 6141423616 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-26 09:12:27,080 basehttp 60192 6141423616 "GET /static/js/main.js HTTP/1.1" 200 1449
+WARNING 2024-09-26 09:12:27,299 log 60192 6141423616 Not Found: /favicon.ico
+WARNING 2024-09-26 09:12:27,299 basehttp 60192 6141423616 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-26 09:17:27,308 basehttp 60192 6124597248 "GET /contacts/ HTTP/1.1" 200 179160
+INFO 2024-09-26 09:17:27,441 basehttp 60192 6124597248 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-09-26 09:17:38,367 basehttp 60192 6124597248 "GET /contacts/ HTTP/1.1" 200 179221
+INFO 2024-09-26 09:17:38,467 basehttp 60192 6124597248 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 09:18:37,850 autoreload 60192 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-26 09:18:38,569 autoreload 62268 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 09:18:39,029 wsgi 62268 6181613568 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 09:18:39,029 wsgi 62268 6181613568 Media root path: /opt/render/project/src/media
+INFO 2024-09-26 09:18:52,508 autoreload 62268 8106941504 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-09-26 09:18:53,062 autoreload 62303 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 09:18:53,325 wsgi 62303 6177828864 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 09:18:53,325 wsgi 62303 6177828864 Media root path: /opt/render/project/src/media
+INFO 2024-09-26 09:18:55,225 basehttp 62303 6194655232 "GET /contacts/ HTTP/1.1" 200 202942
+INFO 2024-09-26 09:18:55,311 basehttp 62303 6194655232 "GET /static/js/contact_list.js HTTP/1.1" 200 1903
+INFO 2024-09-26 09:22:53,323 basehttp 62303 6194655232 "GET /contacts/ HTTP/1.1" 200 231619
+INFO 2024-09-26 09:22:53,420 basehttp 62303 6194655232 "GET /static/css/contacts_list.css HTTP/1.1" 200 4245
+INFO 2024-09-26 09:22:53,442 basehttp 62303 6194655232 "GET /static/js/contact_list.js HTTP/1.1" 200 2024
+INFO 2024-09-26 09:22:58,030 views 62303 6194655232 ChurchDetailView: Fetched 1 recent communications for Church 1
+INFO 2024-09-26 09:22:58,032 views 62303 6194655232 ChurchDetailView: ComLog: 17, Date: 2024-09-18 19:17:58.219260+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 09:22:58,045 basehttp 62303 6194655232 "GET /contacts/church/1/ HTTP/1.1" 200 6287
+INFO 2024-09-26 09:22:58,139 basehttp 62303 6194655232 "GET /static/css/church_detail.css HTTP/1.1" 304 0
+INFO 2024-09-26 09:22:58,145 basehttp 62303 6194655232 "GET /static/js/church_detail.js HTTP/1.1" 304 0
+INFO 2024-09-26 09:23:07,034 basehttp 62303 6194655232 "GET /contacts/ HTTP/1.1" 200 231619
+INFO 2024-09-26 09:23:07,120 basehttp 62303 6194655232 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 09:23:07,138 basehttp 62303 6194655232 "GET /static/js/contact_list.js HTTP/1.1" 304 0
