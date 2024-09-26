@@ -6,13 +6,11 @@
 {% endblock %}
 
 {% block content %}
-<div class="container comlog-list-container">
+<div class="container">
     <h1>Communication Logs</h1>
-
-    <div class="actions">
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search logs...">
-        </div>
+    
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search logs...">
     </div>
 
     <div class="table-responsive">
@@ -26,30 +24,24 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody id="comLogTableBody">
+            <tbody>
                 {% for log in com_logs %}
-                    <tr>
-                        <td>{{ log.date|date:"Y-m-d H:i" }}</td>
-                        <td>
-                            {% if log.type == 'Church' %}
-                                <a href="{% url 'contacts:church_detail' log.contact_id %}">{{ log.name }}</a>
-                            {% elif log.type == 'Person' %}
-                                <a href="{% url 'contacts:person_detail' log.contact_id %}">{{ log.name }}</a>
-                            {% else %}
-                                {{ log.name }}
-                            {% endif %}
-                        </td>
-                        <td>{{ log.communication_type }}</td>
-                        <td>{{ log.notes|truncatewords:20 }}</td>
-                        <td>
+                <tr>
+                    <td data-label="Date">{{ log.date|date:"Y-m-d H:i" }}</td>
+                    <td data-label="Contact">{{ log.name }}</td>
+                    <td data-label="Communication Type">{{ log.communication_type }}</td>
+                    <td data-label="Notes">{{ log.notes|truncatewords:20 }}</td>
+                    <td data-label="Actions">
+                        <div class="btn-group">
                             <a href="{% url 'com_log:detail' log.id %}" class="btn btn-sm btn-info">View</a>
                             <a href="{% url 'com_log:update' log.id %}" class="btn btn-sm btn-primary">Edit</a>
-                        </td>
-                    </tr>
+                        </div>
+                    </td>
+                </tr>
                 {% empty %}
-                    <tr>
-                        <td colspan="6">No communication logs found.</td>
-                    </tr>
+                <tr>
+                    <td colspan="5">No communication logs found.</td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>
