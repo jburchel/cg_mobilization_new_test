@@ -27,11 +27,27 @@
             <tbody>
                 {% for log in com_logs %}
                 <tr>
-                    <td data-label="Date">{{ log.date|date:"Y-m-d H:i" }}</td>
-                    <td data-label="Contact">{{ log.name }}</td>
-                    <td data-label="Communication Type">{{ log.communication_type }}</td>
-                    <td data-label="Notes">{{ log.notes|truncatewords:20 }}</td>
-                    <td data-label="Actions">
+                    <td>{{ log.date|date:"Y-m-d H:i" }}</td>
+                    <td>
+                        {% if log.contact_id %}
+                            {% if log.type == 'Church' %}
+                                <a href="{% url 'contacts:church_detail' log.contact_id %}">
+                                    {{ log.name }} (Church)
+                                </a>
+                            {% elif log.type == 'Person' %}
+                                <a href="{% url 'contacts:person_detail' log.contact_id %}">
+                                    {{ log.name }} (Person)
+                                </a>
+                            {% else %}
+                                {{ log.name }} ({{ log.type }})
+                            {% endif %}
+                        {% else %}
+                            No contact ({{ log.type }})
+                        {% endif %}
+                    </td>
+                    <td>{{ log.communication_type }}</td>
+                    <td>{{ log.notes|truncatewords:20 }}</td>
+                    <td>
                         <div class="btn-group">
                             <a href="{% url 'com_log:detail' log.id %}" class="btn btn-sm btn-info">View</a>
                             <a href="{% url 'com_log:update' log.id %}" class="btn btn-sm btn-primary">Edit</a>

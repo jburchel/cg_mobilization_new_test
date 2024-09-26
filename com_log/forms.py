@@ -1,6 +1,6 @@
 from django import forms
 from .models import ComLog
-from contacts.models import Contact
+from contacts.models import Contact, Church, People
 from django.contrib.contenttypes.models import ContentType
 
 class ComLogForm(forms.ModelForm):
@@ -32,9 +32,22 @@ class ComLogForm(forms.ModelForm):
     def save(self, commit=True):
         instance = super().save(commit=False)
         contact = self.cleaned_data['contact']
-        instance.content_type = ContentType.objects.get_for_model(Contact)
-        instance.object_id = contact.id
+        
+        # Determine the correct content type
+        if hasattr(contact, 'church'):
+            content_type = ContentType.objects.get_for_model(Church)
+            object_id = contact.church.id
+        elif hasattr(contact, 'people'):
+            content_type = ContentType.objects.get_for_model(People)
+            object_id = contact.people.id
+        else:
+            content_type = ContentType.objects.get_for_model(Contact)
+            object_id = contact.id
+
+        instance.content_type = content_type
+        instance.object_id = object_id
         instance.user = self.user
+
         if commit:
             instance.save()
         return instance

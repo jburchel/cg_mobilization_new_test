@@ -4214,3 +4214,341 @@ WARNING 2024-09-26 09:54:13,669 basehttp 65796 6159855616 "GET /static/favicon-3
 WARNING 2024-09-26 09:54:13,687 basehttp 65796 6126202880 "GET /static/favicon-16x16.png HTTP/1.1" 404 1810
 INFO 2024-09-26 11:41:21,522 basehttp 65796 6126202880 "GET /com_log/ HTTP/1.1" 200 10072
 INFO 2024-09-26 11:41:21,628 basehttp 65796 6126202880 "GET /static/css/com_log_list.css HTTP/1.1" 200 4464
+INFO 2024-09-26 11:47:02,861 basehttp 65796 6126202880 "GET /com_log/ HTTP/1.1" 200 11018
+INFO 2024-09-26 11:47:02,954 basehttp 65796 6126202880 "GET /static/css/com_log_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 11:48:00,171 basehttp 65796 6126202880 "GET /com_log/ HTTP/1.1" 200 11018
+INFO 2024-09-26 11:48:00,254 basehttp 65796 6126202880 "GET /static/css/com_log_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 11:48:01,114 basehttp 65796 6126202880 "GET /com_log/ HTTP/1.1" 200 11018
+INFO 2024-09-26 11:48:48,767 autoreload 74561 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 11:48:48,958 wsgi 74561 6153908224 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 11:48:48,959 wsgi 74561 6153908224 Media root path: /opt/render/project/src/media
+INFO 2024-09-26 11:48:51,973 basehttp 74561 6170734592 "GET /com_log/ HTTP/1.1" 200 11018
+INFO 2024-09-26 11:48:52,024 basehttp 74561 6170734592 "GET /static/css/com_log_list.css HTTP/1.1" 200 4464
+INFO 2024-09-26 11:48:52,029 basehttp 74561 6204387328 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-26 11:48:52,030 basehttp 74561 6187560960 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-09-26 11:48:52,030 basehttp 74561 6221213696 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-26 11:48:52,048 basehttp 74561 6221213696 "GET /static/js/com_log_list.js HTTP/1.1" 200 1106
+INFO 2024-09-26 11:48:52,050 basehttp 74561 6187560960 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-26 11:48:52,053 basehttp 74561 6187560960 "GET /static/js/main.js HTTP/1.1" 200 1449
+WARNING 2024-09-26 11:48:52,231 basehttp 74561 6187560960 "GET /static/favicon.ico HTTP/1.1" 404 1792
+WARNING 2024-09-26 11:48:52,254 basehttp 74561 6221213696 "GET /static/favicon-32x32.png HTTP/1.1" 404 1810
+WARNING 2024-09-26 11:48:52,261 basehttp 74561 6204387328 "GET /static/favicon-16x16.png HTTP/1.1" 404 1810
+INFO 2024-09-26 11:48:54,956 basehttp 74561 6170734592 "GET /com_log/ HTTP/1.1" 200 11018
+INFO 2024-09-26 11:52:28,804 autoreload 74894 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 11:52:28,988 wsgi 74894 6180106240 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 11:52:28,988 wsgi 74894 6180106240 Media root path: /opt/render/project/src/media
+INFO 2024-09-26 11:52:33,916 basehttp 74894 6196932608 "GET /com_log/ HTTP/1.1" 200 7268
+INFO 2024-09-26 11:52:34,019 basehttp 74894 6196932608 "GET /static/css/com_log_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 11:52:37,301 basehttp 74894 6196932608 "GET /com_log/ HTTP/1.1" 200 7268
+INFO 2024-09-26 11:52:37,364 basehttp 74894 6196932608 "GET /static/css/com_log_list.css HTTP/1.1" 200 4464
+INFO 2024-09-26 11:52:37,370 basehttp 74894 6196932608 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-09-26 11:52:37,371 basehttp 74894 6213758976 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-26 11:52:37,372 basehttp 74894 6230585344 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-26 11:52:37,395 basehttp 74894 6230585344 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-26 11:52:37,396 basehttp 74894 6213758976 "GET /static/js/com_log_list.js HTTP/1.1" 200 1106
+INFO 2024-09-26 11:52:37,397 basehttp 74894 6213758976 "GET /static/js/main.js HTTP/1.1" 200 1449
+WARNING 2024-09-26 11:52:37,585 basehttp 74894 6213758976 "GET /static/favicon.ico HTTP/1.1" 404 1792
+WARNING 2024-09-26 11:52:37,595 basehttp 74894 6230585344 "GET /static/favicon-32x32.png HTTP/1.1" 404 1810
+WARNING 2024-09-26 11:52:37,599 basehttp 74894 6196932608 "GET /static/favicon-16x16.png HTTP/1.1" 404 1810
+INFO 2024-09-26 11:52:49,938 basehttp 74894 6196932608 "GET /com_log/46/edit/ HTTP/1.1" 200 18516
+INFO 2024-09-26 11:52:49,997 basehttp 74894 6196932608 "GET /static/css/comlog_form.css HTTP/1.1" 304 0
+ERROR 2024-09-26 11:52:54,486 log 74894 6196932608 Internal Server Error: /com_log/46/edit/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: com_log_comlog.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/edit.py", line 206, in post
+    return super().post(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/messages/views.py", line 12, in form_valid
+    response = super().form_valid(form)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/edit.py", line 133, in form_valid
+    self.object = form.save()
+  File "/Users/jimburchel/cg_mobilization/com_log/forms.py", line 39, in save
+    instance.save()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/base.py", line 1040, in _save_table
+    updated = self._do_update(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/base.py", line 1105, in _do_update
+    return filtered._update(values) > 0
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/query.py", line 1278, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1990, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: com_log_comlog.user_id
+ERROR 2024-09-26 11:52:54,488 basehttp 74894 6196932608 "POST /com_log/46/edit/ HTTP/1.1" 500 196853
+WARNING 2024-09-26 11:52:54,780 log 74894 6196932608 Not Found: /favicon.ico
+WARNING 2024-09-26 11:52:54,780 basehttp 74894 6196932608 "GET /favicon.ico HTTP/1.1" 404 2910
+INFO 2024-09-26 11:53:34,406 basehttp 74894 6196932608 "GET /com_log/ HTTP/1.1" 200 7268
+INFO 2024-09-26 11:53:40,223 basehttp 74894 6196932608 "GET /com_log/45/ HTTP/1.1" 200 3838
+INFO 2024-09-26 11:53:40,287 basehttp 74894 6196932608 "GET /static/css/comlog_detail.css HTTP/1.1" 304 0
+WARNING 2024-09-26 11:53:40,303 basehttp 74894 6196932608 "GET /static/js/com_log_detail.js HTTP/1.1" 404 1819
+INFO 2024-09-26 11:53:42,500 basehttp 74894 6213758976 "GET /com_log/45/edit/ HTTP/1.1" 200 18550
+ERROR 2024-09-26 11:53:53,639 log 74894 6196932608 Internal Server Error: /com_log/45/edit/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: com_log_comlog.user_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/edit.py", line 206, in post
+    return super().post(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/messages/views.py", line 12, in form_valid
+    response = super().form_valid(form)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/edit.py", line 133, in form_valid
+    self.object = form.save()
+  File "/Users/jimburchel/cg_mobilization/com_log/forms.py", line 39, in save
+    instance.save()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/base.py", line 822, in save
+    self.save_base(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/base.py", line 909, in save_base
+    updated = self._save_table(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/base.py", line 1040, in _save_table
+    updated = self._do_update(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/base.py", line 1105, in _do_update
+    return filtered._update(values) > 0
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/query.py", line 1278, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1990, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/sql/compiler.py", line 1562, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/backends/sqlite3/base.py", line 329, in execute
+    return super().execute(query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: com_log_comlog.user_id
+ERROR 2024-09-26 11:53:53,640 basehttp 74894 6196932608 "POST /com_log/45/edit/ HTTP/1.1" 500 198769
+INFO 2024-09-26 11:59:07,297 autoreload 74894 8106941504 /Users/jimburchel/cg_mobilization/com_log/views.py changed, reloading.
+INFO 2024-09-26 11:59:08,363 autoreload 75454 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 11:59:08,585 wsgi 75454 6108590080 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 11:59:08,585 wsgi 75454 6108590080 Media root path: /opt/render/project/src/media
+INFO 2024-09-26 11:59:55,175 autoreload 75454 8106941504 /Users/jimburchel/cg_mobilization/com_log/forms.py changed, reloading.
+INFO 2024-09-26 11:59:55,632 autoreload 75538 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 11:59:55,830 wsgi 75538 6114996224 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 11:59:55,831 wsgi 75538 6114996224 Media root path: /opt/render/project/src/media
+INFO 2024-09-26 11:59:58,961 autoreload 75559 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 11:59:59,083 wsgi 75559 6182940672 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 11:59:59,083 wsgi 75559 6182940672 Media root path: /opt/render/project/src/media
+ERROR 2024-09-26 12:00:03,995 log 75559 6199767040 Internal Server Error: /com_log/45/edit/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/edit.py", line 206, in post
+    return super().post(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+  File "/Users/jimburchel/cg_mobilization/com_log/views.py", line 229, in form_valid
+    return super().form_valid(form)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/messages/views.py", line 12, in form_valid
+    response = super().form_valid(form)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/edit.py", line 133, in form_valid
+    self.object = form.save()
+  File "/Users/jimburchel/cg_mobilization/com_log/forms.py", line 41, in save
+    content_type = ContentType.objects.get_for_model(People)
+NameError: name 'People' is not defined
+ERROR 2024-09-26 12:00:03,996 basehttp 75559 6199767040 "POST /com_log/45/edit/ HTTP/1.1" 500 116143
+ERROR 2024-09-26 12:00:07,637 log 75559 6199767040 Internal Server Error: /com_log/45/edit/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/edit.py", line 206, in post
+    return super().post(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/edit.py", line 151, in post
+    return self.form_valid(form)
+  File "/Users/jimburchel/cg_mobilization/com_log/views.py", line 229, in form_valid
+    return super().form_valid(form)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/messages/views.py", line 12, in form_valid
+    response = super().form_valid(form)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/edit.py", line 133, in form_valid
+    self.object = form.save()
+  File "/Users/jimburchel/cg_mobilization/com_log/forms.py", line 41, in save
+    content_type = ContentType.objects.get_for_model(People)
+NameError: name 'People' is not defined
+ERROR 2024-09-26 12:00:07,639 basehttp 75559 6199767040 "POST /com_log/45/edit/ HTTP/1.1" 500 116143
+INFO 2024-09-26 12:02:43,735 autoreload 75559 8106941504 /Users/jimburchel/cg_mobilization/com_log/forms.py changed, reloading.
+INFO 2024-09-26 12:02:44,373 autoreload 75800 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 12:02:44,598 wsgi 75800 6180089856 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 12:02:44,598 wsgi 75800 6180089856 Media root path: /opt/render/project/src/media
+INFO 2024-09-26 12:02:50,465 basehttp 75800 6196916224 "POST /com_log/45/edit/ HTTP/1.1" 302 0
+INFO 2024-09-26 12:02:50,531 basehttp 75800 6196916224 "GET /com_log/ HTTP/1.1" 200 7379
+INFO 2024-09-26 12:02:50,630 basehttp 75800 6196916224 "GET /static/css/com_log_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 12:02:57,821 basehttp 75800 6196916224 "GET /com_log/ HTTP/1.1" 200 7268
+INFO 2024-09-26 12:02:57,864 basehttp 75800 6196916224 "GET /static/css/com_log_list.css HTTP/1.1" 200 4464
+INFO 2024-09-26 12:02:57,867 basehttp 75800 6196916224 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-09-26 12:02:57,869 basehttp 75800 6230568960 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-26 12:02:57,871 basehttp 75800 6213742592 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-26 12:02:57,894 basehttp 75800 6230568960 "GET /static/js/com_log_list.js HTTP/1.1" 200 1106
+INFO 2024-09-26 12:02:57,894 basehttp 75800 6213742592 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-26 12:02:57,897 basehttp 75800 6213742592 "GET /static/js/main.js HTTP/1.1" 200 1449
+WARNING 2024-09-26 12:02:58,058 basehttp 75800 6213742592 "GET /static/favicon.ico HTTP/1.1" 404 1792
+WARNING 2024-09-26 12:02:58,063 basehttp 75800 6230568960 "GET /static/favicon-32x32.png HTTP/1.1" 404 1810
+WARNING 2024-09-26 12:02:58,068 basehttp 75800 6196916224 "GET /static/favicon-16x16.png HTTP/1.1" 404 1810
+INFO 2024-09-26 12:04:00,725 basehttp 75800 6196916224 "GET /com_log/ HTTP/1.1" 200 7268
+INFO 2024-09-26 12:04:11,939 basehttp 75800 6196916224 "GET /com_log/ HTTP/1.1" 200 7268
+INFO 2024-09-26 12:04:14,815 basehttp 75800 6196916224 "GET /com_log/ HTTP/1.1" 200 7268
+INFO 2024-09-26 12:04:14,881 basehttp 75800 6196916224 "GET /static/css/com_log_list.css HTTP/1.1" 200 4464
+INFO 2024-09-26 12:04:14,891 basehttp 75800 6196916224 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-09-26 12:04:14,892 basehttp 75800 6230568960 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-09-26 12:04:14,893 basehttp 75800 6213742592 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-09-26 12:04:14,905 basehttp 75800 6213742592 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-09-26 12:04:14,906 basehttp 75800 6230568960 "GET /static/js/com_log_list.js HTTP/1.1" 200 1106
+INFO 2024-09-26 12:04:14,910 basehttp 75800 6230568960 "GET /static/js/main.js HTTP/1.1" 200 1449
+WARNING 2024-09-26 12:04:15,064 basehttp 75800 6230568960 "GET /static/favicon.ico HTTP/1.1" 404 1792
+WARNING 2024-09-26 12:04:15,075 basehttp 75800 6213742592 "GET /static/favicon-32x32.png HTTP/1.1" 404 1810
+WARNING 2024-09-26 12:04:15,078 basehttp 75800 6196916224 "GET /static/favicon-16x16.png HTTP/1.1" 404 1810
+INFO 2024-09-26 12:04:40,514 autoreload 76109 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 12:04:40,754 wsgi 76109 6110982144 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 12:04:40,755 wsgi 76109 6110982144 Media root path: /opt/render/project/src/media
+INFO 2024-09-26 12:04:44,253 basehttp 76109 6127808512 "GET /com_log/46/edit/ HTTP/1.1" 200 18525
+INFO 2024-09-26 12:04:46,660 basehttp 76109 6127808512 "POST /com_log/46/edit/ HTTP/1.1" 302 0
+INFO 2024-09-26 12:04:46,714 basehttp 76109 6127808512 "GET /com_log/ HTTP/1.1" 200 7379
+INFO 2024-09-26 12:04:54,436 basehttp 76109 6127808512 "GET /com_log/46/edit/ HTTP/1.1" 200 18525
+INFO 2024-09-26 12:05:05,604 basehttp 76109 6127808512 "POST /com_log/46/edit/ HTTP/1.1" 302 0
+INFO 2024-09-26 12:05:05,645 basehttp 76109 6127808512 "GET /com_log/ HTTP/1.1" 200 7379
+INFO 2024-09-26 12:10:29,618 autoreload 76625 8106941504 Watching for file changes with StatReloader
+INFO 2024-09-26 12:10:29,806 wsgi 76625 6145503232 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-09-26 12:10:29,806 wsgi 76625 6145503232 Media root path: /opt/render/project/src/media
+INFO 2024-09-26 12:10:32,843 basehttp 76625 6162329600 "GET /com_log/ HTTP/1.1" 200 9918
+INFO 2024-09-26 12:10:32,936 basehttp 76625 6162329600 "GET /static/css/com_log_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 12:10:40,225 basehttp 76625 6162329600 "GET /com_log/46/ HTTP/1.1" 200 3919
+WARNING 2024-09-26 12:10:40,347 basehttp 76625 6162329600 "GET /static/js/com_log_detail.js HTTP/1.1" 404 1819
+INFO 2024-09-26 12:10:44,175 basehttp 76625 6162329600 "GET /com_log/46/edit/ HTTP/1.1" 200 18525
+INFO 2024-09-26 12:10:46,350 basehttp 76625 6162329600 "POST /com_log/46/edit/ HTTP/1.1" 302 0
+INFO 2024-09-26 12:10:46,382 basehttp 76625 6162329600 "GET /com_log/ HTTP/1.1" 200 10029
+INFO 2024-09-26 12:16:45,177 basehttp 76625 6162329600 "GET /com_log/ HTTP/1.1" 200 11410
+INFO 2024-09-26 12:16:45,246 basehttp 76625 6162329600 "GET /static/css/com_log_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 12:17:00,593 views 76625 6162329600 PersonDetailView: Fetched 43 recent communications for Person 236
+INFO 2024-09-26 12:17:00,595 views 76625 6162329600 PersonDetailView: ComLog: 46, Date: 2024-09-25 19:47:55.857845+00:00, Type: text, Content Type: Contacts | Person
+INFO 2024-09-26 12:17:00,596 views 76625 6162329600 PersonDetailView: ComLog: 45, Date: 2024-09-23 17:05:12.098821+00:00, Type: email, Content Type: Contacts | Person
+INFO 2024-09-26 12:17:00,596 views 76625 6162329600 PersonDetailView: ComLog: 44, Date: 2024-09-23 17:00:11.043478+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,596 views 76625 6162329600 PersonDetailView: ComLog: 43, Date: 2024-09-23 16:52:12.136244+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,596 views 76625 6162329600 PersonDetailView: ComLog: 41, Date: 2024-09-23 14:53:49.419536+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,597 views 76625 6162329600 PersonDetailView: ComLog: 40, Date: 2024-09-23 14:48:22.635754+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,597 views 76625 6162329600 PersonDetailView: ComLog: 39, Date: 2024-09-23 14:21:37.682558+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,597 views 76625 6162329600 PersonDetailView: ComLog: 38, Date: 2024-09-23 14:19:11.884037+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,597 views 76625 6162329600 PersonDetailView: ComLog: 37, Date: 2024-09-23 14:12:37.417830+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,598 views 76625 6162329600 PersonDetailView: ComLog: 36, Date: 2024-09-23 14:05:23.169628+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,598 views 76625 6162329600 PersonDetailView: ComLog: 35, Date: 2024-09-23 14:02:13.669702+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,598 views 76625 6162329600 PersonDetailView: ComLog: 34, Date: 2024-09-23 13:51:27.541766+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,599 views 76625 6162329600 PersonDetailView: ComLog: 33, Date: 2024-09-23 13:50:11.149923+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,599 views 76625 6162329600 PersonDetailView: ComLog: 32, Date: 2024-09-23 12:48:13.740480+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,600 views 76625 6162329600 PersonDetailView: ComLog: 31, Date: 2024-09-19 20:47:40.008442+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,601 views 76625 6162329600 PersonDetailView: ComLog: 30, Date: 2024-09-19 20:19:39.289621+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,601 views 76625 6162329600 PersonDetailView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-26 12:17:00,602 views 76625 6162329600 PersonDetailView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-26 12:17:00,602 views 76625 6162329600 PersonDetailView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-26 12:17:00,602 views 76625 6162329600 PersonDetailView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-26 12:17:00,603 views 76625 6162329600 PersonDetailView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-09-26 12:17:00,603 views 76625 6162329600 PersonDetailView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,605 views 76625 6162329600 PersonDetailView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,605 views 76625 6162329600 PersonDetailView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,606 views 76625 6162329600 PersonDetailView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,606 views 76625 6162329600 PersonDetailView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,607 views 76625 6162329600 PersonDetailView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,607 views 76625 6162329600 PersonDetailView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,607 views 76625 6162329600 PersonDetailView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,608 views 76625 6162329600 PersonDetailView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,608 views 76625 6162329600 PersonDetailView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,608 views 76625 6162329600 PersonDetailView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,609 views 76625 6162329600 PersonDetailView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,609 views 76625 6162329600 PersonDetailView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,609 views 76625 6162329600 PersonDetailView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,609 views 76625 6162329600 PersonDetailView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,610 views 76625 6162329600 PersonDetailView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-26 12:17:00,610 views 76625 6162329600 PersonDetailView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-26 12:17:00,611 views 76625 6162329600 PersonDetailView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-26 12:17:00,611 views 76625 6162329600 PersonDetailView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-26 12:17:00,611 views 76625 6162329600 PersonDetailView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-26 12:17:00,612 views 76625 6162329600 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-09-26 12:17:00,612 views 76625 6162329600 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-09-26 12:17:00,617 basehttp 76625 6162329600 "GET /contacts/person/236/ HTTP/1.1" 200 5474
+INFO 2024-09-26 12:17:00,674 basehttp 76625 6162329600 "GET /static/css/person_detail.css HTTP/1.1" 304 0
+INFO 2024-09-26 12:17:00,683 basehttp 76625 6162329600 "GET /static/js/person_detail.js HTTP/1.1" 304 0
+INFO 2024-09-26 12:17:34,475 basehttp 76625 6162329600 "GET /com_log/ HTTP/1.1" 200 10424

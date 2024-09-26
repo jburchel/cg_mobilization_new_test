@@ -200,11 +200,9 @@ class ComLogUpdateView(SuccessMessageMixin, UpdateView):
     template_name = 'com_log/com_log_form.html'
     success_message = "Communication log was updated successfully"
 
-    def get_success_url(self):
-        return reverse_lazy('com_log:list')
-
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
         if self.object:
             contact = self.object.contact
             if isinstance(contact, People):
@@ -219,12 +217,19 @@ class ComLogUpdateView(SuccessMessageMixin, UpdateView):
 
             kwargs['initial'] = {
                 'contact_type': contact_type,
-                'contact': contact_name,
+                'contact': contact,  # Pass the contact object instead of just the name
                 'contact_id': contact.id,
                 'communication_type': self.object.communication_type,
                 'notes': self.object.notes,
             }
         return kwargs
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy('com_log:list')
     
 @method_decorator(login_required, name='dispatch')
 class ContactInteractionsListView(ListView):
