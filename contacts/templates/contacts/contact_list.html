@@ -32,7 +32,7 @@
             </thead>
             <tbody id="contacts-body">
                 {% for contact in contacts %}
-                <tr>
+                <tr class="contact-row">
                     <td data-label="Name">
                         {% if contact.church %}
                             <a href="{% url 'contacts:church_detail' contact.church.id %}">{{ contact.church.church_name }} (Church)</a>
@@ -61,5 +61,8 @@
 {% endblock %}
 
 {% block extra_js %}
+<script>
+    const contactsData = {{ contacts_json|safe }};
+</script>
 <script src="{% static 'js/contact_list.js' %}"></script>
 {% endblock %}

@@ -4839,3 +4839,89 @@ INFO 2024-09-26 16:05:21,589 basehttp 84407 6131478528 "GET /contacts/ HTTP/1.1"
 INFO 2024-09-26 16:05:21,679 basehttp 84407 6131478528 "GET /static/css/contacts_list.css HTTP/1.1" 200 4433
 INFO 2024-09-26 16:05:24,943 basehttp 84407 6131478528 "GET /contacts/ HTTP/1.1" 200 150146
 INFO 2024-09-26 16:05:25,015 basehttp 84407 6131478528 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 16:07:08,534 basehttp 84407 6131478528 "GET /com_log/ HTTP/1.1" 200 11516
+INFO 2024-09-26 16:07:08,606 basehttp 84407 6131478528 "GET /static/css/com_log_list.css HTTP/1.1" 304 0
+INFO 2024-09-26 16:07:10,272 basehttp 84407 6131478528 "GET /task-tracker/ HTTP/1.1" 200 10446
+INFO 2024-09-26 16:07:12,141 basehttp 84407 6131478528 "GET /contacts/people/ HTTP/1.1" 200 7776
+INFO 2024-09-26 16:07:13,024 basehttp 84407 6131478528 "GET /contacts/churches/ HTTP/1.1" 200 10774
+INFO 2024-09-26 16:07:13,839 basehttp 84407 6131478528 "GET /contacts/ HTTP/1.1" 200 150146
+INFO 2024-09-26 16:07:13,910 basehttp 84407 6131478528 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-10-11 09:50:12,487 autoreload 27406 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-11 09:50:12,747 wsgi 27406 6114455552 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-11 09:50:12,747 wsgi 27406 6114455552 Media root path: /opt/render/project/src/media
+INFO 2024-10-11 09:50:18,109 basehttp 27406 6131281920 "GET / HTTP/1.1" 200 4277
+INFO 2024-10-11 09:50:18,228 basehttp 27406 6131281920 "GET /static/css/home.css HTTP/1.1" 200 2990
+INFO 2024-10-11 09:50:18,229 basehttp 27406 6181761024 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-11 09:50:18,229 basehttp 27406 6148108288 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-11 09:50:18,229 basehttp 27406 6164934656 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-11 09:50:18,259 basehttp 27406 6148108288 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-11 09:50:18,639 basehttp 27406 6148108288 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-11 09:50:18,644 basehttp 27406 6148108288 "GET /static/images/favicon-32x32.png?v=1 HTTP/1.1" 200 7484
+INFO 2024-10-11 09:50:20,305 basehttp 27406 6148108288 "GET /contacts/ HTTP/1.1" 302 0
+INFO 2024-10-11 09:50:20,315 basehttp 27406 6148108288 "GET /accounts/login/?next=/contacts/ HTTP/1.1" 200 2932
+INFO 2024-10-11 09:50:20,350 basehttp 27406 6148108288 "GET /static/css/userprofile.css HTTP/1.1" 200 7658
+INFO 2024-10-11 09:50:26,562 basehttp 27406 6131281920 "POST /accounts/login/?next=/contacts/ HTTP/1.1" 302 0
+INFO 2024-10-11 09:50:26,567 basehttp 27406 6131281920 "GET / HTTP/1.1" 200 4786
+INFO 2024-10-11 09:50:26,593 basehttp 27406 6131281920 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-11 09:50:28,656 basehttp 27406 6131281920 "GET /contacts/ HTTP/1.1" 200 150146
+INFO 2024-10-11 09:50:28,727 basehttp 27406 6131281920 "GET /static/css/contacts_list.css HTTP/1.1" 200 4433
+INFO 2024-10-11 09:50:28,730 basehttp 27406 6131281920 "GET /static/js/contact_list.js HTTP/1.1" 200 2024
+INFO 2024-10-11 09:50:35,037 basehttp 27406 6131281920 "GET /com_log/ HTTP/1.1" 200 11516
+INFO 2024-10-11 09:50:35,106 basehttp 27406 6131281920 "GET /static/css/com_log_list.css HTTP/1.1" 200 3685
+INFO 2024-10-11 09:50:35,111 basehttp 27406 6131281920 "GET /static/js/com_log_list.js HTTP/1.1" 200 1106
+INFO 2024-10-11 09:50:43,829 basehttp 27406 6131281920 "GET /task-tracker/ HTTP/1.1" 200 10446
+INFO 2024-10-11 09:50:43,864 basehttp 27406 6131281920 "GET /static/css/task_list.css HTTP/1.1" 200 2671
+INFO 2024-10-11 09:50:43,866 basehttp 27406 6131281920 "GET /static/js/task_list.js HTTP/1.1" 200 3898
+INFO 2024-10-11 09:50:45,301 basehttp 27406 6131281920 "GET /com_log/ HTTP/1.1" 200 11516
+INFO 2024-10-11 09:50:46,020 basehttp 27406 6131281920 "GET /contacts/churches/ HTTP/1.1" 200 10774
+INFO 2024-10-11 09:50:46,056 basehttp 27406 6131281920 "GET /static/css/church_list.css HTTP/1.1" 200 3534
+INFO 2024-10-11 09:50:46,058 basehttp 27406 6148108288 "GET /static/js/church_list.js HTTP/1.1" 200 6760
+INFO 2024-10-11 09:50:47,226 basehttp 27406 6148108288 "GET /contacts/people/ HTTP/1.1" 200 7776
+INFO 2024-10-11 09:50:47,259 basehttp 27406 6148108288 "GET /static/css/people_list.css HTTP/1.1" 200 3680
+INFO 2024-10-11 09:50:47,261 basehttp 27406 6131281920 "GET /static/js/people_list.js HTTP/1.1" 200 6747
+INFO 2024-10-11 09:50:48,203 basehttp 27406 6131281920 "GET /contacts/ HTTP/1.1" 200 150146
+INFO 2024-10-11 09:55:02,104 autoreload 30468 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-11 09:55:02,299 wsgi 30468 6118715392 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-11 09:55:02,299 wsgi 30468 6118715392 Media root path: /opt/render/project/src/media
+INFO 2024-10-11 09:55:08,856 basehttp 30468 6135541760 "GET /contacts/ HTTP/1.1" 200 150146
+INFO 2024-10-11 09:56:04,443 autoreload 30468 7954013248 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-10-11 09:56:04,865 autoreload 31149 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-11 09:56:05,076 wsgi 31149 6147436544 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-11 09:56:05,076 wsgi 31149 6147436544 Media root path: /opt/render/project/src/media
+INFO 2024-10-11 09:56:08,742 basehttp 31149 6164262912 "GET /contacts/ HTTP/1.1" 200 155788
+INFO 2024-10-11 09:57:34,948 autoreload 32065 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-11 09:57:35,142 wsgi 32065 6177402880 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-11 09:57:35,142 wsgi 32065 6177402880 Media root path: /opt/render/project/src/media
+INFO 2024-10-11 09:57:38,575 basehttp 32065 6194229248 "GET /contacts/ HTTP/1.1" 200 210778
+INFO 2024-10-11 09:58:28,753 autoreload 32663 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-11 09:58:28,921 wsgi 32663 6172618752 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-11 09:58:28,922 wsgi 32663 6172618752 Media root path: /opt/render/project/src/media
+INFO 2024-10-11 09:58:31,561 basehttp 32663 6189445120 "GET /contacts/ HTTP/1.1" 200 210794
+INFO 2024-10-11 10:00:31,472 basehttp 32663 6189445120 "GET /contacts/ HTTP/1.1" 200 210794
+INFO 2024-10-11 10:01:05,342 autoreload 34357 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-11 10:01:05,533 wsgi 34357 6181908480 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-11 10:01:05,533 wsgi 34357 6181908480 Media root path: /opt/render/project/src/media
+INFO 2024-10-11 10:01:07,907 basehttp 34357 6198734848 "GET /contacts/ HTTP/1.1" 200 210794
+INFO 2024-10-11 10:04:43,116 autoreload 36575 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-11 10:04:43,302 wsgi 36575 6110834688 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-11 10:04:43,302 wsgi 36575 6110834688 Media root path: /opt/render/project/src/media
+INFO 2024-10-11 10:04:46,039 basehttp 36575 6127661056 "GET /contacts/ HTTP/1.1" 200 210657
+INFO 2024-10-11 10:06:30,352 autoreload 37690 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-11 10:06:30,537 wsgi 37690 6173093888 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-11 10:06:30,537 wsgi 37690 6173093888 Media root path: /opt/render/project/src/media
+INFO 2024-10-11 10:06:32,642 basehttp 37690 6189920256 "GET /contacts/ HTTP/1.1" 200 210657
+INFO 2024-10-11 10:06:35,131 basehttp 37690 6189920256 "GET /contacts/ HTTP/1.1" 200 210657
+INFO 2024-10-11 10:06:35,188 basehttp 37690 6189920256 "GET /static/css/contacts_list.css HTTP/1.1" 200 4895
+INFO 2024-10-11 10:06:35,188 basehttp 37690 6206746624 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-11 10:06:35,188 basehttp 37690 6240399360 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-11 10:06:35,188 basehttp 37690 6223572992 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-11 10:06:35,203 basehttp 37690 6240399360 "GET /static/js/contact_list.js HTTP/1.1" 200 2072
+INFO 2024-10-11 10:06:35,205 basehttp 37690 6206746624 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-11 10:06:35,220 basehttp 37690 6206746624 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-11 10:06:35,397 basehttp 37690 6206746624 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-11 10:07:12,706 autoreload 38172 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-11 10:07:12,905 wsgi 38172 6187642880 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-11 10:07:12,905 wsgi 38172 6187642880 Media root path: /opt/render/project/src/media
+INFO 2024-10-11 10:07:15,727 basehttp 38172 6204469248 "GET /contacts/ HTTP/1.1" 200 210657
+INFO 2024-10-11 10:07:15,768 basehttp 38172 6204469248 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-10-11 10:07:17,388 basehttp 38172 6204469248 "GET /com_log/ HTTP/1.1" 200 11516

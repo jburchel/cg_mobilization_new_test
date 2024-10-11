@@ -30,26 +30,30 @@
 .table td {
     padding: 0.75rem;
     vertical-align: middle;
-    border-top: 1px solid var(--border-color);
     text-align: left;
 }
 
 .table thead th {
     vertical-align: bottom;
-    border: none;
+    border-bottom: 2px solid var(--primary-blue);
     background-color: var(--primary-blue);
-    color: var(--primary-white) !important;
+    color: var(--primary-white);
 }
 
-.table thead th:first-child {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+/* Ensure the table body aligns with the header */
+.table tbody tr:first-child td {
+    border-top: 1px solid var(--border-color);
+}
+
+/* Add left padding to the first column to align with the header */
+.table th:first-child,
+.table td:first-child {
     padding-left: 1rem;
 }
 
-.table thead th:last-child {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+/* Add right padding to the last column to align with the header */
+.table th:last-child,
+.table td:last-child {
     padding-right: 1rem;
 }
 
@@ -92,13 +96,14 @@
 /* Search bar and action buttons */
 .actions {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1rem;
+    gap: 1rem; /* Add space between search bar and buttons */
 }
 
 .search-bar {
     flex: 1;
-    margin-right: 1rem;
+    margin-right: 1rem; /* Add additional space to the right of the search bar */
 }
 
 .search-bar input {
@@ -112,11 +117,19 @@
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius);
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    height: 38px; /* Set a specific height for the search bar */
 }
 
 .add-buttons {
     display: flex;
     gap: 0.5rem;
+}
+
+.add-buttons .btn {
+    height: 38px; /* Match the height of the search bar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Mobile-specific styles */

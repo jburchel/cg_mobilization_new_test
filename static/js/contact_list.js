@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('contact-search');
     const contactsBody = document.getElementById('contacts-body');
+    const searchResultsCount = document.getElementById('search-results-count');
 
     function renderContacts(contacts) {
         contactsBody.innerHTML = '';
@@ -9,23 +10,20 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             contacts.forEach(contact => {
                 const row = document.createElement('tr');
+                row.className = 'contact-row';
                 row.innerHTML = `
-                    <td data-label="Name">
-                        <a href="${contact.detail_url}">
-                            ${contact.name} (${contact.type})
-                        </a>
-                    </td>
-                    <td data-label="Type">${contact.type}</td>
+                    <td data-label="Name">${contact.name}</td>
                     <td data-label="Email">${contact.email}</td>
                     <td data-label="Phone">${contact.phone}</td>
-                    <td data-label="Last Contact">${contact.last_contact}</td>
+                    <td data-label="Last Contact">${contact.date_modified}</td>
                     <td data-label="Actions">
-                        <a href="${contact.edit_url}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="/contacts/edit/${contact.id}/" class="btn btn-sm btn-warning">Edit</a>
                     </td>
                 `;
                 contactsBody.appendChild(row);
             });
         }
+        searchResultsCount.textContent = `${contacts.length} contact(s) found`;
     }
 
     function filterContacts(searchTerm) {
@@ -33,9 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const searchFields = [
                 contact.name,
                 contact.email,
-                contact.type,
-                contact.source,
-                contact.title
+                contact.phone,
+                contact.date_modified
             ];
             return searchFields.some(field => 
                 field && field.toLowerCase().includes(searchTerm.toLowerCase())
@@ -51,5 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Initial render of all contacts
         renderContacts(contactsData);
+    } else {
+        console.error('Search input element not found');
     }
 });

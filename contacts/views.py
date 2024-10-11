@@ -31,6 +31,7 @@ import os
 import html
 from django.conf import settings
 from django.http import HttpResponseRedirect
+from django.core.serializers import serialize
 
 logger = logging.getLogger(__name__)
 @method_decorator(login_required, name='dispatch')
@@ -541,4 +542,12 @@ def get_church_pipeline_summary(request):
     return JsonResponse({
         'total_churches': total_churches,
         'pipeline_summary': pipeline_summary
+    })
+
+def contact_list(request):
+    contacts = Contact.objects.all()
+    contacts_json = serialize('json', contacts)
+    return render(request, 'contacts/contact_list.html', {
+        'contacts': contacts,
+        'contacts_json': contacts_json,
     })
