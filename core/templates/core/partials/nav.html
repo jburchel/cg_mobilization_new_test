@@ -22,10 +22,8 @@
         {% if user.is_authenticated %}
         <div class="user-menu">
             <button id="user-menu-toggle" class="user-menu-button">
-                {% if user.has_profile_thumbnail %}
+                {% if user.profile_thumbnail %}
                     <img src="{{ user.profile_thumbnail.url }}" alt="{{ user.username }}" class="user-avatar">
-                {% elif user.has_profile_image %}
-                    <img src="{{ user.profile_image.url }}" alt="{{ user.username }}" class="user-avatar">
                 {% else %}
                     <img src="{% static 'images/default_thumbnail.png' %}" alt="{{ user.username }}" class="user-avatar">
                 {% endif %}

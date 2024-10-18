@@ -35,31 +35,12 @@ def account_view(request):
         form = ProfileImageForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             user = form.save(commit=False)
-            if 'profile_image' in form.changed_data:
-                logger.info(f"Profile image changed for user {user.username}")
-                if 'profile_image' in request.FILES:
-                    user.profile_image = request.FILES['profile_image']
-                    logger.info(f"New profile image: {user.profile_image.name}")
-                    logger.info(f"File size: {user.profile_image.size} bytes")
-                    
-                    # Check if the file was actually saved
-                    expected_path = os.path.join(settings.MEDIA_ROOT, user.profile_image.name)
-                    if os.path.exists(expected_path):
-                        logger.info(f"File successfully saved at {expected_path}")
-                    else:
-                        logger.error(f"File not found at expected path: {expected_path}")
-                    
-                    # Log the MEDIA_ROOT and MEDIA_URL settings
-                    logger.info(f"MEDIA_ROOT: {settings.MEDIA_ROOT}")
-                    logger.info(f"MEDIA_URL: {settings.MEDIA_URL}")
-                    
-                    user.create_thumbnail()
-                else:
-                    user.profile_image = None
-                    user.profile_thumbnail = None
-                    logger.info("Profile image removed")
+            if 'profile_image' in request.FILES:
+                user.profile_image = request.FILES['profile_image']
+                logger.info(f"New profile image uploaded for user {user.username}: {user.profile_image.name}")
             user.save()
-            
+            logger.info(f"User saved. Profile image name: {user.profile_image.name if user.profile_image else 'No image'}")
+            logger.info(f"User saved. Profile thumbnail name: {user.profile_thumbnail.name if user.profile_thumbnail else 'No thumbnail'}")
             messages.success(request, 'Profile updated successfully.')
             return redirect('userprofile:account')
         else:

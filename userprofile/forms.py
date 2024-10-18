@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 class ProfileImageForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['profile_image', 'email_signature',]
+        fields = ['profile_image', 'email_signature']
         widgets = {
             'profile_image': forms.FileInput(attrs={'accept': 'image/*'}),
             'email_signature': forms.Textarea(attrs={'rows': 4, 'class': 'form-control'}),

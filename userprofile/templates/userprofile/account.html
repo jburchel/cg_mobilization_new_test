@@ -20,6 +20,14 @@
         {% endif %}
     </div>
 
+    <div class="profile-thumbnail-container">
+        {% if user.profile_thumbnail %}
+            <img src="{{ user.profile_thumbnail.url }}" alt="Profile Thumbnail" class="profile-thumbnail">
+        {% else %}
+            <img src="{% static 'images/default_thumbnail.png' %}" alt="Default Thumbnail" class="profile-thumbnail">
+        {% endif %}
+    </div>
+
     <form class="account-form" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         

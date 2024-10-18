@@ -5,51 +5,36 @@ from django.db import models
 from PIL import Image
 from io import BytesIO
 from django.core.files.base import ContentFile
-from django.core.files.storage import default_storage
-from django.core.files.storage import FileSystemStorage
-from django.conf import settings
 from django.utils.html import linebreaks
+from django.core.files.storage import default_storage
+from django.core.files import File
 
 logger = logging.getLogger(__name__)
-
-fs = FileSystemStorage(location=settings.MEDIA_ROOT)
 
 class CustomUser(AbstractUser):
     profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
     profile_thumbnail = models.ImageField(upload_to='profile_thumbnails/', null=True, blank=True)
     email_signature = models.TextField(blank=True, null=True)
-    google_refresh_token = models.CharField(max_length=255, blank=True, null=True)
-
-    # Add related_name to avoid clashes
-    groups = models.ManyToManyField(
-        'auth.Group',
-        verbose_name='groups',
-        blank=True,
-        help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.',
-        related_name='customuser_set',
-        related_query_name='customuser',
-    )
-    user_permissions = models.ManyToManyField(
-        'auth.Permission',
-        verbose_name='user permissions',
-        blank=True,
-        help_text='Specific permissions for this user.',
-        related_name='customuser_set',
-        related_query_name='customuser',
-    )
     
     def save(self, *args, **kwargs):
         is_new = self.pk is None
-        old_image = None if is_new else CustomUser.objects.get(pk=self.pk).profile_image        
-        
-        if is_new or (self.profile_image and self.profile_image != old_image):
-            self.create_thumbnail()
-            
+        if not is_new:
+            old_instance = CustomUser.objects.get(pk=self.pk)
+            if self.profile_image and self.profile_image != old_instance.profile_image:
+                logger.info(f"Profile image changed for user {self.username}. Creating thumbnail.")
+                super().save(*args, **kwargs)  # Save first to ensure the image is stored
+                self.create_thumbnail()
+                super().save(update_fields=['profile_thumbnail'])  # Save again to update the thumbnail field
+            else:
+                super().save(*args, **kwargs)
+        else:
+            super().save(*args, **kwargs)
+            if self.profile_image:
+                self.create_thumbnail()
+                super().save(update_fields=['profile_thumbnail'])
+
         if self.email_signature:
             self.email_signature = linebreaks(self.email_signature)
-            
-            super().save(*args, **kwargs)
-            
 
     def create_thumbnail(self):
         if not self.profile_image:
@@ -58,24 +43,21 @@ class CustomUser(AbstractUser):
 
         logger.info(f"Creating thumbnail for user {self.username}")
         try:
-            img_path = self.profile_image.path
-            logger.info(f"Profile image path: {img_path}")
-            
-            img = Image.open(img_path)
-            img.thumbnail((100, 100))  # Adjust size as needed
-            thumb_io = BytesIO()
-            img.save(thumb_io, format='JPEG')
-            
-            thumb_filename = f'{self.username}_thumb.jpg'
-            thumb_path = os.path.join('profile_thumbnails', thumb_filename)
-            
-            self.profile_thumbnail.save(
-                thumb_path,
-                ContentFile(thumb_io.getvalue()),
-                save=False
-            )
-            self.save(update_fields=['profile_thumbnail'])
-            logger.info(f"Thumbnail created successfully for user {self.username}")
+            # Open the image using default_storage
+            with default_storage.open(self.profile_image.name, 'rb') as f:
+                img = Image.open(f)
+                img.thumbnail((30, 30))  # Adjust size to 30x30 pixels
+                thumb_io = BytesIO()
+                
+                img_format = img.format or 'JPEG'
+                img.save(thumb_io, format=img_format)
+                
+                file_extension = 'jpg' if img_format == 'JPEG' else img_format.lower()
+                thumb_filename = f'{self.username}_thumb.{file_extension}'
+                
+                # Save the thumbnail in the correct folder
+                thumb_path = f'profile_thumbnails/{thumb_filename}'
+                self.profile_thumbnail.save(thumb_path, ContentFile(thumb_io.getvalue()), save=False)
+                logger.info(f"Thumbnail created successfully for user {self.username}. Path: {self.profile_thumbnail.name}")
         except Exception as e:
             logger.error(f"Error creating thumbnail for user {self.username}: {str(e)}")
-            

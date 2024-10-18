@@ -5075,3 +5075,329 @@ INFO 2024-10-18 13:32:00,954 basehttp 39918 6200274944 "GET /contacts/person/236
 INFO 2024-10-18 13:32:01,028 basehttp 39918 6200274944 "GET /static/css/person_detail.css HTTP/1.1" 200 2990
 INFO 2024-10-18 13:32:01,036 basehttp 39918 6217101312 "GET /static/images/default_person.png HTTP/1.1" 200 3101
 INFO 2024-10-18 13:32:01,037 basehttp 39918 6233927680 "GET /static/js/person_detail.js HTTP/1.1" 200 5602
+INFO 2024-10-18 13:48:41,609 autoreload 52159 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 13:48:41,820 wsgi 52159 6113193984 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 13:48:41,820 wsgi 52159 6113193984 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 13:54:10,419 autoreload 55716 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 13:54:10,584 wsgi 55716 6179074048 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 13:54:10,584 wsgi 55716 6179074048 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 13:57:36,532 basehttp 55716 6195900416 "GET / HTTP/1.1" 200 4786
+INFO 2024-10-18 13:57:39,528 basehttp 55716 6195900416 "GET /contacts/ HTTP/1.1" 200 218887
+INFO 2024-10-18 13:57:39,561 basehttp 55716 6195900416 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-10-18 13:57:43,401 basehttp 55716 6195900416 "GET /accounts/account/ HTTP/1.1" 200 4867
+WARNING 2024-10-18 13:57:43,463 basehttp 55716 6212726784 "GET /static/images/default_profile.png HTTP/1.1" 404 1938
+INFO 2024-10-18 13:57:43,465 basehttp 55716 6195900416 "GET /static/css/account.css HTTP/1.1" 200 2772
+INFO 2024-10-18 13:58:09,989 models 55716 6195900416 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-18 13:58:09,989 models 55716 6195900416 Profile image path: /Users/jimburchel/cg_mobilization/media/Jim Headshot.jpg
+ERROR 2024-10-18 13:58:09,990 models 55716 6195900416 Error creating thumbnail for user j.burchel@crossoverglobal.net: [Errno 2] No such file or directory: '/Users/jimburchel/cg_mobilization/media/Jim Headshot.jpg'
+INFO 2024-10-18 13:58:09,990 models 55716 6195900416 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-18 13:58:09,990 models 55716 6195900416 Profile image path: /Users/jimburchel/cg_mobilization/media/Jim Headshot.jpg
+ERROR 2024-10-18 13:58:09,990 models 55716 6195900416 Error creating thumbnail for user j.burchel@crossoverglobal.net: [Errno 2] No such file or directory: '/Users/jimburchel/cg_mobilization/media/Jim Headshot.jpg'
+INFO 2024-10-18 13:58:09,992 basehttp 55716 6195900416 "POST /accounts/account/ HTTP/1.1" 302 0
+INFO 2024-10-18 13:58:10,005 basehttp 55716 6195900416 "GET /accounts/account/ HTTP/1.1" 200 5153
+INFO 2024-10-18 13:58:10,045 basehttp 55716 6195900416 "GET /media/profile_images/Jim_Headshot_Wu9jxCz.jpg HTTP/1.1" 200 186455
+INFO 2024-10-18 13:58:20,179 basehttp 55716 6195900416 "GET /accounts/account/ HTTP/1.1" 200 4909
+INFO 2024-10-18 13:58:20,223 basehttp 55716 6195900416 "GET /media/profile_images/Jim_Headshot_Wu9jxCz.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 13:58:21,684 basehttp 55716 6195900416 "GET /accounts/account/ HTTP/1.1" 200 4909
+INFO 2024-10-18 13:58:21,723 basehttp 55716 6195900416 "GET /media/profile_images/Jim_Headshot_Wu9jxCz.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 13:58:23,201 basehttp 55716 6195900416 "GET /contacts/ HTTP/1.1" 200 218887
+INFO 2024-10-18 13:58:28,521 basehttp 55716 6195900416 "GET /accounts/account/ HTTP/1.1" 200 4909
+INFO 2024-10-18 13:58:28,572 basehttp 55716 6195900416 "GET /media/profile_images/Jim_Headshot_Wu9jxCz.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:01:20,978 autoreload 55716 7954013248 /Users/jimburchel/cg_mobilization/userprofile/models.py changed, reloading.
+INFO 2024-10-18 14:01:21,400 autoreload 60509 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 14:01:21,560 wsgi 60509 6176780288 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 14:01:21,560 wsgi 60509 6176780288 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 14:01:25,132 basehttp 60509 6193606656 "GET /accounts/account/ HTTP/1.1" 200 5096
+INFO 2024-10-18 14:01:25,198 basehttp 60509 6193606656 "GET /media/profile_images/Jim_Headshot_Wu9jxCz.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:01:26,659 basehttp 60509 6193606656 "GET /accounts/account/ HTTP/1.1" 200 5096
+INFO 2024-10-18 14:01:29,345 basehttp 60509 6193606656 "GET /accounts/account/ HTTP/1.1" 200 5096
+INFO 2024-10-18 14:01:38,527 basehttp 60509 6193606656 "GET /accounts/account/ HTTP/1.1" 200 5096
+INFO 2024-10-18 14:01:38,567 basehttp 60509 6210433024 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 14:01:38,571 basehttp 60509 6193606656 "GET /static/css/account.css HTTP/1.1" 200 2772
+INFO 2024-10-18 14:01:38,577 basehttp 60509 6193606656 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 14:01:38,580 basehttp 60509 6210433024 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 14:01:38,587 basehttp 60509 6193606656 "GET /media/profile_images/Jim_Headshot_Wu9jxCz.jpg HTTP/1.1" 200 186455
+INFO 2024-10-18 14:01:38,589 basehttp 60509 6210433024 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 14:01:38,593 basehttp 60509 6193606656 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 14:01:38,727 basehttp 60509 6193606656 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 14:01:47,765 autoreload 60758 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 14:01:47,914 wsgi 60758 6110179328 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 14:01:47,914 wsgi 60758 6110179328 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 14:01:49,564 basehttp 60758 6127005696 "GET / HTTP/1.1" 200 4786
+INFO 2024-10-18 14:01:52,919 basehttp 60758 6127005696 "GET /accounts/account/ HTTP/1.1" 200 5096
+INFO 2024-10-18 14:01:57,948 basehttp 60758 6127005696 "GET /accounts/account/ HTTP/1.1" 200 5096
+INFO 2024-10-18 14:01:57,996 basehttp 60758 6160658432 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 14:01:57,997 basehttp 60758 6127005696 "GET /static/css/account.css HTTP/1.1" 200 2772
+INFO 2024-10-18 14:01:57,999 basehttp 60758 6177484800 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 14:01:58,000 basehttp 60758 6143832064 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 14:01:58,013 basehttp 60758 6143832064 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 14:01:58,016 basehttp 60758 6143832064 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 14:01:58,018 basehttp 60758 6160658432 "GET /media/profile_images/Jim_Headshot_Wu9jxCz.jpg HTTP/1.1" 200 186455
+INFO 2024-10-18 14:01:58,120 basehttp 60758 6160658432 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 14:02:04,225 basehttp 60758 6160658432 "GET /contacts/ HTTP/1.1" 200 218887
+INFO 2024-10-18 14:02:04,257 basehttp 60758 6160658432 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-10-18 14:03:34,546 autoreload 62003 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 14:03:34,716 wsgi 62003 6120566784 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 14:03:34,716 wsgi 62003 6120566784 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 14:03:37,466 basehttp 62003 6137393152 "GET /contacts/ HTTP/1.1" 200 218887
+INFO 2024-10-18 14:03:40,548 basehttp 62003 6137393152 "GET /accounts/account/ HTTP/1.1" 200 5096
+INFO 2024-10-18 14:03:40,599 basehttp 62003 6137393152 "GET /media/profile_images/Jim_Headshot_Wu9jxCz.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:04:16,559 basehttp 62003 6137393152 "GET /admin HTTP/1.1" 301 0
+INFO 2024-10-18 14:04:16,589 basehttp 62003 6154219520 "GET /admin/ HTTP/1.1" 200 11607
+INFO 2024-10-18 14:04:16,623 basehttp 62003 6154219520 "GET /static/admin/css/base.css HTTP/1.1" 200 21544
+INFO 2024-10-18 14:04:16,635 basehttp 62003 6171045888 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2024-10-18 14:04:16,635 basehttp 62003 6137393152 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2024-10-18 14:04:16,635 basehttp 62003 6154219520 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2682
+INFO 2024-10-18 14:04:16,637 basehttp 62003 6221524992 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2024-10-18 14:04:16,638 basehttp 62003 6187872256 "GET /static/admin/css/responsive.css HTTP/1.1" 200 17905
+INFO 2024-10-18 14:04:16,639 basehttp 62003 6204698624 "GET /static/admin/js/theme.js HTTP/1.1" 200 1943
+INFO 2024-10-18 14:04:16,653 basehttp 62003 6204698624 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2024-10-18 14:04:16,653 basehttp 62003 6187872256 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+WARNING 2024-10-18 14:04:16,769 log 62003 6187872256 Not Found: /favicon.ico
+WARNING 2024-10-18 14:04:16,769 basehttp 62003 6187872256 "GET /favicon.ico HTTP/1.1" 404 3037
+INFO 2024-10-18 14:04:23,153 basehttp 62003 6187872256 "GET /admin/userprofile/customuser/ HTTP/1.1" 200 12789
+INFO 2024-10-18 14:04:23,190 basehttp 62003 6187872256 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6811
+INFO 2024-10-18 14:04:23,198 basehttp 62003 6154219520 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2024-10-18 14:04:23,200 basehttp 62003 6171045888 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9042
+INFO 2024-10-18 14:04:23,202 basehttp 62003 6187872256 "GET /static/admin/js/actions.js HTTP/1.1" 200 8067
+INFO 2024-10-18 14:04:23,205 basehttp 62003 6154219520 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2024-10-18 14:04:23,206 basehttp 62003 6137393152 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2024-10-18 14:04:23,207 basehttp 62003 6171045888 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2024-10-18 14:04:23,215 basehttp 62003 6154219520 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2024-10-18 14:04:23,215 basehttp 62003 6137393152 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2024-10-18 14:04:23,216 basehttp 62003 6221524992 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2024-10-18 14:04:23,217 basehttp 62003 6204698624 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-10-18 14:04:23,222 basehttp 62003 6221524992 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2024-10-18 14:04:23,224 basehttp 62003 6187872256 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2024-10-18 14:04:23,235 basehttp 62003 6204698624 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2024-10-18 14:04:23,235 basehttp 62003 6221524992 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2024-10-18 14:04:23,236 basehttp 62003 6187872256 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2024-10-18 14:04:26,600 basehttp 62003 6187872256 "GET /admin/userprofile/customuser/1/change/ HTTP/1.1" 200 26536
+INFO 2024-10-18 14:04:26,630 basehttp 62003 6187872256 "GET /static/admin/css/forms.css HTTP/1.1" 200 9090
+INFO 2024-10-18 14:04:26,640 basehttp 62003 6187872256 "GET /static/admin/js/SelectBox.js HTTP/1.1" 200 4530
+INFO 2024-10-18 14:04:26,643 basehttp 62003 6154219520 "GET /static/admin/js/SelectFilter2.js HTTP/1.1" 200 15492
+INFO 2024-10-18 14:04:26,643 basehttp 62003 6171045888 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2024-10-18 14:04:26,644 basehttp 62003 6204698624 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2024-10-18 14:04:26,645 basehttp 62003 6137393152 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2024-10-18 14:04:26,646 basehttp 62003 6221524992 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-10-18 14:04:26,647 basehttp 62003 6187872256 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11800
+INFO 2024-10-18 14:04:26,656 basehttp 62003 6187872256 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2024-10-18 14:04:26,752 basehttp 62003 6221524992 "GET /static/admin/img/selector-icons.svg HTTP/1.1" 200 3291
+INFO 2024-10-18 14:04:26,753 basehttp 62003 6204698624 "GET /static/admin/img/icon-unknown-alt.svg HTTP/1.1" 200 655
+INFO 2024-10-18 14:04:26,753 basehttp 62003 6187872256 "GET /static/admin/img/icon-unknown.svg HTTP/1.1" 200 655
+INFO 2024-10-18 14:04:26,754 basehttp 62003 6171045888 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2024-10-18 14:04:26,755 basehttp 62003 6137393152 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2024-10-18 14:07:02,636 autoreload 64269 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 14:07:02,798 wsgi 64269 6148878336 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 14:07:02,798 wsgi 64269 6148878336 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 14:07:08,682 basehttp 64269 6165704704 "GET /admin/userprofile/customuser/1/change/ HTTP/1.1" 200 26536
+INFO 2024-10-18 14:07:08,767 basehttp 64269 6165704704 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-10-18 14:07:18,746 basehttp 64269 6165704704 "GET / HTTP/1.1" 200 4786
+INFO 2024-10-18 14:07:22,116 basehttp 64269 6165704704 "GET /accounts/account/ HTTP/1.1" 200 5096
+INFO 2024-10-18 14:07:22,163 basehttp 64269 6165704704 "GET /media/profile_images/Jim_Headshot_Wu9jxCz.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:07:40,395 models 64269 6165704704 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-18 14:07:40,395 models 64269 6165704704 Profile image path: /Users/jimburchel/cg_mobilization/media/Jim Headshot.jpg
+ERROR 2024-10-18 14:07:40,395 models 64269 6165704704 Error creating thumbnail for user j.burchel@crossoverglobal.net: [Errno 2] No such file or directory: '/Users/jimburchel/cg_mobilization/media/Jim Headshot.jpg'
+INFO 2024-10-18 14:07:40,396 models 64269 6165704704 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-18 14:07:40,396 models 64269 6165704704 Profile image path: /Users/jimburchel/cg_mobilization/media/Jim Headshot.jpg
+ERROR 2024-10-18 14:07:40,396 models 64269 6165704704 Error creating thumbnail for user j.burchel@crossoverglobal.net: [Errno 2] No such file or directory: '/Users/jimburchel/cg_mobilization/media/Jim Headshot.jpg'
+INFO 2024-10-18 14:07:40,398 basehttp 64269 6165704704 "POST /accounts/account/ HTTP/1.1" 302 0
+INFO 2024-10-18 14:07:40,403 basehttp 64269 6165704704 "GET /accounts/account/ HTTP/1.1" 200 5378
+INFO 2024-10-18 14:07:40,436 basehttp 64269 6165704704 "GET /media/profile_images/Jim_Headshot_U13jGpo.jpg HTTP/1.1" 200 186455
+INFO 2024-10-18 14:07:48,904 basehttp 64269 6165704704 "GET /accounts/account/ HTTP/1.1" 200 5134
+INFO 2024-10-18 14:07:48,940 basehttp 64269 6165704704 "GET /static/css/account.css HTTP/1.1" 200 2772
+INFO 2024-10-18 14:07:48,944 basehttp 64269 6165704704 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 14:07:48,947 basehttp 64269 6199357440 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 14:07:48,948 basehttp 64269 6182531072 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 14:07:48,953 basehttp 64269 6199357440 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 14:07:48,955 basehttp 64269 6182531072 "GET /media/profile_images/Jim_Headshot_U13jGpo.jpg HTTP/1.1" 200 186455
+INFO 2024-10-18 14:07:48,958 basehttp 64269 6182531072 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 14:07:49,097 basehttp 64269 6182531072 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 14:08:23,385 autoreload 65190 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 14:08:23,545 wsgi 65190 6144405504 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 14:08:23,545 wsgi 65190 6144405504 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 14:08:25,922 basehttp 65190 6161231872 "GET /accounts/account/ HTTP/1.1" 200 5134
+INFO 2024-10-18 14:08:25,975 basehttp 65190 6161231872 "GET /media/profile_images/Jim_Headshot_U13jGpo.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:08:29,477 basehttp 65190 6161231872 "GET /accounts/account/ HTTP/1.1" 200 5134
+INFO 2024-10-18 14:08:33,394 basehttp 65190 6161231872 "GET /accounts/account/ HTTP/1.1" 200 5134
+INFO 2024-10-18 14:08:33,430 basehttp 65190 6161231872 "GET /media/profile_images/Jim_Headshot_U13jGpo.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:08:47,598 models 65190 6161231872 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-18 14:08:47,598 models 65190 6161231872 Profile image path: /Users/jimburchel/cg_mobilization/media/Bubba Jim.jpg
+ERROR 2024-10-18 14:08:47,598 models 65190 6161231872 Error creating thumbnail for user j.burchel@crossoverglobal.net: [Errno 2] No such file or directory: '/Users/jimburchel/cg_mobilization/media/Bubba Jim.jpg'
+INFO 2024-10-18 14:08:47,599 models 65190 6161231872 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-18 14:08:47,599 models 65190 6161231872 Profile image path: /Users/jimburchel/cg_mobilization/media/Bubba Jim.jpg
+ERROR 2024-10-18 14:08:47,599 models 65190 6161231872 Error creating thumbnail for user j.burchel@crossoverglobal.net: [Errno 2] No such file or directory: '/Users/jimburchel/cg_mobilization/media/Bubba Jim.jpg'
+INFO 2024-10-18 14:08:47,602 basehttp 65190 6161231872 "POST /accounts/account/ HTTP/1.1" 302 0
+INFO 2024-10-18 14:08:47,610 basehttp 65190 6161231872 "GET /accounts/account/ HTTP/1.1" 200 5413
+INFO 2024-10-18 14:08:47,650 basehttp 65190 6161231872 "GET /media/profile_images/Bubba_Jim_1mqgGEn.jpg HTTP/1.1" 200 188087
+INFO 2024-10-18 14:11:03,912 autoreload 67031 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 14:11:04,075 wsgi 67031 6152400896 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 14:11:04,076 wsgi 67031 6152400896 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 14:11:07,402 basehttp 67031 6169227264 "GET /accounts/account/ HTTP/1.1" 200 5169
+INFO 2024-10-18 14:11:07,457 basehttp 67031 6169227264 "GET /media/profile_images/Bubba_Jim_1mqgGEn.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:11:10,669 basehttp 67031 6169227264 "GET /contacts/ HTTP/1.1" 200 218887
+INFO 2024-10-18 14:11:10,700 basehttp 67031 6169227264 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-10-18 14:11:13,001 basehttp 67031 6169227264 "GET /accounts/account/ HTTP/1.1" 200 5169
+INFO 2024-10-18 14:11:25,499 models 67031 6169227264 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-18 14:11:25,499 models 67031 6169227264 Profile image path: /Users/jimburchel/cg_mobilization/media/Jim Headshot.jpg
+ERROR 2024-10-18 14:11:25,499 models 67031 6169227264 Error creating thumbnail for user j.burchel@crossoverglobal.net: [Errno 2] No such file or directory: '/Users/jimburchel/cg_mobilization/media/Jim Headshot.jpg'
+INFO 2024-10-18 14:11:25,500 models 67031 6169227264 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-18 14:11:25,500 models 67031 6169227264 Profile image path: /Users/jimburchel/cg_mobilization/media/Jim Headshot.jpg
+ERROR 2024-10-18 14:11:25,500 models 67031 6169227264 Error creating thumbnail for user j.burchel@crossoverglobal.net: [Errno 2] No such file or directory: '/Users/jimburchel/cg_mobilization/media/Jim Headshot.jpg'
+INFO 2024-10-18 14:11:25,502 basehttp 67031 6169227264 "POST /accounts/account/ HTTP/1.1" 302 0
+INFO 2024-10-18 14:11:25,508 basehttp 67031 6169227264 "GET /accounts/account/ HTTP/1.1" 200 5454
+INFO 2024-10-18 14:11:25,543 basehttp 67031 6169227264 "GET /media/profile_images/Jim_Headshot_7NRBwzG.jpg HTTP/1.1" 200 186455
+INFO 2024-10-18 14:11:28,165 basehttp 67031 6169227264 "GET /accounts/account/ HTTP/1.1" 200 5210
+INFO 2024-10-18 14:11:28,207 basehttp 67031 6169227264 "GET /media/profile_images/Jim_Headshot_7NRBwzG.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:11:30,893 basehttp 67031 6169227264 "GET /accounts/account/ HTTP/1.1" 200 5210
+INFO 2024-10-18 14:11:30,933 basehttp 67031 6169227264 "GET /static/css/account.css HTTP/1.1" 200 2772
+INFO 2024-10-18 14:11:30,937 basehttp 67031 6169227264 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 14:11:30,939 basehttp 67031 6186053632 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 14:11:30,940 basehttp 67031 6169227264 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 14:11:30,946 basehttp 67031 6186053632 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 14:11:30,949 basehttp 67031 6186053632 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 14:11:30,950 basehttp 67031 6169227264 "GET /media/profile_images/Jim_Headshot_7NRBwzG.jpg HTTP/1.1" 200 186455
+INFO 2024-10-18 14:11:31,093 basehttp 67031 6169227264 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 14:13:41,156 autoreload 68771 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 14:13:41,325 wsgi 68771 6113095680 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 14:13:41,325 wsgi 68771 6113095680 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 14:13:46,888 basehttp 68771 6129922048 "GET /accounts/account/ HTTP/1.1" 200 5210
+INFO 2024-10-18 14:13:46,952 basehttp 68771 6129922048 "GET /media/profile_images/Jim_Headshot_7NRBwzG.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:13:57,483 models 68771 6129922048 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-18 14:13:57,484 models 68771 6129922048 Profile image path: /Users/jimburchel/cg_mobilization/media/Bubba Jim.jpg
+ERROR 2024-10-18 14:13:57,484 models 68771 6129922048 Error creating thumbnail for user j.burchel@crossoverglobal.net: [Errno 2] No such file or directory: '/Users/jimburchel/cg_mobilization/media/Bubba Jim.jpg'
+INFO 2024-10-18 14:13:57,484 models 68771 6129922048 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-18 14:13:57,484 models 68771 6129922048 Profile image path: /Users/jimburchel/cg_mobilization/media/Bubba Jim.jpg
+ERROR 2024-10-18 14:13:57,484 models 68771 6129922048 Error creating thumbnail for user j.burchel@crossoverglobal.net: [Errno 2] No such file or directory: '/Users/jimburchel/cg_mobilization/media/Bubba Jim.jpg'
+INFO 2024-10-18 14:13:57,487 basehttp 68771 6129922048 "POST /accounts/account/ HTTP/1.1" 302 0
+INFO 2024-10-18 14:13:57,494 basehttp 68771 6129922048 "GET /accounts/account/ HTTP/1.1" 200 5489
+INFO 2024-10-18 14:13:57,532 basehttp 68771 6129922048 "GET /media/profile_images/Bubba_Jim_6C474mg.jpg HTTP/1.1" 200 188087
+INFO 2024-10-18 14:13:59,872 basehttp 68771 6129922048 "GET /accounts/account/ HTTP/1.1" 200 5245
+INFO 2024-10-18 14:13:59,910 basehttp 68771 6129922048 "GET /media/profile_images/Bubba_Jim_6C474mg.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:14:01,527 basehttp 68771 6129922048 "GET /accounts/account/ HTTP/1.1" 200 5245
+INFO 2024-10-18 14:14:01,562 basehttp 68771 6129922048 "GET /static/css/account.css HTTP/1.1" 200 2772
+INFO 2024-10-18 14:14:01,564 basehttp 68771 6129922048 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 14:14:01,570 basehttp 68771 6146748416 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 14:14:01,571 basehttp 68771 6129922048 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 14:14:01,577 basehttp 68771 6129922048 "GET /media/profile_images/Bubba_Jim_6C474mg.jpg HTTP/1.1" 200 188087
+INFO 2024-10-18 14:14:01,579 basehttp 68771 6146748416 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 14:14:01,586 basehttp 68771 6146748416 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 14:14:01,715 basehttp 68771 6146748416 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 14:20:08,206 autoreload 73166 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 14:20:08,377 wsgi 73166 6143242240 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 14:20:08,377 wsgi 73166 6143242240 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 14:20:11,950 basehttp 73166 6160068608 "GET /accounts/account/ HTTP/1.1" 200 5245
+INFO 2024-10-18 14:20:12,012 basehttp 73166 6160068608 "GET /media/profile_images/Bubba_Jim_6C474mg.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:20:23,142 views 73166 6160068608 New profile image uploaded for user j.burchel@crossoverglobal.net: Jim Headshot.jpg
+INFO 2024-10-18 14:20:23,142 models 73166 6160068608 Profile image changed for user j.burchel@crossoverglobal.net. Creating thumbnail.
+INFO 2024-10-18 14:20:23,144 models 73166 6160068608 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-18 14:20:23,149 models 73166 6160068608 Thumbnail created successfully for user j.burchel@crossoverglobal.net. Path: profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_4fysiTH.jpg
+INFO 2024-10-18 14:20:23,150 views 73166 6160068608 User saved. Profile image name: profile_images/Jim_Headshot_Z4SH1ti.jpg
+INFO 2024-10-18 14:20:23,150 views 73166 6160068608 User saved. Profile thumbnail name: profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_4fysiTH.jpg
+INFO 2024-10-18 14:20:23,151 basehttp 73166 6160068608 "POST /accounts/account/ HTTP/1.1" 302 0
+INFO 2024-10-18 14:20:23,158 basehttp 73166 6160068608 "GET /accounts/account/ HTTP/1.1" 200 5549
+INFO 2024-10-18 14:20:23,194 basehttp 73166 6176894976 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_4fysiTH.jpg HTTP/1.1" 200 2908
+INFO 2024-10-18 14:20:23,197 basehttp 73166 6160068608 "GET /media/profile_images/Jim_Headshot_Z4SH1ti.jpg HTTP/1.1" 200 186455
+INFO 2024-10-18 14:20:27,172 basehttp 73166 6160068608 "GET /accounts/account/ HTTP/1.1" 200 5305
+INFO 2024-10-18 14:20:27,213 basehttp 73166 6160068608 "GET /media/profile_images/Jim_Headshot_Z4SH1ti.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:20:27,216 basehttp 73166 6176894976 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_4fysiTH.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:20:29,699 basehttp 73166 6176894976 "GET /accounts/account/ HTTP/1.1" 200 5305
+INFO 2024-10-18 14:20:29,732 basehttp 73166 6176894976 "GET /static/css/account.css HTTP/1.1" 200 2772
+INFO 2024-10-18 14:20:29,736 basehttp 73166 6176894976 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 14:20:29,737 basehttp 73166 6160068608 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 14:20:29,740 basehttp 73166 6193721344 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 14:20:29,750 basehttp 73166 6160068608 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_4fysiTH.jpg HTTP/1.1" 200 2908
+INFO 2024-10-18 14:20:29,751 basehttp 73166 6193721344 "GET /media/profile_images/Jim_Headshot_Z4SH1ti.jpg HTTP/1.1" 200 186455
+INFO 2024-10-18 14:20:29,754 basehttp 73166 6160068608 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 14:20:29,757 basehttp 73166 6160068608 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 14:20:29,882 basehttp 73166 6193721344 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 14:20:51,407 basehttp 73166 6193721344 "GET /accounts/account/ HTTP/1.1" 200 5305
+INFO 2024-10-18 14:20:51,448 basehttp 73166 6193721344 "GET /media/profile_images/Jim_Headshot_Z4SH1ti.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:20:51,451 basehttp 73166 6160068608 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_4fysiTH.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:26:06,226 autoreload 77135 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 14:26:06,398 wsgi 77135 6182547456 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 14:26:06,398 wsgi 77135 6182547456 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 14:26:08,997 basehttp 77135 6199373824 "GET /accounts/account/ HTTP/1.1" 200 5305
+WARNING 2024-10-18 14:26:09,088 log 77135 6199373824 Not Found: /media/profile_images/Jim_Headshot_Z4SH1ti.jpg
+WARNING 2024-10-18 14:26:09,091 basehttp 77135 6199373824 "GET /media/profile_images/Jim_Headshot_Z4SH1ti.jpg HTTP/1.1" 404 3368
+WARNING 2024-10-18 14:26:09,100 log 77135 6216200192 Not Found: /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_4fysiTH.jpg
+WARNING 2024-10-18 14:26:09,100 basehttp 77135 6216200192 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_4fysiTH.jpg HTTP/1.1" 404 3548
+INFO 2024-10-18 14:26:11,483 views 77135 6216200192 User saved. Profile image name: profile_images/Jim_Headshot_Z4SH1ti.jpg
+INFO 2024-10-18 14:26:11,484 views 77135 6216200192 User saved. Profile thumbnail name: profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_4fysiTH.jpg
+INFO 2024-10-18 14:26:11,484 basehttp 77135 6216200192 "POST /accounts/account/ HTTP/1.1" 302 0
+INFO 2024-10-18 14:26:11,508 basehttp 77135 6216200192 "GET /accounts/account/ HTTP/1.1" 200 5549
+WARNING 2024-10-18 14:26:11,585 log 77135 6199373824 Not Found: /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_4fysiTH.jpg
+WARNING 2024-10-18 14:26:11,595 basehttp 77135 6199373824 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_4fysiTH.jpg HTTP/1.1" 404 3548
+WARNING 2024-10-18 14:26:11,596 log 77135 6216200192 Not Found: /media/profile_images/Jim_Headshot_Z4SH1ti.jpg
+WARNING 2024-10-18 14:26:11,596 basehttp 77135 6216200192 "GET /media/profile_images/Jim_Headshot_Z4SH1ti.jpg HTTP/1.1" 404 3368
+INFO 2024-10-18 14:26:22,761 views 77135 6216200192 New profile image uploaded for user j.burchel@crossoverglobal.net: Jim Headshot.jpg
+INFO 2024-10-18 14:26:22,762 models 77135 6216200192 Profile image changed for user j.burchel@crossoverglobal.net. Creating thumbnail.
+INFO 2024-10-18 14:26:22,764 models 77135 6216200192 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-18 14:26:22,769 models 77135 6216200192 Thumbnail created successfully for user j.burchel@crossoverglobal.net. Path: profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb.jpg
+INFO 2024-10-18 14:26:22,769 views 77135 6216200192 User saved. Profile image name: profile_images/Jim_Headshot.jpg
+INFO 2024-10-18 14:26:22,769 views 77135 6216200192 User saved. Profile thumbnail name: profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb.jpg
+INFO 2024-10-18 14:26:22,770 basehttp 77135 6216200192 "POST /accounts/account/ HTTP/1.1" 302 0
+INFO 2024-10-18 14:26:22,776 basehttp 77135 6216200192 "GET /accounts/account/ HTTP/1.1" 200 5533
+INFO 2024-10-18 14:26:22,810 basehttp 77135 6199373824 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb.jpg HTTP/1.1" 200 2908
+INFO 2024-10-18 14:26:22,812 basehttp 77135 6216200192 "GET /media/profile_images/Jim_Headshot.jpg HTTP/1.1" 200 186455
+INFO 2024-10-18 14:26:25,455 basehttp 77135 6216200192 "GET /accounts/account/ HTTP/1.1" 200 5289
+INFO 2024-10-18 14:26:25,496 basehttp 77135 6216200192 "GET /media/profile_images/Jim_Headshot.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:26:25,498 basehttp 77135 6199373824 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:26:28,204 basehttp 77135 6199373824 "GET /accounts/account/ HTTP/1.1" 200 5289
+INFO 2024-10-18 14:26:28,241 basehttp 77135 6199373824 "GET /static/css/account.css HTTP/1.1" 200 2772
+INFO 2024-10-18 14:26:28,245 basehttp 77135 6199373824 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 14:26:28,246 basehttp 77135 6216200192 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 14:26:28,249 basehttp 77135 6233026560 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 14:26:28,256 basehttp 77135 6216200192 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb.jpg HTTP/1.1" 200 2908
+INFO 2024-10-18 14:26:28,258 basehttp 77135 6233026560 "GET /media/profile_images/Jim_Headshot.jpg HTTP/1.1" 200 186455
+INFO 2024-10-18 14:26:28,274 basehttp 77135 6216200192 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 14:26:28,274 basehttp 77135 6233026560 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 14:26:28,396 basehttp 77135 6233026560 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 14:26:32,920 basehttp 77135 6233026560 "GET /accounts/account/ HTTP/1.1" 200 5289
+INFO 2024-10-18 14:26:32,960 basehttp 77135 6233026560 "GET /media/profile_images/Jim_Headshot.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:26:32,963 basehttp 77135 6216200192 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:26:35,994 basehttp 77135 6216200192 "GET /accounts/account/ HTTP/1.1" 200 5289
+INFO 2024-10-18 14:26:36,035 basehttp 77135 6216200192 "GET /media/profile_images/Jim_Headshot.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:26:36,037 basehttp 77135 6233026560 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:26:39,543 basehttp 77135 6233026560 "GET /accounts/account/ HTTP/1.1" 200 5289
+INFO 2024-10-18 14:26:39,585 basehttp 77135 6233026560 "GET /media/profile_images/Jim_Headshot.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:26:39,587 basehttp 77135 6216200192 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:26:49,440 basehttp 77135 6216200192 "GET /admin/ HTTP/1.1" 200 11607
+WARNING 2024-10-18 14:26:49,613 log 77135 6216200192 Not Found: /favicon.ico
+WARNING 2024-10-18 14:26:49,613 basehttp 77135 6216200192 "GET /favicon.ico HTTP/1.1" 404 3037
+INFO 2024-10-18 14:26:51,406 basehttp 77135 6216200192 "GET /admin/userprofile/customuser/ HTTP/1.1" 200 12789
+INFO 2024-10-18 14:26:51,461 basehttp 77135 6216200192 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-10-18 14:26:53,026 basehttp 77135 6216200192 "GET /admin/userprofile/customuser/1/change/ HTTP/1.1" 200 27083
+INFO 2024-10-18 14:26:53,073 basehttp 77135 6216200192 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-10-18 14:27:26,198 basehttp 77135 6216200192 "POST /admin/userprofile/customuser/1/change/ HTTP/1.1" 302 0
+INFO 2024-10-18 14:27:26,244 basehttp 77135 6216200192 "GET /admin/userprofile/customuser/ HTTP/1.1" 200 13019
+INFO 2024-10-18 14:27:26,275 basehttp 77135 6216200192 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-10-18 14:27:33,158 basehttp 77135 6216200192 "GET / HTTP/1.1" 200 4786
+INFO 2024-10-18 14:36:03,234 models 83779 7954013248 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-18 14:36:03,246 models 83779 7954013248 Thumbnail created successfully for user j.burchel@crossoverglobal.net. Path: profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg
+INFO 2024-10-18 14:36:17,125 autoreload 83922 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 14:36:17,280 wsgi 83922 6105640960 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 14:36:17,280 wsgi 83922 6105640960 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 14:36:17,353 basehttp 83922 6122467328 "GET /admin/userprofile/customuser/ HTTP/1.1" 200 12789
+INFO 2024-10-18 14:36:17,412 basehttp 83922 6122467328 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2024-10-18 14:36:24,044 basehttp 83922 6122467328 "GET / HTTP/1.1" 200 4786
+INFO 2024-10-18 14:36:27,818 basehttp 83922 6122467328 "GET /accounts/account/ HTTP/1.1" 200 5297
+INFO 2024-10-18 14:36:27,865 basehttp 83922 6139293696 "GET /media/profile_images/Jim_Headshot.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:36:27,876 basehttp 83922 6122467328 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg HTTP/1.1" 200 930
+INFO 2024-10-18 14:36:31,601 basehttp 83922 6122467328 "GET /accounts/account/ HTTP/1.1" 200 5297
+INFO 2024-10-18 14:36:31,637 basehttp 83922 6139293696 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 14:36:31,638 basehttp 83922 6122467328 "GET /static/css/account.css HTTP/1.1" 200 2772
+INFO 2024-10-18 14:36:31,652 basehttp 83922 6139293696 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 14:36:31,652 basehttp 83922 6122467328 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 14:36:31,667 basehttp 83922 6139293696 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg HTTP/1.1" 200 930
+INFO 2024-10-18 14:36:31,670 basehttp 83922 6139293696 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 14:36:31,671 basehttp 83922 6122467328 "GET /media/profile_images/Jim_Headshot.jpg HTTP/1.1" 200 186455
+INFO 2024-10-18 14:36:31,673 basehttp 83922 6139293696 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 14:36:31,784 basehttp 83922 6139293696 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 14:40:44,414 autoreload 86932 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 14:40:44,577 wsgi 86932 6118649856 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 14:40:44,577 wsgi 86932 6118649856 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 14:40:47,234 basehttp 86932 6135476224 "GET /accounts/account/ HTTP/1.1" 200 5352
+INFO 2024-10-18 14:40:47,285 basehttp 86932 6152302592 "GET /media/profile_images/Jim_Headshot.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:40:47,289 basehttp 86932 6135476224 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg HTTP/1.1" 304 0
+INFO 2024-10-18 14:40:52,545 basehttp 86932 6135476224 "GET /accounts/account/ HTTP/1.1" 200 5352
