@@ -4925,3 +4925,153 @@ INFO 2024-10-11 10:07:12,905 wsgi 38172 6187642880 Media root path: /opt/render/
 INFO 2024-10-11 10:07:15,727 basehttp 38172 6204469248 "GET /contacts/ HTTP/1.1" 200 210657
 INFO 2024-10-11 10:07:15,768 basehttp 38172 6204469248 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
 INFO 2024-10-11 10:07:17,388 basehttp 38172 6204469248 "GET /com_log/ HTTP/1.1" 200 11516
+INFO 2024-10-18 12:56:58,000 autoreload 16198 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 12:56:58,176 wsgi 16198 6115176448 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 12:56:58,176 wsgi 16198 6115176448 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 12:57:01,395 basehttp 16198 6132002816 "GET / HTTP/1.1" 200 4277
+INFO 2024-10-18 12:57:01,480 basehttp 16198 6182481920 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 12:57:01,482 basehttp 16198 6132002816 "GET /static/css/home.css HTTP/1.1" 200 2990
+INFO 2024-10-18 12:57:01,483 basehttp 16198 6148829184 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 12:57:01,484 basehttp 16198 6165655552 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 12:57:01,489 basehttp 16198 6182481920 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 12:57:01,907 basehttp 16198 6165655552 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 12:57:01,911 basehttp 16198 6165655552 "GET /static/images/favicon-32x32.png?v=1 HTTP/1.1" 200 7484
+INFO 2024-10-18 12:57:03,455 basehttp 16198 6165655552 "GET /contacts/ HTTP/1.1" 302 0
+INFO 2024-10-18 12:57:03,464 basehttp 16198 6165655552 "GET /accounts/login/?next=/contacts/ HTTP/1.1" 200 2932
+INFO 2024-10-18 12:57:03,499 basehttp 16198 6165655552 "GET /static/css/userprofile.css HTTP/1.1" 200 7658
+INFO 2024-10-18 12:57:09,283 basehttp 16198 6132002816 "POST /accounts/login/?next=/contacts/ HTTP/1.1" 302 0
+INFO 2024-10-18 12:57:09,287 basehttp 16198 6132002816 "GET / HTTP/1.1" 200 4786
+INFO 2024-10-18 12:57:09,312 basehttp 16198 6132002816 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 12:57:11,672 basehttp 16198 6132002816 "GET /contacts/ HTTP/1.1" 200 210657
+INFO 2024-10-18 12:57:11,738 basehttp 16198 6132002816 "GET /static/css/contacts_list.css HTTP/1.1" 200 4895
+INFO 2024-10-18 12:57:11,740 basehttp 16198 6148829184 "GET /static/js/contact_list.js HTTP/1.1" 200 2072
+INFO 2024-10-18 12:59:57,911 autoreload 18219 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 12:59:58,079 wsgi 18219 6146797568 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 12:59:58,079 wsgi 18219 6146797568 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 13:00:01,292 basehttp 18219 6163623936 "GET /contacts/ HTTP/1.1" 200 215634
+INFO 2024-10-18 13:00:07,816 basehttp 18219 6163623936 "GET /contacts/ HTTP/1.1" 200 215634
+INFO 2024-10-18 13:00:07,902 basehttp 18219 6180450304 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 13:00:07,902 basehttp 18219 6163623936 "GET /static/css/contacts_list.css HTTP/1.1" 200 4895
+INFO 2024-10-18 13:00:07,903 basehttp 18219 6214103040 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 13:00:07,903 basehttp 18219 6197276672 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 13:00:07,905 basehttp 18219 6197276672 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 13:00:07,906 basehttp 18219 6214103040 "GET /static/js/contact_list.js HTTP/1.1" 200 2072
+INFO 2024-10-18 13:00:07,913 basehttp 18219 6214103040 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 13:00:08,097 basehttp 18219 6214103040 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 13:00:20,193 basehttp 18219 6163623936 "GET /contacts/ HTTP/1.1" 200 215634
+INFO 2024-10-18 13:00:23,031 basehttp 18219 6163623936 "GET /contacts/ HTTP/1.1" 200 215634
+INFO 2024-10-18 13:00:23,061 basehttp 18219 6163623936 "GET /static/css/contacts_list.css HTTP/1.1" 200 4895
+INFO 2024-10-18 13:00:23,069 basehttp 18219 6197276672 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 13:00:23,070 basehttp 18219 6180450304 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 13:00:23,070 basehttp 18219 6214103040 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 13:00:23,072 basehttp 18219 6214103040 "GET /static/js/contact_list.js HTTP/1.1" 200 2072
+INFO 2024-10-18 13:00:23,072 basehttp 18219 6180450304 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 13:00:23,075 basehttp 18219 6180450304 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 13:00:23,275 basehttp 18219 6180450304 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 13:05:10,832 autoreload 21716 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 13:05:10,993 wsgi 21716 6116962304 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 13:05:10,993 wsgi 21716 6116962304 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 13:05:14,793 basehttp 21716 6133788672 "GET /contacts/ HTTP/1.1" 200 195704
+INFO 2024-10-18 13:07:06,075 basehttp 21716 6133788672 "GET /contacts/ HTTP/1.1" 200 215634
+INFO 2024-10-18 13:07:08,125 basehttp 21716 6133788672 "GET /contacts/ HTTP/1.1" 200 215634
+INFO 2024-10-18 13:07:08,177 basehttp 21716 6150615040 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 13:07:08,178 basehttp 21716 6133788672 "GET /static/css/contacts_list.css HTTP/1.1" 200 4895
+INFO 2024-10-18 13:07:08,178 basehttp 21716 6184267776 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 13:07:08,179 basehttp 21716 6167441408 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 13:07:08,192 basehttp 21716 6167441408 "GET /static/js/contact_list.js HTTP/1.1" 200 2072
+INFO 2024-10-18 13:07:08,193 basehttp 21716 6184267776 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 13:07:08,201 basehttp 21716 6184267776 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 13:07:08,433 basehttp 21716 6184267776 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 13:07:09,235 basehttp 21716 6184267776 "GET /contacts/ HTTP/1.1" 200 215634
+INFO 2024-10-18 13:07:09,264 basehttp 21716 6184267776 "GET /static/css/contacts_list.css HTTP/1.1" 200 4895
+INFO 2024-10-18 13:07:09,270 basehttp 21716 6184267776 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 13:07:09,271 basehttp 21716 6167441408 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 13:07:09,272 basehttp 21716 6133788672 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 13:07:09,276 basehttp 21716 6167441408 "GET /static/js/contact_list.js HTTP/1.1" 200 2072
+INFO 2024-10-18 13:07:09,277 basehttp 21716 6133788672 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 13:07:09,279 basehttp 21716 6133788672 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 13:07:09,465 basehttp 21716 6133788672 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 13:13:36,073 basehttp 21716 6133788672 "GET /contacts/ HTTP/1.1" 200 215634
+INFO 2024-10-18 13:13:36,188 basehttp 21716 6133788672 "GET /static/css/contacts_list.css HTTP/1.1" 200 4895
+INFO 2024-10-18 13:13:36,206 basehttp 21716 6150615040 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 13:13:36,207 basehttp 21716 6167441408 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 13:13:36,216 basehttp 21716 6133788672 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 13:13:36,218 basehttp 21716 6150615040 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 13:13:36,226 basehttp 21716 6167441408 "GET /static/js/contact_list.js HTTP/1.1" 200 2072
+INFO 2024-10-18 13:13:36,227 basehttp 21716 6150615040 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 13:13:36,546 basehttp 21716 6150615040 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 13:22:28,337 autoreload 33649 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 13:22:28,507 wsgi 33649 6108688384 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 13:22:28,507 wsgi 33649 6108688384 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 13:22:32,732 basehttp 33649 6125514752 "GET /contacts/ HTTP/1.1" 200 215725
+INFO 2024-10-18 13:25:45,914 autoreload 35812 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 13:25:46,077 wsgi 35812 6151467008 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 13:25:46,077 wsgi 35812 6151467008 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 13:25:51,328 basehttp 35812 6168293376 "GET /contacts/ HTTP/1.1" 200 215634
+INFO 2024-10-18 13:26:27,283 basehttp 35812 6168293376 "GET /contacts/ HTTP/1.1" 200 215634
+INFO 2024-10-18 13:26:27,382 basehttp 35812 6168293376 "GET /static/css/contacts_list.css HTTP/1.1" 200 4895
+INFO 2024-10-18 13:26:27,384 basehttp 35812 6185119744 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-18 13:26:27,384 basehttp 35812 6218772480 "GET /static/images/default_thumbnail.png HTTP/1.1" 200 15427
+INFO 2024-10-18 13:26:27,388 basehttp 35812 6201946112 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-18 13:26:27,393 basehttp 35812 6201946112 "GET /static/js/contact_list.js HTTP/1.1" 200 2601
+INFO 2024-10-18 13:26:27,394 basehttp 35812 6218772480 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-18 13:26:27,398 basehttp 35812 6218772480 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-18 13:26:27,624 basehttp 35812 6218772480 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-18 13:27:51,053 basehttp 35812 6168293376 "GET /contacts/ HTTP/1.1" 200 215634
+INFO 2024-10-18 13:27:51,109 basehttp 35812 6168293376 "GET /static/js/contact_list.js HTTP/1.1" 200 2601
+INFO 2024-10-18 13:28:44,775 basehttp 35812 6168293376 "GET /contacts/ HTTP/1.1" 200 215584
+INFO 2024-10-18 13:29:22,005 basehttp 35812 6168293376 "GET /contacts/ HTTP/1.1" 200 215634
+INFO 2024-10-18 13:29:22,048 basehttp 35812 6168293376 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-10-18 13:31:48,800 autoreload 39918 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-18 13:31:48,968 wsgi 39918 6183448576 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-18 13:31:48,968 wsgi 39918 6183448576 Media root path: /opt/render/project/src/media
+INFO 2024-10-18 13:31:53,337 basehttp 39918 6200274944 "GET /contacts/ HTTP/1.1" 200 218887
+INFO 2024-10-18 13:31:53,401 basehttp 39918 6200274944 "GET /static/js/contact_list.js HTTP/1.1" 200 1149
+INFO 2024-10-18 13:32:00,925 views 39918 6200274944 PersonDetailView: Fetched 43 recent communications for Person 236
+INFO 2024-10-18 13:32:00,928 views 39918 6200274944 PersonDetailView: ComLog: 46, Date: 2024-09-25 19:47:55.857845+00:00, Type: text, Content Type: Contacts | Person
+INFO 2024-10-18 13:32:00,929 views 39918 6200274944 PersonDetailView: ComLog: 45, Date: 2024-09-23 17:05:12.098821+00:00, Type: email, Content Type: Contacts | Person
+INFO 2024-10-18 13:32:00,930 views 39918 6200274944 PersonDetailView: ComLog: 44, Date: 2024-09-23 17:00:11.043478+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,931 views 39918 6200274944 PersonDetailView: ComLog: 43, Date: 2024-09-23 16:52:12.136244+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,932 views 39918 6200274944 PersonDetailView: ComLog: 41, Date: 2024-09-23 14:53:49.419536+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,932 views 39918 6200274944 PersonDetailView: ComLog: 40, Date: 2024-09-23 14:48:22.635754+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,933 views 39918 6200274944 PersonDetailView: ComLog: 39, Date: 2024-09-23 14:21:37.682558+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,934 views 39918 6200274944 PersonDetailView: ComLog: 38, Date: 2024-09-23 14:19:11.884037+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,934 views 39918 6200274944 PersonDetailView: ComLog: 37, Date: 2024-09-23 14:12:37.417830+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,934 views 39918 6200274944 PersonDetailView: ComLog: 36, Date: 2024-09-23 14:05:23.169628+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,935 views 39918 6200274944 PersonDetailView: ComLog: 35, Date: 2024-09-23 14:02:13.669702+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,935 views 39918 6200274944 PersonDetailView: ComLog: 34, Date: 2024-09-23 13:51:27.541766+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,936 views 39918 6200274944 PersonDetailView: ComLog: 33, Date: 2024-09-23 13:50:11.149923+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,936 views 39918 6200274944 PersonDetailView: ComLog: 32, Date: 2024-09-23 12:48:13.740480+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,937 views 39918 6200274944 PersonDetailView: ComLog: 31, Date: 2024-09-19 20:47:40.008442+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,937 views 39918 6200274944 PersonDetailView: ComLog: 30, Date: 2024-09-19 20:19:39.289621+00:00, Type: Email, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,938 views 39918 6200274944 PersonDetailView: ComLog: 28, Date: 2024-09-19 15:29:16.868933+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-10-18 13:32:00,938 views 39918 6200274944 PersonDetailView: ComLog: 27, Date: 2024-09-19 15:25:31.562671+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-10-18 13:32:00,938 views 39918 6200274944 PersonDetailView: ComLog: 26, Date: 2024-09-19 15:25:15.254144+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-10-18 13:32:00,939 views 39918 6200274944 PersonDetailView: ComLog: 25, Date: 2024-09-19 13:06:14.582081+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-10-18 13:32:00,939 views 39918 6200274944 PersonDetailView: ComLog: 24, Date: 2024-09-19 12:34:27.834387+00:00, Type: phone, Content Type: Contacts | Person
+INFO 2024-10-18 13:32:00,939 views 39918 6200274944 PersonDetailView: ComLog: 23, Date: 2024-09-19 12:28:44.169889+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,940 views 39918 6200274944 PersonDetailView: ComLog: 22, Date: 2024-09-19 12:21:30.775791+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,940 views 39918 6200274944 PersonDetailView: ComLog: 21, Date: 2024-09-19 12:15:24.269186+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,941 views 39918 6200274944 PersonDetailView: ComLog: 20, Date: 2024-09-19 12:14:33.391170+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,941 views 39918 6200274944 PersonDetailView: ComLog: 19, Date: 2024-09-18 20:40:17.240295+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,941 views 39918 6200274944 PersonDetailView: ComLog: 18, Date: 2024-09-18 20:39:00.673912+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,942 views 39918 6200274944 PersonDetailView: ComLog: 16, Date: 2024-09-18 18:59:58.187949+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,942 views 39918 6200274944 PersonDetailView: ComLog: 15, Date: 2024-09-18 18:53:07.678240+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,942 views 39918 6200274944 PersonDetailView: ComLog: 14, Date: 2024-09-18 18:18:30.421918+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,943 views 39918 6200274944 PersonDetailView: ComLog: 13, Date: 2024-09-18 18:03:32.207367+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,943 views 39918 6200274944 PersonDetailView: ComLog: 12, Date: 2024-09-18 17:32:02.358396+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,943 views 39918 6200274944 PersonDetailView: ComLog: 11, Date: 2024-09-18 17:22:23.784185+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,944 views 39918 6200274944 PersonDetailView: ComLog: 10, Date: 2024-09-18 17:20:14.214071+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,944 views 39918 6200274944 PersonDetailView: ComLog: 9, Date: 2024-09-18 16:52:29.886575+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,945 views 39918 6200274944 PersonDetailView: ComLog: 8, Date: 2024-09-17 18:17:43.592950+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,945 views 39918 6200274944 PersonDetailView: ComLog: 7, Date: 2024-09-03 14:16:06.767177+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-10-18 13:32:00,946 views 39918 6200274944 PersonDetailView: ComLog: 6, Date: 2024-09-03 13:54:34.894997+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-10-18 13:32:00,946 views 39918 6200274944 PersonDetailView: ComLog: 5, Date: 2024-09-03 13:52:07.262725+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-10-18 13:32:00,947 views 39918 6200274944 PersonDetailView: ComLog: 4, Date: 2024-09-03 13:50:10.019918+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-10-18 13:32:00,948 views 39918 6200274944 PersonDetailView: ComLog: 3, Date: 2024-09-03 13:47:20.444222+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-10-18 13:32:00,948 views 39918 6200274944 PersonDetailView: ComLog: 2, Date: 2024-09-03 13:43:54.611451+00:00, Type: Email, Content Type: Contacts | Person
+INFO 2024-10-18 13:32:00,949 views 39918 6200274944 PersonDetailView: ComLog: 1, Date: 2024-09-03 13:41:14.644640+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-18 13:32:00,954 basehttp 39918 6200274944 "GET /contacts/person/236/ HTTP/1.1" 200 5515
+INFO 2024-10-18 13:32:01,028 basehttp 39918 6200274944 "GET /static/css/person_detail.css HTTP/1.1" 200 2990
+INFO 2024-10-18 13:32:01,036 basehttp 39918 6217101312 "GET /static/images/default_person.png HTTP/1.1" 200 3101
+INFO 2024-10-18 13:32:01,037 basehttp 39918 6233927680 "GET /static/js/person_detail.js HTTP/1.1" 200 5602

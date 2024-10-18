@@ -19,6 +19,8 @@
         </div>
     </div>
 
+    <div id="search-results-count"></div>
+
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -35,11 +37,11 @@
                 <tr class="contact-row">
                     <td data-label="Name">
                         {% if contact.church %}
-                            <a href="{% url 'contacts:church_detail' contact.church.id %}">{{ contact.church.church_name }} (Church)</a>
+                            <a href="{% url 'contacts:church_detail' contact.church.id %}" class="contact-link" data-id="{{ contact.id }}">{{ contact.church.church_name }} (Church)</a>
                         {% elif contact.people %}
-                            <a href="{% url 'contacts:person_detail' contact.people.id %}">{{ contact.people.first_name }} {{ contact.people.last_name }} (Person)</a>
+                            <a href="{% url 'contacts:person_detail' contact.people.id %}" class="contact-link" data-id="{{ contact.id }}">{{ contact.people.first_name }} {{ contact.people.last_name }} (Person)</a>
                         {% else %}
-                            {{ contact.get_name }} (Unknown)
+                            <span class="contact-link" data-id="{{ contact.id }}">{{ contact.get_name }} (Unknown)</span>
                         {% endif %}
                     </td>
                     <td data-label="Email">{{ contact.email }}</td>
@@ -51,7 +53,7 @@
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="6">No contacts found.</td>
+                    <td colspan="5">No contacts found.</td>
                 </tr>
                 {% endfor %}
             </tbody>
