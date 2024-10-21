@@ -48,21 +48,41 @@ class ContactListView(ListView):
         contacts_data = []
         
         for contact in context['contacts']:
+            debug_info = {
+                'id': contact.id,
+                'has_church': hasattr(contact, 'church'),
+                'has_people': hasattr(contact, 'people'),
+                'email': contact.email,
+                'phone': contact.phone,
+            }
+            
+            if hasattr(contact, 'church'):
+                debug_info.update({
+                    'church_id': contact.church.id,
+                    'church_name': contact.church.church_name,
+                    'primary_contact_email': getattr(contact.church, 'primary_contact_email', 'N/A'),
+                    'primary_contact_phone': getattr(contact.church, 'primary_contact_phone', 'N/A'),
+                })
+                email = contact.church.primary_contact_email or contact.email
+                phone = contact.church.primary_contact_phone or contact.phone
+            else:
+                email = contact.email
+                phone = contact.phone
+
             contact_dict = {
                 'id': contact.id,
                 'name': contact.get_name(),
-                'type': 'Person' if hasattr(contact, 'people') else 'Church',
-                'email': contact.email,
-                'phone': contact.phone,
+                'type': 'Church' if hasattr(contact, 'church') else 'Person',
+                'email': email,
+                'phone': phone,
                 'last_contact': contact.date_modified.strftime('%Y-%m-%d') if contact.date_modified else '',
                 'edit_url': reverse('contacts:edit_contact', kwargs={'pk': contact.id}),
-                'detail_url': reverse('contacts:person_detail' if hasattr(contact, 'people') else 'contacts:church_detail', kwargs={'pk': contact.id}),
-                'source': contact.source if hasattr(contact, 'source') else '',
-                'title': contact.title if hasattr(contact, 'title') else '',
+                'detail_url': reverse('contacts:church_detail' if hasattr(contact, 'church') else 'contacts:person_detail', kwargs={'pk': contact.id}),
+                'debug_info': debug_info
             }
             contacts_data.append(contact_dict)
         
-        context['contacts_json'] = json.dumps(contacts_data)
+        context['contacts_json'] = json.dumps(contacts_data, cls=DjangoJSONEncoder)
         return context
     
 @login_required
@@ -551,3 +571,10 @@ def contact_list(request):
         'contacts': contacts,
         'contacts_json': contacts_json,
     })
+
+
+
+
+
+
+

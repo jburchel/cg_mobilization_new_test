@@ -44,8 +44,20 @@
                             <span class="contact-link" data-id="{{ contact.id }}">{{ contact.get_name }} (Unknown)</span>
                         {% endif %}
                     </td>
-                    <td data-label="Email">{{ contact.email }}</td>
-                    <td data-label="Phone">{{ contact.phone }}</td>
+                    <td data-label="Email">
+                        {% if contact.church %}
+                            {{ contact.church.primary_contact_email|default:contact.email }}
+                        {% else %}
+                            {{ contact.email }}
+                        {% endif %}
+                    </td>
+                    <td data-label="Phone">
+                        {% if contact.church %}
+                            {{ contact.church.primary_contact_phone|default:contact.phone }}
+                        {% else %}
+                            {{ contact.phone }}
+                        {% endif %}
+                    </td>
                     <td data-label="Last Contact">{{ contact.date_modified|date:"Y-m-d" }}</td>
                     <td data-label="Actions">
                         <a href="{% url 'contacts:edit_contact' contact.id %}" class="btn btn-sm btn-warning">Edit</a>

@@ -5738,3 +5738,212 @@ INFO 2024-10-21 11:18:36,653 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5327
 INFO 2024-10-21 11:18:36,694 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 4828
 INFO 2024-10-21 11:18:36,701 basehttp 99973 6132117504 "GET /static/js/home.js HTTP/1.1" 304 0
 INFO 2024-10-21 11:18:36,719 basehttp 99973 6132117504 "GET /static/images/track-communication-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 12:09:28,586 basehttp 99973 6132117504 "GET /contacts/ HTTP/1.1" 200 218942
+INFO 2024-10-21 12:09:28,615 basehttp 99973 6132117504 "GET /static/css/contacts_list.css HTTP/1.1" 304 0
+INFO 2024-10-21 12:09:28,634 basehttp 99973 6132117504 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-10-21 12:10:55,045 views 99973 6132117504 ChurchDetailView: Fetched 0 recent communications for Church 5
+INFO 2024-10-21 12:10:55,052 basehttp 99973 6132117504 "GET /contacts/church/5/ HTTP/1.1" 200 6663
+INFO 2024-10-21 12:10:55,122 basehttp 99973 6132117504 "GET /static/css/church_detail.css HTTP/1.1" 200 2779
+INFO 2024-10-21 12:10:55,128 basehttp 99973 6132117504 "GET /static/images/default_church.png HTTP/1.1" 200 23845
+INFO 2024-10-21 12:10:55,131 basehttp 99973 6148943872 "GET /static/js/church_detail.js HTTP/1.1" 200 928
+INFO 2024-10-21 12:11:13,809 views 99973 6148943872 ChurchDetailView: Fetched 0 recent communications for Church 30
+INFO 2024-10-21 12:11:13,813 basehttp 99973 6148943872 "GET /contacts/church/30/ HTTP/1.1" 200 6633
+INFO 2024-10-21 12:11:36,709 views 99973 6148943872 ChurchDetailView: Fetched 0 recent communications for Church 36
+INFO 2024-10-21 12:11:36,713 basehttp 99973 6148943872 "GET /contacts/church/36/ HTTP/1.1" 200 6598
+INFO 2024-10-21 12:11:47,466 basehttp 99973 6148943872 "GET /contacts/church/36/edit/ HTTP/1.1" 200 25736
+INFO 2024-10-21 12:11:47,497 basehttp 99973 6148943872 "GET /static/css/edit_contact.css HTTP/1.1" 200 1603
+INFO 2024-10-21 12:11:47,500 basehttp 99973 6148943872 "GET /static/js/edit_contact.js HTTP/1.1" 200 927
+INFO 2024-10-21 12:20:58,617 basehttp 99973 6132117504 "GET /contacts/ HTTP/1.1" 200 266342
+INFO 2024-10-21 12:21:10,973 views 99973 6132117504 ChurchDetailView: Fetched 0 recent communications for Church 36
+INFO 2024-10-21 12:21:10,979 basehttp 99973 6132117504 "GET /contacts/church/36/ HTTP/1.1" 200 6598
+INFO 2024-10-21 12:21:12,814 basehttp 99973 6132117504 "GET /contacts/church/36/edit/ HTTP/1.1" 200 25736
+INFO 2024-10-21 12:21:48,982 basehttp 99973 6132117504 "GET /contacts/ HTTP/1.1" 200 266342
+INFO 2024-10-21 12:22:06,330 basehttp 99973 6132117504 "GET /contacts/ HTTP/1.1" 200 266342
+INFO 2024-10-21 12:22:06,373 basehttp 99973 6148943872 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-21 12:22:06,374 basehttp 99973 6132117504 "GET /static/css/contacts_list.css HTTP/1.1" 200 4895
+INFO 2024-10-21 12:22:06,381 basehttp 99973 6165770240 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-21 12:22:06,391 basehttp 99973 6182596608 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg HTTP/1.1" 200 930
+INFO 2024-10-21 12:22:06,393 basehttp 99973 6182596608 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-21 12:22:06,397 basehttp 99973 6182596608 "GET /static/js/contact_list.js HTTP/1.1" 200 1149
+INFO 2024-10-21 12:22:06,401 basehttp 99973 6182596608 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-21 12:22:06,564 basehttp 99973 6182596608 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-21 12:22:13,236 views 99973 6182596608 ChurchDetailView: Fetched 0 recent communications for Church 36
+INFO 2024-10-21 12:22:13,239 basehttp 99973 6182596608 "GET /contacts/church/36/ HTTP/1.1" 200 6598
+INFO 2024-10-21 12:22:14,920 basehttp 99973 6182596608 "GET /contacts/church/36/edit/ HTTP/1.1" 200 25736
+INFO 2024-10-21 12:31:01,789 autoreload 99973 7954013248 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-10-21 12:31:02,339 autoreload 87642 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 12:31:02,521 wsgi 87642 6142980096 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 12:31:02,522 wsgi 87642 6142980096 Media root path: /opt/render/project/src/media
+ERROR 2024-10-21 12:31:04,899 log 87642 6159806464 Internal Server Error: /contacts/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/list.py", line 174, in get
+    context = self.get_context_data()
+  File "/Users/jimburchel/cg_mobilization/contacts/views.py", line 52, in get_context_data
+    for contact in context['contacts']:
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/query.py", line 400, in __iter__
+    self._fetch_all()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/query.py", line 1930, in _fetch_all
+    self._prefetch_related_objects()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/query.py", line 1320, in _prefetch_related_objects
+    prefetch_related_objects(self._result_cache, *self._prefetch_related_lookups)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/query.py", line 2356, in prefetch_related_objects
+    raise AttributeError(
+AttributeError: Cannot find 'primary_contact' on Church object, 'church__primary_contact' is an invalid parameter to prefetch_related()
+ERROR 2024-10-21 12:31:04,900 basehttp 87642 6159806464 "GET /contacts/ HTTP/1.1" 500 134114
+WARNING 2024-10-21 12:31:05,274 log 87642 6159806464 Not Found: /favicon.ico
+WARNING 2024-10-21 12:31:05,275 basehttp 87642 6159806464 "GET /favicon.ico HTTP/1.1" 404 3037
+INFO 2024-10-21 12:31:10,141 basehttp 87642 6159806464 "GET / HTTP/1.1" 200 5327
+INFO 2024-10-21 12:31:10,180 basehttp 87642 6159806464 "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2024-10-21 12:31:10,182 basehttp 87642 6159806464 "GET /static/js/home.js HTTP/1.1" 304 0
+INFO 2024-10-21 12:31:10,192 basehttp 87642 6159806464 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 12:31:10,194 basehttp 87642 6176632832 "GET /static/images/manage-contacts-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 12:31:10,197 basehttp 87642 6193459200 "GET /static/images/track-communication-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 12:31:10,198 basehttp 87642 6210285568 "GET /static/images/manage-tasks-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 12:31:10,199 basehttp 87642 6227111936 "GET /static/images/monitor-progress-bg.jpg HTTP/1.1" 304 0
+ERROR 2024-10-21 12:31:11,889 log 87642 6227111936 Internal Server Error: /contacts/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/list.py", line 174, in get
+    context = self.get_context_data()
+  File "/Users/jimburchel/cg_mobilization/contacts/views.py", line 52, in get_context_data
+    for contact in context['contacts']:
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/query.py", line 400, in __iter__
+    self._fetch_all()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/query.py", line 1930, in _fetch_all
+    self._prefetch_related_objects()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/query.py", line 1320, in _prefetch_related_objects
+    prefetch_related_objects(self._result_cache, *self._prefetch_related_lookups)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/query.py", line 2356, in prefetch_related_objects
+    raise AttributeError(
+AttributeError: Cannot find 'primary_contact' on Church object, 'church__primary_contact' is an invalid parameter to prefetch_related()
+ERROR 2024-10-21 12:31:11,890 basehttp 87642 6227111936 "GET /contacts/ HTTP/1.1" 500 133953
+INFO 2024-10-21 12:31:39,796 autoreload 88113 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 12:31:39,961 wsgi 88113 6147715072 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 12:31:39,961 wsgi 88113 6147715072 Media root path: /opt/render/project/src/media
+ERROR 2024-10-21 12:31:45,179 log 88113 6164541440 Internal Server Error: /contacts/
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/views/generic/list.py", line 174, in get
+    context = self.get_context_data()
+  File "/Users/jimburchel/cg_mobilization/contacts/views.py", line 52, in get_context_data
+    for contact in context['contacts']:
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/query.py", line 400, in __iter__
+    self._fetch_all()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/query.py", line 1930, in _fetch_all
+    self._prefetch_related_objects()
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/query.py", line 1320, in _prefetch_related_objects
+    prefetch_related_objects(self._result_cache, *self._prefetch_related_lookups)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/db/models/query.py", line 2356, in prefetch_related_objects
+    raise AttributeError(
+AttributeError: Cannot find 'primary_contact' on Church object, 'church__primary_contact' is an invalid parameter to prefetch_related()
+ERROR 2024-10-21 12:31:45,181 basehttp 88113 6164541440 "GET /contacts/ HTTP/1.1" 500 134090
+INFO 2024-10-21 12:35:41,970 autoreload 88113 7954013248 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-10-21 12:35:42,401 autoreload 90798 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 12:35:42,583 wsgi 90798 6141833216 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 12:35:42,583 wsgi 90798 6141833216 Media root path: /opt/render/project/src/media
+INFO 2024-10-21 12:35:46,786 autoreload 90798 7954013248 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-10-21 12:35:47,064 autoreload 90809 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 12:35:47,191 wsgi 90809 6146699264 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 12:35:47,192 wsgi 90809 6146699264 Media root path: /opt/render/project/src/media
+INFO 2024-10-21 12:35:48,085 basehttp 90809 6163525632 "GET /contacts/ HTTP/1.1" 200 268493
+INFO 2024-10-21 12:35:59,306 views 90809 6163525632 ChurchDetailView: Fetched 0 recent communications for Church 36
+INFO 2024-10-21 12:35:59,312 basehttp 90809 6163525632 "GET /contacts/church/36/ HTTP/1.1" 200 6598
+INFO 2024-10-21 12:36:02,866 basehttp 90809 6163525632 "GET /contacts/church/36/edit/ HTTP/1.1" 200 25736
+INFO 2024-10-21 12:36:52,209 basehttp 90809 6163525632 "POST /contacts/church/36/edit/ HTTP/1.1" 302 0
+INFO 2024-10-21 12:36:52,285 basehttp 90809 6163525632 "GET /contacts/ HTTP/1.1" 200 268651
+INFO 2024-10-21 12:39:37,030 basehttp 90809 6163525632 "GET /contacts/ HTTP/1.1" 200 268515
+INFO 2024-10-21 12:39:37,109 basehttp 90809 6163525632 "GET /static/css/contacts_list.css HTTP/1.1" 200 4895
+INFO 2024-10-21 12:39:37,109 basehttp 90809 6197178368 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-21 12:39:37,109 basehttp 90809 6214004736 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-21 12:39:37,110 basehttp 90809 6180352000 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg HTTP/1.1" 200 930
+INFO 2024-10-21 12:39:37,123 basehttp 90809 6163525632 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-21 12:39:37,125 basehttp 90809 6214004736 "GET /static/js/contact_list.js HTTP/1.1" 200 1149
+INFO 2024-10-21 12:39:37,126 basehttp 90809 6214004736 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-21 12:39:37,294 basehttp 90809 6214004736 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-21 12:39:47,162 basehttp 90809 6214004736 "GET /contacts/ HTTP/1.1" 200 268515
+INFO 2024-10-21 12:42:44,346 autoreload 90809 7954013248 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-10-21 12:42:44,794 autoreload 95314 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 12:42:44,978 wsgi 95314 6150582272 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 12:42:44,978 wsgi 95314 6150582272 Media root path: /opt/render/project/src/media
+INFO 2024-10-21 12:42:47,625 basehttp 95314 6167408640 "GET /contacts/ HTTP/1.1" 200 297009
+INFO 2024-10-21 12:43:29,866 basehttp 95314 6167408640 "GET /contacts/ HTTP/1.1" 200 297009
+INFO 2024-10-21 12:43:29,915 basehttp 95314 6167408640 "GET /static/css/contacts_list.css HTTP/1.1" 200 4895
+INFO 2024-10-21 12:43:29,916 basehttp 95314 6184235008 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-21 12:43:29,930 basehttp 95314 6201061376 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-21 12:43:29,933 basehttp 95314 6184235008 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg HTTP/1.1" 200 930
+INFO 2024-10-21 12:43:29,936 basehttp 95314 6184235008 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-21 12:43:29,936 basehttp 95314 6201061376 "GET /static/js/contact_list.js HTTP/1.1" 200 1149
+INFO 2024-10-21 12:43:29,939 basehttp 95314 6201061376 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-21 12:43:30,122 basehttp 95314 6201061376 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-21 12:45:21,256 basehttp 95314 6201061376 "GET /contacts/ HTTP/1.1" 200 297009
+INFO 2024-10-21 12:45:26,408 autoreload 95314 7954013248 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-10-21 12:45:26,818 autoreload 97109 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 12:45:26,988 wsgi 97109 6176829440 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 12:45:26,988 wsgi 97109 6176829440 Media root path: /opt/render/project/src/media
+INFO 2024-10-21 12:45:29,336 basehttp 97109 6193655808 "GET /contacts/ HTTP/1.1" 200 297009
+INFO 2024-10-21 12:46:37,313 autoreload 97109 7954013248 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-10-21 12:46:37,748 autoreload 97872 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 12:46:37,912 wsgi 97872 6185152512 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 12:46:37,912 wsgi 97872 6185152512 Media root path: /opt/render/project/src/media
+INFO 2024-10-21 12:46:41,618 basehttp 97872 6201978880 "GET /contacts/ HTTP/1.1" 200 301741
+INFO 2024-10-21 12:46:43,231 basehttp 97872 6201978880 "GET /contacts/ HTTP/1.1" 200 301741
+INFO 2024-10-21 12:46:44,127 basehttp 97872 6201978880 "GET /contacts/ HTTP/1.1" 200 301741
+INFO 2024-10-21 12:47:38,022 basehttp 97872 6201978880 "GET /contacts/ HTTP/1.1" 200 301741
+INFO 2024-10-21 12:47:42,624 basehttp 97872 6201978880 "GET /contacts/ HTTP/1.1" 200 301741
+INFO 2024-10-21 12:47:42,677 basehttp 97872 6201978880 "GET /static/css/contacts_list.css HTTP/1.1" 200 4895
+INFO 2024-10-21 12:47:42,677 basehttp 97872 6235631616 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-21 12:47:42,679 basehttp 97872 6218805248 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-21 12:47:42,681 basehttp 97872 6218805248 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-21 12:47:42,681 basehttp 97872 6252457984 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg HTTP/1.1" 200 930
+INFO 2024-10-21 12:47:42,689 basehttp 97872 6252457984 "GET /static/js/contact_list.js HTTP/1.1" 200 1149
+INFO 2024-10-21 12:47:42,690 basehttp 97872 6218805248 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-21 12:47:42,858 basehttp 97872 6218805248 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-21 12:48:17,322 autoreload 97872 7954013248 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-10-21 12:48:17,761 autoreload 99005 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 12:48:17,931 wsgi 99005 6118617088 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 12:48:17,931 wsgi 99005 6118617088 Media root path: /opt/render/project/src/media
+INFO 2024-10-21 12:48:20,261 basehttp 99005 6135443456 "GET /contacts/ HTTP/1.1" 200 301741
+INFO 2024-10-21 12:48:21,879 basehttp 99005 6135443456 "GET /contacts/ HTTP/1.1" 200 301741
+INFO 2024-10-21 12:48:23,141 basehttp 99005 6135443456 "GET /contacts/ HTTP/1.1" 200 301741
+INFO 2024-10-21 12:49:44,695 autoreload 99005 7954013248 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-10-21 12:49:45,113 autoreload 99996 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 12:49:45,280 wsgi 99996 6111997952 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 12:49:45,280 wsgi 99996 6111997952 Media root path: /opt/render/project/src/media
+INFO 2024-10-21 12:49:48,492 basehttp 99996 6128824320 "GET /contacts/ HTTP/1.1" 200 329667
+INFO 2024-10-21 12:50:12,053 basehttp 99996 6128824320 "GET /contacts/1/edit/ HTTP/1.1" 200 25718
+INFO 2024-10-21 12:52:25,501 basehttp 99996 6128824320 "GET /contacts/ HTTP/1.1" 200 379240
+INFO 2024-10-21 12:53:36,271 basehttp 99996 6128824320 "GET /contacts/ HTTP/1.1" 200 303914
