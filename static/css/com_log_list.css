@@ -142,11 +142,11 @@
     }
 
     .table td {
-        text-align: right;
+        text-align: left;
         padding-left: 50%;
         position: relative;
-        border-top: none;
-        font-size: 0.85rem;
+        border-bottom: 1px solid var(--border-color);
+        min-height: 30px;
     }
 
     .table td::before {
@@ -161,13 +161,11 @@
     }
 
     .table td:last-child {
-        text-align: right;
-        padding-left: 6px;
+        border-bottom: none;
     }
 
     .btn-group {
         display: flex;
-        justify-content: flex-end;
         gap: 5px;
     }
 
@@ -215,4 +213,13 @@
     .comlog-list-container {
         max-width: 1200px;
     }
+}
+
+.btn-group {
+    display: flex;
+    gap: 5px;
+}
+
+.table td {
+    word-break: break-word;
 }

@@ -5401,3 +5401,22 @@ INFO 2024-10-18 14:40:47,234 basehttp 86932 6135476224 "GET /accounts/account/ H
 INFO 2024-10-18 14:40:47,285 basehttp 86932 6152302592 "GET /media/profile_images/Jim_Headshot.jpg HTTP/1.1" 304 0
 INFO 2024-10-18 14:40:47,289 basehttp 86932 6135476224 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg HTTP/1.1" 304 0
 INFO 2024-10-18 14:40:52,545 basehttp 86932 6135476224 "GET /accounts/account/ HTTP/1.1" 200 5352
+INFO 2024-10-21 08:33:22,781 autoreload 62374 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 08:33:23,001 wsgi 62374 6185562112 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 08:33:23,001 wsgi 62374 6185562112 Media root path: /opt/render/project/src/media
+INFO 2024-10-21 08:33:24,818 basehttp 62374 6202388480 "GET / HTTP/1.1" 200 4841
+INFO 2024-10-21 08:33:24,850 basehttp 62374 6202388480 "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2024-10-21 08:33:24,878 basehttp 62374 6236041216 "GET /static/images/cg_logo.png HTTP/1.1" 304 0
+INFO 2024-10-21 08:33:24,878 basehttp 62374 6202388480 "GET /static/css/main.css HTTP/1.1" 304 0
+INFO 2024-10-21 08:33:24,880 basehttp 62374 6219214848 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 08:33:24,886 basehttp 62374 6219214848 "GET /static/js/main.js HTTP/1.1" 304 0
+INFO 2024-10-21 08:33:25,230 basehttp 62374 6219214848 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 304 0
+INFO 2024-10-21 08:33:30,162 basehttp 62374 6219214848 "GET /com_log/ HTTP/1.1" 200 11571
+INFO 2024-10-21 08:33:30,209 basehttp 62374 6219214848 "GET /static/css/com_log_list.css HTTP/1.1" 200 3685
+INFO 2024-10-21 08:33:30,210 basehttp 62374 6202388480 "GET /static/js/com_log_list.js HTTP/1.1" 200 1106
+INFO 2024-10-21 08:38:19,427 autoreload 62374 7954013248 /Users/jimburchel/cg_mobilization/userprofile/models.py changed, reloading.
+INFO 2024-10-21 08:38:19,952 autoreload 65752 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 08:38:20,133 wsgi 65752 6173945856 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 08:38:20,133 wsgi 65752 6173945856 Media root path: /opt/render/project/src/media
+INFO 2024-10-21 08:38:28,413 basehttp 65752 6190772224 "GET /com_log/ HTTP/1.1" 200 11571
+INFO 2024-10-21 08:38:28,663 basehttp 65752 6190772224 "GET /static/images/favicon-32x32.png?v=1 HTTP/1.1" 304 0
