@@ -80,19 +80,19 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateEmptyStageMessage(stage) {
         const stageContent = stage.querySelector('.stage-content');
         const emptyMessage = stageContent.querySelector('.empty-stage');
-        const personCards = stageContent.querySelectorAll('.person-card');
+        const visiblePersonCards = stageContent.querySelectorAll('.person-card[style="display: block;"]');
 
-        if (personCards.length === 0) {
+        if (visiblePersonCards.length === 0) {
             if (!emptyMessage) {
                 const newEmptyMessage = document.createElement('p');
                 newEmptyMessage.className = 'empty-stage';
                 newEmptyMessage.textContent = 'No people in this stage.';
                 stageContent.appendChild(newEmptyMessage);
+            } else {
+                emptyMessage.style.display = 'block';
             }
-        } else {
-            if (emptyMessage) {
-                emptyMessage.remove();
-            }
+        } else if (emptyMessage) {
+            emptyMessage.style.display = 'none';
         }
     }
 
@@ -160,13 +160,40 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('peopleSearch');
     searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
-        document.querySelectorAll('.person-card').forEach(card => {
-            const personName = card.querySelector('h3').textContent.toLowerCase();
-            card.style.display = personName.includes(searchTerm) ? 'block' : 'none';
+        let matchFound = false;
+
+        document.querySelectorAll('.pipeline-stage').forEach(stage => {
+            const stageHeader = stage.querySelector('.stage-header');
+            const stageContent = stage.querySelector('.stage-content');
+            const toggleIcon = stageHeader.querySelector('.toggle-icon');
+            let stageMatchFound = false;
+
+            stage.querySelectorAll('.person-card').forEach(card => {
+                const personName = card.querySelector('h3').textContent.toLowerCase();
+                const isMatch = personName.includes(searchTerm);
+                card.style.display = isMatch ? 'block' : 'none';
+                if (isMatch) {
+                    stageMatchFound = true;
+                    matchFound = true;
+                }
+            });
+
+            if (stageMatchFound || searchTerm === '') {
+                stageContent.style.display = 'block';
+                toggleIcon.textContent = '▼';
+            } else {
+                stageContent.style.display = 'none';
+                toggleIcon.textContent = '▶';
+            }
+
+            updateEmptyStageMessage(stage);
         });
 
-        // Update empty stage messages after search
-        document.querySelectorAll('.pipeline-stage').forEach(updateEmptyStageMessage);
+        // Show a message if no matches are found
+        const noMatchMessage = document.getElementById('noMatchMessage');
+        if (noMatchMessage) {
+            noMatchMessage.style.display = matchFound || searchTerm === '' ? 'none' : 'block';
+        }
     });
 
     // Add stage toggle functionality
