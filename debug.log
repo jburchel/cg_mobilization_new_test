@@ -5420,3 +5420,321 @@ INFO 2024-10-21 08:38:20,133 wsgi 65752 6173945856 Static root path: /opt/render
 INFO 2024-10-21 08:38:20,133 wsgi 65752 6173945856 Media root path: /opt/render/project/src/media
 INFO 2024-10-21 08:38:28,413 basehttp 65752 6190772224 "GET /com_log/ HTTP/1.1" 200 11571
 INFO 2024-10-21 08:38:28,663 basehttp 65752 6190772224 "GET /static/images/favicon-32x32.png?v=1 HTTP/1.1" 304 0
+INFO 2024-10-21 08:43:48,282 basehttp 65752 6190772224 "GET /com_log/ HTTP/1.1" 200 11571
+INFO 2024-10-21 08:43:50,541 basehttp 65752 6190772224 "GET /com_log/ HTTP/1.1" 200 11571
+INFO 2024-10-21 08:51:07,935 autoreload 74291 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 08:51:08,105 wsgi 74291 6187757568 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 08:51:08,105 wsgi 74291 6187757568 Media root path: /opt/render/project/src/media
+INFO 2024-10-21 08:51:14,175 basehttp 74291 6204583936 "GET /com_log/ HTTP/1.1" 200 11571
+INFO 2024-10-21 08:51:15,306 basehttp 74291 6204583936 "GET / HTTP/1.1" 200 4886
+INFO 2024-10-21 08:55:08,290 basehttp 74291 6204583936 "GET / HTTP/1.1" 200 4876
+INFO 2024-10-21 08:56:04,288 basehttp 74291 6204583936 "GET / HTTP/1.1" 200 4875
+INFO 2024-10-21 08:56:55,649 basehttp 74291 6204583936 "GET / HTTP/1.1" 200 4672
+INFO 2024-10-21 09:45:51,184 autoreload 99973 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 09:45:51,381 wsgi 99973 6115291136 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 09:45:51,381 wsgi 99973 6115291136 Media root path: /opt/render/project/src/media
+INFO 2024-10-21 09:45:59,955 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4725
+INFO 2024-10-21 09:46:02,226 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4725
+INFO 2024-10-21 09:46:14,021 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4725
+INFO 2024-10-21 09:46:14,071 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3319
+INFO 2024-10-21 09:46:14,072 basehttp 99973 6165770240 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-21 09:46:14,073 basehttp 99973 6148943872 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-21 09:46:14,080 basehttp 99973 6182596608 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg HTTP/1.1" 200 930
+INFO 2024-10-21 09:46:14,081 basehttp 99973 6165770240 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-21 09:46:14,083 basehttp 99973 6165770240 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-21 09:46:14,693 basehttp 99973 6165770240 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 200 364087
+INFO 2024-10-21 09:46:14,821 basehttp 99973 6165770240 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-21 09:47:00,321 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4724
+INFO 2024-10-21 09:47:00,363 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2024-10-21 09:49:31,218 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4724
+INFO 2024-10-21 09:49:31,262 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3538
+INFO 2024-10-21 09:49:31,278 basehttp 99973 6132117504 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 09:52:19,467 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:52:19,514 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3326
+INFO 2024-10-21 09:52:19,533 basehttp 99973 6132117504 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 09:55:14,051 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:55:14,095 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3326
+INFO 2024-10-21 09:55:14,115 basehttp 99973 6132117504 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 09:55:34,715 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:55:34,756 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3325
+INFO 2024-10-21 09:55:48,245 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:55:48,285 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3326
+INFO 2024-10-21 09:55:59,100 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:55:59,140 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3325
+INFO 2024-10-21 09:56:13,572 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:56:13,610 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3324
+INFO 2024-10-21 09:56:34,421 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:56:34,460 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3325
+INFO 2024-10-21 09:56:34,469 basehttp 99973 6132117504 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 09:56:40,558 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:56:40,591 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3324
+INFO 2024-10-21 09:56:56,370 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:56:56,406 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3326
+INFO 2024-10-21 09:57:09,143 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:57:09,180 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3327
+INFO 2024-10-21 09:57:22,241 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:57:22,280 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3330
+INFO 2024-10-21 09:57:42,842 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:57:42,877 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3329
+INFO 2024-10-21 09:58:15,808 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:58:15,858 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3330
+INFO 2024-10-21 09:58:15,866 basehttp 99973 6132117504 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 09:58:23,294 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:58:23,326 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3329
+INFO 2024-10-21 09:58:51,141 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 09:58:51,188 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3326
+INFO 2024-10-21 10:00:15,969 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 10:00:16,006 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3327
+INFO 2024-10-21 10:00:16,024 basehttp 99973 6132117504 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 10:00:23,672 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 10:00:23,727 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3326
+INFO 2024-10-21 10:00:40,791 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 10:00:40,835 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3325
+INFO 2024-10-21 10:00:54,423 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 10:00:54,462 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3327
+INFO 2024-10-21 10:01:13,683 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 10:01:13,718 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3327
+INFO 2024-10-21 10:01:32,688 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 10:01:32,730 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3327
+INFO 2024-10-21 10:01:43,350 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 10:01:43,385 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3327
+INFO 2024-10-21 10:02:02,782 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 10:02:02,816 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3326
+INFO 2024-10-21 10:02:02,831 basehttp 99973 6132117504 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 10:02:11,181 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 10:02:11,232 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3326
+INFO 2024-10-21 10:02:17,932 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4647
+INFO 2024-10-21 10:02:17,967 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3326
+INFO 2024-10-21 10:04:32,789 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4633
+INFO 2024-10-21 10:04:32,827 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2024-10-21 10:04:32,837 basehttp 99973 6132117504 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 10:06:39,476 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4633
+INFO 2024-10-21 10:06:39,521 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3567
+INFO 2024-10-21 10:08:01,913 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4636
+INFO 2024-10-21 10:08:01,953 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2024-10-21 10:08:01,966 basehttp 99973 6132117504 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 10:08:26,479 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4636
+INFO 2024-10-21 10:08:26,525 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3567
+INFO 2024-10-21 10:08:35,748 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 4636
+INFO 2024-10-21 10:08:35,792 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 3567
+INFO 2024-10-21 10:43:55,011 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5149
+INFO 2024-10-21 10:43:55,051 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 4730
+INFO 2024-10-21 10:43:55,055 basehttp 99973 6132117504 "GET /static/js/home.js HTTP/1.1" 200 1026
+INFO 2024-10-21 10:43:55,086 basehttp 99973 6199422976 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 10:43:55,087 basehttp 99973 6165770240 "GET /static/images/manage-tasks-bg.jpg HTTP/1.1" 200 30811
+INFO 2024-10-21 10:43:55,088 basehttp 99973 6148943872 "GET /static/images/track-communication-bg.jpg HTTP/1.1" 200 20832
+INFO 2024-10-21 10:43:55,089 basehttp 99973 6182596608 "GET /static/images/monitor-progress-bg.jpg HTTP/1.1" 200 36176
+INFO 2024-10-21 10:43:55,090 basehttp 99973 6132117504 "GET /static/images/manage-contacts-bg.jpg HTTP/1.1" 200 68607
+INFO 2024-10-21 10:46:53,880 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5149
+INFO 2024-10-21 10:46:53,928 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 4730
+INFO 2024-10-21 10:46:53,948 basehttp 99973 6132117504 "GET /static/images/manage-contacts-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 10:46:53,949 basehttp 99973 6148943872 "GET /static/images/track-communication-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 10:46:53,949 basehttp 99973 6165770240 "GET /static/images/monitor-progress-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 10:46:53,951 basehttp 99973 6182596608 "GET /static/images/manage-tasks-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 10:47:23,059 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5149
+INFO 2024-10-21 10:47:23,103 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 4730
+INFO 2024-10-21 10:47:23,106 basehttp 99973 6132117504 "GET /static/js/home.js HTTP/1.1" 304 0
+INFO 2024-10-21 10:47:23,130 basehttp 99973 6132117504 "GET /static/images/monitor-progress-bg.jpg HTTP/1.1" 304 0
+WARNING 2024-10-21 10:47:46,465 basehttp 99973 6132117504 "GET /static/images/manage-contacts-screenshot.jpg HTTP/1.1" 404 1971
+INFO 2024-10-21 10:57:52,549 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5149
+INFO 2024-10-21 10:57:52,601 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 4730
+INFO 2024-10-21 10:57:52,606 basehttp 99973 6132117504 "GET /static/js/home.js HTTP/1.1" 304 0
+INFO 2024-10-21 10:57:52,638 basehttp 99973 6165770240 "GET /static/images/track-communication-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 10:57:52,638 basehttp 99973 6148943872 "GET /static/images/manage-contacts-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 10:57:52,639 basehttp 99973 6132117504 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 10:57:52,640 basehttp 99973 6182596608 "GET /static/images/manage-tasks-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 10:57:52,640 basehttp 99973 6199422976 "GET /static/images/monitor-progress-bg.jpg HTTP/1.1" 304 0
+WARNING 2024-10-21 10:57:53,859 basehttp 99973 6199422976 "GET /static/images/manage-contacts-screenshot.jpg HTTP/1.1" 404 1971
+WARNING 2024-10-21 10:58:02,610 basehttp 99973 6132117504 "GET /static/images/track-communication-screenshot.jpg HTTP/1.1" 404 1983
+WARNING 2024-10-21 10:58:04,976 basehttp 99973 6132117504 "GET /static/images/manage-tasks-screenshot.jpg HTTP/1.1" 404 1962
+INFO 2024-10-21 10:59:50,562 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5295
+INFO 2024-10-21 10:59:50,624 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2024-10-21 10:59:50,635 basehttp 99973 6148943872 "GET /static/images/manage-tasks-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 10:59:50,635 basehttp 99973 6132117504 "GET /static/images/monitor-progress-bg.jpg HTTP/1.1" 304 0
+WARNING 2024-10-21 10:59:52,204 basehttp 99973 6132117504 "GET /static/images/manage-contacts-screenshot.jpg HTTP/1.1" 404 1971
+INFO 2024-10-21 10:59:55,668 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5295
+INFO 2024-10-21 10:59:55,710 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 4730
+INFO 2024-10-21 10:59:55,725 basehttp 99973 6148943872 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-21 10:59:55,728 basehttp 99973 6132117504 "GET /static/js/home.js HTTP/1.1" 200 1026
+INFO 2024-10-21 10:59:55,729 basehttp 99973 6165770240 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-21 10:59:55,743 basehttp 99973 6182596608 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg HTTP/1.1" 200 930
+INFO 2024-10-21 10:59:55,745 basehttp 99973 6165770240 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-21 10:59:55,748 basehttp 99973 6165770240 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-21 10:59:55,781 basehttp 99973 6132117504 "GET /static/images/track-communication-bg.jpg HTTP/1.1" 200 20832
+INFO 2024-10-21 10:59:55,782 basehttp 99973 6148943872 "GET /static/images/manage-tasks-bg.jpg HTTP/1.1" 200 30811
+INFO 2024-10-21 10:59:55,783 basehttp 99973 6199422976 "GET /static/images/monitor-progress-bg.jpg HTTP/1.1" 200 36176
+INFO 2024-10-21 10:59:55,784 basehttp 99973 6182596608 "GET /static/images/manage-contacts-bg.jpg HTTP/1.1" 200 68607
+INFO 2024-10-21 10:59:55,785 basehttp 99973 6165770240 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 200 364087
+INFO 2024-10-21 10:59:55,872 basehttp 99973 6165770240 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+WARNING 2024-10-21 10:59:58,655 basehttp 99973 6165770240 "GET /static/images/manage-contacts-screenshot.jpg HTTP/1.1" 404 1971
+WARNING 2024-10-21 11:00:00,732 basehttp 99973 6132117504 "GET /static/images/track-communication-screenshot.jpg HTTP/1.1" 404 1983
+WARNING 2024-10-21 11:00:02,383 basehttp 99973 6132117504 "GET /static/images/manage-tasks-screenshot.jpg HTTP/1.1" 404 1962
+WARNING 2024-10-21 11:00:05,167 basehttp 99973 6132117504 "GET /static/images/monitor-progress-screenshot.jpg HTTP/1.1" 404 1974
+WARNING 2024-10-21 11:02:08,640 basehttp 99973 6132117504 "GET /static/images/track-communication-screenshot.jpg HTTP/1.1" 404 1983
+INFO 2024-10-21 11:04:04,740 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5327
+INFO 2024-10-21 11:04:04,785 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2024-10-21 11:04:04,820 basehttp 99973 6132117504 "GET /static/images/manage-contacts-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 11:04:04,821 basehttp 99973 6148943872 "GET /static/images/track-communication-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 11:04:04,822 basehttp 99973 6182596608 "GET /static/images/monitor-progress-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 11:04:04,822 basehttp 99973 6165770240 "GET /static/images/manage-tasks-bg.jpg HTTP/1.1" 304 0
+WARNING 2024-10-21 11:04:06,436 basehttp 99973 6132117504 "GET /static/images/manage-contacts-screenshot.jpg HTTP/1.1" 404 1971
+INFO 2024-10-21 11:04:09,438 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5327
+INFO 2024-10-21 11:04:09,478 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 4730
+INFO 2024-10-21 11:04:09,482 basehttp 99973 6148943872 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-21 11:04:09,483 basehttp 99973 6165770240 "GET /static/js/home.js HTTP/1.1" 200 1026
+INFO 2024-10-21 11:04:09,494 basehttp 99973 6132117504 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-21 11:04:09,496 basehttp 99973 6182596608 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg HTTP/1.1" 200 930
+INFO 2024-10-21 11:04:09,507 basehttp 99973 6132117504 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-21 11:04:09,507 basehttp 99973 6182596608 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-21 11:04:09,534 basehttp 99973 6165770240 "GET /static/images/manage-tasks-bg.jpg HTTP/1.1" 200 30811
+INFO 2024-10-21 11:04:09,535 basehttp 99973 6199422976 "GET /static/images/track-communication-bg.jpg HTTP/1.1" 200 20832
+INFO 2024-10-21 11:04:09,536 basehttp 99973 6132117504 "GET /static/images/manage-contacts-bg.jpg HTTP/1.1" 200 68607
+INFO 2024-10-21 11:04:09,537 basehttp 99973 6148943872 "GET /static/images/monitor-progress-bg.jpg HTTP/1.1" 200 36176
+INFO 2024-10-21 11:04:09,538 basehttp 99973 6182596608 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 200 364087
+INFO 2024-10-21 11:04:09,633 basehttp 99973 6182596608 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+WARNING 2024-10-21 11:04:11,267 basehttp 99973 6132117504 "GET /static/images/manage-contacts-screenshot.jpg HTTP/1.1" 404 1971
+WARNING 2024-10-21 11:04:37,238 basehttp 99973 6132117504 "GET /static/images/manage-contacts-screenshot.jpg HTTP/1.1" 404 1971
+INFO 2024-10-21 11:08:03,108 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5327
+INFO 2024-10-21 11:08:03,145 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 4730
+WARNING 2024-10-21 11:08:03,177 basehttp 99973 6148943872 "GET /static/images/track-communication-bg.png HTTP/1.1" 404 1959
+WARNING 2024-10-21 11:08:03,184 basehttp 99973 6132117504 "GET /static/images/manage-contacts-bg.png HTTP/1.1" 404 1947
+WARNING 2024-10-21 11:08:03,185 basehttp 99973 6165770240 "GET /static/images/manage-tasks-bg.png HTTP/1.1" 404 1938
+WARNING 2024-10-21 11:08:03,186 basehttp 99973 6182596608 "GET /static/images/monitor-progress-bg.png HTTP/1.1" 404 1950
+INFO 2024-10-21 11:08:06,722 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5327
+INFO 2024-10-21 11:08:06,755 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2024-10-21 11:08:38,751 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5327
+INFO 2024-10-21 11:08:38,793 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 4730
+INFO 2024-10-21 11:08:38,806 basehttp 99973 6132117504 "GET /static/images/track-communication-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 11:08:38,807 basehttp 99973 6148943872 "GET /static/images/manage-contacts-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 11:08:38,807 basehttp 99973 6165770240 "GET /static/images/monitor-progress-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 11:08:38,808 basehttp 99973 6182596608 "GET /static/images/manage-tasks-bg.jpg HTTP/1.1" 304 0
+WARNING 2024-10-21 11:08:40,392 basehttp 99973 6132117504 "GET /static/images/manage-contacts-screenshot.jpg HTTP/1.1" 404 1971
+WARNING 2024-10-21 11:08:43,313 basehttp 99973 6132117504 "GET /static/images/track-communication-screenshot.jpg HTTP/1.1" 404 1983
+ERROR 2024-10-21 11:12:15,768 log 99973 6132117504 Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/cg_mobilization/core/views.py", line 4, in home
+    return render(request, 'core/home.html')
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/urls/resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'static images/manage-contacts-screenshot.png' not found. 'static images/manage-contacts-screenshot.png' is not a valid view function or pattern name.
+ERROR 2024-10-21 11:12:15,771 basehttp 99973 6132117504 "GET / HTTP/1.1" 500 167026
+WARNING 2024-10-21 11:12:16,080 log 99973 6132117504 Not Found: /favicon.ico
+WARNING 2024-10-21 11:12:16,082 basehttp 99973 6132117504 "GET /favicon.ico HTTP/1.1" 404 3037
+ERROR 2024-10-21 11:12:41,034 log 99973 6132117504 Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/jimburchel/cg_mobilization/core/views.py", line 4, in home
+    return render(request, 'core/home.html')
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 1000, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/template/defaulttags.py", line 479, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/urls/base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/jimburchel/env/lib/python3.10/site-packages/django/urls/resolvers.py", line 851, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'static/images/manage-contacts-screenshot.png' not found. 'static/images/manage-contacts-screenshot.png' is not a valid view function or pattern name.
+ERROR 2024-10-21 11:12:41,035 basehttp 99973 6132117504 "GET / HTTP/1.1" 500 167026
+INFO 2024-10-21 11:13:24,070 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5327
+INFO 2024-10-21 11:13:24,121 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 304 0
+INFO 2024-10-21 11:13:24,132 basehttp 99973 6132117504 "GET /static/js/home.js HTTP/1.1" 200 1025
+INFO 2024-10-21 11:13:24,148 basehttp 99973 6148943872 "GET /static/images/manage-contacts-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 11:13:24,148 basehttp 99973 6165770240 "GET /static/images/manage-tasks-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 11:13:24,149 basehttp 99973 6132117504 "GET /static/images/track-communication-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 11:13:24,152 basehttp 99973 6199422976 "GET /static/images/middle-east-harvest.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 11:13:24,153 basehttp 99973 6182596608 "GET /static/images/monitor-progress-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 11:13:25,796 basehttp 99973 6132117504 "GET /static/images/manage-contacts-screenshot.png HTTP/1.1" 200 208617
+INFO 2024-10-21 11:13:34,011 basehttp 99973 6132117504 "GET /static/images/track-communication-screenshot.png HTTP/1.1" 200 280301
+INFO 2024-10-21 11:13:40,581 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5327
+INFO 2024-10-21 11:13:45,628 basehttp 99973 6132117504 "GET /static/images/manage-tasks-screenshot.png HTTP/1.1" 200 267583
+WARNING 2024-10-21 11:13:51,016 basehttp 99973 6132117504 "GET /static/images/monitor-progress-screenshot.png HTTP/1.1" 404 1974
+WARNING 2024-10-21 11:13:54,279 basehttp 99973 6132117504 "GET /static/images/monitor-progress-screenshot.png HTTP/1.1" 404 1974
+INFO 2024-10-21 11:15:31,535 basehttp 99973 6132117504 "GET /static/images/monitor-progress-screenshot.png HTTP/1.1" 200 242658
+INFO 2024-10-21 11:17:22,105 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5327
+INFO 2024-10-21 11:17:22,136 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 4792
+INFO 2024-10-21 11:17:22,149 basehttp 99973 6132117504 "GET /static/js/home.js HTTP/1.1" 200 1027
+INFO 2024-10-21 11:17:22,159 basehttp 99973 6132117504 "GET /static/images/manage-contacts-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 11:17:22,160 basehttp 99973 6165770240 "GET /static/images/monitor-progress-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 11:17:22,161 basehttp 99973 6148943872 "GET /static/images/manage-tasks-bg.jpg HTTP/1.1" 304 0
+INFO 2024-10-21 11:17:23,362 basehttp 99973 6148943872 "GET /static/images/manage-contacts-screenshot.png HTTP/1.1" 304 0
+INFO 2024-10-21 11:18:36,653 basehttp 99973 6132117504 "GET / HTTP/1.1" 200 5327
+INFO 2024-10-21 11:18:36,694 basehttp 99973 6132117504 "GET /static/css/home.css HTTP/1.1" 200 4828
+INFO 2024-10-21 11:18:36,701 basehttp 99973 6132117504 "GET /static/js/home.js HTTP/1.1" 304 0
+INFO 2024-10-21 11:18:36,719 basehttp 99973 6132117504 "GET /static/images/track-communication-bg.jpg HTTP/1.1" 304 0

@@ -15,23 +15,51 @@ body {
 }
 
 .hero {
-
-    background: linear-gradient(rgba(24, 57, 99, 0.8), rgba(57, 169, 73, 0.8)), no-repeat center center/cover;
-    color: var(--primary-white);
+    position: relative;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 1rem; /* Changed from 30px 0 to 1rem */
-    margin: 1rem; /* Added to match navbar and footer */
+    color: #ffffff;
+    overflow: hidden;
     border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.hero-image {
+    position: absolute;
+    top: -80%;
+    left: 0;
+    width: 100%;
+    height: 180%;
+    background-image: url('/static/images/middle-east-harvest.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    filter: brightness(0.7);
+    border-radius: 10px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 20px;
+    max-width: 800px;
+    background-color: rgba(24, 57, 99, 0.7); /* Using the primary blue color with opacity */
+    border-radius: 8px;
 }
 
 .hero-title {
     font-size: 2.2rem;
-    margin: 0 0 0.3rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
     font-size: 1.1rem;
-    margin: 0 0 0.5rem;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .container {
@@ -66,37 +94,51 @@ h2 {
 
 .feature-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
 }
 
 .feature-card {
-    background-color: #f8f9fa;
-    border-radius: var(--border-radius);
-    padding: 15px;
-    text-align: center;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    text-decoration: none;
+    color: inherit;
 }
 
 .feature-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
 }
 
-.feature-card i {
-    font-size: 1.8rem;
-    color: var(--primary-green);
-    margin-bottom: 0.3rem;
+.feature-content {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-.feature-card h3 {
-    font-size: 1.1rem;
-    margin: 0 0 0.3rem;
+.feature-card[data-feature="manage-contacts"] {
+    background-image: url('/static/images/manage-contacts-bg.jpg');
 }
 
-.feature-card p {
-    font-size: 0.85rem;
-    margin: 0;
+.feature-card[data-feature="track-communication"] {
+    background-image: url('/static/images/track-communication-bg.jpg');
+}
+
+.feature-card[data-feature="manage-tasks"] {
+    background-image: url('/static/images/manage-tasks-bg.jpg');
+}
+
+.feature-card[data-feature="monitor-progress"] {
+    background-image: url('/static/images/monitor-progress-bg.jpg');
 }
 
 .access-info {
@@ -157,4 +199,49 @@ h2 {
     .feature-grid {
         grid-template-columns: 1fr;
     }
+}
+
+.screenshot-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.screenshot-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow: auto;
+    position: relative;
+}
+
+.screenshot-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 48px;
+    background-color: transparent;
+    border: none;
+    color: #183963;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+}
+
+.close-popup:hover {
+    color: #39A949;
 }
