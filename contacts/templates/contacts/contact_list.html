@@ -10,8 +10,17 @@
     <h1>All Contacts</h1>
 
     <div class="actions">
-        <div class="search-bar">
+        <div class="search-and-filter">
             <input type="text" id="contact-search" placeholder="Search contacts...">
+            <select id="pipeline-filter">
+                <option value="">All Stages</option>
+                {% for stage_value, stage_name in church_pipeline_stages %}
+                    <option value="church_{{ stage_value }}">{{ stage_name }} (Church)</option>
+                {% endfor %}
+                {% for stage_value, stage_name in people_pipeline_stages %}
+                    <option value="people_{{ stage_value }}">{{ stage_name }} (Person)</option>
+                {% endfor %}
+            </select>
         </div>
         <div class="add-buttons">
             <a href="{% url 'contacts:add_contact' contact_type='church' %}" class="btn btn-primary">Add Church</a>
@@ -29,43 +38,43 @@
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Last Contact</th>
+                    <th>Pipeline Stage</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody id="contacts-body">
                 {% for contact in contacts %}
-                <tr class="contact-row">
+                <tr class="contact-row" data-id="{{ contact.id }}" 
+                    data-church-pipeline="{{ contact.church.church_pipeline|default:'' }}"
+                    data-people-pipeline="{{ contact.people.people_pipeline|default:'' }}">
                     <td data-label="Name">
                         {% if contact.church %}
-                            <a href="{% url 'contacts:church_detail' contact.church.id %}" class="contact-link" data-id="{{ contact.id }}">{{ contact.church.church_name }} (Church)</a>
+                            <a href="{% url 'contacts:church_detail' contact.church.id %}" class="contact-link">{{ contact.church.church_name }} (Church)</a>
                         {% elif contact.people %}
-                            <a href="{% url 'contacts:person_detail' contact.people.id %}" class="contact-link" data-id="{{ contact.id }}">{{ contact.people.first_name }} {{ contact.people.last_name }} (Person)</a>
+                            <a href="{% url 'contacts:person_detail' contact.people.id %}" class="contact-link">{{ contact.people.first_name }} {{ contact.people.last_name }} (Person)</a>
                         {% else %}
-                            <span class="contact-link" data-id="{{ contact.id }}">{{ contact.get_name }} (Unknown)</span>
+                            <span class="contact-link">{{ contact.get_name }} (Unknown)</span>
                         {% endif %}
                     </td>
-                    <td data-label="Email">
-                        {% if contact.church %}
-                            {{ contact.church.primary_contact_email|default:contact.email }}
-                        {% else %}
-                            {{ contact.email }}
-                        {% endif %}
-                    </td>
-                    <td data-label="Phone">
-                        {% if contact.church %}
-                            {{ contact.church.primary_contact_phone|default:contact.phone }}
-                        {% else %}
-                            {{ contact.phone }}
-                        {% endif %}
-                    </td>
+                    <td data-label="Email">{{ contact.email }}</td>
+                    <td data-label="Phone">{{ contact.phone }}</td>
                     <td data-label="Last Contact">{{ contact.date_modified|date:"Y-m-d" }}</td>
+                    <td data-label="Pipeline">
+                        {% if contact.church %}
+                            {{ contact.church.get_church_pipeline_display }}
+                        {% elif contact.people %}
+                            {{ contact.people.get_people_pipeline_display }}
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
                     <td data-label="Actions">
                         <a href="{% url 'contacts:edit_contact' contact.id %}" class="btn btn-sm btn-warning">Edit</a>
                     </td>
                 </tr>
                 {% empty %}
                 <tr>
-                    <td colspan="5">No contacts found.</td>
+                    <td colspan="6">No contacts found.</td>
                 </tr>
                 {% endfor %}
             </tbody>

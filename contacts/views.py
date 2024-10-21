@@ -48,41 +48,23 @@ class ContactListView(ListView):
         contacts_data = []
         
         for contact in context['contacts']:
-            debug_info = {
-                'id': contact.id,
-                'has_church': hasattr(contact, 'church'),
-                'has_people': hasattr(contact, 'people'),
-                'email': contact.email,
-                'phone': contact.phone,
-            }
-            
-            if hasattr(contact, 'church'):
-                debug_info.update({
-                    'church_id': contact.church.id,
-                    'church_name': contact.church.church_name,
-                    'primary_contact_email': getattr(contact.church, 'primary_contact_email', 'N/A'),
-                    'primary_contact_phone': getattr(contact.church, 'primary_contact_phone', 'N/A'),
-                })
-                email = contact.church.primary_contact_email or contact.email
-                phone = contact.church.primary_contact_phone or contact.phone
-            else:
-                email = contact.email
-                phone = contact.phone
-
             contact_dict = {
                 'id': contact.id,
                 'name': contact.get_name(),
                 'type': 'Church' if hasattr(contact, 'church') else 'Person',
-                'email': email,
-                'phone': phone,
+                'email': contact.email,
+                'phone': contact.phone,
                 'last_contact': contact.date_modified.strftime('%Y-%m-%d') if contact.date_modified else '',
                 'edit_url': reverse('contacts:edit_contact', kwargs={'pk': contact.id}),
                 'detail_url': reverse('contacts:church_detail' if hasattr(contact, 'church') else 'contacts:person_detail', kwargs={'pk': contact.id}),
-                'debug_info': debug_info
+                'church_pipeline': contact.church.church_pipeline if hasattr(contact, 'church') else None,
+                'people_pipeline': contact.people.people_pipeline if hasattr(contact, 'people') else None,
             }
             contacts_data.append(contact_dict)
         
         context['contacts_json'] = json.dumps(contacts_data, cls=DjangoJSONEncoder)
+        context['church_pipeline_stages'] = Church.CHURCH_PIPELINE_CHOICES
+        context['people_pipeline_stages'] = People.PEOPLE_PIPELINE
         return context
     
 @login_required
@@ -566,11 +548,19 @@ def get_church_pipeline_summary(request):
 
 def contact_list(request):
     contacts = Contact.objects.all()
-    contacts_json = serialize('json', contacts)
-    return render(request, 'contacts/contact_list.html', {
+    church_pipeline_stages = Church.CHURCH_PIPELINE_CHOICES
+    people_pipeline_stages = People.PEOPLE_PIPELINE
+    context = {
         'contacts': contacts,
-        'contacts_json': contacts_json,
-    })
+        'church_pipeline_stages': church_pipeline_stages,
+        'people_pipeline_stages': people_pipeline_stages,
+    }
+    return render(request, 'contacts/contact_list.html', context)
+
+
+
+
+
 
 
 

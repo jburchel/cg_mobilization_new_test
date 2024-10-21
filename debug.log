@@ -5978,3 +5978,54 @@ INFO 2024-10-21 14:03:30,385 basehttp 35609 6210564096 "GET /static/js/navbar.js
 INFO 2024-10-21 14:03:30,393 basehttp 35609 6210564096 "GET /static/js/church_list.js HTTP/1.1" 200 7878
 INFO 2024-10-21 14:03:30,395 basehttp 35609 6193737728 "GET /static/js/main.js HTTP/1.1" 200 1449
 INFO 2024-10-21 14:03:30,520 basehttp 35609 6193737728 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-21 14:50:42,965 autoreload 35609 7954013248 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-10-21 14:50:43,538 autoreload 66619 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 14:50:43,713 wsgi 66619 6146486272 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 14:50:43,713 wsgi 66619 6146486272 Media root path: /opt/render/project/src/media
+INFO 2024-10-21 14:50:51,128 basehttp 66619 6163312640 "GET /contacts/churches/ HTTP/1.1" 200 11119
+INFO 2024-10-21 14:50:51,213 basehttp 66619 6163312640 "GET /static/js/church_list.js HTTP/1.1" 304 0
+INFO 2024-10-21 14:50:52,935 basehttp 66619 6163312640 "GET /contacts/ HTTP/1.1" 200 320333
+INFO 2024-10-21 14:58:30,703 autoreload 66619 7954013248 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-10-21 14:58:31,127 autoreload 71793 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 14:58:31,297 wsgi 71793 6177615872 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 14:58:31,297 wsgi 71793 6177615872 Media root path: /opt/render/project/src/media
+INFO 2024-10-21 14:58:34,290 basehttp 71793 6194442240 "GET /contacts/ HTTP/1.1" 200 312434
+INFO 2024-10-21 14:58:36,595 views 71793 6194442240 ChurchDetailView: Fetched 1 recent communications for Church 1
+INFO 2024-10-21 14:58:36,595 views 71793 6194442240 ChurchDetailView: ComLog: 17, Date: 2024-09-18 19:17:58.219260+00:00, Type: phone, Content Type: Contacts | contact
+INFO 2024-10-21 14:58:36,599 basehttp 71793 6194442240 "GET /contacts/church/1/ HTTP/1.1" 200 6744
+INFO 2024-10-21 15:01:00,280 autoreload 71793 7954013248 /Users/jimburchel/cg_mobilization/contacts/views.py changed, reloading.
+INFO 2024-10-21 15:01:00,821 autoreload 73492 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-21 15:01:00,990 wsgi 73492 6110916608 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-21 15:01:00,990 wsgi 73492 6110916608 Media root path: /opt/render/project/src/media
+INFO 2024-10-21 15:01:02,123 basehttp 73492 6127742976 "GET /contacts/ HTTP/1.1" 200 271496
+INFO 2024-10-21 15:02:35,301 basehttp 73492 6127742976 "GET /contacts/ HTTP/1.1" 200 288556
+INFO 2024-10-21 15:02:37,131 basehttp 73492 6127742976 "GET /contacts/ HTTP/1.1" 200 288556
+INFO 2024-10-21 15:02:37,168 basehttp 73492 6127742976 "GET /static/css/contacts_list.css HTTP/1.1" 200 4895
+INFO 2024-10-21 15:02:37,174 basehttp 73492 6161395712 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-21 15:02:37,175 basehttp 73492 6144569344 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-21 15:02:37,177 basehttp 73492 6144569344 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-21 15:02:37,178 basehttp 73492 6178222080 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg HTTP/1.1" 200 930
+INFO 2024-10-21 15:02:37,180 basehttp 73492 6178222080 "GET /static/js/contact_list.js HTTP/1.1" 200 1724
+INFO 2024-10-21 15:02:37,181 basehttp 73492 6144569344 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-21 15:02:37,380 basehttp 73492 6144569344 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-21 15:02:57,045 basehttp 73492 6144569344 "GET /contacts/churches/ HTTP/1.1" 200 11119
+INFO 2024-10-21 15:02:57,088 basehttp 73492 6144569344 "GET /static/js/church_list.js HTTP/1.1" 304 0
+INFO 2024-10-21 15:03:08,008 basehttp 73492 6144569344 "GET /contacts/ HTTP/1.1" 200 288556
+INFO 2024-10-21 15:03:08,038 basehttp 73492 6144569344 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-10-21 15:06:02,607 basehttp 73492 6144569344 "GET /contacts/ HTTP/1.1" 200 288723
+INFO 2024-10-21 15:06:02,657 basehttp 73492 6144569344 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-10-21 15:06:03,656 basehttp 73492 6144569344 "GET /contacts/ HTTP/1.1" 200 288723
+INFO 2024-10-21 15:06:36,814 basehttp 73492 6144569344 "GET /contacts/ HTTP/1.1" 200 288723
+INFO 2024-10-21 15:06:36,844 basehttp 73492 6144569344 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-10-21 15:06:52,501 basehttp 73492 6144569344 "GET /contacts/ HTTP/1.1" 200 288723
+INFO 2024-10-21 15:06:52,533 basehttp 73492 6144569344 "GET /static/css/contacts_list.css HTTP/1.1" 200 4670
+INFO 2024-10-21 15:06:52,542 basehttp 73492 6144569344 "GET /static/css/main.css HTTP/1.1" 200 3202
+INFO 2024-10-21 15:06:52,542 basehttp 73492 6178222080 "GET /static/images/cg_logo.png HTTP/1.1" 200 11972
+INFO 2024-10-21 15:06:52,545 basehttp 73492 6161395712 "GET /media/profile_thumbnails/profile_thumbnails/j.burchelcrossoverglobal.net_thumb_r3RDu8o.jpg HTTP/1.1" 200 930
+INFO 2024-10-21 15:06:52,549 basehttp 73492 6178222080 "GET /static/js/contact_list.js HTTP/1.1" 200 1724
+INFO 2024-10-21 15:06:52,550 basehttp 73492 6161395712 "GET /static/js/navbar.js HTTP/1.1" 200 977
+INFO 2024-10-21 15:06:52,553 basehttp 73492 6161395712 "GET /static/js/main.js HTTP/1.1" 200 1449
+INFO 2024-10-21 15:06:52,743 basehttp 73492 6161395712 "GET /static/images/favicon.ico?v=1 HTTP/1.1" 200 1150
+INFO 2024-10-21 15:09:36,063 basehttp 73492 6161395712 "GET /contacts/ HTTP/1.1" 200 288723
+INFO 2024-10-21 15:09:36,100 basehttp 73492 6161395712 "GET /static/css/contacts_list.css HTTP/1.1" 200 4697
+INFO 2024-10-21 15:09:36,109 basehttp 73492 6161395712 "GET /static/js/contact_list.js HTTP/1.1" 304 0
