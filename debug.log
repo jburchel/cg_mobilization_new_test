@@ -6032,3 +6032,9 @@ INFO 2024-10-21 15:09:36,109 basehttp 73492 6161395712 "GET /static/js/contact_l
 INFO 2024-10-24 13:57:32,859 autoreload 26730 7954013248 Watching for file changes with StatReloader
 INFO 2024-10-24 13:57:33,028 wsgi 26730 6108901376 Static root path: /opt/render/project/src/staticfiles
 INFO 2024-10-24 13:57:33,029 wsgi 26730 6108901376 Media root path: /opt/render/project/src/media
+INFO 2024-10-24 14:33:25,773 autoreload 50659 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-24 14:33:25,944 wsgi 50659 6174666752 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-24 14:33:25,944 wsgi 50659 6174666752 Media root path: /opt/render/project/src/media
+INFO 2024-10-24 14:34:04,547 autoreload 51108 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-24 14:34:04,709 wsgi 51108 6110081024 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-24 14:34:04,709 wsgi 51108 6110081024 Media root path: /opt/render/project/src/media
