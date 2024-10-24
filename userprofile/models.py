@@ -56,7 +56,7 @@ class CustomUser(AbstractUser):
                 thumb_filename = f'{self.username}_thumb.{file_extension}'
                 
                 # Save the thumbnail in the correct folder
-                thumb_path = f'profile_thumbnails/{thumb_filename}'
+                thumb_path = '/{thumb_filename}'
                 logger.info(f"Thumbnail path before saving: {thumb_path}")
                 self.profile_thumbnail.save(thumb_path, ContentFile(thumb_io.getvalue()), save=False)
                 logger.info(f"Thumbnail created successfully for user {self.username}. Path: {self.profile_thumbnail.name}")
