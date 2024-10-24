@@ -6029,3 +6029,6 @@ INFO 2024-10-21 15:06:52,743 basehttp 73492 6161395712 "GET /static/images/favic
 INFO 2024-10-21 15:09:36,063 basehttp 73492 6161395712 "GET /contacts/ HTTP/1.1" 200 288723
 INFO 2024-10-21 15:09:36,100 basehttp 73492 6161395712 "GET /static/css/contacts_list.css HTTP/1.1" 200 4697
 INFO 2024-10-21 15:09:36,109 basehttp 73492 6161395712 "GET /static/js/contact_list.js HTTP/1.1" 304 0
+INFO 2024-10-24 13:57:32,859 autoreload 26730 7954013248 Watching for file changes with StatReloader
+INFO 2024-10-24 13:57:33,028 wsgi 26730 6108901376 Static root path: /opt/render/project/src/staticfiles
+INFO 2024-10-24 13:57:33,029 wsgi 26730 6108901376 Media root path: /opt/render/project/src/media

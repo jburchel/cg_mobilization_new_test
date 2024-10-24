@@ -43,9 +43,10 @@ class CustomUser(AbstractUser):
 
         logger.info(f"Creating thumbnail for user {self.username}")
         try:
+            # Open the image using default_storage
             with default_storage.open(self.profile_image.name, 'rb') as f:
                 img = Image.open(f)
-                img.thumbnail((30, 30))
+                img.thumbnail((30, 30))  # Adjust size to 30x30 pixels
                 thumb_io = BytesIO()
                 
                 img_format = img.format or 'JPEG'
@@ -54,8 +55,10 @@ class CustomUser(AbstractUser):
                 file_extension = 'jpg' if img_format == 'JPEG' else img_format.lower()
                 thumb_filename = f'{self.username}_thumb.{file_extension}'
                 
+                # Save the thumbnail in the correct folder
                 thumb_path = f'profile_thumbnails/{thumb_filename}'
+                logger.info(f"Thumbnail path before saving: {thumb_path}")
                 self.profile_thumbnail.save(thumb_path, ContentFile(thumb_io.getvalue()), save=False)
                 logger.info(f"Thumbnail created successfully for user {self.username}. Path: {self.profile_thumbnail.name}")
         except Exception as e:
-            logger.error(f"Error creating thumbnail for user {self.username}: {str(e)}", exc_info=True)
+            logger.error(f"Error creating thumbnail for user {self.username}: {str(e)}")
