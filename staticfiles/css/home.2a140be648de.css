@@ -34,7 +34,7 @@ body {
     left: 0;
     width: 100%;
     height: 180%;
-    background-image: url('/static/images/middle-east-harvest.jpg');
+    background-image: url("/static/images/middle-east-harvest.ff7cdcc6d099.jpg");
     background-size: cover;
     background-position: center 40%;
     filter: brightness(0.7);
@@ -126,19 +126,19 @@ h2 {
 }
 
 .feature-card[data-feature="manage-contacts"] {
-    background-image: url('/static/images/manage-contacts-bg.jpg');
+    background-image: url("/static/images/manage-contacts-bg.28d40f86ce55.jpg");
 }
 
 .feature-card[data-feature="track-communication"] {
-    background-image: url('/static/images/track-communication-bg.jpg');
+    background-image: url("/static/images/track-communication-bg.3b5fe753f3cb.jpg");
 }
 
 .feature-card[data-feature="manage-tasks"] {
-    background-image: url('/static/images/manage-tasks-bg.jpg');
+    background-image: url("/static/images/manage-tasks-bg.ee366125fb70.jpg");
 }
 
 .feature-card[data-feature="monitor-progress"] {
-    background-image: url('/static/images/monitor-progress-bg.jpg');
+    background-image: url("/static/images/monitor-progress-bg.5937ab165244.jpg");
 }
 
 .access-info {

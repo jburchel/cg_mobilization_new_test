@@ -6038,3 +6038,6 @@ INFO 2024-10-24 14:33:25,944 wsgi 50659 6174666752 Media root path: /opt/render/
 INFO 2024-10-24 14:34:04,547 autoreload 51108 7954013248 Watching for file changes with StatReloader
 INFO 2024-10-24 14:34:04,709 wsgi 51108 6110081024 Static root path: /opt/render/project/src/staticfiles
 INFO 2024-10-24 14:34:04,709 wsgi 51108 6110081024 Media root path: /opt/render/project/src/media
+INFO 2024-10-25 10:05:51,225 models 23573 7954013248 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-25 10:05:51,254 models 23573 7954013248 Thumbnail path before saving: /{thumb_filename}
+ERROR 2024-10-25 10:05:51,254 models 23573 7954013248 Error creating thumbnail for user j.burchel@crossoverglobal.net: Detected path traversal attempt in '/{thumb_filename}'
