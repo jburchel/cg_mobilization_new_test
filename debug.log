@@ -6041,3 +6041,5 @@ INFO 2024-10-24 14:34:04,709 wsgi 51108 6110081024 Media root path: /opt/render/
 INFO 2024-10-25 10:05:51,225 models 23573 7954013248 Creating thumbnail for user j.burchel@crossoverglobal.net
 INFO 2024-10-25 10:05:51,254 models 23573 7954013248 Thumbnail path before saving: /{thumb_filename}
 ERROR 2024-10-25 10:05:51,254 models 23573 7954013248 Error creating thumbnail for user j.burchel@crossoverglobal.net: Detected path traversal attempt in '/{thumb_filename}'
+INFO 2024-10-25 10:12:57,879 models 28340 7954013248 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-25 10:12:57,893 models 28340 7954013248 Thumbnail created successfully for user j.burchel@crossoverglobal.net. Path: profile_thumbnails/j.burchelcrossoverglobal.net_thumb.jpg
