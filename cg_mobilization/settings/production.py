@@ -26,10 +26,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
 # Production-specific Google OAuth settings
 GOOGLE_CLIENT_CONFIG = {
     "web": {
@@ -121,3 +117,13 @@ WHITENOISE_MIMETYPES = {
 }
 
 WHITENOISE_ROOT = MEDIA_ROOT
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+WHITENOISE_ROOT = MEDIA_ROOT
+
+# Create media directory if it doesn't exist
+if not os.path.exists(MEDIA_ROOT):
+    os.makedirs(MEDIA_ROOT)
