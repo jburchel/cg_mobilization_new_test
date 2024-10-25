@@ -26,10 +26,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/opt/render/project/src/media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Production-specific Google OAuth settings
 GOOGLE_CLIENT_CONFIG = {
@@ -109,3 +108,7 @@ LOGGING = {
 }
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_ALLOW_ALL_ORIGINS = True
+WHITENOISE_ROOT = MEDIA_ROOT

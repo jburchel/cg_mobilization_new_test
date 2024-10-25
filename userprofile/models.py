@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 class CustomUser(AbstractUser):
     profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
-    profile_thumbnail = models.ImageField(upload_to='profile_thumbnails', null=True, blank=True)
+    profile_thumbnail = models.ImageField(upload_to='profile_thumbnails/', null=True, blank=True)
     email_signature = models.TextField(blank=True, null=True)
     
     def save(self, *args, **kwargs):

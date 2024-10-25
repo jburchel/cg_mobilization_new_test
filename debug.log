@@ -6043,3 +6043,7 @@ INFO 2024-10-25 10:05:51,254 models 23573 7954013248 Thumbnail path before savin
 ERROR 2024-10-25 10:05:51,254 models 23573 7954013248 Error creating thumbnail for user j.burchel@crossoverglobal.net: Detected path traversal attempt in '/{thumb_filename}'
 INFO 2024-10-25 10:12:57,879 models 28340 7954013248 Creating thumbnail for user j.burchel@crossoverglobal.net
 INFO 2024-10-25 10:12:57,893 models 28340 7954013248 Thumbnail created successfully for user j.burchel@crossoverglobal.net. Path: profile_thumbnails/j.burchelcrossoverglobal.net_thumb.jpg
+INFO 2024-10-25 10:18:32,638 models 32060 7954013248 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-25 10:18:32,652 models 32060 7954013248 Thumbnail created successfully for user j.burchel@crossoverglobal.net. Path: profile_thumbnails/j.burchelcrossoverglobal.net_thumb_utJ2JUA.jpg
+INFO 2024-10-25 10:37:48,046 models 44720 7954013248 Creating thumbnail for user j.burchel@crossoverglobal.net
+INFO 2024-10-25 10:37:48,060 models 44720 7954013248 Thumbnail created successfully for user j.burchel@crossoverglobal.net. Path: profile_thumbnails/j.burchelcrossoverglobal.net_thumb_jQzwIq5.jpg
