@@ -8,6 +8,7 @@ from django.core.files.base import ContentFile
 from django.utils.html import linebreaks
 from django.core.files.storage import default_storage
 from django.core.files import File
+from django.conf import settings
 
 logger = logging.getLogger(__name__)
 
@@ -43,19 +44,26 @@ class CustomUser(AbstractUser):
 
         logger.info(f"Creating thumbnail for user {self.username}")
         try:
+            # Open the image using default_storage
             with default_storage.open(self.profile_image.name, 'rb') as f:
                 img = Image.open(f)
-                img.thumbnail((30, 30))
+                img.thumbnail((30, 30))  # Adjust size to 30x30 pixels
                 thumb_io = BytesIO()
-                
+                img_format = img.format or 'JPEG'
                 img_format = img.format or 'JPEG'
                 img.save(thumb_io, format=img_format)
-                
+                file_extension = 'jpg' if img_format == 'JPEG' else img_format.lower()
                 file_extension = 'jpg' if img_format == 'JPEG' else img_format.lower()
                 thumb_filename = f'{self.username}_thumb.{file_extension}'
-                
                 # Save the thumbnail with just the filename
-                self.profile_thumbnail.save(thumb_filename, ContentFile(thumb_io.getvalue()), save=False)
-                logger.info(f"Thumbnail created successfully for user {self.username}. Path: {self.profile_thumbnail.name}")
+                # Save the thumbnail in the correct folder
+                thumb_path = '/{thumb_filename}'
+                logger.info(f"Thumbnail path before saving: {thumb_path}")
+                logger.info(f"About to save thumbnail. Filename: {thumb_filename}")
+                logger.info(f"MEDIA_ROOT: {settings.MEDIA_ROOT}")
+                logger.info(f"Full path: {os.path.join(settings.MEDIA_ROOT, thumb_filename)}")
+                self.profile_thumbnail.save(thumb_path, ContentFile(thumb_io.getvalue()), save=False)
+                logger.info(f"Thumbnail saved. Full path: {os.path.join(settings.MEDIA_ROOT, self.profile_thumbnail.name)}")
+                logger.info(f"File exists: {os.path.exists(os.path.join(settings.MEDIA_ROOT, self.profile_thumbnail.name))}")
         except Exception as e:
             logger.error(f"Error creating thumbnail for user {self.username}: {str(e)}")
