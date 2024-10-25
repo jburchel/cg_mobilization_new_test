@@ -56,7 +56,7 @@ class CustomUser(AbstractUser):
                 thumb_filename = f'{self.username}_thumb.{file_extension}'
                 
                 # Save the thumbnail in the correct folder
-                thumb_path = f'profile_thumbnails/{thumb_filename}'
+                thumb_path = thumb_filename
                 logger.info(f"Thumbnail path before saving: {thumb_path}")
                 logger.info(f"MEDIA_ROOT: {settings.MEDIA_ROOT}")
                 logger.info(f"Full path: {os.path.join(settings.MEDIA_ROOT, thumb_path)}")
