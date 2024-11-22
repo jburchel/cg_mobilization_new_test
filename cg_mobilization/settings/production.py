@@ -1,129 +1,43 @@
 from .base import *
 import os
-from pathlib import Path
+import dj_database_url
 
 DEBUG = False
 
-# SECURITY WARNING: keep the secret key used in production secre
+# Fix the BASE_DIR definition (should be at the top)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-ALLOWED_HOSTS = ['mobilize.onrender.com', 'onrender.com']  # Add your domain
+ALLOWED_HOSTS = ['.fly.dev']
 
+# Database configuration
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL'),
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 }
 
-INSTALLED_APPS = ['whitenoise.runserver_nostatic'] + INSTALLED_APPS
-
-# Static files (CSS, JavaScript, Images)
+# Static files configuration
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-# Production-specific Google OAuth settings
-GOOGLE_CLIENT_CONFIG = {
-    "web": {
-        "client_id": os.environ.get('GOOGLE_CLIENT_ID'),
-        "project_id": os.environ.get('GOOGLE_PROJECT_ID'),
-        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-        "token_uri": "https://oauth2.googleapis.com/token",
-        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-        "client_secret": os.environ.get('GOOGLE_CLIENT_SECRET'),
-        "redirect_uris": [os.environ.get('GOOGLE_REDIRECT_URI')]
-    }
-}
-
-GOOGLE_REDIRECT_URI = os.environ.get('GOOGLE_REDIRECT_URI')
-GOOGLE_CALENDAR_CREDENTIALS_FILE = Path(os.getenv('GOOGLE_CREDENTIALS_FILE', '/opt/render/project/src/credentials_prod.json'))
-GOOGLE_CALENDAR_SCOPES = ['https://www.googleapis.com/auth/calendar.events']
-
-# Additional security settings for production
-SECURE_SSL_REDIRECT = True
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  # or your email provider's SMTP server
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
-print(f"BASE_DIR: {BASE_DIR}")
-print(f"STATIC_ROOT: {BASE_DIR / 'staticfiles'}")
-print(f"MEDIA_ROOT: {BASE_DIR / 'media'}")
-print(f"GOOGLE_CREDENTIALS_FILE: {os.getenv('GOOGLE_CREDENTIALS_FILE', 'Not set')}")
-print(f"Current working directory: {os.getcwd()}")
-print(f"Contents of current directory: {os.listdir('.')}")
-
-# Only try to list /opt/render/project/src if it exists (i.e., in Render environment)
-render_dir = Path('/opt/render/project/src')
-if render_dir.exists():
-    print(f"Contents of {render_dir}: {os.listdir(render_dir)}")
-else:
-    print(f"Directory {render_dir} does not exist (this is expected in local environment)")
-    
-print(f"STATIC_URL: {STATIC_URL}")
-print(f"STATIC_ROOT: {STATIC_ROOT}")
-print(f"STATICFILES_DIRS: {STATICFILES_DIRS}")
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'root': {
-        'handlers': ['console'],
-        'level': 'INFO',
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'INFO',
-            'propagate': False,
-        },
-        'task_tracker': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
-        'integrations': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
-    },
-}
-
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-WHITENOISE_USE_FINDERS = True
-WHITENOISE_MANIFEST_STRICT = False
-WHITENOISE_ALLOW_ALL_ORIGINS = True
-WHITENOISE_AUTOREFRESH = True
-WHITENOISE_MIMETYPES = {
-    '.jpg': 'image/jpeg',
-    '.jpeg': 'image/jpeg',
-    '.png': 'image/png',
-    '.gif': 'image/gif',
-}
 
-WHITENOISE_ROOT = MEDIA_ROOT
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-WHITENOISE_ROOT = MEDIA_ROOT
 
 # Create media directory if it doesn't exist
 if not os.path.exists(MEDIA_ROOT):
     os.makedirs(MEDIA_ROOT)
+
+# Whitenoise configuration
+MIDDLEWARE = ['whitenoise.middleware.WhiteNoiseMiddleware'] + MIDDLEWARE
+
+# Remove duplicate settings and conflicting configurations
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_MANIFEST_STRICT = False
+WHITENOISE_ALLOW_ALL_ORIGINS = True
+
+# The rest of your settings remain the same...
